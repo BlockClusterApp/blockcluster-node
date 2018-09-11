@@ -1,10 +1,12 @@
-const Script = require('../..');
+const BlockCluster = require('../..');
 
-function beforeEach(t) {
-  const script = new Script({});
-  Object.assign(t.context, { script });
+function before(t) {
+  const node = new BlockCluster.Dynamo({
+    locationDomain: 'dev.blockcluster.io',
+    instanceId: 'sawwdvca'
+  });
+
+  Object.assign(t.context, { node });
 }
 
-function afterEach() {}
-
-module.exports = { beforeEach, afterEach };
+module.exports = { before };

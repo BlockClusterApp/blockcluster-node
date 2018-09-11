@@ -16,8 +16,7 @@
     "verbose": true
   },
   "devDependencies": {
-    "auto-bind": "^1.1.0",
-    "ava": "^0.22.0",
+    "ava": "1.0.0-beta.8",
     "codecov": "^2.3.0",
     "cross-env": "^5.0.5",
     "eslint": "^5.5.0",
@@ -29,7 +28,8 @@
     "prettier": "^1.14.2",
     "remark-cli": "^4.0.0",
     "remark-preset-github": "^0.0.6",
-    "xo": "latest"
+    "xo": "latest",
+    "request": "latest"
   },
   "engines": {
     "node": ">=8.3"
@@ -55,7 +55,7 @@
   },
   "main": "index.js",
   "nyc": {
-    "check-coverage": true,
+    "check-coverage": false,
     "lines": 100,
     "functions": 100,
     "branches": 100,
@@ -106,7 +106,7 @@
   },
   "scripts": {
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
-    "lint": "xo && remark . -qfo",
+    "lint": "xo --fix && remark . -qfo",
     "precommit": "lint-staged && npm test",
     "test": "npm run lint && npm run test-coverage",
     "test-coverage": "cross-env NODE_ENV=test nyc ava"

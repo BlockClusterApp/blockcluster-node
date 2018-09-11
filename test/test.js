@@ -1,26 +1,54 @@
 const test = require('ava');
 
-const Script = require('..');
-const { beforeEach, afterEach } = require('./helpers');
+const { before } = require('./helpers');
 
-test.beforeEach(beforeEach);
-test.afterEach(afterEach);
+test.before(before);
 
-test('returns itself', t => {
-  t.true(t.context.script instanceof Script);
+test('create asset type', async t => {
+  try {
+    const { node } = t.context;
+
+    await node.callAPI('assets/createAssetType', {
+      assetType: 'solo',
+      assetName: 'license',
+      assetIssuer: '0x380525af1011d609114091e586fc04b1197471f2'
+    });
+
+    t.pass();
+  } catch (error) {
+    t.fail();
+  }
 });
 
-test('sets a config object', t => {
-  const script = new Script(false);
-  t.true(script instanceof Script);
+test('issue asset', async t => {
+  try {
+    const { node } = t.context;
+
+    await node.callAPI('assets/issueSoloAsset', {
+      assetName: 'license',
+      fromAccount: '0x380525af1011d609114091e586fc04b1197471f2',
+      toAccount: '0x380525af1011d609114091e586fc04b1197471f2',
+      identifier: '1234'
+    });
+
+    t.pass();
+  } catch (error) {
+    t.fail();
+  }
 });
 
-test('renders name', t => {
-  const { script } = t.context;
-  t.is(script.renderName(), 'script');
-});
+test('get solo asset', async t => {
+  try {
+    const { node } = t.context;
 
-test('sets a default name', t => {
-  const { script } = t.context;
-  t.is(script._name, 'script');
+    const assetInfo = await node.callAPI('assets/getSoloAssetInfo', {
+      assetName: 'license',
+      identifier: '1234'
+    });
+
+    t.is(assetInfo.status, 'open');
+    t.pass();
+  } catch (error) {
+    t.fail();
+  }
 });
