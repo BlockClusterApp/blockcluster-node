@@ -20,10 +20,9 @@
     "ava": "^0.22.0",
     "codecov": "^2.3.0",
     "cross-env": "^5.0.5",
-    "eslint": "^4.5.0",
+    "eslint": "^5.2.0",
     "eslint-config-prettier": "latest",
     "eslint-plugin-prettier": "latest",
-    "eslint-plugin-node": "latest",
     "husky": "^0.14.3",
     "lint-staged": "^4.0.4",
     "nyc": "^11.1.0",
@@ -109,7 +108,7 @@
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "lint": "xo && remark . -qfo",
     "precommit": "lint-staged && npm test",
-    "test": "npm run lint && npm run test-coverage",
+    "test": "npm run test-coverage",
     "test-coverage": "cross-env NODE_ENV=test nyc ava"
   }
 }
