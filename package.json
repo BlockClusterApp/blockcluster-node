@@ -20,13 +20,13 @@
     "ava": "^0.22.0",
     "codecov": "^2.3.0",
     "cross-env": "^5.0.5",
-    "eslint": "^5.2.0",
+    "eslint": "latest",
     "eslint-config-prettier": "latest",
     "eslint-plugin-prettier": "latest",
     "husky": "^0.14.3",
-    "lint-staged": "^4.0.4",
+    "lint-staged": "latest",
     "nyc": "^11.1.0",
-    "prettier": "^1.6.1",
+    "prettier": "latest",
     "remark-cli": "^4.0.0",
     "remark-preset-github": "^0.0.6",
     "xo": "latest"
@@ -108,7 +108,7 @@
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "lint": "xo && remark . -qfo",
     "precommit": "lint-staged && npm test",
-    "test": "npm run test-coverage",
+    "test": "npm run lint && npm run test-coverage",
     "test-coverage": "cross-env NODE_ENV=test nyc ava"
   }
 }
