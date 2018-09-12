@@ -11,7 +11,7 @@ test('create asset type', async t => {
     await node.callAPI('assets/createAssetType', {
       assetType: 'solo',
       assetName: 'license',
-      assetIssuer: '0x380525af1011d609114091e586fc04b1197471f2'
+      assetIssuer: node.getWeb3().eth.accounts[0]
     });
 
     t.pass();
@@ -26,8 +26,8 @@ test('issue asset', async t => {
 
     await node.callAPI('assets/issueSoloAsset', {
       assetName: 'license',
-      fromAccount: '0x380525af1011d609114091e586fc04b1197471f2',
-      toAccount: '0x380525af1011d609114091e586fc04b1197471f2',
+      fromAccount: node.getWeb3().eth.accounts[0],
+      toAccount: node.getWeb3().eth.accounts[0],
       identifier: '1234'
     });
 

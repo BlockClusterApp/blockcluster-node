@@ -10,7 +10,10 @@
   "contributors": [
     "BlockCluster <info@blockcluster.io> (https://www.blockcluster.io)"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "request": "latest",
+    "web3": "^0.20.6"
+  },
   "ava": {
     "failFast": true,
     "verbose": true
@@ -28,11 +31,10 @@
     "prettier": "^1.14.2",
     "remark-cli": "^4.0.0",
     "remark-preset-github": "^0.0.6",
-    "xo": "latest",
-    "request": "latest"
+    "xo": "latest"
   },
   "engines": {
-    "node": ">=8.3"
+    "node": ">=10.10"
   },
   "homepage": "https://github.com/BlockClusterApp/blockcluster-node",
   "keywords": [
