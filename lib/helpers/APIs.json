@@ -1,0 +1,14 @@
+{
+  "assets/createAssetType": {
+    "operationType": "write",
+    "requestType": "POST"
+  },
+  "assets/issueSoloAsset": {
+    "operationType": "write",
+    "requestType": "POST"
+  },
+  "assets/getSoloAssetInfo": {
+    "operationType": "read",
+    "requestType": "POST"
+  }
+}

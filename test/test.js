@@ -4,10 +4,9 @@ const { before } = require('./helpers');
 
 test.before(before);
 
-test('create asset type', async t => {
+test.serial('create asset type', async t => {
   try {
     const { node } = t.context;
-
     await node.callAPI('assets/createAssetType', {
       assetType: 'solo',
       assetName: 'license',
@@ -20,10 +19,9 @@ test('create asset type', async t => {
   }
 });
 
-test('issue asset', async t => {
+test.serial('issue asset', async t => {
   try {
     const { node } = t.context;
-
     await node.callAPI('assets/issueSoloAsset', {
       assetName: 'license',
       fromAccount: node.getWeb3().eth.accounts[0],
@@ -37,10 +35,9 @@ test('issue asset', async t => {
   }
 });
 
-test('get solo asset', async t => {
+test.serial('get solo asset', async t => {
   try {
     const { node } = t.context;
-
     const assetInfo = await node.callAPI('assets/getSoloAssetInfo', {
       assetName: 'license',
       identifier: '1234'
