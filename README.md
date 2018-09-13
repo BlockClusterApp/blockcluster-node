@@ -92,7 +92,7 @@ await node.callAPI(
 
 ## Docs
 
-Documentation of Dynamo's REST APIs and their usage is available at <https://node.apis.blockcluster.io>
+Documentation of Dynamo's REST APIs and their usage is available at <https://node.api.blockcluster.io>
 
 
 ## Contributors
