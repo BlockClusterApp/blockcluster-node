@@ -1,4 +1,5 @@
 const test = require('ava');
+const Wallet = require('ethereumjs-wallet');
 
 const { before } = require('./helpers');
 
@@ -10,7 +11,7 @@ test.serial('create asset type', async t => {
     await node.callAPI('assets/createAssetType', {
       assetType: 'solo',
       assetName: 'license',
-      assetIssuer: node.getWeb3().eth.accounts[0]
+      fromAccount: node.getWeb3().eth.accounts[0]
     });
 
     t.pass();
@@ -46,6 +47,32 @@ test.serial('get solo asset', async t => {
     t.is(assetInfo.status, 'open');
     t.pass();
   } catch (error) {
+    t.fail();
+  }
+});
+
+test.serial('create stream', async t => {
+  try {
+    const { node } = t.context;
+
+    const wallet = Wallet.generate();
+    const privateKey = wallet.getPrivateKey().toString('hex');
+    const address = '0x' + wallet.getAddress().toString('hex');
+
+    await node.callAPI(
+      'streams/create',
+      {
+        streamName: 'renew',
+        fromAccount: address
+      },
+      {
+        privateKey
+      }
+    );
+
+    t.pass();
+  } catch (error) {
+    console.log(error);
     t.fail();
   }
 });

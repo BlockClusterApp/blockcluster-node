@@ -3,7 +3,7 @@ const BlockCluster = require('../..');
 function before(t) {
   const node = new BlockCluster.Dynamo({
     locationDomain: 'dev.blockcluster.io',
-    instanceId: 'avyybokv'
+    instanceId: 'vybrmmke'
   });
 
   Object.assign(t.context, { node });

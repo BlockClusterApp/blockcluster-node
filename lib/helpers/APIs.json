@@ -1,14 +1,142 @@
 {
   "assets/createAssetType": {
     "operationType": "write",
-    "requestType": "POST"
+    "requestType": "POST",
+    "category": "blockchain"
+  },
+  "assets/assetTypes": {
+    "operationType": "read",
+    "requestType": "GET",
+    "category": "blockchain"
+  },
+  "assets/orders": {
+    "operationType": "read",
+    "requestType": "GET",
+    "category": "blockchain"
+  },
+  "streams/streamTypes": {
+    "operationType": "read",
+    "requestType": "GET",
+    "category": "blockchain"
   },
   "assets/issueSoloAsset": {
     "operationType": "write",
-    "requestType": "POST"
+    "requestType": "POST",
+    "category": "blockchain"
+  },
+  "assets/issueBulkAsset": {
+    "operationType": "write",
+    "requestType": "POST",
+    "category": "blockchain"
+  },
+  "assets/transferSoloAsset": {
+    "operationType": "write",
+    "requestType": "POST",
+    "category": "blockchain"
+  },
+  "assets/transferBulkAsset": {
+    "operationType": "write",
+    "requestType": "POST",
+    "category": "blockchain"
+  },
+  "assets/getBulkAssetBalance": {
+    "operationType": "read",
+    "requestType": "POST",
+    "category": "blockchain"
+  },
+  "assets/updateAssetInfo": {
+    "operationType": "write",
+    "requestType": "POST",
+    "category": "blockchain"
+  },
+  "assets/grantAccessToPrivateData": {
+    "operationType": "write",
+    "requestType": "POST",
+    "category": "blockchain"
+  },
+  "assets/revokeAccessToPrivateData": {
+    "operationType": "write",
+    "requestType": "POST",
+    "category": "blockchain"
+  },
+  "assets/closeAsset": {
+    "operationType": "write",
+    "requestType": "POST",
+    "category": "blockchain"
+  },
+  "assets/placeOrder": {
+    "operationType": "write",
+    "requestType": "POST",
+    "category": "blockchain"
+  },
+  "assets/fulfillOrder": {
+    "operationType": "write",
+    "requestType": "POST",
+    "category": "blockchain"
+  },
+  "assets/cancelOrder": {
+    "operationType": "write",
+    "requestType": "POST",
+    "category": "blockchain"
+  },
+  "assets/getOrderInfo": {
+    "operationType": "read",
+    "requestType": "POST",
+    "category": "blockchain"
   },
   "assets/getSoloAssetInfo": {
     "operationType": "read",
-    "requestType": "POST"
+    "requestType": "POST",
+    "category": "blockchain"
+  },
+  "assets/search": {
+    "operationType": "read",
+    "requestType": "POST",
+    "category": "blockchain"
+  },
+  "assets/audit": {
+    "operationType": "read",
+    "requestType": "POST",
+    "category": "blockchain"
+  },
+  "streams/search": {
+    "operationType": "read",
+    "requestType": "POST",
+    "category": "blockchain"
+  },
+  "streams/create": {
+    "operationType": "write",
+    "requestType": "POST",
+    "category": "blockchain"
+  },
+  "streams/grantAccessToPublish": {
+    "operationType": "write",
+    "requestType": "POST",
+    "category": "blockchain"
+  },
+  "streams/revokeAccessToPublish": {
+    "operationType": "write",
+    "requestType": "POST",
+    "category": "blockchain"
+  },
+  "streams/publish": {
+    "operationType": "write",
+    "requestType": "POST",
+    "category": "blockchain"
+  },
+  "utility/createAccount": {
+    "operationType": "write",
+    "requestType": "POST",
+    "category": "utility"
+  },
+  "utility/accounts": {
+    "operationType": "read",
+    "requestType": "GET",
+    "category": "utility"
+  },
+  "transactions/audit": {
+    "operationType": "read",
+    "requestType": "GET",
+    "category": "transactions"
   }
 }
