@@ -14,6 +14,7 @@
 
 * [Install](#install)
 * [Usage](#usage)
+* [Docs](#docs)
 * [Contributors](#contributors)
 * [License](#license)
 
@@ -35,14 +36,63 @@ yarn add blockcluster
 
 ## Usage
 
+Here is an example script showing how to create an asset type, issue assets and fetch assets:
+
 ```js
 const Blockcluster = require('blockcluster');
 
-const blockcluster = new Blockcluster();
+const node = new Blockcluster.Dynamo({
+    locationDomain: 'app-ap-south-1b.blockcluster.io', //enter your node's location domain
+    instanceId: 'noeurgyb' //enter your instanceId
+});
 
-console.log(blockcluster.renderName());
-// script
+//create license solo asset type
+await node.callAPI('assets/createAssetType', {
+    assetType: 'solo',
+    assetName: 'license',
+    fromAccount: node.getWeb3().eth.accounts[0]
+});
+
+//issue a license
+await node.callAPI('assets/issueSoloAsset', {
+    assetName: 'license',
+    fromAccount: node.getWeb3().eth.accounts[0],
+    toAccount: node.getWeb3().eth.accounts[0],
+    identifier: '1234'
+});
+
+//get asset info
+const assetInfo = await node.callAPI('assets/getSoloAssetInfo', {
+    assetName: 'license',
+    identifier: '1234'
+});
 ```
+
+Here is an another example script showing how to create stream using  an offline account:
+
+```js
+const Wallet = require('ethereumjs-wallet');
+
+const wallet = Wallet.generate();
+const privateKey = wallet.getPrivateKey().toString('hex');
+const address = '0x' + wallet.getAddress().toString('hex');
+
+await node.callAPI(
+    'streams/create',
+    {
+        streamName: 'renew',
+        fromAccount: address
+    },
+    {
+        privateKey
+    }
+);
+```
+
+
+## Docs
+
+Documentation of Dynamo's REST APIs and their usage is available at <https://node.apis.blockcluster.io>
 
 
 ## Contributors
