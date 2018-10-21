@@ -138,5 +138,30 @@
     "operationType": "read",
     "requestType": "GET",
     "category": "transactions"
+  },
+  "pre/generateKey": {
+    "operationType": "read",
+    "requestType": "POST",
+    "category": "impulse"
+  },
+  "pre/storeEncrypted": {
+    "operationType": "write",
+    "requestType": "POST",
+    "category": "impulse"
+  },
+  "pre/getData": {
+    "operationType": "read",
+    "requestType": "POST",
+    "category": "impulse"
+  },
+  "pre/grantAccess": {
+    "operationType": "write",
+    "requestType": "POST",
+    "category": "impulse"
+  },
+  "pre/revokeAccess": {
+    "operationType": "write",
+    "requestType": "POST",
+    "category": "impulse"
   }
 }
