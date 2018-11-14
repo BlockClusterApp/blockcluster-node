@@ -1,7 +1,7 @@
 {
   "name": "blockcluster",
   "description": "Official BlockCluster Node.js SDK for Dynamo and Platform APIs",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "BlockCluster <info@blockcluster.io> (https://www.blockcluster.io)",
   "bugs": {
     "url": "https://github.com/BlockClusterApp/blockcluster-node/issues",
