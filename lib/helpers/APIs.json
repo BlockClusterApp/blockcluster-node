@@ -94,12 +94,22 @@
     "requestType": "POST",
     "category": "blockchain"
   },
+  "assets/count": {
+    "operationType": "read",
+    "requestType": "POST",
+    "category": "blockchain"
+  },
   "assets/audit": {
     "operationType": "read",
     "requestType": "POST",
     "category": "blockchain"
   },
   "streams/search": {
+    "operationType": "read",
+    "requestType": "POST",
+    "category": "blockchain"
+  },
+  "streams/count": {
     "operationType": "read",
     "requestType": "POST",
     "category": "blockchain"
