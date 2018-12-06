@@ -14,11 +14,15 @@
     "ethereumjs-tx": "^1.3.7",
     "ethereumjs-wallet": "^0.6.2",
     "request": "latest",
+    "request-promise": "^4.2.2",
     "web3": "^0.20.6"
   },
   "ava": {
     "failFast": true,
-    "verbose": true
+    "verbose": true,
+    "files": [
+      "test/*.js"
+    ]
   },
   "devDependencies": {
     "ava": "1.0.0-beta.8",
@@ -107,7 +111,8 @@
       ],
       "capitalized-comments": "off",
       "camelcase": "off",
-      "no-warning-comments": "off"
+      "no-warning-comments": "off",
+      "unicorn/catch-error-name": "off"
     },
     "space": true
   },

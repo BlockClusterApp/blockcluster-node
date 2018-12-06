@@ -1,4 +1,5 @@
 const test = require('ava');
+
 const Wallet = require('ethereumjs-wallet');
 
 const { before } = require('./helpers');
@@ -57,7 +58,7 @@ test.serial('create stream', async t => {
 
     const wallet = Wallet.generate();
     const privateKey = wallet.getPrivateKey().toString('hex');
-    const address = '0x' + wallet.getAddress().toString('hex');
+    const address = `0x${wallet.getAddress().toString('hex')}`;
 
     await node.callAPI(
       'streams/create',

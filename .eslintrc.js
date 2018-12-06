@@ -3,6 +3,10 @@ module.exports = {
   rules: {
     'no-param-reassign': 0,
     'max-len': 0,
-    'comma-dangle': 1
+    'comma-dangle': 1,
+    'arrow-parens': 0,
+    'implicit-arrow-linebreak': 0,
+    'object-curly-newline': 0,
+    'unicorn/catch-error-name': 0
   }
 };
