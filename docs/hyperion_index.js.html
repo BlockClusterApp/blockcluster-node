@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>hyperion/index.js - Postman Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Hyperion.html">Hyperion</a><ul class='methods'><li data-type='method'><a href="Hyperion.html#deleteFile">deleteFile</a></li><li data-type='method'><a href="Hyperion.html#getFile">getFile</a></li><li data-type='method'><a href="Hyperion.html#uploadFile">uploadFile</a></li></ul></li><li><a href="Paymeter.html">Paymeter</a><ul class='methods'><li data-type='method'><a href="Paymeter.html#createWallet">createWallet</a></li><li data-type='method'><a href="Paymeter.html#getWallets">getWallets</a></li><li data-type='method'><a href="Paymeter.html#getWithdrawals">getWithdrawals</a></li><li data-type='method'><a href="Paymeter.html#sendTokens">sendTokens</a></li></ul></li><li><a href="Platform.html">Platform</a><ul class='methods'><li data-type='method'><a href="Platform.html#acceptInvite">acceptInvite</a></li><li data-type='method'><a href="Platform.html#createNetwork">createNetwork</a></li><li data-type='method'><a href="Platform.html#deleteNetwork">deleteNetwork</a></li><li data-type='method'><a href="Platform.html#fetchLocations">fetchLocations</a></li><li data-type='method'><a href="Platform.html#fetchNetworkTypes">fetchNetworkTypes</a></li><li data-type='method'><a href="Platform.html#inviteViaEmail">inviteViaEmail</a></li><li data-type='method'><a href="Platform.html#joinNetwork">joinNetwork</a></li></ul></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">hyperion/index.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const request = require('request');
+const helpers = require('../../helpers');
+
+/**
+ * Handles all the functions related to hyperion
+ * @class Hyperion
+ */
+class Hyperion {
+  constructor({ apiKey }) {
+    this.apiKey = apiKey;
+  }
+
+  /**
+   * Uploads a file to hyperion service
+   * @param  {object} options File options
+   * @param {readStream} options.fileStream A read stream to the file which is to be uploaded
+   * @param {string} options.locationCode Location code of the hyperion node where the file is to be uploaded
+   * @return {Promise&lt;string>} Hash of the uploaded file
+   * @memberof Hyperion
+   */
+  uploadFile({ fileStream, locationCode }) {
+    const path = '/api/hyperion/upload';
+
+    const requestOptions = {
+      url: `${helpers.getHost()}${path}`,
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${this.apiKey}`,
+        'Content-Type': 'multipart/form-data',
+      },
+      formData: {
+        location: locationCode,
+        file: {
+          value: fileStream,
+          options: {
+            filename: `file-${new Date().getTime()}`,
+            contentType: null,
+          },
+        },
+      },
+    };
+
+    return new Promise((resolve, reject) => {
+      // fileStream.pipe(
+      request(requestOptions, (err, response, body) => {
+        if (err) {
+          return reject(err);
+        }
+        resolve(JSON.parse(body).message);
+        return true;
+      });
+      // );
+    });
+  }
+
+  /**
+   * Downloads a file from hyperion using the hash
+   * @param  {object} options File options
+   * @param {string} options.locationCode Location code of the hyperion node where the file was uploaded
+   * @param {string} options.fileHash Hash of the file to download
+   * @param {writeStream} options.writeStream A writestream to which the downloaded file will be written
+   * @return {Promise&lt;any>} Error or response status code
+   * @memberof Hyperion
+   */
+  getFile({ locationCode, fileHash, writeStream }) {
+    return new Promise((resolve, reject) => {
+      const path = `/api/hyperion/download?location=${locationCode}&amp;hash=${fileHash}`;
+
+      if (!writeStream) {
+        return reject(new Error('Write stream should be defined'));
+      }
+
+      const requestOptions = {
+        method: 'GET',
+        url: `${helpers.getHost()}${path}`,
+        headers: {
+          Authorization: `Bearer ${this.apiKey}`,
+        },
+      };
+
+      request(requestOptions)
+        .on('error', err => reject(err))
+        .on('response', response => resolve(response.statusCode))
+        .pipe(writeStream);
+
+      return true;
+    });
+  }
+
+  /**
+   * Deletes a file from hyperion node
+   * @param  {object} options File options
+   * @param  {string} locationCode Location code of the node where the file was uploaded
+   * @param {string} fileHash Hash of the file to delete
+   * @return {Promise&lt;any>}
+   * @memberof Hyperion
+   */
+  async deleteFile({ locationCode, fileHash }) {
+    const path = `/api/hyperion/delete?location=${locationCode}&amp;hash=${fileHash}`;
+
+    try {
+      const deleteResponse = await helpers.sendPlatformRequest({ path, method: 'DELETE', apiKey: this.apiKey });
+      return deleteResponse;
+    } catch (err) {
+      return Promise.reject(err);
+    }
+  }
+}
+
+module.exports = Hyperion;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated at Tue Dec 11 2018 23:47:41 GMT+0530 (IST)
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
