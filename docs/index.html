@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Home - Postman Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Hyperion.html">Hyperion</a><ul class='methods'><li data-type='method'><a href="Hyperion.html#deleteFile">deleteFile</a></li><li data-type='method'><a href="Hyperion.html#getFile">getFile</a></li><li data-type='method'><a href="Hyperion.html#uploadFile">uploadFile</a></li></ul></li><li><a href="Paymeter.html">Paymeter</a><ul class='methods'><li data-type='method'><a href="Paymeter.html#createWallet">createWallet</a></li><li data-type='method'><a href="Paymeter.html#getWallets">getWallets</a></li><li data-type='method'><a href="Paymeter.html#getWithdrawals">getWithdrawals</a></li><li data-type='method'><a href="Paymeter.html#sendTokens">sendTokens</a></li></ul></li><li><a href="Platform.html">Platform</a><ul class='methods'><li data-type='method'><a href="Platform.html#acceptInvite">acceptInvite</a></li><li data-type='method'><a href="Platform.html#createNetwork">createNetwork</a></li><li data-type='method'><a href="Platform.html#deleteNetwork">deleteNetwork</a></li><li data-type='method'><a href="Platform.html#fetchLocations">fetchLocations</a></li><li data-type='method'><a href="Platform.html#fetchNetworkTypes">fetchNetworkTypes</a></li><li data-type='method'><a href="Platform.html#inviteViaEmail">inviteViaEmail</a></li><li data-type='method'><a href="Platform.html#joinNetwork">joinNetwork</a></li></ul></li></ul>
+</nav>
+
+<div id="main">
+    
+
+    
+
+
+
+    
+
+
+
+
+
+
+
+
+
+    
+
+
+    <section class="readme">
+        <article><h1>blockcluster</h1><p><a href="https://travis-ci.org/BlockClusterApp/blockcluster-node"><img src="https://img.shields.io/travis/BlockClusterApp/blockcluster-node.svg" alt="build status"></a>
+<a href="https://codecov.io/gh/BlockClusterApp/blockcluster-node"><img src="https://img.shields.io/codecov/c/github/BlockClusterApp/blockcluster-node.svg" alt="code coverage"></a>
+<a href="https://github.com/sindresorhus/xo"><img src="https://img.shields.io/badge/code_style-XO-5ed9c7.svg" alt="code style"></a>
+<a href="https://github.com/prettier/prettier"><img src="https://img.shields.io/badge/styled_with-prettier-ff69b4.svg" alt="styled with prettier"></a>
+<a href="https://lass.js.org"><img src="https://img.shields.io/badge/made_with-lass-95CC28.svg" alt="made with lass"></a>
+<a href="LICENSE"><img src="https://img.shields.io/github/license/BlockClusterApp/blockcluster-node.svg" alt="license"></a></p>
+<blockquote>
+<p>Official BlockCluster Node.js SDK for Dynamo and Platform APIs</p>
+</blockquote>
+<h2>Table of Contents</h2><ul>
+<li><a href="#install">Install</a></li>
+<li><a href="#usage">Usage</a></li>
+<li><a href="#docs">Docs</a></li>
+<li><a href="#contributors">Contributors</a></li>
+<li><a href="#license">License</a></li>
+</ul>
+<h2>Install</h2><p><a href="https://www.npmjs.com/">npm</a>:</p>
+<pre class="prettyprint source lang-sh"><code>npm install blockcluster</code></pre><p><a href="https://yarnpkg.com/">yarn</a>:</p>
+<pre class="prettyprint source lang-sh"><code>yarn add blockcluster</code></pre><h2>Usage</h2><p>Here is an example script showing how to create an asset type, issue assets and fetch assets:</p>
+<pre class="prettyprint source lang-js"><code>const Blockcluster = require('blockcluster');
+
+const node = new Blockcluster.Dynamo({
+    locationDomain: 'app-ap-south-1b.blockcluster.io', //enter your node's location domain
+    instanceId: 'noeurgyb' //enter your instanceId
+});
+
+//create license solo asset type
+await node.callAPI('assets/createAssetType', {
+    assetType: 'solo',
+    assetName: 'license',
+    fromAccount: node.getWeb3().eth.accounts[0]
+});
+
+//issue a license
+await node.callAPI('assets/issueSoloAsset', {
+    assetName: 'license',
+    fromAccount: node.getWeb3().eth.accounts[0],
+    toAccount: node.getWeb3().eth.accounts[0],
+    identifier: '1234'
+});
+
+//get asset info
+const assetInfo = await node.callAPI('assets/getSoloAssetInfo', {
+    assetName: 'license',
+    identifier: '1234'
+});</code></pre><p>Here is an another example script showing how to create stream using  an offline account:</p>
+<pre class="prettyprint source lang-js"><code>const Wallet = require('ethereumjs-wallet');
+
+const wallet = Wallet.generate();
+const privateKey = wallet.getPrivateKey().toString('hex');
+const address = '0x' + wallet.getAddress().toString('hex');
+
+await node.callAPI(
+    'streams/create',
+    {
+        streamName: 'renew',
+        fromAccount: address
+    },
+    {
+        privateKey
+    }
+);</code></pre><h2>Docs</h2><p>Documentation of Dynamo's REST APIs and their usage is available at <a href="https://node.api.blockcluster.io">https://node.api.blockcluster.io</a></p>
+<h2>Contributors</h2><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Website</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>BlockCluster</strong></td>
+<td><a href="https://www.blockcluster.io">https://www.blockcluster.io</a></td>
+</tr>
+</tbody>
+</table>
+<h2>License</h2><p><a href="LICENSE">MIT</a> © <a href="https://www.blockcluster.io">BlockCluster</a></p>
+<p>## </p></article>
+    </section>
+
+
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated at Tue Dec 11 2018 23:47:41 GMT+0530 (IST)
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

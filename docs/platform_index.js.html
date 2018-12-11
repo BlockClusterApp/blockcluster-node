@@ -1,4 +1,44 @@
-const helpers = require('../../helpers');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>platform/index.js - Postman Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Hyperion.html">Hyperion</a><ul class='methods'><li data-type='method'><a href="Hyperion.html#deleteFile">deleteFile</a></li><li data-type='method'><a href="Hyperion.html#getFile">getFile</a></li><li data-type='method'><a href="Hyperion.html#uploadFile">uploadFile</a></li></ul></li><li><a href="Paymeter.html">Paymeter</a><ul class='methods'><li data-type='method'><a href="Paymeter.html#createWallet">createWallet</a></li><li data-type='method'><a href="Paymeter.html#getWallets">getWallets</a></li><li data-type='method'><a href="Paymeter.html#getWithdrawals">getWithdrawals</a></li><li data-type='method'><a href="Paymeter.html#sendTokens">sendTokens</a></li></ul></li><li><a href="Platform.html">Platform</a><ul class='methods'><li data-type='method'><a href="Platform.html#acceptInvite">acceptInvite</a></li><li data-type='method'><a href="Platform.html#createNetwork">createNetwork</a></li><li data-type='method'><a href="Platform.html#deleteNetwork">deleteNetwork</a></li><li data-type='method'><a href="Platform.html#fetchLocations">fetchLocations</a></li><li data-type='method'><a href="Platform.html#fetchNetworkTypes">fetchNetworkTypes</a></li><li data-type='method'><a href="Platform.html#inviteViaEmail">inviteViaEmail</a></li><li data-type='method'><a href="Platform.html#joinNetwork">joinNetwork</a></li></ul></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">platform/index.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const helpers = require('../../helpers');
 
 /**
  * Handles all functions related to the blockcluster platform operation
@@ -15,7 +55,7 @@ class Platform {
 
   /**
    * Fetches all the applicable network types. You need to pass the network type id in any create or invite request
-   * @return {Promise<array>} List of network types
+   * @return {Promise&lt;array>} List of network types
    * @memberof Platform
    */
   async fetchNetworkTypes() {
@@ -31,7 +71,7 @@ class Platform {
 
   /**
    * Fetches all the applicable locations. You need to pass the location code in any create or invite request
-   * @return {Promise<array>} List of locations
+   * @return {Promise&lt;array>} List of locations
    * @memberof Platform
    */
   async fetchLocations() {
@@ -51,7 +91,7 @@ class Platform {
    * @param  {string} options.networkName Name of the network to be created
    * @param {string} options.networkConfigId Id of the network type from the ` fetchNetworkType() ` function
    * @param {string} options.locationCode Location code from the list of available location from ` fetchLocations() ` function
-   * @return {Promise<string|err>} Id of the network which was created
+   * @return {Promise&lt;string|err>} Id of the network which was created
    * @memberof Platform
    */
   async createNetwork({ networkName, networkConfigId, locationCode }) {
@@ -59,11 +99,11 @@ class Platform {
     const body = {
       networkName,
       networkConfigId,
-      locationCode
+      locationCode,
     };
     try {
       const res = await helpers.sendPlatformRequest({ path, method: 'POST', body, apiKey: this.apiKey });
-      if (res && res.data) {
+      if (res &amp;&amp; res.data) {
         return res.data;
       }
     } catch (err) {
@@ -76,7 +116,7 @@ class Platform {
   /**
    * Deletes a network from the blockcluster platform
    * @param  {string} networkId Id of the network to be deleted
-   * @return {Promise<any>}
+   * @return {Promise&lt;any>}
    * @memberof Platform
    */
   async deleteNetwork(networkId) {
@@ -94,9 +134,9 @@ class Platform {
    * Creates a network which will be joined to an existing network having all the details
    * @param  {object} options Network options
    * @param {string} options.networkName Name of the network to be created
-   * @param {string<authority|peer>} options.nodeType Type of network
+   * @param {string&lt;authority|peer>} options.nodeType Type of network
    * @param {string} options.genesisFileContent Content of genesis block
-   * @param {Array<string>} options.totalENodes List of enode urls to be joined
+   * @param {Array&lt;string>} options.totalENodes List of enode urls to be joined
    * @param {string} options.impulseURL URL of impulse
    * @param {string} options.assetsContractAddress Asset smart contract address
    * @param {string} options.atomicSwapContractAddress Atomic Swap smart contract address
@@ -104,7 +144,7 @@ class Platform {
    * @param {string} options.impulseContractAddress Impulse smart contract address
    * @param {string} options.locationCode  Location code from the list of available location from ` fetchLocations() ` function
    * @param {string} options.networkConfigId Id of the network type from the ` fetchNetworkType() ` function
-   * @return {Promise<any>}
+   * @return {Promise&lt;any>}
    * @memberof Platform
    */
   async joinNetwork({
@@ -118,7 +158,7 @@ class Platform {
     streamsContractAddress,
     impulseContractAddress,
     locationCode,
-    networkConfigId
+    networkConfigId,
   }) {
     const path = '/api/platform/networks/join';
     const body = {
@@ -132,7 +172,7 @@ class Platform {
       streamsContractAddress,
       impulseContractAddress,
       locationCode,
-      networkConfigId
+      networkConfigId,
     };
 
     if (!Array.isArray(totalENodes)) {
@@ -162,14 +202,14 @@ class Platform {
    * @param  {object} options Invite options
    * @param {string} options.inviteToEmail Email id of the user to be invited. The email id should be a user of blockcluster to be able to join the network. If the user is not on the blockcluster platform then an account in pending state will be created with this email id
    * @param {string} options.networkId Id of the network to which the new node should join
-   * @param {string<peer|authority>} options.networkType Type of network the new network will be
-   * @return {Promise<string>} Invite id of the invite. Use this invite id to accept
+   * @param {string&lt;peer|authority>} options.networkType Type of network the new network will be
+   * @return {Promise&lt;string>} Invite id of the invite. Use this invite id to accept
    * @memberof Platform
    */
   async inviteViaEmail({ inviteToEmail, networkId, networkType }) {
     const path = '/api/platform/networks/invite';
 
-    if (!(inviteToEmail && inviteToEmail.split('@').length === 2)) {
+    if (!(inviteToEmail &amp;&amp; inviteToEmail.split('@').length === 2)) {
       return Promise.reject(new Error('Invalid email id to invite'));
     }
 
@@ -184,7 +224,7 @@ class Platform {
     const body = {
       inviteToEmail,
       networkId,
-      networkType
+      networkType,
     };
 
     try {
@@ -201,7 +241,7 @@ class Platform {
    * @param {string} options.inviteId Id of the invite to accept
    * @param {string} options.locationCode Location code from the list of available location from ` fetchLocations() ` function
    * @param {string} options.networkConfigId Id of the network type from the ` fetchNetworkType() ` function
-   * @return {Promise<any>}
+   * @return {Promise&lt;any>}
    * @memberof Platform
    */
   async acceptInvite({ inviteId, locationCode, networkConfigId }) {
@@ -210,7 +250,7 @@ class Platform {
     const body = {
       inviteId,
       locationCode,
-      networkConfigId
+      networkConfigId,
     };
 
     try {
@@ -223,3 +263,22 @@ class Platform {
 }
 
 module.exports = Platform;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated at Tue Dec 11 2018 23:47:41 GMT+0530 (IST)
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
