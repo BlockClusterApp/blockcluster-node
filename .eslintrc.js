@@ -7,6 +7,7 @@ module.exports = {
     'arrow-parens': 0,
     'implicit-arrow-linebreak': 0,
     'object-curly-newline': 0,
-    'unicorn/catch-error-name': 0
+    'unicorn/catch-error-name': 0,
+    'lines-between-class-members': 0
   }
 };
