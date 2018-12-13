@@ -3,7 +3,7 @@ const Blockcluster = require('..');
 
 test.before(t => {
   const platform = new Blockcluster.Platform({
-    apiKey: 'NDhqemdYM2FTVEUweVR3QkVxWTF4c3NSdlBmUw=='
+    apiKey: 'RUxTOU1TcGNuRnJuRVp3elR5NVkjMCVE',
   });
 
   Object.assign(t.context, { platform });
@@ -69,20 +69,20 @@ test('Fetch Available locations', async t => {
   return true;
 });
 
-test.serial('Create Network', async t => {
+test('Create and Delete Network', async t => {
   try {
     const { platform } = t.context;
     const res = await platform.createNetwork({
-      networkName: 'Jibin',
+      networkName: `Jibin ${new Date().getTime()}`,
       networkConfigId: 'ZJPNEbBRMiXdRgDuJ',
-      locationCode: 'us-west-2'
+      locationCode: 'us-west-2',
     });
 
     if (!res.instanceId) {
       t.fail('Instance id is null');
     }
 
-    Object.assign(t.context, { instanceId: res.instanceId });
+    await platform.deleteNetwork(res.instanceId);
     t.pass();
   } catch (err) {
     t.fail(err);
@@ -91,15 +91,13 @@ test.serial('Create Network', async t => {
   return true;
 });
 
-test.serial('Send Invite', async t => {
-  const { instanceId } = t.context;
-  console.log('Sending invite for ', instanceId);
+test('Send Invite', async t => {
   try {
     const { platform } = t.context;
     const res = await platform.inviteViaEmail({
       inviteToEmail: 'jibin.mathews@blockcluster.io',
-      networkId: instanceId,
-      networkType: 'authority'
+      networkId: 'rklqiprt',
+      networkType: 'authority',
     });
 
     if (!res) {
@@ -110,23 +108,7 @@ test.serial('Send Invite', async t => {
 
     t.pass();
   } catch (err) {
-    t.fail();
-  }
-
-  return true;
-});
-
-test.serial('Delete Network', async t => {
-  const { instanceId } = t.context;
-  console.log('Deleting instance', instanceId);
-  try {
-    const { platform } = t.context;
-    await platform.deleteNetwork({
-      networkId: instanceId
-    });
-    t.pass();
-  } catch (err) {
-    t.fail();
+    t.fail(err);
   }
 
   return true;

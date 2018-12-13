@@ -5,13 +5,13 @@ const Blockcluster = require('..');
 
 test.before(t => {
   const hyperion = new Blockcluster.Hyperion({
-    apiKey: 'NDhqemdYM2FTVEUweVR3QkVxWTF4c3NSdlBmUw=='
+    apiKey: 'RUxTOU1TcGNuRnJuRVp3elR5NVkjMCVE',
   });
 
   Object.assign(t.context, { hyperion, hash: '' });
 });
 
-test.serial('Upload Hyperion file', async t => {
+test('Upload and Delete Hyperion file', async t => {
   try {
     const { hyperion } = t.context;
 
@@ -19,7 +19,7 @@ test.serial('Upload Hyperion file', async t => {
 
     const hash = await hyperion.uploadFile({ fileStream: stream, locationCode: 'us-west-2' });
 
-    t.context.hash = Object.assign(t.context, { hash });
+    await hyperion.deleteFile({ locationCode: 'us-west-2', fileHash: hash });
     t.pass();
   } catch (err) {
     t.fail(err);
@@ -28,29 +28,15 @@ test.serial('Upload Hyperion file', async t => {
   return true;
 });
 
-test.serial('Fetch Hyperion file', async t => {
+test('Fetch Hyperion file', async t => {
   try {
     const { hyperion } = t.context;
     const writeStream = fs.createWriteStream(path.join(__dirname, '..', 'tmp', 'tmp-1.md'));
 
-    const result = await hyperion.getFile({ locationCode: 'us-west-2', fileHash: 'QmdTauoFSKchJgKDSHhPtAuSTNc8MfrCqbjqSBm2E6VoEC', writeStream });
+    await hyperion.getFile({ locationCode: 'us-west-2', fileHash: 'QmdTauoFSKchJgKDSHhPtAuSTNc8MfrCqbjqSBm2E6VoEC', writeStream });
 
-    console.log('Result fetch', result);
     t.pass();
   } catch (err) {
     t.fail(err);
   }
 });
-
-// test.serial('Delete file', async t => {
-//   try {
-//     const { hyperion, hash } = t.context;
-
-//     const result = await hyperion.deleteFile({ locationCode: 'us-west-2', fileHash: hash });
-
-//     console.log('Result delete', result);
-//     t.pass();
-//   } catch (err) {
-//     t.fail(err);
-//   }
-// });
