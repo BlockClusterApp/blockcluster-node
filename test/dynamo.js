@@ -6,13 +6,13 @@ const { before } = require('./helpers');
 
 test.before(before);
 
-test.serial('create asset type', async t => {
+test('create asset type', async t => {
   try {
     const { node } = t.context;
     await node.callAPI('assets/createAssetType', {
       assetType: 'solo',
       assetName: 'license',
-      fromAccount: node.getWeb3().eth.accounts[0]
+      fromAccount: node.getWeb3().eth.accounts[0],
     });
 
     t.pass();
@@ -21,14 +21,14 @@ test.serial('create asset type', async t => {
   }
 });
 
-test.serial('issue asset', async t => {
+test('issue asset', async t => {
   try {
     const { node } = t.context;
     await node.callAPI('assets/issueSoloAsset', {
       assetName: 'license',
       fromAccount: node.getWeb3().eth.accounts[0],
       toAccount: node.getWeb3().eth.accounts[0],
-      identifier: '1234'
+      identifier: '1234',
     });
 
     t.pass();
@@ -37,12 +37,12 @@ test.serial('issue asset', async t => {
   }
 });
 
-test.serial('get solo asset', async t => {
+test('get solo asset', async t => {
   try {
     const { node } = t.context;
     const assetInfo = await node.callAPI('assets/getSoloAssetInfo', {
       assetName: 'license',
-      identifier: '1234'
+      identifier: '1234',
     });
 
     t.is(assetInfo.status, 'open');
@@ -52,7 +52,7 @@ test.serial('get solo asset', async t => {
   }
 });
 
-test.serial('create stream', async t => {
+test('create stream', async t => {
   try {
     const { node } = t.context;
 
@@ -64,10 +64,10 @@ test.serial('create stream', async t => {
       'streams/create',
       {
         streamName: 'renew',
-        fromAccount: address
+        fromAccount: address,
       },
       {
-        privateKey
+        privateKey,
       }
     );
 
