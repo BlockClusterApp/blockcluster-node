@@ -23,7 +23,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Hyperion.html">Hyperion</a><ul class='methods'><li data-type='method'><a href="Hyperion.html#deleteFile">deleteFile</a></li><li data-type='method'><a href="Hyperion.html#getFile">getFile</a></li><li data-type='method'><a href="Hyperion.html#uploadFile">uploadFile</a></li></ul></li><li><a href="Paymeter.html">Paymeter</a><ul class='methods'><li data-type='method'><a href="Paymeter.html#createWallet">createWallet</a></li><li data-type='method'><a href="Paymeter.html#getWallets">getWallets</a></li><li data-type='method'><a href="Paymeter.html#getWithdrawals">getWithdrawals</a></li><li data-type='method'><a href="Paymeter.html#sendTokens">sendTokens</a></li></ul></li><li><a href="Platform.html">Platform</a><ul class='methods'><li data-type='method'><a href="Platform.html#acceptInvite">acceptInvite</a></li><li data-type='method'><a href="Platform.html#createNetwork">createNetwork</a></li><li data-type='method'><a href="Platform.html#deleteNetwork">deleteNetwork</a></li><li data-type='method'><a href="Platform.html#fetchLocations">fetchLocations</a></li><li data-type='method'><a href="Platform.html#fetchNetworkTypes">fetchNetworkTypes</a></li><li data-type='method'><a href="Platform.html#inviteViaEmail">inviteViaEmail</a></li><li data-type='method'><a href="Platform.html#joinNetwork">joinNetwork</a></li></ul></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Hyperion.html">Hyperion</a><ul class='methods'><li data-type='method'><a href="Hyperion.html#deleteFile">deleteFile</a></li><li data-type='method'><a href="Hyperion.html#getFile">getFile</a></li><li data-type='method'><a href="Hyperion.html#uploadFile">uploadFile</a></li></ul></li><li><a href="Paymeter.html">Paymeter</a><ul class='methods'><li data-type='method'><a href="Paymeter.html#createWallet">createWallet</a></li><li data-type='method'><a href="Paymeter.html#getWallets">getWallets</a></li><li data-type='method'><a href="Paymeter.html#getWithdrawals">getWithdrawals</a></li><li data-type='method'><a href="Paymeter.html#send">send</a></li></ul></li><li><a href="Platform.html">Platform</a><ul class='methods'><li data-type='method'><a href="Platform.html#acceptInvite">acceptInvite</a></li><li data-type='method'><a href="Platform.html#createNetwork">createNetwork</a></li><li data-type='method'><a href="Platform.html#deleteNetwork">deleteNetwork</a></li><li data-type='method'><a href="Platform.html#fetchLocations">fetchLocations</a></li><li data-type='method'><a href="Platform.html#fetchNetworkTypes">fetchNetworkTypes</a></li><li data-type='method'><a href="Platform.html#inviteViaEmail">inviteViaEmail</a></li><li data-type='method'><a href="Platform.html#joinNetwork">joinNetwork</a></li></ul></li></ul>
 </nav>
 
 <div id="main">
@@ -58,6 +58,10 @@ class Paymeter {
    * @param {string} options.password Password for the wallet
    * @param {string} [options.contractAddress] Contract address for ERC20 type token
    * @param {string} [options.tokenSymbol] Symbol for ERC20 token
+   * @example &lt;caption>Creates a wallet&lt;/caption>
+   * const walletId = await paymeter.createWallet({coinType: 'ETH', walletName: 'My ETH Wallet', network: 'mainnet', password: '1234567890' });
+   * console.log(walletId);
+   * // Prints the walletId &lt;random string>
    * @return {Promise&lt;string>} Wallet id
    * @memberof Paymeter
    */
@@ -89,6 +93,7 @@ class Paymeter {
         body,
         apiKey: this.apiKey,
       });
+      console.log('Create wallet response ', resp);
       return resp.data;
     } catch (err) {
       return Promise.reject(err);
@@ -98,6 +103,14 @@ class Paymeter {
   /**
    * Fetches all the wallets or a single wallet details
    * @param  {string} [walletId] Id of the wallet for the details needs to be fetched. If undefined then fetches all wallets
+   * @example &lt;caption>Fetches all wallets&lt;/caption>
+   * const wallets = await paymeter.getWallets();
+   * console.log(wallets);
+   * // Prints [{_id: '...', ...}, ...]
+   * @example &lt;caption>Fetches details of single wallet&lt;/caption>
+   * const wallet = await paymeter.getWallets('abcdefghi');
+   * console.log(wallet);
+   * // Prints {_id: 'abcdefghi', ...}
    * @return {Promise&lt;array|object>}
    * @memberof Paymeter
    */
@@ -123,6 +136,10 @@ class Paymeter {
   /**
    * Fetches all the withdrawals happend for a wallet
    * @param  {string} walletId Id of the wallet for which the transactions need to be fetched
+   * @example &lt;caption>Fetches all withdrawals for a wallet&lt;/caption>
+   * const withdrawals = await paymeter.getWithdrawals('abcdefghi');
+   * console.log(withdrawals);
+   * // Prints [{...withdrawal1}, {...}, ...]
    * @return {Promise&lt;array>}
    * @memberof Paymeter
    */
@@ -154,10 +171,10 @@ class Paymeter {
    * @param {string} options.password Password for the wallet from which tokens are to be transferred
    * @param {string} [options.feeWallet] Only for ERC20 tokens, wallet Id from where the transaction fee is to be deducted
    * @param {string} [options.feeWalletPassword] Only for ERC20 tokens, password for the feeWallet specified
-   * @return {Promise&lt;string>} Transaction hash
+   * @return {Promise&lt;string>} Transaction id
    * @memberof Paymeter
    */
-  async sendTokens({ fromWalletId, toAddress, amount, password, feeWallet, feeWalletPassword }) {
+  async send({ fromWalletId, toAddress, amount, password, feeWallet, feeWalletPassword }) {
     if (!fromWalletId) {
       return Promise.reject(new Error('walletId is a required option'));
     }
@@ -209,7 +226,7 @@ module.exports = Paymeter;
 <br class="clear">
 
 <footer>
-    Documentation generated at Tue Dec 11 2018 23:47:41 GMT+0530 (IST)
+    Documentation generated at Fri Dec 14 2018 17:15:48 GMT+0530 (IST)
 </footer>
 
 <script>prettyPrint();</script>

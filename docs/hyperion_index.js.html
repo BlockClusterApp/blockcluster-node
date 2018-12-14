@@ -23,7 +23,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Hyperion.html">Hyperion</a><ul class='methods'><li data-type='method'><a href="Hyperion.html#deleteFile">deleteFile</a></li><li data-type='method'><a href="Hyperion.html#getFile">getFile</a></li><li data-type='method'><a href="Hyperion.html#uploadFile">uploadFile</a></li></ul></li><li><a href="Paymeter.html">Paymeter</a><ul class='methods'><li data-type='method'><a href="Paymeter.html#createWallet">createWallet</a></li><li data-type='method'><a href="Paymeter.html#getWallets">getWallets</a></li><li data-type='method'><a href="Paymeter.html#getWithdrawals">getWithdrawals</a></li><li data-type='method'><a href="Paymeter.html#sendTokens">sendTokens</a></li></ul></li><li><a href="Platform.html">Platform</a><ul class='methods'><li data-type='method'><a href="Platform.html#acceptInvite">acceptInvite</a></li><li data-type='method'><a href="Platform.html#createNetwork">createNetwork</a></li><li data-type='method'><a href="Platform.html#deleteNetwork">deleteNetwork</a></li><li data-type='method'><a href="Platform.html#fetchLocations">fetchLocations</a></li><li data-type='method'><a href="Platform.html#fetchNetworkTypes">fetchNetworkTypes</a></li><li data-type='method'><a href="Platform.html#inviteViaEmail">inviteViaEmail</a></li><li data-type='method'><a href="Platform.html#joinNetwork">joinNetwork</a></li></ul></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Hyperion.html">Hyperion</a><ul class='methods'><li data-type='method'><a href="Hyperion.html#deleteFile">deleteFile</a></li><li data-type='method'><a href="Hyperion.html#getFile">getFile</a></li><li data-type='method'><a href="Hyperion.html#uploadFile">uploadFile</a></li></ul></li><li><a href="Paymeter.html">Paymeter</a><ul class='methods'><li data-type='method'><a href="Paymeter.html#createWallet">createWallet</a></li><li data-type='method'><a href="Paymeter.html#getWallets">getWallets</a></li><li data-type='method'><a href="Paymeter.html#getWithdrawals">getWithdrawals</a></li><li data-type='method'><a href="Paymeter.html#send">send</a></li></ul></li><li><a href="Platform.html">Platform</a><ul class='methods'><li data-type='method'><a href="Platform.html#acceptInvite">acceptInvite</a></li><li data-type='method'><a href="Platform.html#createNetwork">createNetwork</a></li><li data-type='method'><a href="Platform.html#deleteNetwork">deleteNetwork</a></li><li data-type='method'><a href="Platform.html#fetchLocations">fetchLocations</a></li><li data-type='method'><a href="Platform.html#fetchNetworkTypes">fetchNetworkTypes</a></li><li data-type='method'><a href="Platform.html#inviteViaEmail">inviteViaEmail</a></li><li data-type='method'><a href="Platform.html#joinNetwork">joinNetwork</a></li></ul></li></ul>
 </nav>
 
 <div id="main">
@@ -54,6 +54,11 @@ class Hyperion {
    * Uploads a file to hyperion service
    * @param  {object} options File options
    * @param {readStream} options.fileStream A read stream to the file which is to be uploaded
+   * @example &lt;caption>Uploads a file to hyperion&lt;/caption>
+   * const fileReadStream = fs.createReadStream('file_to_read.txt');
+   * const fileHash = await hyperion.uploadFile({fileStream: fileReadStream, locationCode: 'us-west-2'});
+   * console.log(fileHash);
+   * // Prints the hash of the file in the hyperion cloud
    * @param {string} options.locationCode Location code of the hyperion node where the file is to be uploaded
    * @return {Promise&lt;string>} Hash of the uploaded file
    * @memberof Hyperion
@@ -86,8 +91,7 @@ class Hyperion {
         if (err) {
           return reject(err);
         }
-        resolve(JSON.parse(body).message);
-        return true;
+        return resolve(JSON.parse(body).message);
       });
       // );
     });
@@ -99,6 +103,9 @@ class Hyperion {
    * @param {string} options.locationCode Location code of the hyperion node where the file was uploaded
    * @param {string} options.fileHash Hash of the file to download
    * @param {writeStream} options.writeStream A writestream to which the downloaded file will be written
+   * @example &lt;caption>Downloads a file from hyperion service&lt;/caption>
+   * const writeStream = fs.createWriteStream('download-path.txt');
+   * const res = await hyperion.getFile({locationCode: 'us-west-2', fileHash: 'ajshdvi23y4ioiertuykesd', writeStream });
    * @return {Promise&lt;any>} Error or response status code
    * @memberof Hyperion
    */
@@ -132,6 +139,8 @@ class Hyperion {
    * @param  {object} options File options
    * @param  {string} locationCode Location code of the node where the file was uploaded
    * @param {string} fileHash Hash of the file to delete
+   * @example &lt;caption>Deletes a file from hyperion service&lt;/caption>
+   * const res = await hyperion.deleteFile({locationCode: 'us-west-2', fileHash: 'wefjhggbhoirekuyghiqwlyug'})
    * @return {Promise&lt;any>}
    * @memberof Hyperion
    */
@@ -160,7 +169,7 @@ module.exports = Hyperion;
 <br class="clear">
 
 <footer>
-    Documentation generated at Tue Dec 11 2018 23:47:41 GMT+0530 (IST)
+    Documentation generated at Fri Dec 14 2018 17:15:48 GMT+0530 (IST)
 </footer>
 
 <script>prettyPrint();</script>
