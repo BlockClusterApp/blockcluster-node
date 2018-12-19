@@ -3,7 +3,7 @@ const Blockcluster = require('..');
 
 test.before(t => {
   const paymeter = new Blockcluster.Paymeter({
-    apiKey: 'RUxTOU1TcGNuRnJuRVp3elR5NVkjMCVE'
+    apiKey: 'RUxTOU1TcGNuRnJuRVp3elR5NVkjMCVE',
   });
 
   Object.assign(t.context, { paymeter });
@@ -13,7 +13,7 @@ test('Throws an error when wallet name is missing', async t => {
   const { paymeter } = t.context;
 
   try {
-    const walletId = await paymeter.createWallet({ walletName: `ERC Wallet ${new Date().getTime()}`, network: 'testnnet', password: '1234567890' });
+    const walletId = await paymeter.createWallet({ walletName: `ERC Wallet ${new Date().getTime()}`, network: 'testnet', password: '1234567890' });
     if (walletId) {
       return t.fail('Wallet created');
     }
@@ -28,7 +28,7 @@ test('Creates ETH wallet', async t => {
   const { paymeter } = t.context;
 
   try {
-    const walletId = await paymeter.createWallet({ coinType: 'ETH', walletName: `ERC Wallet ${new Date().getTime()}`, network: 'testnnet', password: '1234567890' });
+    const walletId = await paymeter.createWallet({ coinType: 'ETH', walletName: `ERC Wallet ${new Date().getTime()}`, network: 'testnet', password: '1234567890' });
     if (walletId) {
       return t.pass();
     }
@@ -45,10 +45,10 @@ test('Creates ERC20 wallet', async t => {
     const walletId = await paymeter.createWallet({
       coinType: 'ERC20',
       walletName: `ERC20 ${new Date().getTime()}`,
-      network: 'testnnet',
+      network: 'testnet',
       password: '1234567890',
       contractAddress: '0xc25D80fF9D25802cb69b2A751394F83534011308',
-      tokenSymbol: 'ERJIBIN'
+      tokenSymbol: 'ERJIBIN',
     });
     if (walletId) {
       return t.pass();
