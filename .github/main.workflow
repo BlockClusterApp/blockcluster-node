@@ -5,7 +5,7 @@ workflow "New workflow" {
 
 action "GitHub Action for npm" {
   uses = "actions/npm@c555744"
-  runs = "npm run jsdoc"
+  runs = "npm install  && npm run jsdoc"
 }
 
 action "Push" {
