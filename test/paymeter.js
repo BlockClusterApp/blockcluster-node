@@ -120,3 +120,50 @@ test('Withdrawals throw errow without wallet id', async t => {
   }
   return true;
 });
+
+test('Transfer ether', async t => {
+  const { paymeter } = t.context;
+
+  try {
+    // to: T7ZhRuzf7QujYmmxS
+    const txnId = await paymeter.send({
+      fromWalletId: 'gNDyfBfC57geR9sww',
+      toAddress: '0x0c22bc958ef397f091b19249d87742de7a1d967c',
+      amount: '0.0001',
+      password: '1234567890',
+    });
+    if (!txnId) {
+      return t.fail('Transaction id is null');
+    }
+    t.pass();
+  } catch (err) {
+    t.fail(err);
+  }
+  return true;
+});
+
+test('Transfer ERC20 with different fee wallet', async t => {
+  const { paymeter } = t.context;
+
+  try {
+    // to: 8BqP56DdGCMqtJaSx
+    const txnId = await paymeter.send({
+      fromWalletId: 'KXRcucyerDfSZvKgC',
+      toAddress: '0x722c038bc3c17a7ec63162d8e28392756509f909',
+      amount: '0.0001',
+      password: '1234567890',
+      feeWalletId: 'gNDyfBfC57geR9sww',
+      feeWalletPassword: '123457890',
+    });
+    if (!txnId) {
+      return t.fail('Transaction id is null');
+    }
+    t.pass();
+  } catch (err) {
+    if (err.message.includes('Insufficient Tokens')) {
+      return t.pass();
+    }
+    t.fail(err);
+  }
+  return true;
+});
