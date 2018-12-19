@@ -111,7 +111,7 @@ class Paymeter {
    * const wallet = await paymeter.getWallets('abcdefghi');
    * console.log(wallet);
    * // Prints {_id: 'abcdefghi', ...}
-   * @return {Promise&lt;array|object>}
+   * @return {Promise&lt;array|object>} An array of wallets or single wallet description
    * @memberof Paymeter
    */
   async getWallets(walletId) {
@@ -140,7 +140,7 @@ class Paymeter {
    * const withdrawals = await paymeter.getWithdrawals('abcdefghi');
    * console.log(withdrawals);
    * // Prints [{...withdrawal1}, {...}, ...]
-   * @return {Promise&lt;array>}
+   * @return {Promise&lt;array>} Array of withdrawals
    * @memberof Paymeter
    */
   async getWithdrawals(walletId) {
@@ -226,7 +226,7 @@ module.exports = Paymeter;
 <br class="clear">
 
 <footer>
-    Documentation generated at Fri Dec 14 2018 17:15:48 GMT+0530 (IST)
+    Documentation generated at Wed Dec 19 2018 14:49:14 GMT+0530 (IST)
 </footer>
 
 <script>prettyPrint();</script>

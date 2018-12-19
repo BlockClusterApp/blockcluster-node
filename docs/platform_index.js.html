@@ -116,7 +116,7 @@ class Platform {
   /**
    * Deletes a network from the blockcluster platform
    * @param  {string} networkId Id of the network to be deleted
-   * @return {Promise&lt;any>}
+   * @return {Promise&lt;any>} Response of the delete operation
    * @memberof Platform
    */
   async deleteNetwork(networkId) {
@@ -144,7 +144,7 @@ class Platform {
    * @param {string} options.impulseContractAddress Impulse smart contract address
    * @param {string} options.locationCode  Location code from the list of available location from ` fetchLocations() ` function
    * @param {string} options.networkConfigId Id of the network type from the ` fetchNetworkType() ` function
-   * @return {Promise&lt;any>}
+   * @return {Promise&lt;any>} Instance id or error message
    * @memberof Platform
    */
   async joinNetwork({
@@ -200,7 +200,8 @@ class Platform {
   /**
    * Invites another use to join a node on the blockcluster platform
    * @param  {object} options Invite options
-   * @param {string} options.inviteToEmail Email id of the user to be invited. The email id should be a user of blockcluster to be able to join the network. If the user is not on the blockcluster platform then an account in pending state will be created with this email id
+   * @param {string} options.inviteToEmail Email id of the user to be invited. The email id should be a user of blockcluster to be able to join the network.
+   * If the user is not on the blockcluster platform then an account in pending state will be created with this email id
    * @param {string} options.networkId Id of the network to which the new node should join
    * @param {string&lt;peer|authority>} options.networkType Type of network the new network will be
    * @return {Promise&lt;string>} Invite id of the invite. Use this invite id to accept
@@ -241,7 +242,7 @@ class Platform {
    * @param {string} options.inviteId Id of the invite to accept
    * @param {string} options.locationCode Location code from the list of available location from ` fetchLocations() ` function
    * @param {string} options.networkConfigId Id of the network type from the ` fetchNetworkType() ` function
-   * @return {Promise&lt;any>}
+   * @return {Promise&lt;any>} Instance id or error
    * @memberof Platform
    */
   async acceptInvite({ inviteId, locationCode, networkConfigId }) {
@@ -275,7 +276,7 @@ module.exports = Platform;
 <br class="clear">
 
 <footer>
-    Documentation generated at Fri Dec 14 2018 17:15:48 GMT+0530 (IST)
+    Documentation generated at Wed Dec 19 2018 14:49:14 GMT+0530 (IST)
 </footer>
 
 <script>prettyPrint();</script>
