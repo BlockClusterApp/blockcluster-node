@@ -81,7 +81,7 @@ test('Get details of ETHWallet wallet', async t => {
 
   try {
     const wallet = await paymeter.getWallets('T7ZhRuzf7QujYmmxS');
-    if (typeof wallet !== 'object') {
+    if (typeof wallet !== 'object' || Array.isArray(wallet)) {
       return t.fail('Wallet is not an object');
     }
     t.pass();
