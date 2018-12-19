@@ -93,7 +93,6 @@ class Paymeter {
         body,
         apiKey: this.apiKey,
       });
-      console.log('Create wallet response ', resp);
       return resp.data;
     } catch (err) {
       return Promise.reject(err);
@@ -127,6 +126,10 @@ class Paymeter {
         method: 'GET',
         apiKey: this.apiKey,
       });
+      if (walletId) {
+        delete resp.data.wallet.privateKey;
+        return resp.data.wallet;
+      }
       return resp.data;
     } catch (err) {
       return Promise.reject(err);
@@ -169,12 +172,12 @@ class Paymeter {
    * @param {string} options.toAddress Address to which tokens are to be transferred
    * @param {string} options.amount Amount of tokens to be transferred. Maximum of 5 decimal places
    * @param {string} options.password Password for the wallet from which tokens are to be transferred
-   * @param {string} [options.feeWallet] Only for ERC20 tokens, wallet Id from where the transaction fee is to be deducted
+   * @param {string} [options.feeWalletId] Only for ERC20 tokens, wallet Id from where the transaction fee is to be deducted
    * @param {string} [options.feeWalletPassword] Only for ERC20 tokens, password for the feeWallet specified
    * @return {Promise&lt;string>} Transaction id
    * @memberof Paymeter
    */
-  async send({ fromWalletId, toAddress, amount, password, feeWallet, feeWalletPassword }) {
+  async send({ fromWalletId, toAddress, amount, password, feeWalletId, feeWalletPassword }) {
     if (!fromWalletId) {
       return Promise.reject(new Error('walletId is a required option'));
     }
@@ -183,7 +186,7 @@ class Paymeter {
       return Promise.reject(new Error('fromWalletId,  toAddress,  amount, password are required fields'));
     }
 
-    const path = `/api/paymeter/wallets/:${fromWalletId}/send`;
+    const path = `/api/paymeter/wallets/${fromWalletId}/send`;
 
     const body = {
       fromWalletId,
@@ -194,8 +197,8 @@ class Paymeter {
       },
     };
 
-    if (feeWallet.toLowerCase() === 'erc20') {
-      body.options.feeWallet = feeWallet;
+    if (feeWalletId) {
+      body.options.feeWalletId = feeWalletId;
       body.options.feeWalletPassword = feeWalletPassword;
     }
 
@@ -206,7 +209,7 @@ class Paymeter {
         body,
         apiKey: this.apiKey,
       });
-      return resp.data;
+      return resp.data.txnHash || resp.data.txnId;
     } catch (err) {
       return Promise.reject(err);
     }
@@ -226,7 +229,7 @@ module.exports = Paymeter;
 <br class="clear">
 
 <footer>
-    Documentation generated at Wed Dec 19 2018 14:49:14 GMT+0530 (IST)
+    Documentation generated at Wed Dec 19 2018 19:58:34 GMT+0530 (IST)
 </footer>
 
 <script>prettyPrint();</script>
