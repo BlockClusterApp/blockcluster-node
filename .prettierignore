@@ -1,0 +1,3 @@
+./docs/**/*.js
+./docs/scripts/prettify/*.js
+./tmp/*
