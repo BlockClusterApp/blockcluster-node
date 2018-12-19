@@ -97,9 +97,10 @@ Documentation of Dynamo's REST APIs and their usage is available at <https://nod
 
 ## Contributors
 
-| Name             | Website                       |
-| ---------------- | ----------------------------- |
-| **BlockCluster** | <https://www.blockcluster.io> |
+| Name              | Website                       |
+| ----------------- | ----------------------------- |
+| **BlockCluster**  | <https://www.blockcluster.io> |
+| **Jibin Mathews** | <https://www.jibinmathews.in> |
 
 
 ## License
