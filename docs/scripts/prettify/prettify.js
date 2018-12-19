@@ -30,6 +30,7 @@ window.PR_SHOULD_USE_CONTINUATION = !0;
         else {
           var j = m(j);
 
+            
           var d;
           c + 2 < i && f[c + 1] === '-' ? ((d = m(f[c + 2])), (c += 2)) : (d = j);
           b.push([j, d]);
@@ -67,11 +68,11 @@ window.PR_SHOULD_USE_CONTINUATION = !0;
       if (a.ignoreCase && s)
         for (c = 0; c < b; ++c)
           (j = f[c]),
-            (a = j.charAt(0)),
-            j.length >= 2 && a === '['
-              ? (f[c] = h(j))
-              : a !== '\\' &&
-                (f[c] = j.replace(/[A-Za-z]/g, a => {
+          (a = j.charAt(0)),
+          j.length >= 2 && a === '['
+            ? (f[c] = h(j))
+            : a !== '\\' &&
+                (f[c] = j.replace(/[A-Za-z]/g, (a) => {
                   a = a.charCodeAt(0);
                   return '[' + String.fromCharCode(a & -33, a | 32) + ']';
                 }));
@@ -105,19 +106,24 @@ window.PR_SHOULD_USE_CONTINUATION = !0;
         case 3:
         case 4:
           (g = a.nodeValue),
-            g.length && ((g = p ? g.replace(/\r\n?/g, '\n') : g.replace(/[\t\n\r ]+/g, ' ')), (h[s] = g), (t[s << 1] = y), (y += g.length), (t[(s++ << 1) | 1] = a));
+          g.length && ((g = p ? g.replace(/\r\n?/g, '\n') : g.replace(/[\t\n\r ]+/g, ' ')), (h[s] = g), (t[s << 1] = y), (y += g.length), (t[(s++ << 1) | 1] = a));
       }
     }
     var e = /(?:^|\s)nocode(?:\s|$)/;
 
+      
     var h = [];
 
+      
     var y = 0;
 
+      
     var t = [];
 
+      
     var s = 0;
 
+      
     let l;
     a.currentStyle ? (l = a.currentStyle.whiteSpace) : window.getComputedStyle && (l = document.defaultView.getComputedStyle(a, q).getPropertyValue('white-space'));
     var p = l && l.substring(0, 3) === 'pre';
@@ -132,10 +138,13 @@ window.PR_SHOULD_USE_CONTINUATION = !0;
       for (var l = a.d, p = [l, 'pln'], d = 0, g = a.a.match(y) || [], r = {}, n = 0, z = g.length; n < z; ++n) {
         const f = g[n];
 
+          
         let b = r[f];
 
+          
         let o = void 0;
 
+          
         var c;
         if (typeof b === 'string') c = !1;
         else {
@@ -158,6 +167,7 @@ window.PR_SHOULD_USE_CONTINUATION = !0;
           c = o[1];
           let j = f.indexOf(c);
 
+            
           let k = j + c.length;
           o[2] && ((k = f.length - o[2].length), (j = k - c.length));
           b = b.substring(5);
@@ -170,11 +180,13 @@ window.PR_SHOULD_USE_CONTINUATION = !0;
     }
     var h = {};
 
+      
     let y;
     (function() {
       for (var e = a.concat(m), l = [], p = {}, d = 0, g = e.length; d < g; ++d) {
         let r = e[d];
 
+          
         let n = r[3];
         if (n) for (let k = n.length; --k >= 0; ) h[n.charAt(k)] = r;
         r = r[1];
@@ -190,14 +202,15 @@ window.PR_SHOULD_USE_CONTINUATION = !0;
   function u(a) {
     const m = [];
 
+      
     const e = [];
     a.tripleQuotedStrings
       ? m.push([
-          'str',
-          /^(?:'''(?:[^'\\]|\\[\S\s]|''?(?=[^']))*(?:'''|$)|"""(?:[^"\\]|\\[\S\s]|""?(?=[^"]))*(?:"""|$)|'(?:[^'\\]|\\[\S\s])*(?:'|$)|"(?:[^"\\]|\\[\S\s])*(?:"|$))/,
-          q,
-          '\'"'
-        ])
+        'str',
+        /^(?:'''(?:[^'\\]|\\[\S\s]|''?(?=[^']))*(?:'''|$)|"""(?:[^"\\]|\\[\S\s]|""?(?=[^"]))*(?:"""|$)|'(?:[^'\\]|\\[\S\s])*(?:'|$)|"(?:[^"\\]|\\[\S\s])*(?:"|$))/,
+        q,
+        '\'"'
+      ])
       : a.multiLineStrings
         ? m.push(['str', /^(?:'(?:[^'\\]|\\[\S\s])*(?:'|$)|"(?:[^"\\]|\\[\S\s])*(?:"|$)|`(?:[^\\`]|\\[\S\s])*(?:`|$))/, q, '\'"`'])
         : m.push(['str', /^(?:'(?:[^\n\r'\\]|\\.)*(?:'|$)|"(?:[^\n\r"\\]|\\.)*(?:"|$))/, q, '"\'']);
@@ -206,9 +219,9 @@ window.PR_SHOULD_USE_CONTINUATION = !0;
     h &&
       (a.cStyleComments
         ? (h > 1
-            ? m.push(['com', /^#(?:##(?:[^#]|#(?!##))*(?:###|$)|.*)/, q, '#'])
-            : m.push(['com', /^#(?:(?:define|elif|else|endif|error|ifdef|include|ifndef|line|pragma|undef|warning)\b|[^\n\r]*)/, q, '#']),
-          e.push(['str', /^<(?:(?:(?:\.\.\/)*|\/?)(?:[\w-]+(?:\/[\w-]+)+)?[\w-]+\.h|[a-z]\w*)>/, q]))
+          ? m.push(['com', /^#(?:##(?:[^#]|#(?!##))*(?:###|$)|.*)/, q, '#'])
+          : m.push(['com', /^#(?:(?:define|elif|else|endif|error|ifdef|include|ifndef|line|pragma|undef|warning)\b|[^\n\r]*)/, q, '#']),
+        e.push(['str', /^<(?:(?:(?:\.\.\/)*|\/?)(?:[\w-]+(?:\/[\w-]+)+)?[\w-]+\.h|[a-z]\w*)>/, q]))
         : m.push(['com', /^#[^\n\r]*/, q, '#']));
     a.cStyleComments && (e.push(['com', /^\/\/[^\n\r]*/, q]), e.push(['com', /^\/\*[\S\s]*?(?:\*\/|$)/, q]));
     a.regexLiterals &&
@@ -217,7 +230,7 @@ window.PR_SHOULD_USE_CONTINUATION = !0;
         /^(?:^^\.?|[!+-]|!=|!==|#|%|%=|&|&&|&&=|&=|\(|\*|\*=|\+=|,|-=|->|\/|\/=|:|::|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|[?@[^]|\^=|\^\^|\^\^=|{|\||\|=|\|\||\|\|=|~|break|case|continue|delete|do|else|finally|instanceof|return|throw|try|typeof)\s*(\/(?=[^*/])(?:[^/[\\]|\\[\S\s]|\[(?:[^\\\]]|\\[\S\s])*(?:]|$))+\/)/
       ]);
     (h = a.types) && e.push(['typ', h]);
-    a = String(a.keywords).replace(/^ | $/g, '');
+    a = (String(a.keywords)).replace(/^ | $/g, '');
     a.length && e.push(['kwd', new RegExp('^(?:' + a.replace(/[\s,]+/g, '|') + ')\\b'), q]);
     m.push(['pln', /^\s+/, q, ' \r\n\t\u00A0']);
     e.push(
@@ -243,6 +256,7 @@ window.PR_SHOULD_USE_CONTINUATION = !0;
           if (p) {
             let b = a.nodeValue;
 
+              
             const d = b.match(t);
             if (d) {
               const c = b.substring(0, d.index);
@@ -258,10 +272,12 @@ window.PR_SHOULD_USE_CONTINUATION = !0;
       function b(a, d) {
         const e = d ? a.cloneNode(!1) : a;
 
+          
         var f = a.parentNode;
         if (f) {
           var f = b(f, 1);
 
+            
           let g = a.nextSibling;
           f.appendChild(e);
           for (let h = g; h; h = g) (g = h.nextSibling), f.appendChild(h);
@@ -274,10 +290,13 @@ window.PR_SHOULD_USE_CONTINUATION = !0;
     }
     var k = /(?:^|\s)nocode(?:\s|$)/;
 
+      
     var t = /\r\n?|\n/;
 
+      
     var s = a.ownerDocument;
 
+      
     let l;
     a.currentStyle ? (l = a.currentStyle.whiteSpace) : window.getComputedStyle && (l = s.defaultView.getComputedStyle(a, q).getPropertyValue('white-space'));
     var p = l && l.substring(0, 3) === 'pre';
@@ -305,6 +324,7 @@ window.PR_SHOULD_USE_CONTINUATION = !0;
     try {
       var e = M(a.h);
 
+        
       var h = e.a;
       a.a = h;
       a.c = e.c;
@@ -312,28 +332,37 @@ window.PR_SHOULD_USE_CONTINUATION = !0;
       C(m, h)(a);
       const k = /\bMSIE\b/.test(navigator.userAgent);
 
+        
       var m = /\n/g;
 
+        
       const t = a.a;
 
+        
       const s = t.length;
 
+        
       var e = 0;
 
+        
       const l = a.c;
 
+        
       const p = l.length;
 
+        
       var h = 0;
 
+        
       const d = a.e;
 
+        
       let g = d.length;
 
+        
       var a = 0;
       d[g] = s;
-      let r;
-      let n;
+      let r; let n;
       for (n = r = 0; n < g; ) d[n] !== d[n + 2] ? ((d[r++] = d[n++]), (d[r++] = d[n++])) : (n += 2);
       g = r;
       for (n = r = 0; n < g; ) {
@@ -345,18 +374,23 @@ window.PR_SHOULD_USE_CONTINUATION = !0;
       for (d.length = r; h < p; ) {
         const o = l[h + 2] || s;
 
+          
         const c = d[a + 2] || s;
 
+          
         var b = Math.min(o, c);
 
+          
         let i = l[h + 1];
 
+          
         var j;
         if (i.nodeType !== 1 && (j = t.substring(e, b))) {
           k && (j = j.replace(m, '\r'));
           i.nodeValue = j;
           const u = i.ownerDocument;
 
+            
           const v = u.createElement('SPAN');
           v.className = d[a + 1];
           const x = i.parentNode;
@@ -374,45 +408,56 @@ window.PR_SHOULD_USE_CONTINUATION = !0;
   }
   var v = ['break,continue,do,else,for,if,return,while'];
 
+    
   var w = [
     [v, 'auto,case,char,const,default,double,enum,extern,float,goto,int,long,register,short,signed,sizeof,static,struct,switch,typedef,union,unsigned,void,volatile'],
     'catch,class,delete,false,import,new,operator,private,protected,public,this,throw,true,try,typeof'
   ];
 
+    
   const F = [
     w,
     'alignof,align_union,asm,axiom,bool,concept,concept_map,const_cast,constexpr,decltype,dynamic_cast,explicit,export,friend,inline,late_check,mutable,namespace,nullptr,reinterpret_cast,static_assert,static_cast,template,typeid,typename,using,virtual,where'
   ];
 
+    
   const G = [w, 'abstract,boolean,byte,extends,final,finally,implements,import,instanceof,null,native,package,strictfp,super,synchronized,throws,transient'];
 
+    
   const H = [
     G,
     'as,base,by,checked,decimal,delegate,descending,dynamic,event,fixed,foreach,from,group,implicit,in,interface,internal,into,is,lock,object,out,override,orderby,params,partial,readonly,ref,sbyte,sealed,stackalloc,string,select,uint,ulong,unchecked,unsafe,ushort,var'
   ];
 
+    
   var w = [w, 'debugger,eval,export,function,get,null,set,undefined,var,with,Infinity,NaN'];
 
+    
   const I = [v, 'and,as,assert,class,def,del,elif,except,exec,finally,from,global,import,in,is,lambda,nonlocal,not,or,pass,print,raise,try,with,yield,False,True,None'];
 
+    
   const J = [
     v,
     'alias,and,begin,case,class,def,defined,elsif,end,ensure,false,in,module,next,nil,not,or,redo,rescue,retry,self,super,then,true,undef,unless,until,when,yield,BEGIN,END'
   ];
 
+    
   var v = [v, 'case,done,elif,esac,eval,fi,function,in,local,set,then,until'];
 
+    
   const K = /^(DIR|FILE|vector|(de|priority_)?queue|list|stack|(const_)?iterator|(multi)?(set|map)|bitset|u?(int|float)\d*)/;
 
+    
   const N = /\S/;
 
+    
   const O = u({
     keywords: [
       F,
       H,
       w,
       'caller,delete,die,do,dump,elsif,eval,exit,foreach,for,goto,if,import,last,local,my,next,no,our,print,package,redo,require,sub,undef,unless,until,use,wantarray,while,BEGIN,END' +
-        I,
+          I,
       J,
       v
     ],
@@ -422,6 +467,7 @@ window.PR_SHOULD_USE_CONTINUATION = !0;
     regexLiterals: !0
   });
 
+    
   var A = {};
   k(O, ['default-code']);
   k(
@@ -503,17 +549,19 @@ window.PR_SHOULD_USE_CONTINUATION = !0;
       for (let e = window.PR_SHOULD_USE_CONTINUATION ? l.now() + 250 : Infinity; p < h.length && l.now() < e; p++) {
         const n = h[p];
 
+          
         var k = n.className;
         if (k.indexOf('prettyprint') >= 0) {
           var k = k.match(g);
 
+            
           var f;
 
+            
           var b;
           if ((b = !k)) {
             b = n;
-            for (var o = void 0, c = b.firstChild; c; c = c.nextSibling) var i = c.nodeType;
-            var o = i === 1 ? (o ? b : c) : i === 3 ? (N.test(c.nodeValue) ? b : o) : o;
+            for (var o = void 0, c = b.firstChild; c; c = c.nextSibling) var i = c.nodeType; var o = i === 1 ? (o ? b : c) : i === 3 ? (N.test(c.nodeValue) ? b : o) : o;
             b = (f = o === b ? void 0 : o) && f.tagName === 'CODE';
           }
           b && (k = f.className.match(g));
@@ -533,6 +581,7 @@ window.PR_SHOULD_USE_CONTINUATION = !0;
       for (let t = 0, s = e[k].length; t < s; ++t) h.push(e[k][t]);
     var e = q;
 
+      
     var l = Date;
     l.now ||
       (l = {
@@ -542,8 +591,10 @@ window.PR_SHOULD_USE_CONTINUATION = !0;
       });
     var p = 0;
 
+      
     let d;
 
+      
     var g = /\blang(?:uage)?-([\w.]+)(?!\S)/;
     m();
   };

@@ -23,7 +23,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Hyperion.html">Hyperion</a><ul class='methods'><li data-type='method'><a href="Hyperion.html#deleteFile">deleteFile</a></li><li data-type='method'><a href="Hyperion.html#getFile">getFile</a></li><li data-type='method'><a href="Hyperion.html#uploadFile">uploadFile</a></li></ul></li><li><a href="Paymeter.html">Paymeter</a><ul class='methods'><li data-type='method'><a href="Paymeter.html#createWallet">createWallet</a></li><li data-type='method'><a href="Paymeter.html#getWallets">getWallets</a></li><li data-type='method'><a href="Paymeter.html#getWithdrawals">getWithdrawals</a></li><li data-type='method'><a href="Paymeter.html#sendTokens">sendTokens</a></li></ul></li><li><a href="Platform.html">Platform</a><ul class='methods'><li data-type='method'><a href="Platform.html#acceptInvite">acceptInvite</a></li><li data-type='method'><a href="Platform.html#createNetwork">createNetwork</a></li><li data-type='method'><a href="Platform.html#deleteNetwork">deleteNetwork</a></li><li data-type='method'><a href="Platform.html#fetchLocations">fetchLocations</a></li><li data-type='method'><a href="Platform.html#fetchNetworkTypes">fetchNetworkTypes</a></li><li data-type='method'><a href="Platform.html#inviteViaEmail">inviteViaEmail</a></li><li data-type='method'><a href="Platform.html#joinNetwork">joinNetwork</a></li></ul></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Hyperion.html">Hyperion</a><ul class='methods'><li data-type='method'><a href="Hyperion.html#deleteFile">deleteFile</a></li><li data-type='method'><a href="Hyperion.html#getFile">getFile</a></li><li data-type='method'><a href="Hyperion.html#uploadFile">uploadFile</a></li></ul></li><li><a href="Paymeter.html">Paymeter</a><ul class='methods'><li data-type='method'><a href="Paymeter.html#createWallet">createWallet</a></li><li data-type='method'><a href="Paymeter.html#getWallets">getWallets</a></li><li data-type='method'><a href="Paymeter.html#getWithdrawals">getWithdrawals</a></li><li data-type='method'><a href="Paymeter.html#send">send</a></li></ul></li><li><a href="Platform.html">Platform</a><ul class='methods'><li data-type='method'><a href="Platform.html#acceptInvite">acceptInvite</a></li><li data-type='method'><a href="Platform.html#createNetwork">createNetwork</a></li><li data-type='method'><a href="Platform.html#deleteNetwork">deleteNetwork</a></li><li data-type='method'><a href="Platform.html#fetchLocations">fetchLocations</a></li><li data-type='method'><a href="Platform.html#fetchNetworkTypes">fetchNetworkTypes</a></li><li data-type='method'><a href="Platform.html#inviteViaEmail">inviteViaEmail</a></li><li data-type='method'><a href="Platform.html#joinNetwork">joinNetwork</a></li></ul></li></ul>
 </nav>
 
 <div id="main">
@@ -472,7 +472,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="paymeter_index.js.html">paymeter/index.js</a>, <a href="paymeter_index.js.html#line24">line 24</a>
+        <a href="paymeter_index.js.html">paymeter/index.js</a>, <a href="paymeter_index.js.html#line28">line 28</a>
     </li></ul></dd>
     
 
@@ -517,6 +517,15 @@
 </dl>
 
     
+
+
+    <h5>Example</h5>
+    
+        <p class="code-caption">Creates a wallet</p>
+    
+    <pre class="prettyprint"><code>const walletId = await paymeter.createWallet({coinType: 'ETH', walletName: 'My ETH Wallet', network: 'mainnet', password: '1234567890' });
+console.log(walletId);
+// Prints the walletId &lt;random string></code></pre>
 
 
 
@@ -637,7 +646,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="paymeter_index.js.html">paymeter/index.js</a>, <a href="paymeter_index.js.html#line64">line 64</a>
+        <a href="paymeter_index.js.html">paymeter/index.js</a>, <a href="paymeter_index.js.html#line77">line 77</a>
     </li></ul></dd>
     
 
@@ -678,6 +687,21 @@
 </dl>
 
     
+
+
+    <h5>Examples</h5>
+    
+        <p class="code-caption">Fetches all wallets</p>
+    
+    <pre class="prettyprint"><code>const wallets = await paymeter.getWallets();
+console.log(wallets);
+// Prints [{_id: '...', ...}, ...]</code></pre>
+
+        <p class="code-caption">Fetches details of single wallet</p>
+    
+    <pre class="prettyprint"><code>const wallet = await paymeter.getWallets('abcdefghi');
+console.log(wallet);
+// Prints {_id: 'abcdefghi', ...}</code></pre>
 
 
 
@@ -786,7 +810,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="paymeter_index.js.html">paymeter/index.js</a>, <a href="paymeter_index.js.html#line89">line 89</a>
+        <a href="paymeter_index.js.html">paymeter/index.js</a>, <a href="paymeter_index.js.html#line106">line 106</a>
     </li></ul></dd>
     
 
@@ -829,13 +853,22 @@
     
 
 
+    <h5>Example</h5>
+    
+        <p class="code-caption">Fetches all withdrawals for a wallet</p>
+    
+    <pre class="prettyprint"><code>const withdrawals = await paymeter.getWithdrawals('abcdefghi');
+console.log(withdrawals);
+// Prints [{...withdrawal1}, {...}, ...]</code></pre>
+
+
 
         
             
 
     
 
-    <h4 class="name" id="sendTokens"><span class="type-signature">(async) </span>sendTokens<span class="signature">(options)</span><span class="type-signature"> &rarr; {Promise.&lt;string>}</span></h4>
+    <h4 class="name" id="send"><span class="type-signature">(async) </span>send<span class="signature">(options)</span><span class="type-signature"> &rarr; {Promise.&lt;string>}</span></h4>
 
     
 
@@ -1153,7 +1186,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="paymeter_index.js.html">paymeter/index.js</a>, <a href="paymeter_index.js.html#line120">line 120</a>
+        <a href="paymeter_index.js.html">paymeter/index.js</a>, <a href="paymeter_index.js.html#line137">line 137</a>
     </li></ul></dd>
     
 
@@ -1180,7 +1213,7 @@
 
         
 <div class="param-desc">
-    <p>Transaction hash</p>
+    <p>Transaction id</p>
 </div>
 
 
@@ -1219,7 +1252,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated at Tue Dec 11 2018 23:47:41 GMT+0530 (IST)
+    Documentation generated at Fri Dec 14 2018 17:15:48 GMT+0530 (IST)
 </footer>
 
 <script>prettyPrint();</script>
