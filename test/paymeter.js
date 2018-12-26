@@ -6,7 +6,11 @@ test.before(t => {
     apiKey: 'RUxTOU1TcGNuRnJuRVp3elR5NVkjMCVE',
   });
 
-  Object.assign(t.context, { paymeter });
+  const paymeterBot = new Blockcluster.Paymeter({
+    apiKey: 'JHdTUk1rZFpFI3VIZ2hBSjN2eWZrI3YmMXNH',
+  });
+
+  Object.assign(t.context, { paymeter, paymeterBot });
 });
 
 test('Throws an error when wallet name is missing', async t => {
@@ -25,10 +29,10 @@ test('Throws an error when wallet name is missing', async t => {
 });
 
 test('Creates ETH wallet', async t => {
-  const { paymeter } = t.context;
+  const { paymeterBot } = t.context;
 
   try {
-    const walletId = await paymeter.createWallet({ coinType: 'ETH', walletName: `ERC Wallet ${new Date().getTime()}`, network: 'testnet', password: '1234567890' });
+    const walletId = await paymeterBot.createWallet({ coinType: 'ETH', walletName: `ERC Wallet ${new Date().getTime()}`, network: 'testnet', password: '1234567890' });
     if (walletId) {
       return t.pass();
     }
@@ -40,9 +44,9 @@ test('Creates ETH wallet', async t => {
 });
 
 test('Creates ERC20 wallet', async t => {
-  const { paymeter } = t.context;
+  const { paymeterBot } = t.context;
   try {
-    const walletId = await paymeter.createWallet({
+    const walletId = await paymeterBot.createWallet({
       coinType: 'ERC20',
       walletName: `ERC20 ${new Date().getTime()}`,
       network: 'testnet',
@@ -80,7 +84,7 @@ test('Get details of ETHWallet wallet', async t => {
   const { paymeter } = t.context;
 
   try {
-    const wallet = await paymeter.getWallets('T7ZhRuzf7QujYmmxS');
+    const wallet = await paymeter.getWallets('9qzJeR2KfhuzgFjSK');
     if (typeof wallet !== 'object' || Array.isArray(wallet)) {
       return t.fail('Wallet is not an object');
     }
@@ -95,9 +99,24 @@ test('Get withdrawals', async t => {
   const { paymeter } = t.context;
 
   try {
-    const withdrawals = await paymeter.getWithdrawals('T7ZhRuzf7QujYmmxS');
+    const withdrawals = await paymeter.getWithdrawals('9qzJeR2KfhuzgFjSK');
     if (!Array.isArray(withdrawals)) {
       return t.fail('Withdrawals is not an array');
+    }
+    t.pass();
+  } catch (err) {
+    t.fail(err);
+  }
+  return true;
+});
+
+test('Get deposits', async t => {
+  const { paymeter } = t.context;
+
+  try {
+    const deposits = await paymeter.getDeposits('9qzJeR2KfhuzgFjSK');
+    if (!Array.isArray(deposits)) {
+      return t.fail('Deposits is not an array');
     }
     t.pass();
   } catch (err) {
@@ -127,8 +146,8 @@ test('Transfer ether', async t => {
   try {
     // to: T7ZhRuzf7QujYmmxS
     const txnId = await paymeter.send({
-      fromWalletId: 'gNDyfBfC57geR9sww',
-      toAddress: '0x0c22bc958ef397f091b19249d87742de7a1d967c',
+      fromWalletId: '9qzJeR2KfhuzgFjSK',
+      toAddress: '0x7351ba99efc7d7ae0afded96ba6cc7d36df715ad',
       amount: '0.0001',
       password: '1234567890',
     });
@@ -137,6 +156,9 @@ test('Transfer ether', async t => {
     }
     t.pass();
   } catch (err) {
+    if (err.message.includes('Insufficient Tokens')) {
+      return t.pass();
+    }
     t.fail(err);
   }
   return true;
@@ -148,19 +170,19 @@ test('Transfer ERC20 with different fee wallet', async t => {
   try {
     // to: 8BqP56DdGCMqtJaSx
     const txnId = await paymeter.send({
-      fromWalletId: 'KXRcucyerDfSZvKgC',
-      toAddress: '0x722c038bc3c17a7ec63162d8e28392756509f909',
+      fromWalletId: 'BsRJPm9EkQYXo9J2F',
+      toAddress: '0x19cd2cb9084b2d60cb1395a390602af7177a03e7',
       amount: '0.0001',
       password: '1234567890',
-      feeWalletId: 'gNDyfBfC57geR9sww',
-      feeWalletPassword: '123457890',
+      feeWalletId: '9qzJeR2KfhuzgFjSK',
+      feeWalletPassword: '1234567890',
     });
     if (!txnId) {
       return t.fail('Transaction id is null');
     }
     t.pass();
   } catch (err) {
-    if (err.message.includes('Insufficient Tokens')) {
+    if (err.message.includes('Insufficient Tokens') || err.message.includes('Insufficient Ether for Fees')) {
       return t.pass();
     }
     t.fail(err);
