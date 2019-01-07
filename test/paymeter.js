@@ -170,8 +170,8 @@ test('Transfer ERC20 with different fee wallet', async t => {
   try {
     // to: 8BqP56DdGCMqtJaSx
     const txnId = await paymeter.send({
-      fromWalletId: 'BsRJPm9EkQYXo9J2F',
-      toAddress: '0x19cd2cb9084b2d60cb1395a390602af7177a03e7',
+      fromWalletId: 'vg76PfPZqQjSm4FA6',
+      toAddress: '0x0141aeef44f97b7606b842b23deeb8b94810d932',
       amount: '0.0001',
       password: '1234567890',
       feeWalletId: '9qzJeR2KfhuzgFjSK',

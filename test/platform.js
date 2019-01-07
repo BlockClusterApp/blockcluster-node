@@ -3,7 +3,7 @@ const Blockcluster = require('..');
 
 test.before(t => {
   const platform = new Blockcluster.Platform({
-    apiKey: 'RUxTOU1TcGNuRnJuRVp3elR5NVkjMCVE'
+    apiKey: 'RUxTOU1TcGNuRnJuRVp3elR5NVkjMCVE',
   });
 
   Object.assign(t.context, { platform });
@@ -75,7 +75,7 @@ test('Create and Delete Network', async t => {
     const res = await platform.createNetwork({
       networkName: `Jibin ${new Date().getTime()}`,
       networkConfigId: 'ZJPNEbBRMiXdRgDuJ',
-      locationCode: 'us-west-2'
+      locationCode: 'us-west-2',
     });
 
     if (!res.instanceId) {
@@ -96,8 +96,8 @@ test('Send Invite', async t => {
     const { platform } = t.context;
     const res = await platform.inviteViaEmail({
       inviteToEmail: 'jibin.mathews@blockcluster.io',
-      networkId: 'fkyherbi',
-      networkType: 'authority'
+      networkId: 'hpizmsaw',
+      networkType: 'authority',
     });
 
     if (!res) {
