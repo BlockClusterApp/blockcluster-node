@@ -9,6 +9,7 @@ test.before(before);
 test('create asset type', async t => {
   try {
     const { node } = t.context;
+
     await node.callAPI('assets/createAssetType', {
       assetType: 'solo',
       assetName: 'license',
@@ -17,6 +18,7 @@ test('create asset type', async t => {
 
     t.pass();
   } catch (error) {
+    console.log(error);
     t.fail();
   }
 });

@@ -144,6 +144,11 @@
     "requestType": "GET",
     "category": "utility"
   },
+  "utility/nodeInfo": {
+    "operationType": "read",
+    "requestType": "GET",
+    "category": "utility"
+  },
   "transactions/audit": {
     "operationType": "read",
     "requestType": "GET",

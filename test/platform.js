@@ -28,6 +28,7 @@ test('Fetch Network Configs', async t => {
       if (!config[key]) {
         return t.fail(`${key} not present in network config`);
       }
+
       return null;
     });
 
@@ -58,6 +59,7 @@ test('Fetch Available locations', async t => {
       if (!config[key]) {
         return t.fail(`${key} not present in location config`);
       }
+
       return null;
     });
 
