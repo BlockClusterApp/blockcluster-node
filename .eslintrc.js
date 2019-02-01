@@ -10,5 +10,6 @@ module.exports = {
     'unicorn/catch-error-name': 0,
     'lines-between-class-members': 0,
     'eslint-comments/no-unused-disable': 0,
+    'global-require': 0,
   },
 };
