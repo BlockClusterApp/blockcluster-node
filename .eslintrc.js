@@ -9,5 +9,6 @@ module.exports = {
     'object-curly-newline': 0,
     'unicorn/catch-error-name': 0,
     'lines-between-class-members': 0,
+    'eslint-comments/no-unused-disable': 0,
   },
 };
