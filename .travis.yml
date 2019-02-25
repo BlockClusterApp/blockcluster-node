@@ -7,7 +7,7 @@ cache:
     - "$HOME/.npm"
     - node_modules
 before_script:
-  - npm config set -g production false
+  - npm config set -g production true
   - npm install
 script:
   # - npm test #test case goes here
@@ -26,5 +26,4 @@ deploy:
   api_key:
     secure: olkXLhRRS5Kfti8Qfu6GnLdjJP9w21I4N29PI12KUPdE9SexmiNWuNfsR2Br5n1hY/ZrHZBZ7kXlXfAmieCS6hS48eaYBzm6+KewMs7plvxgYqOX4E4la3rVOtxZdjWjFxDlZhgLvVLgtXBhZ7SdF47rrUbzYkIpWmG6L+15foXMLnSidsk0LFjNsdXSpcKZfNm2LVReyTYOUs7+RHQYfTHoFwtqu7rOWHKa52o0jAmQVA48rxR2C1q787GtUpMqhaYV7sHgsOFh9NvHTWw3IFJkkTn9iwVFtiJdIm+Kq8XZ70vunZLDWMDsnCowL3JW/EB2iJpukl3pS4GYZRRF+dwv6ZYnbp8UXRCBDcmOGR2JoEH2dPJI6t97lkwcbDfEbIDn2tlmswnwG31bs9eG9k41dMsroRJMO5n0GtHQcAk/sfwSs99RnDJ5IfnG2wfK5BxFQ7cKe8vJh8kgVnVW+lGPDeFTrTMH0Hf0edZXp3WLdaTq2mzyz9vbdkNhTgIztyEoTvnj9JR32jAMYBr3v0FtsBWFeul6qndJF4Sf3b1krOlaqbp62d5b0pmtLH2t+eksVxNiyd+lZr+4fEuNEJy4+gpCTeRh0JluaPxSSp6t/67+Bd3v7k7fB7yTrzn19/M292eLRvixeMJPRcmHyGEyRrTmSC3ef41sJpnJYQ8=
   on:
-    tags: true
     repo: BlockClusterApp/blockcluster-node
