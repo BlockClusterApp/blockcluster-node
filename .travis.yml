@@ -9,7 +9,7 @@ cache:
 before_script:
   - npm config set -g production true
   - npm install
-  - npm run jsdoc
+  - npm install -g jsdoc
 script:
   # - npm test #test case goes here
   - if [ "$TRAVIS_PULL_REQUEST" = "false" ] && [ "$TRAVIS_BRANCH" = "master" ]; then
