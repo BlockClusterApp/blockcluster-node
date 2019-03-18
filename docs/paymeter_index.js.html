@@ -23,7 +23,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Hyperion.html">Hyperion</a><ul class='methods'><li data-type='method'><a href="Hyperion.html#deleteFile">deleteFile</a></li><li data-type='method'><a href="Hyperion.html#getFile">getFile</a></li><li data-type='method'><a href="Hyperion.html#uploadFile">uploadFile</a></li></ul></li><li><a href="Paymeter.html">Paymeter</a><ul class='methods'><li data-type='method'><a href="Paymeter.html#createWallet">createWallet</a></li><li data-type='method'><a href="Paymeter.html#getDeposits">getDeposits</a></li><li data-type='method'><a href="Paymeter.html#getWallets">getWallets</a></li><li data-type='method'><a href="Paymeter.html#getWithdrawals">getWithdrawals</a></li><li data-type='method'><a href="Paymeter.html#send">send</a></li></ul></li><li><a href="Platform.html">Platform</a><ul class='methods'><li data-type='method'><a href="Platform.html#acceptInvite">acceptInvite</a></li><li data-type='method'><a href="Platform.html#createNetwork">createNetwork</a></li><li data-type='method'><a href="Platform.html#deleteNetwork">deleteNetwork</a></li><li data-type='method'><a href="Platform.html#fetchLocations">fetchLocations</a></li><li data-type='method'><a href="Platform.html#fetchNetworkTypes">fetchNetworkTypes</a></li><li data-type='method'><a href="Platform.html#inviteViaEmail">inviteViaEmail</a></li><li data-type='method'><a href="Platform.html#joinNetwork">joinNetwork</a></li></ul></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Hyperion.html">Hyperion</a><ul class='methods'><li data-type='method'><a href="Hyperion.html#deleteFile">deleteFile</a></li><li data-type='method'><a href="Hyperion.html#getFile">getFile</a></li><li data-type='method'><a href="Hyperion.html#uploadFile">uploadFile</a></li></ul></li><li><a href="Paymeter.html">Paymeter</a><ul class='methods'><li data-type='method'><a href="Paymeter.html#createWallet">createWallet</a></li><li data-type='method'><a href="Paymeter.html#getDeposits">getDeposits</a></li><li data-type='method'><a href="Paymeter.html#getWallets">getWallets</a></li><li data-type='method'><a href="Paymeter.html#getWithdrawals">getWithdrawals</a></li><li data-type='method'><a href="Paymeter.html#refreshBalance">refreshBalance</a></li><li data-type='method'><a href="Paymeter.html#send">send</a></li></ul></li><li><a href="Platform.html">Platform</a><ul class='methods'><li data-type='method'><a href="Platform.html#acceptInvite">acceptInvite</a></li><li data-type='method'><a href="Platform.html#createNetwork">createNetwork</a></li><li data-type='method'><a href="Platform.html#deleteNetwork">deleteNetwork</a></li><li data-type='method'><a href="Platform.html#fetchLocations">fetchLocations</a></li><li data-type='method'><a href="Platform.html#fetchNetworkTypes">fetchNetworkTypes</a></li><li data-type='method'><a href="Platform.html#inviteViaEmail">inviteViaEmail</a></li><li data-type='method'><a href="Platform.html#joinNetwork">joinNetwork</a></li></ul></li></ul>
 </nav>
 
 <div id="main">
@@ -130,6 +130,7 @@ class Paymeter {
         delete resp.data.wallet.privateKey;
         return resp.data.wallet;
       }
+
       return resp.data;
     } catch (err) {
       return Promise.reject(err);
@@ -205,10 +206,64 @@ class Paymeter {
    * @param {string} [options.feeWalletPassword] Only for ERC20 tokens, password for the feeWallet specified &lt;i>(&lt;b>Required&lt;/b> if feeWalletId is specified)&lt;/i>
    * @param {string} [options.feeCollectWalletId] Wallet ID to which the gas fees is to be collected
    * @param {string} [options.tokenValueInEth] Value of ERC20 token in ETH i.e., 1 ERC20 Token = ? ETH &lt;i>(&lt;b>Required&lt;/b> if feeCollectWalletId is specified)&lt;/i>
+   * @param {boolean} [options.sendExactAmount] If true, then sends exact amount to the receiver. Total amount debited will be the specified amount + network charges. If false, network charges will be debited from the specified amount
+   * @param {string(hex)} [options.functionCallData] Raw transaction data to call functions of smart contract. Only applicable for ETH wallets
+   * @example &lt;caption>Transfers tokens (Fees debited from the amount specified)&lt;/caption>
+   * const txnId = await paymeter.send({
+   *   fromWalletId: 'wallet1ID',
+   *   toAddress: '0x1234567890abcdef',
+   *   amount: 1,
+   *   password: 'wallet1Password'
+   * });
+   * console.log(txnId);
+   * // Prints 0x...
+   * @example &lt;caption>Transfers tokens (Fees debited above the specifed amount)&lt;/caption>
+   * const txnId = await paymeter.send({
+   *   fromWalletId: 'wallet1ID',
+   *   toAddress: '0x1234567890abcdef',
+   *   amount: 1,
+   *   password: 'wallet1Password'
+   *   sendExactAmount: true
+   * });
+   * console.log(txnId);
+   * // Prints 0x...
+   * @example &lt;caption>Transfers token from but fees deducted from another wallet&lt;/caption>
+   * const txnId = await paymeter.send({
+   *   fromWalletId: 'wallet1ID',
+   *   toAddress: '0x1234567890abcdef',
+   *   amount: 1,
+   *   password: 'wallet1Password'
+   *   feeWalletId: 'wallet2ID',
+   *   feeWalletPassword: 'wallet2Password'
+   * });
+   * console.log(txnId);
+   * // Prints 0x...
+   * @example &lt;caption>Transfers token from with fees credits to separate wallet&lt;/caption>
+   * const txnId = await paymeter.send({
+   *   fromWalletId: 'wallet1ID',
+   *   toAddress: '0x1234567890abcdef',
+   *   amount: 1,
+   *   password: 'wallet1Password'
+   *   feeCollectWalletId: 'wallet3ID',
+   * });
+   * console.log(txnId);
+   * // Prints 0x...
+   * @example &lt;caption>Transfers token using raw transactions&lt;/caption>
+   * const contractAddress = '0x12341234567890abcd';
+   * const contract = new web3.eth.Contract(abi, contractAddress);
+   * const data = await contract.methods.sign().encodeABI();
+   * const txnId = await paymeter.send({
+   *   fromWalletId: 'wallet4ID',
+   *   password: 'wallet4Password',
+   *   toAddress: contractAddress,
+   *   functionCallData: data,
+   * });
+   * console.log(txnId);
+   * // Prints 0x...
    * @return {Promise&lt;string>} Transaction id
    * @memberof Paymeter
    */
-  async send({ fromWalletId, toAddress, amount, password, feeWalletId, feeWalletPassword, feeCollectWalletId, tokenValueInEth }) {
+  async send({ fromWalletId, toAddress, amount, password, feeWalletId, feeWalletPassword, feeCollectWalletId, tokenValueInEth, sendExactAmount, functionCallData }) {
     if (!fromWalletId) {
       return Promise.reject(new Error('walletId is a required option'));
     }
@@ -237,6 +292,14 @@ class Paymeter {
       body.options.tokenValueInEth = tokenValueInEth;
     }
 
+    if (sendExactAmount) {
+      body.options.sendExactAmount = sendExactAmount;
+    }
+
+    if (functionCallData) {
+      body.options.functionCallData = functionCallData;
+    }
+
     try {
       const resp = await helpers.sendPlatformRequest({
         path,
@@ -245,6 +308,30 @@ class Paymeter {
         apiKey: this.apiKey,
       });
       return resp.data.txnHash || resp.data.txnId;
+    } catch (err) {
+      return Promise.reject(err);
+    }
+  }
+
+  /**
+   * Force refreshes balance in a wallet. This can be used in case deposits are coming from a smart contract
+   * @param  {string} walletId ID of the wallet to refresh balance of
+   * @return {Promise&lt;boolean>} True if call succeeded
+   * @memberof Paymeter
+   */
+  async refreshBalance(walletId) {
+    if (!walletId) {
+      return Promise.reject(new Error('WalletID is a required argument to refreshBalance'));
+    }
+
+    const path = `/api/paymeter/wallets/${walletId}/refreshBalance`;
+    try {
+      await helpers.sendPlatformRequest({
+        path,
+        method: 'GET',
+        apiKey: this.apiKey,
+      });
+      return true;
     } catch (err) {
       return Promise.reject(err);
     }
@@ -264,7 +351,7 @@ module.exports = Paymeter;
 <br class="clear">
 
 <footer>
-    Documentation generated at Mon Jan 07 2019 17:49:55 GMT+0530 (IST)
+    Documentation generated at Mon Mar 18 2019 17:44:40 GMT+0530 (IST)
 </footer>
 
 <script>prettyPrint();</script>

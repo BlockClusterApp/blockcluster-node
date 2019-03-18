@@ -23,7 +23,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Hyperion.html">Hyperion</a><ul class='methods'><li data-type='method'><a href="Hyperion.html#deleteFile">deleteFile</a></li><li data-type='method'><a href="Hyperion.html#getFile">getFile</a></li><li data-type='method'><a href="Hyperion.html#uploadFile">uploadFile</a></li></ul></li><li><a href="Paymeter.html">Paymeter</a><ul class='methods'><li data-type='method'><a href="Paymeter.html#createWallet">createWallet</a></li><li data-type='method'><a href="Paymeter.html#getDeposits">getDeposits</a></li><li data-type='method'><a href="Paymeter.html#getWallets">getWallets</a></li><li data-type='method'><a href="Paymeter.html#getWithdrawals">getWithdrawals</a></li><li data-type='method'><a href="Paymeter.html#send">send</a></li></ul></li><li><a href="Platform.html">Platform</a><ul class='methods'><li data-type='method'><a href="Platform.html#acceptInvite">acceptInvite</a></li><li data-type='method'><a href="Platform.html#createNetwork">createNetwork</a></li><li data-type='method'><a href="Platform.html#deleteNetwork">deleteNetwork</a></li><li data-type='method'><a href="Platform.html#fetchLocations">fetchLocations</a></li><li data-type='method'><a href="Platform.html#fetchNetworkTypes">fetchNetworkTypes</a></li><li data-type='method'><a href="Platform.html#inviteViaEmail">inviteViaEmail</a></li><li data-type='method'><a href="Platform.html#joinNetwork">joinNetwork</a></li></ul></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Hyperion.html">Hyperion</a><ul class='methods'><li data-type='method'><a href="Hyperion.html#deleteFile">deleteFile</a></li><li data-type='method'><a href="Hyperion.html#getFile">getFile</a></li><li data-type='method'><a href="Hyperion.html#uploadFile">uploadFile</a></li></ul></li><li><a href="Paymeter.html">Paymeter</a><ul class='methods'><li data-type='method'><a href="Paymeter.html#createWallet">createWallet</a></li><li data-type='method'><a href="Paymeter.html#getDeposits">getDeposits</a></li><li data-type='method'><a href="Paymeter.html#getWallets">getWallets</a></li><li data-type='method'><a href="Paymeter.html#getWithdrawals">getWithdrawals</a></li><li data-type='method'><a href="Paymeter.html#refreshBalance">refreshBalance</a></li><li data-type='method'><a href="Paymeter.html#send">send</a></li></ul></li><li><a href="Platform.html">Platform</a><ul class='methods'><li data-type='method'><a href="Platform.html#acceptInvite">acceptInvite</a></li><li data-type='method'><a href="Platform.html#createNetwork">createNetwork</a></li><li data-type='method'><a href="Platform.html#deleteNetwork">deleteNetwork</a></li><li data-type='method'><a href="Platform.html#fetchLocations">fetchLocations</a></li><li data-type='method'><a href="Platform.html#fetchNetworkTypes">fetchNetworkTypes</a></li><li data-type='method'><a href="Platform.html#inviteViaEmail">inviteViaEmail</a></li><li data-type='method'><a href="Platform.html#joinNetwork">joinNetwork</a></li></ul></li></ul>
 </nav>
 
 <div id="main">
@@ -634,7 +634,7 @@ console.log(walletId);
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="paymeter_index.js.html">paymeter/index.js</a>, <a href="paymeter_index.js.html#line138">line 138</a>
+        <a href="paymeter_index.js.html">paymeter/index.js</a>, <a href="paymeter_index.js.html#line139">line 139</a>
     </li></ul></dd>
     
 
@@ -976,7 +976,7 @@ console.log(wallet);
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="paymeter_index.js.html">paymeter/index.js</a>, <a href="paymeter_index.js.html#line109">line 109</a>
+        <a href="paymeter_index.js.html">paymeter/index.js</a>, <a href="paymeter_index.js.html#line110">line 110</a>
     </li></ul></dd>
     
 
@@ -1030,6 +1030,159 @@ console.log(wallet);
     <pre class="prettyprint"><code>const withdrawals = await paymeter.getWithdrawals('abcdefghi');
 console.log(withdrawals);
 // Prints [{...withdrawal1}, {...}, ...]</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="refreshBalance"><span class="type-signature">(async) </span>refreshBalance<span class="signature">(walletId)</span><span class="type-signature"> &rarr; {Promise.&lt;boolean>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Force refreshes balance in a wallet. This can be used in case deposits are coming from a smart contract</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>walletId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>ID of the wallet to refresh balance of</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="paymeter_index.js.html">paymeter/index.js</a>, <a href="paymeter_index.js.html#line282">line 282</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>True if call succeeded</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;boolean></span>
+
+
+    </dd>
+</dl>
+
+    
 
 
 
@@ -1378,6 +1531,72 @@ console.log(withdrawals);
         </tr>
 
     
+
+        <tr>
+            
+                <td class="name"><code>sendExactAmount</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>If true, then sends exact amount to the receiver. Total amount debited will be the specified amount + network charges. If false, network charges will be debited from the specified amount</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>functionCallData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string(hex)</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Raw transaction data to call functions of smart contract. Only applicable for ETH wallets</p></td>
+        </tr>
+
+    
     </tbody>
 </table>
 
@@ -1422,7 +1641,7 @@ console.log(withdrawals);
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="paymeter_index.js.html">paymeter/index.js</a>, <a href="paymeter_index.js.html#line171">line 171</a>
+        <a href="paymeter_index.js.html">paymeter/index.js</a>, <a href="paymeter_index.js.html#line226">line 226</a>
     </li></ul></dd>
     
 
@@ -1469,6 +1688,71 @@ console.log(withdrawals);
     
 
 
+    <h5>Examples</h5>
+    
+        <p class="code-caption">Transfers tokens (Fees debited from the amount specified)</p>
+    
+    <pre class="prettyprint"><code>const txnId = await paymeter.send({
+  fromWalletId: 'wallet1ID',
+  toAddress: '0x1234567890abcdef',
+  amount: 1,
+  password: 'wallet1Password'
+});
+console.log(txnId);
+// Prints 0x...</code></pre>
+
+        <p class="code-caption">Transfers tokens (Fees debited above the specifed amount)</p>
+    
+    <pre class="prettyprint"><code>const txnId = await paymeter.send({
+  fromWalletId: 'wallet1ID',
+  toAddress: '0x1234567890abcdef',
+  amount: 1,
+  password: 'wallet1Password'
+  sendExactAmount: true
+});
+console.log(txnId);
+// Prints 0x...</code></pre>
+
+        <p class="code-caption">Transfers token from but fees deducted from another wallet</p>
+    
+    <pre class="prettyprint"><code>const txnId = await paymeter.send({
+  fromWalletId: 'wallet1ID',
+  toAddress: '0x1234567890abcdef',
+  amount: 1,
+  password: 'wallet1Password'
+  feeWalletId: 'wallet2ID',
+  feeWalletPassword: 'wallet2Password'
+});
+console.log(txnId);
+// Prints 0x...</code></pre>
+
+        <p class="code-caption">Transfers token from with fees credits to separate wallet</p>
+    
+    <pre class="prettyprint"><code>const txnId = await paymeter.send({
+  fromWalletId: 'wallet1ID',
+  toAddress: '0x1234567890abcdef',
+  amount: 1,
+  password: 'wallet1Password'
+  feeCollectWalletId: 'wallet3ID',
+});
+console.log(txnId);
+// Prints 0x...</code></pre>
+
+        <p class="code-caption">Transfers token using raw transactions</p>
+    
+    <pre class="prettyprint"><code>const contractAddress = '0x12341234567890abcd';
+const contract = new web3.eth.Contract(abi, contractAddress);
+const data = await contract.methods.sign().encodeABI();
+const txnId = await paymeter.send({
+  fromWalletId: 'wallet4ID',
+  password: 'wallet4Password',
+  toAddress: contractAddress,
+  functionCallData: data,
+});
+console.log(txnId);
+// Prints 0x...</code></pre>
+
+
 
         
     
@@ -1488,7 +1772,7 @@ console.log(withdrawals);
 <br class="clear">
 
 <footer>
-    Documentation generated at Mon Jan 07 2019 17:49:55 GMT+0530 (IST)
+    Documentation generated at Mon Mar 18 2019 17:44:40 GMT+0530 (IST)
 </footer>
 
 <script>prettyPrint();</script>
