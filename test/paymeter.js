@@ -205,6 +205,7 @@ test('Transfer ERC20 with different fee wallet', async t => {
     if (err.message.includes('Insufficient Tokens') || err.message.includes('Insufficient Ether for Fees')) {
       return t.pass();
     }
+
     if (err.message.includes("Error: Returned values aren't valid, did it run Out of Gas?")) {
       return t.pass();
     }
