@@ -207,7 +207,7 @@ class Paymeter {
    * @param {string} [options.feeCollectWalletId] Wallet ID to which the gas fees is to be collected
    * @param {string} [options.tokenValueInEth] Value of ERC20 token in ETH i.e., 1 ERC20 Token = ? ETH &lt;i>(&lt;b>Required&lt;/b> if feeCollectWalletId is specified)&lt;/i>
    * @param {boolean} [options.sendExactAmount] If true, then sends exact amount to the receiver. Total amount debited will be the specified amount + network charges. If false, network charges will be debited from the specified amount
-   * @param {string(hex)} [options.functionCallData] Raw transaction data to call functions of smart contract. Only applicable for ETH wallets
+   * @param {string(hex)} [options.data] Raw transaction data to call functions of smart contract. Only applicable for ETH wallets
    * @example &lt;caption>Transfers tokens (Fees debited from the amount specified)&lt;/caption>
    * const txnId = await paymeter.send({
    *   fromWalletId: 'wallet1ID',
@@ -256,14 +256,14 @@ class Paymeter {
    *   fromWalletId: 'wallet4ID',
    *   password: 'wallet4Password',
    *   toAddress: contractAddress,
-   *   functionCallData: data,
+   *   data: data,
    * });
    * console.log(txnId);
    * // Prints 0x...
    * @return {Promise&lt;string>} Transaction id
    * @memberof Paymeter
    */
-  async send({ fromWalletId, toAddress, amount, password, feeWalletId, feeWalletPassword, feeCollectWalletId, tokenValueInEth, sendExactAmount, functionCallData }) {
+  async send({ fromWalletId, toAddress, amount, password, feeWalletId, feeWalletPassword, feeCollectWalletId, tokenValueInEth, sendExactAmount, data }) {
     if (!fromWalletId) {
       return Promise.reject(new Error('walletId is a required option'));
     }
@@ -296,8 +296,8 @@ class Paymeter {
       body.options.sendExactAmount = sendExactAmount;
     }
 
-    if (functionCallData) {
-      body.options.data = functionCallData;
+    if (data) {
+      body.options.data = data;
     }
 
     try {
@@ -351,7 +351,7 @@ module.exports = Paymeter;
 <br class="clear">
 
 <footer>
-    Documentation generated at Tue Mar 19 2019 04:29:03 GMT+0000 (Coordinated Universal Time)
+    Documentation generated at Wed Mar 27 2019 13:50:33 GMT+0530 (IST)
 </footer>
 
 <script>prettyPrint();</script>
