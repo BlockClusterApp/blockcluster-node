@@ -11,5 +11,6 @@ module.exports = {
     'lines-between-class-members': 0,
     'eslint-comments/no-unused-disable': 0,
     'global-require': 0,
+    'no-underscore-dangle': 1,
   },
 };

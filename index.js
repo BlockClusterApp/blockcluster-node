@@ -3,4 +3,5 @@ module.exports = {
   Dynamo: require('./lib/clients/dynamo'),
   Hyperion: require('./lib/clients/hyperion'),
   Paymeter: require('./lib/clients/paymeter'),
+  Privatehive: require('./lib/clients/privatehive')
 };
