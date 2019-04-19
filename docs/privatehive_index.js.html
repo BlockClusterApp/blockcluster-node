@@ -1,4 +1,44 @@
-const request = require('request-promise');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>privatehive/index.js - Postman Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Hyperion.html">Hyperion</a><ul class='methods'><li data-type='method'><a href="Hyperion.html#deleteFile">deleteFile</a></li><li data-type='method'><a href="Hyperion.html#getFile">getFile</a></li><li data-type='method'><a href="Hyperion.html#uploadFile">uploadFile</a></li></ul></li><li><a href="Paymeter.html">Paymeter</a><ul class='methods'><li data-type='method'><a href="Paymeter.html#createWallet">createWallet</a></li><li data-type='method'><a href="Paymeter.html#getDeposits">getDeposits</a></li><li data-type='method'><a href="Paymeter.html#getWallets">getWallets</a></li><li data-type='method'><a href="Paymeter.html#getWithdrawals">getWithdrawals</a></li><li data-type='method'><a href="Paymeter.html#refreshBalance">refreshBalance</a></li><li data-type='method'><a href="Paymeter.html#send">send</a></li></ul></li><li><a href="Platform.html">Platform</a><ul class='methods'><li data-type='method'><a href="Platform.html#acceptInvite">acceptInvite</a></li><li data-type='method'><a href="Platform.html#acceptPrivatehiveChannelInvite">acceptPrivatehiveChannelInvite</a></li><li data-type='method'><a href="Platform.html#createNetwork">createNetwork</a></li><li data-type='method'><a href="Platform.html#createPrivatehiveNetwork">createPrivatehiveNetwork</a></li><li data-type='method'><a href="Platform.html#deleteNetwork">deleteNetwork</a></li><li data-type='method'><a href="Platform.html#deletePrivatehiveNetwork">deletePrivatehiveNetwork</a></li><li data-type='method'><a href="Platform.html#fetchLocations">fetchLocations</a></li><li data-type='method'><a href="Platform.html#fetchNetworkTypes">fetchNetworkTypes</a></li><li data-type='method'><a href="Platform.html#getPrivatehiveNode">getPrivatehiveNode</a></li><li data-type='method'><a href="Platform.html#inviteUserToChannel">inviteUserToChannel</a></li><li data-type='method'><a href="Platform.html#inviteViaEmail">inviteViaEmail</a></li><li data-type='method'><a href="Platform.html#joinNetwork">joinNetwork</a></li><li data-type='method'><a href="Platform.html#listPrivatehiveChannelInvites">listPrivatehiveChannelInvites</a></li><li data-type='method'><a href="Platform.html#listPrivatehiveNetworks">listPrivatehiveNetworks</a></li></ul></li><li><a href="PrivatehiveNode.html">PrivatehiveNode</a><ul class='methods'><li data-type='method'><a href="PrivatehiveNode.html#addChaincode">addChaincode</a></li><li data-type='method'><a href="PrivatehiveNode.html#createChannel">createChannel</a></li><li data-type='method'><a href="PrivatehiveNode.html#fetchChaincodes">fetchChaincodes</a></li><li data-type='method'><a href="PrivatehiveNode.html#fetchChannels">fetchChannels</a></li><li data-type='method'><a href="PrivatehiveNode.html#installChaincode">installChaincode</a></li><li data-type='method'><a href="PrivatehiveNode.html#instantiateChaincode">instantiateChaincode</a></li><li data-type='method'><a href="PrivatehiveNode.html#setOrderer">setOrderer</a></li></ul></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">privatehive/index.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const request = require('request-promise');
 const fs = require('fs');
 
 /**
@@ -31,7 +71,7 @@ class PrivatehiveNode {
   __constructNodeRequest(path, method, body = {}, headers = {}) {
     const tempHeaders = {};
 
-    if (this.username && this.password) {
+    if (this.username &amp;&amp; this.password) {
       tempHeaders.Authorization = `Basic ${Buffer.from(`${this.username}:${this.password}`).toString('base64')}`;
     }
 
@@ -72,18 +112,18 @@ class PrivatehiveNode {
    * @param  {string} name Name of the channel to be created
    * @param  {string} [ordererURL] GRPC url (without the protocol) of the orderer
    * @param  {string} [ordererOrgName] Orderer's organization name
-   * @return {Promise<string>} Response from the node
+   * @return {Promise&lt;string>} Response from the node
    * @memberof PrivatehiveNode
    */
   async createChannel(name, ordererURL = '', ordererDomain = '') {
     if (!name) {
       throw new Error('Channel create error : name is required');
     }
-    if (!ordererURL && !(this.orderer && this.orderer.ordererURL)) {
+    if (!ordererURL &amp;&amp; !(this.orderer &amp;&amp; this.orderer.ordererURL)) {
       throw new Error('Channel create error : Orderer URL is missing. Specifiy orderer url or set orderer to this node');
     }
 
-    if (!ordererDomain && !(this.orderer && this.orderer.organization)) {
+    if (!ordererDomain &amp;&amp; !(this.orderer &amp;&amp; this.orderer.organization)) {
       throw new Error('Channel create error : Orderer organization name is missing. Specifiy orderer url or set orderer to this node');
     }
     const channelReq = this.__constructNodeRequest('/channel/create', this.RequestTypes.POST, {
@@ -101,7 +141,7 @@ class PrivatehiveNode {
 
   /**
    * Returns list of all the channels
-   * @return {Promise<Array<string>>}
+   * @return {Promise&lt;Array&lt;string>>}
    * @memberof PrivatehiveNode
    */
   async fetchChannels() {
@@ -113,7 +153,7 @@ class PrivatehiveNode {
    * @param  {string} filePath Path of the zip file where the chaincode is residing
    * @param  {string} name Name of chaincode
    * @param  {golang|node} type Type of chaincode
-   * @return {Promise<string>} Response from node
+   * @return {Promise&lt;string>} Response from node
    * @memberof PrivatehiveNode
    */
   async addChaincode(filePath, name, type) {
@@ -145,7 +185,7 @@ class PrivatehiveNode {
   /**
    * Installs an already added chaincode to the peer
    * @param  {string} name Name of the chaincode
-   * @return {Promise<string>} Response from the node
+   * @return {Promise&lt;string>} Response from the node
    * @memberof PrivatehiveNode
    */
   async installChaincode(name) {
@@ -171,9 +211,9 @@ class PrivatehiveNode {
    * @property {string} params.name Name of the chaincode to instantiate
    * @property {string} params.channelName Channel on which the code is to be instantiated
    * @property {string} [params.functionName] Name of function to be called for instantiation. Default is init
-   * @property {Array<string>} [params.args] Arguments to the instantiating function . Default is []
+   * @property {Array&lt;string>} [params.args] Arguments to the instantiating function . Default is []
    * @property {object} [params.endorsementPolicy] Endoresement policy for this chaincode. By default any of the org should sign
-   * @return {Promise<string>} Response from the node
+   * @return {Promise&lt;string>} Response from the node
    * @memberof PrivatehiveNode
    */
   async instantiateChaincode({ name, channelName, functionName, args, endorsementPolicy }) {
@@ -202,7 +242,7 @@ class PrivatehiveNode {
 
   /**
    *  Returns list of all the chaincodes
-   * @return {Promise<Array<string>>}
+   * @return {Promise&lt;Array&lt;string>>}
    * @memberof PrivatehiveNode
    */
   async fetchChaincodes() {
@@ -211,3 +251,22 @@ class PrivatehiveNode {
 }
 
 module.exports = PrivatehiveNode;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated at Fri Apr 19 2019 16:06:54 GMT+0530 (IST)
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
