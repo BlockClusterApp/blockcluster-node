@@ -5,7 +5,7 @@ const Blockcluster = require('..');
 
 test.before(t => {
   const hyperion = new Blockcluster.Hyperion({
-    apiKey: 'RUxTOU1TcGNuRnJuRVp3elR5NVkjMCVE',
+    apiKey: 'JSRFZ09mN1FXQ2Y0TnEzS3VhSWc5TCVkQWNn',
   });
 
   Object.assign(t.context, { hyperion, hash: '' });

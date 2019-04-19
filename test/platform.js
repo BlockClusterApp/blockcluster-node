@@ -3,7 +3,7 @@ const Blockcluster = require('..');
 
 test.before(t => {
   const platform = new Blockcluster.Platform({
-    apiKey: 'RUxTOU1TcGNuRnJuRVp3elR5NVkjMCVE',
+    apiKey: 'OG1jY1JENnRiT1Q4dzcwOEBzQVRoV1BKZmVq',
   });
 
   Object.assign(t.context, { platform });
@@ -23,7 +23,7 @@ test('Fetch Network Configs', async t => {
       return t.fail('No network configs');
     }
 
-    const requiredKeys = ['_id', 'name', 'cpu', 'ram', 'disk', 'isDiskChangeable', 'cost'];
+    const requiredKeys = ['_id', 'name', 'cpu', 'ram', 'disk', 'cost'];
     requiredKeys.forEach(key => {
       if (!config[key]) {
         return t.fail(`${key} not present in network config`);
@@ -76,7 +76,7 @@ test('Create and Delete Network', async t => {
     const { platform } = t.context;
     const res = await platform.createNetwork({
       networkName: `Jibin ${new Date().getTime()}`,
-      networkConfigId: 'ZJPNEbBRMiXdRgDuJ',
+      networkConfigId: 'vRJWL7NHvxXhAiNat',
       locationCode: 'us-west-2',
     });
 
@@ -98,7 +98,7 @@ test('Send Invite', async t => {
     const { platform } = t.context;
     const res = await platform.inviteViaEmail({
       inviteToEmail: 'jibin.mathews@blockcluster.io',
-      networkId: 'hpizmsaw',
+      networkId: 'mzdtdovtiv',
       networkType: 'authority',
     });
 
@@ -108,6 +108,27 @@ test('Send Invite', async t => {
 
     Object.assign(t.context, { inviteId: res });
 
+    t.pass();
+  } catch (err) {
+    t.fail(err);
+  }
+
+  return true;
+});
+
+test('Create Privatehive network', async t => {
+  try {
+    const { platform } = t.context;
+
+    const peerId = await platform.createPrivatehiveNetwork({
+      locationCode: 'us-west-2',
+      type: 'peer',
+      orgName: 'blockcluster',
+      name: 'Peer 1',
+      networkConfigId: 'YenwjL2n4rFko4an3',
+    });
+
+    await platform.deletePrivatehiveNetwork(peerId);
     t.pass();
   } catch (err) {
     t.fail(err);

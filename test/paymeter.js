@@ -3,11 +3,11 @@ const Blockcluster = require('..');
 
 test.before(t => {
   const paymeter = new Blockcluster.Paymeter({
-    apiKey: 'RUxTOU1TcGNuRnJuRVp3elR5NVkjMCVE',
+    apiKey: 'JSRFZ09mN1FXQ2Y0TnEzS3VhSWc5TCVkQWNn',
   });
 
   const paymeterBot = new Blockcluster.Paymeter({
-    apiKey: 'JHdTUk1rZFpFI3VIZ2hBSjN2eWZrI3YmMXNH',
+    apiKey: 'JSRFZ09mN1FXQ2Y0TnEzS3VhSWc5TCVkQWNn',
   });
 
   Object.assign(t.context, { paymeter, paymeterBot });
@@ -92,7 +92,7 @@ test('Get details of ETHWallet wallet', async t => {
   const { paymeter } = t.context;
 
   try {
-    const wallet = await paymeter.getWallets('YLerSFnoy5YaMNpdJ');
+    const wallet = await paymeter.getWallets('vxHdSfsLRH7926smT');
     if (typeof wallet !== 'object' || Array.isArray(wallet)) {
       return t.fail('Wallet is not an object');
     }
@@ -109,7 +109,7 @@ test('Get withdrawals', async t => {
   const { paymeter } = t.context;
 
   try {
-    const withdrawals = await paymeter.getWithdrawals('YLerSFnoy5YaMNpdJ');
+    const withdrawals = await paymeter.getWithdrawals('vxHdSfsLRH7926smT');
     if (!Array.isArray(withdrawals)) {
       return t.fail('Withdrawals is not an array');
     }
@@ -126,7 +126,7 @@ test('Get deposits', async t => {
   const { paymeter } = t.context;
 
   try {
-    const deposits = await paymeter.getDeposits('YLerSFnoy5YaMNpdJ');
+    const deposits = await paymeter.getDeposits('vxHdSfsLRH7926smT');
     if (!Array.isArray(deposits)) {
       return t.fail('Deposits is not an array');
     }
@@ -162,7 +162,7 @@ test('Transfer ether', async t => {
   try {
     // to: T7ZhRuzf7QujYmmxS
     const txnId = await paymeter.send({
-      fromWalletId: 'YLerSFnoy5YaMNpdJ',
+      fromWalletId: 'vxHdSfsLRH7926smT',
       toAddress: '0x7351ba99efc7d7ae0afded96ba6cc7d36df715ad',
       amount: '0.0001',
       password: '1234567890',
@@ -193,7 +193,7 @@ test('Transfer ERC20 with different fee wallet', async t => {
       toAddress: '0x0141aeef44f97b7606b842b23deeb8b94810d932',
       amount: '0.0001',
       password: '1234567890',
-      feeWalletId: 'YLerSFnoy5YaMNpdJ',
+      feeWalletId: 'vxHdSfsLRH7926smT',
       feeWalletPassword: '1234567890',
     });
     if (!txnId) {
