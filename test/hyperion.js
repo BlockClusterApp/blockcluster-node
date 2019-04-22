@@ -1,11 +1,13 @@
 const test = require('ava');
 const fs = require('fs');
 const path = require('path');
+
+const Config = require('./helpers/config');
 const Blockcluster = require('..');
 
 test.before(t => {
   const hyperion = new Blockcluster.Hyperion({
-    apiKey: 'JSRFZ09mN1FXQ2Y0TnEzS3VhSWc5TCVkQWNn',
+    apiKey: Config.ApiKeys.User,
   });
 
   Object.assign(t.context, { hyperion, hash: '' });
@@ -17,9 +19,9 @@ test('Upload and Delete Hyperion file', async t => {
 
     const stream = fs.createReadStream(path.join(__dirname, '..', 'README.md'));
 
-    const hash = await hyperion.uploadFile({ fileStream: stream, locationCode: 'us-west-2' });
+    const hash = await hyperion.uploadFile({ fileStream: stream, locationCode: Config.Hyperion.locationCode });
 
-    await hyperion.deleteFile({ locationCode: 'us-west-2', fileHash: hash });
+    await hyperion.deleteFile({ locationCode: Config.Hyperion.locationCode, fileHash: hash });
     t.pass();
   } catch (err) {
     t.fail(err);
@@ -33,7 +35,7 @@ test('Fetch Hyperion file', async t => {
     const { hyperion } = t.context;
     const writeStream = fs.createWriteStream(path.join(__dirname, '..', 'tmp', 'tmp-1.md'));
 
-    await hyperion.getFile({ locationCode: 'us-west-2', fileHash: 'QmdTauoFSKchJgKDSHhPtAuSTNc8MfrCqbjqSBm2E6VoEC', writeStream });
+    await hyperion.getFile({ locationCode: Config.Hyperion.locationCode, fileHash: Config.fileHash, writeStream });
 
     t.pass();
   } catch (err) {
