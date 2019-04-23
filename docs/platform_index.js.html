@@ -56,11 +56,12 @@ class Platform {
 
   /**
    * Fetches all the applicable network types. You need to pass the network type id in any create or invite request
+   * @param {dynamo|privatehive} [service] Service for which the configurations are to be fetched
    * @return {Promise&lt;array>} List of network types
    * @memberof Platform
    */
-  async fetchNetworkTypes() {
-    const path = '/api/platform/networks/types';
+  async fetchNetworkTypes(service = 'dynamo') {
+    const path = `/api/platform/network-types?service=${service}`;
 
     try {
       const networks = await helpers.sendPlatformRequest({ path, method: 'GET', apiKey: this.apiKey });
@@ -72,11 +73,12 @@ class Platform {
 
   /**
    * Fetches all the applicable locations. You need to pass the location code in any create or invite request
+   * @param {dynamo|privatehive} [service] Service for which the locations are to be fetched
    * @return {Promise&lt;array>} List of locations
    * @memberof Platform
    */
-  async fetchLocations() {
-    const path = '/api/platform/networks/locations';
+  async fetchLocations(service = 'dynamo') {
+    const path = `/api/platform/locations?service=${service}`;
 
     try {
       const locations = await helpers.sendPlatformRequest({ path, method: 'GET', apiKey: this.apiKey });
@@ -265,7 +267,7 @@ class Platform {
 
   /**
    * Creates a privatehive node
-   * @param  {object} options
+   * @param  {object} options Options
    * @property {string} [options.peerId] Peer Id to which the orderer joins. Required only incase of orderer type
    * @property {string} options.locationCode Location code where the network should be deployed
    * @property {peer|orderer} options.type Type of network. Either peer or orderer
@@ -282,9 +284,11 @@ class Platform {
     if (type === 'orderer' &amp;&amp; !peerId) {
       return Promise.reject(new Error('PeerID is required to create orderer'));
     }
+
     if (!name) {
       return Promise.reject(new Error('Name is required'));
     }
+
     if (!orgName) {
       return Promise.reject(new Error('Organization Name is required'));
     }
@@ -339,7 +343,7 @@ class Platform {
    * @return {Array&lt;Node>} Array of networks matching the filters
    * @memberof Platform
    */
-  async listPrivatehiveNetworks(instanceId, options) {
+  async listPrivatehiveNetworks(instanceId, options = {}) {
     let path = '/api/platform/privatehive';
     if (instanceId &amp;&amp; typeof instanceId === 'string') {
       path = `${path}/${instanceId}`;
@@ -350,20 +354,24 @@ class Platform {
     const { nodeType, locationCode, createdAfter, createdBefore } = options;
     let { showDeleted } = options;
 
-    showDeleted = !!showDeleted;
+    showDeleted = Boolean(showDeleted);
     path = `${path}?showDeleted=${showDeleted}`;
     if (nodeType) {
       path = `${path}&amp;nodeType=${nodeType}`;
     }
+
     if (locationCode) {
       path = `${path}&amp;locationCode=${locationCode}`;
     }
+
     if (createdAfter) {
       path = `${path}&amp;createdAfter=${createdAfter}`;
     }
+
     if (createdBefore) {
       path = `${path}&amp;createdBefore=${createdBefore}`;
     }
+
     try {
       const res = await helpers.sendPlatformRequest({ path, method: 'GET', apiKey: this.apiKey });
       return res.data;
@@ -391,7 +399,7 @@ class Platform {
 
   /**
    * Invites a user to a HLF channel. The invited user can select the peer which will join the channel
-   * @param  {object} params
+   * @param  {object} params Options
    * @property {string} params.email Email of the user to be invited
    * @property {string} params.peerId Instance ID of the peer to be invited
    * @property {string} params.channelName Channel to which the user should be invited to
@@ -426,7 +434,7 @@ class Platform {
    * @memberof Platform
    */
   async acceptPrivatehiveChannelInvite(inviteId, peerId) {
-    const path = `/privatehive/invite/accept/${inviteId}`;
+    const path = `/api/platform/privatehive/invite/accept/${inviteId}`;
     const body = {
       peerId,
     };
@@ -440,11 +448,11 @@ class Platform {
 
   /**
    * Lists all pending privatehive channel invites
-   * @return {Array&lt;Invite>}
+   * @return {Array&lt;Invite>} List of invites
    * @memberof Platform
    */
   async listPrivatehiveChannelInvites() {
-    const path = '/privatehive/invite';
+    const path = '/api/platform/privatehive/invite';
     try {
       const res = await helpers.sendPlatformRequest({ path, method: 'GET', apiKey: this.apiKey });
       return res.data;
@@ -456,15 +464,15 @@ class Platform {
   /**
    *  Returns privatehive node object to operate on it
    * @param  {object} nodeInfo Node information details. Can be fetched from listPrivatehiveNetworks(instanceId)
-   * @return {PrivatehiveNode}
+   * @return {PrivatehiveNode} Privatehive node instance
    * @memberof Platform
    */
-  // eslint-disable-next-line class-methods-use-this
   getPrivatehiveNode(nodeInfo) {
     const node = { ...nodeInfo };
     if (nodeInfo.ordererType) {
       nodeInfo.type = 'orderer';
     }
+
     return new PrivatehiveNode(node);
   }
 }
@@ -482,7 +490,7 @@ module.exports = Platform;
 <br class="clear">
 
 <footer>
-    Documentation generated at Fri Apr 19 2019 16:06:54 GMT+0530 (IST)
+    Documentation generated at Tue Apr 23 2019 14:09:01 GMT+0530 (IST)
 </footer>
 
 <script>prettyPrint();</script>

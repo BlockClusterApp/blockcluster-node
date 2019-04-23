@@ -112,7 +112,7 @@
   "scripts": {
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "lint": "xo --fix && remark . -qfo",
-    "precommit": "rm -rf tmp/*.* && lint-staged && npm test",
+    "precommit": "rm -rf tmp/*.* && lint-staged && npm test && npm run jsdoc",
     "test": "rm -rf tmp/tmp-1.md && npm run lint && npm run test-coverage",
     "test-coverage": "cross-env NODE_ENV=test nyc ava",
     "jsdoc": "jsdoc -c ./.jsdoc.conf.js -d docs"

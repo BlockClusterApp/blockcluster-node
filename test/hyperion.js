@@ -8,6 +8,7 @@ const Blockcluster = require('..');
 test.before(t => {
   const hyperion = new Blockcluster.Hyperion({
     apiKey: Config.ApiKeys.User,
+    domain: Config.Hyperion.domain,
   });
 
   Object.assign(t.context, { hyperion, hash: '' });
@@ -20,7 +21,6 @@ test('Upload and Delete Hyperion file', async t => {
     const stream = fs.createReadStream(path.join(__dirname, '..', 'README.md'));
 
     const hash = await hyperion.uploadFile({ fileStream: stream, locationCode: Config.Hyperion.locationCode });
-
     await hyperion.deleteFile({ locationCode: Config.Hyperion.locationCode, fileHash: hash });
     t.pass();
   } catch (err) {

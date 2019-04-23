@@ -175,7 +175,7 @@ test('Transfer ether', async t => {
 
     t.pass();
   } catch (err) {
-    if (err.message.includes('Insufficient Tokens')) {
+    if (err.message.includes('Insufficient')) {
       return t.pass();
     }
 

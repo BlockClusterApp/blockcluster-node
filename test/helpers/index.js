@@ -1,9 +1,10 @@
 const BlockCluster = require('../..');
+const Config = require('./config');
 
 function before(t) {
   const node = new BlockCluster.Dynamo({
-    locationDomain: process.env.locationDomain || 'test.blockcluster.io',
-    instanceId: process.env.instanceId || 'mzdtdovtiv',
+    locationDomain: Config.Dynamo.locationDomain,
+    instanceId: Config.Dynamo.instanceId,
   });
 
   Object.assign(t.context, { node });

@@ -3,12 +3,17 @@ module.exports = {
     User: 'M0JTbERTQDFxV2ZxTWZieEJ0R0dkYVhySHE0',
     Bot: 'JSRFZ09mN1FXQ2Y0TnEzS3VhSWc5TCVkQWNn',
   },
+  Dynamo: {
+    instanceId: 'wflalwxuha',
+    locationDomain: 'test-us-west-2.blockcluster.io',
+  },
   Hyperion: {
     locationCode: 'us-west-2',
-    fileHash: 'QmdTauoFSKchJgKDSHhPtAuSTNc8MfrCqbjqSBm2E6VoEC',
+    fileHash: 'QmZ9N8A56HJFDJgWPDNDMKHcVwBpFPH8xKLwdxvnJYSJ4A',
+    domain: 'https://dev.blockcluster.io',
   },
   Paymeter: {
-    ETHWallet: 'vxHdSfsLRH7926smT',
+    ETHWallet: 'eQNMPzmoBADRzCEHq',
     toAddress: '0x7351ba99efc7d7ae0afded96ba6cc7d36df715ad',
     password: '1234567890',
     ERC20Wallet: '6yaCFSJHnRwsaDzT9',
@@ -23,8 +28,9 @@ module.exports = {
     privatehiveLocationCode: 'us-west-2',
   },
   Privatehive: {
-    peerInstanceId: 'vdxmabqgfl',
-    ordererInstanceId: 'sjjhcjkhzj',
+    peerInstanceId: 'eeggkvtixi',
+    ordererInstanceId: 'tigicqiadl',
+    channelName: 'mychannel',
     domain: 'http://dev.blockcluster.io',
   },
 };

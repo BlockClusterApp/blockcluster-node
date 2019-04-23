@@ -7,8 +7,11 @@ test.before(t => {
   const platform = new Blockcluster.Platform({
     apiKey: Config.ApiKeys.Bot,
   });
+  const platformUser = new Blockcluster.Platform({
+    apiKey: Config.ApiKeys.User,
+  });
 
-  Object.assign(t.context, { platform });
+  Object.assign(t.context, { platform, platformUser });
 });
 
 test('Fetch Network Configs', async t => {
@@ -73,7 +76,7 @@ test('Fetch Available locations', async t => {
   return true;
 });
 
-test('Create and Delete Network', async t => {
+test('Dynamo: Create and Delete Network', async t => {
   try {
     const { platform } = t.context;
     const res = await platform.createNetwork({
@@ -95,7 +98,7 @@ test('Create and Delete Network', async t => {
   return true;
 });
 
-test('Send Invite', async t => {
+test('Dynamo: Send Invite', async t => {
   try {
     const { platform } = t.context;
     const res = await platform.inviteViaEmail({
@@ -118,7 +121,7 @@ test('Send Invite', async t => {
   return true;
 });
 
-test('Create, Lists and Delete Privatehive network', async t => {
+test('Privatehive: Create, Lists and Delete network', async t => {
   try {
     const { platform } = t.context;
 
@@ -135,10 +138,49 @@ test('Create, Lists and Delete Privatehive network', async t => {
     if (!doesExists) {
       t.fail('Privatehive Network creation failed');
     }
+
     await platform.deletePrivatehiveNetwork(peerId);
     t.pass();
   } catch (err) {
     t.fail(err);
+  }
+
+  return true;
+});
+
+test('Privatehive: Invite & Accept channel join request', async t => {
+  try {
+    const { platformUser } = t.context;
+
+    const nodeList = await platformUser.listPrivatehiveNetworks(Config.Privatehive.peerInstanceId);
+    const ordererList = await platformUser.listPrivatehiveNetworks(Config.Privatehive.ordererInstanceId);
+
+    const node = platformUser.getPrivatehiveNode(nodeList[0]);
+    const orderer = platformUser.getPrivatehiveNode(ordererList[0]);
+
+    node.setOrderer(orderer);
+
+    const inviteId = await platformUser.inviteUserToChannel({
+      email: Config.Platform.inviteEmail,
+      peerId: Config.Privatehive.peerInstanceId,
+      channelName: Config.Privatehive.channelName,
+      ordererDomain: `orderer.${orderer.organization.toLowerCase()}.com`,
+      ordererConnectionDetails: `grpc://${orderer.ordererURL}`,
+    });
+
+    const invites = await platformUser.listPrivatehiveChannelInvites();
+
+    if (!invites.map(c => c._id).includes(inviteId)) {
+      return t.fail('Invite not in list');
+    }
+
+    t.pass();
+  } catch (err) {
+    if (err.toString() === 'Error: Chaincode directory name wrong') {
+      t.pass();
+    } else {
+      t.fail(err);
+    }
   }
 
   return true;
