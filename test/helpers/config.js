@@ -10,13 +10,14 @@ module.exports = {
   Hyperion: {
     locationCode: 'us-west-2',
     fileHash: 'QmZ9N8A56HJFDJgWPDNDMKHcVwBpFPH8xKLwdxvnJYSJ4A',
-    domain: 'https://dev.blockcluster.io',
+    domain: 'http://localhost:3000',
   },
   Paymeter: {
+    feeWallet: 'NhpRWi7EG8EfX9FYy',
     ETHWallet: 'eQNMPzmoBADRzCEHq',
     toAddress: '0x7351ba99efc7d7ae0afded96ba6cc7d36df715ad',
     password: '1234567890',
-    ERC20Wallet: '6yaCFSJHnRwsaDzT9',
+    ERC20Wallet: '97g3jzmfoNawZW8pK',
     ERCtoAddress: '0x0141aeef44f97b7606b842b23deeb8b94810d932',
   },
   Platform: {
@@ -31,6 +32,7 @@ module.exports = {
     peerInstanceId: 'eeggkvtixi',
     ordererInstanceId: 'tigicqiadl',
     channelName: 'mychannel',
-    domain: 'http://dev.blockcluster.io',
+    domain: 'https://dev.blockcluster.io',
+    platformDomain: 'http://localhost:3000',
   },
 };

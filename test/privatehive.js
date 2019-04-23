@@ -8,6 +8,7 @@ const Blockcluster = require('..');
 test.before(async t => {
   const platform = new Blockcluster.Platform({
     apiKey: Config.ApiKeys.User,
+    domain: Config.Privatehive.platformDomain,
   });
 
   const nodeList = await platform.listPrivatehiveNetworks(Config.Privatehive.peerInstanceId);
@@ -16,8 +17,10 @@ test.before(async t => {
   const node = platform.getPrivatehiveNode(nodeList[0]);
   const orderer = platform.getPrivatehiveNode(ordererList[0]);
 
-  node.setOrderer(orderer);
+  node.setDomain(Config.Privatehive.domain);
+  orderer.setDomain(Config.Privatehive.domain);
 
+  node.setOrderer(orderer);
   Object.assign(t.context, { fabric: node, orderer, platform });
 });
 
@@ -27,7 +30,6 @@ test('Create & Fetch channel', async t => {
     const channelName = `test-channel-${new Date().getTime()}`;
     await fabric.createChannel(channelName);
     const channels = await fabric.fetchChannels();
-
     if (!Array.isArray(channels)) {
       return t.fail('Channel list is not an array');
     }
@@ -67,9 +69,8 @@ test('Add & Fetch chaincode', async t => {
     } else {
       t.fail(err);
     }
-  } finally {
-    fs.unlinkSync(chaincodeNewFile);
   }
 
+  fs.unlinkSync(chaincodeNewFile);
   return true;
 });

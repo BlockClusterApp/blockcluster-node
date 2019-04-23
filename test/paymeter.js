@@ -195,7 +195,7 @@ test('Transfer ERC20 with different fee wallet', async t => {
       toAddress: Config.Paymeter.ERCtoAddress,
       amount: '0.0001',
       password: Config.Paymeter.password,
-      feeWalletId: Config.Paymeter.ETHWallet,
+      feeWalletId: Config.Paymeter.feeWallet,
       feeWalletPassword: Config.Paymeter.password,
     });
     if (!txnId) {

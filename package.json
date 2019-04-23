@@ -1,6 +1,6 @@
 {
   "name": "blockcluster",
-  "description": "Official BlockCluster Node.js SDK for Dynamo and Platform APIs",
+  "description": "Official BlockCluster Node.js SDK for Blockcluster platform and Services",
   "version": "1.1.9",
   "author": "BlockCluster <info@blockcluster.io> (https://www.blockcluster.io)",
   "bugs": {
@@ -21,7 +21,6 @@
     "web3": "^0.20.6"
   },
   "ava": {
-    "failFast": true,
     "verbose": true,
     "files": [
       "test/*.js"
@@ -55,7 +54,10 @@
     "blockcluster",
     "quorum",
     "pre",
-    "dapp"
+    "dapp",
+    "hyperledger",
+    "fabric",
+    "couchdb"
   ],
   "license": "MIT",
   "lint-staged": {

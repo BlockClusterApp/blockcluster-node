@@ -17,10 +17,13 @@ test.before(t => {
 test('Upload and Delete Hyperion file', async t => {
   try {
     const { hyperion } = t.context;
+    const dest = path.join(__dirname, '..', 'tmp', `README-${new Date().getTime()}.md`);
+    fs.writeFileSync(dest, `Hyperion test: ${new Date()}`);
 
-    const stream = fs.createReadStream(path.join(__dirname, '..', 'README.md'));
+    const stream = fs.createReadStream(dest);
 
     const hash = await hyperion.uploadFile({ fileStream: stream, locationCode: Config.Hyperion.locationCode });
+    fs.unlinkSync(dest);
     await hyperion.deleteFile({ locationCode: Config.Hyperion.locationCode, fileHash: hash });
     t.pass();
   } catch (err) {
