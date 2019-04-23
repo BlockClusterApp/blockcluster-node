@@ -1,13 +1,15 @@
 const test = require('ava');
+
+const Config = require('./helpers/config');
 const Blockcluster = require('..');
 
 test.before(t => {
   const paymeter = new Blockcluster.Paymeter({
-    apiKey: 'RUxTOU1TcGNuRnJuRVp3elR5NVkjMCVE',
+    apiKey: Config.ApiKeys.User,
   });
 
   const paymeterBot = new Blockcluster.Paymeter({
-    apiKey: 'JHdTUk1rZFpFI3VIZ2hBSjN2eWZrI3YmMXNH',
+    apiKey: Config.ApiKeys.Bot,
   });
 
   Object.assign(t.context, { paymeter, paymeterBot });
@@ -17,7 +19,7 @@ test('Throws an error when wallet name is missing', async t => {
   const { paymeter } = t.context;
 
   try {
-    const walletId = await paymeter.createWallet({ walletName: `ERC Wallet ${new Date().getTime()}`, network: 'testnet', password: '1234567890' });
+    const walletId = await paymeter.createWallet({ walletName: `ERC Wallet ${new Date().getTime()}`, network: 'testnet', password: Config.Paymeter.password });
     if (walletId) {
       return t.fail('Wallet created');
     }
@@ -34,7 +36,7 @@ test('Creates ETH wallet', async t => {
   const { paymeterBot } = t.context;
 
   try {
-    const walletId = await paymeterBot.createWallet({ coinType: 'ETH', walletName: `ERC Wallet ${new Date().getTime()}`, network: 'testnet', password: '1234567890' });
+    const walletId = await paymeterBot.createWallet({ coinType: 'ETH', walletName: `ERC Wallet ${new Date().getTime()}`, network: 'testnet', password: Config.Paymeter.password });
     if (walletId) {
       return t.pass();
     }
@@ -54,7 +56,7 @@ test('Creates ERC20 wallet', async t => {
       coinType: 'ERC20',
       walletName: `ERC20 ${new Date().getTime()}`,
       network: 'testnet',
-      password: '1234567890',
+      password: Config.Paymeter.password,
       contractAddress: '0xc25D80fF9D25802cb69b2A751394F83534011308',
       tokenSymbol: 'ERJIBIN',
     });
@@ -92,7 +94,7 @@ test('Get details of ETHWallet wallet', async t => {
   const { paymeter } = t.context;
 
   try {
-    const wallet = await paymeter.getWallets('YLerSFnoy5YaMNpdJ');
+    const wallet = await paymeter.getWallets(Config.Paymeter.ETHWallet);
     if (typeof wallet !== 'object' || Array.isArray(wallet)) {
       return t.fail('Wallet is not an object');
     }
@@ -109,7 +111,7 @@ test('Get withdrawals', async t => {
   const { paymeter } = t.context;
 
   try {
-    const withdrawals = await paymeter.getWithdrawals('YLerSFnoy5YaMNpdJ');
+    const withdrawals = await paymeter.getWithdrawals(Config.Paymeter.ETHWallet);
     if (!Array.isArray(withdrawals)) {
       return t.fail('Withdrawals is not an array');
     }
@@ -126,7 +128,7 @@ test('Get deposits', async t => {
   const { paymeter } = t.context;
 
   try {
-    const deposits = await paymeter.getDeposits('YLerSFnoy5YaMNpdJ');
+    const deposits = await paymeter.getDeposits(Config.Paymeter.ETHWallet);
     if (!Array.isArray(deposits)) {
       return t.fail('Deposits is not an array');
     }
@@ -162,10 +164,10 @@ test('Transfer ether', async t => {
   try {
     // to: T7ZhRuzf7QujYmmxS
     const txnId = await paymeter.send({
-      fromWalletId: 'YLerSFnoy5YaMNpdJ',
-      toAddress: '0x7351ba99efc7d7ae0afded96ba6cc7d36df715ad',
+      fromWalletId: Config.Paymeter.ETHWallet,
+      toAddress: Config.Paymeter.toAddress,
       amount: '0.0001',
-      password: '1234567890',
+      password: Config.Paymeter.password,
     });
     if (!txnId) {
       return t.fail('Transaction id is null');
@@ -173,7 +175,7 @@ test('Transfer ether', async t => {
 
     t.pass();
   } catch (err) {
-    if (err.message.includes('Insufficient Tokens')) {
+    if (err.message.includes('Insufficient')) {
       return t.pass();
     }
 
@@ -189,12 +191,12 @@ test('Transfer ERC20 with different fee wallet', async t => {
   try {
     // to: 8BqP56DdGCMqtJaSx
     const txnId = await paymeter.send({
-      fromWalletId: '6yaCFSJHnRwsaDzT9',
-      toAddress: '0x0141aeef44f97b7606b842b23deeb8b94810d932',
+      fromWalletId: Config.Paymeter.ERC20Wallet,
+      toAddress: Config.Paymeter.ERCtoAddress,
       amount: '0.0001',
-      password: '1234567890',
-      feeWalletId: 'YLerSFnoy5YaMNpdJ',
-      feeWalletPassword: '1234567890',
+      password: Config.Paymeter.password,
+      feeWalletId: Config.Paymeter.feeWallet,
+      feeWalletPassword: Config.Paymeter.password,
     });
     if (!txnId) {
       return t.fail('Transaction id is null');

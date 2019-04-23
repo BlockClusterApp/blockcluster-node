@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Home - Postman Documentation</title>
+    <title>Hyperion - Postman Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -28,118 +28,274 @@
 
 <div id="main">
     
+    <h1 class="page-title">Hyperion</h1>
+    
 
     
 
 
 
+
+<section>
+
+<header>
+    
+        <h2>
+            <span class="ancestors"><a href="Hyperion.html">Hyperion</a>.</span>
+        
+        Hyperion
+        </h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+
+    <h4 class="name" id="Hyperion"><span class="type-signature"></span>new Hyperion<span class="signature">(options)</span><span class="type-signature"></span></h4>
+
     
 
 
 
+<div class="description">
+    <p>Creates an instance of Platform.</p>
+</div>
 
 
 
 
 
 
+
+
+
+    <h5>Parameters:</h5>
     
 
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
 
-    <section class="readme">
-        <article><h1>blockcluster</h1><p><a href="https://travis-ci.org/BlockClusterApp/blockcluster-node"><img src="https://img.shields.io/travis/BlockClusterApp/blockcluster-node.svg" alt="build status"></a>
-<a href="https://codecov.io/gh/BlockClusterApp/blockcluster-node"><img src="https://img.shields.io/codecov/c/github/BlockClusterApp/blockcluster-node.svg" alt="code coverage"></a>
-<a href="https://github.com/sindresorhus/xo"><img src="https://img.shields.io/badge/code_style-XO-5ed9c7.svg" alt="code style"></a>
-<a href="https://github.com/prettier/prettier"><img src="https://img.shields.io/badge/styled_with-prettier-ff69b4.svg" alt="styled with prettier"></a>
-<a href="https://lass.js.org"><img src="https://img.shields.io/badge/made_with-lass-95CC28.svg" alt="made with lass"></a>
-<a href="LICENSE"><img src="https://img.shields.io/github/license/BlockClusterApp/blockcluster-node.svg" alt="license"></a></p>
-<blockquote>
-<p>Official BlockCluster Node.js SDK for Dynamo and Platform APIs</p>
-</blockquote>
-<h2>Table of Contents</h2><ul>
-<li><a href="#install">Install</a></li>
-<li><a href="#usage">Usage</a></li>
-<li><a href="#docs">Docs</a></li>
-<li><a href="#contributors">Contributors</a></li>
-<li><a href="#license">License</a></li>
-</ul>
-<h2>Install</h2><p><a href="https://www.npmjs.com/">npm</a>:</p>
-<pre class="prettyprint source lang-sh"><code>npm install blockcluster</code></pre><p><a href="https://yarnpkg.com/">yarn</a>:</p>
-<pre class="prettyprint source lang-sh"><code>yarn add blockcluster</code></pre><h2>Usage</h2><p>Here is an example script showing how to create an asset type, issue assets and fetch assets:</p>
-<pre class="prettyprint source lang-js"><code>const Blockcluster = require('blockcluster');
+        <th>Type</th>
 
-const node = new Blockcluster.Dynamo({
-    locationDomain: 'app-ap-south-1b.blockcluster.io', //enter your node's location domain
-    instanceId: 'noeurgyb' //enter your instanceId
-});
+        
 
-//create license solo asset type
-await node.callAPI('assets/createAssetType', {
-    assetType: 'solo',
-    assetName: 'license',
-    fromAccount: node.getWeb3().eth.accounts[0]
-});
+        
 
-//issue a license
-await node.callAPI('assets/issueSoloAsset', {
-    assetName: 'license',
-    fromAccount: node.getWeb3().eth.accounts[0],
-    toAccount: node.getWeb3().eth.accounts[0],
-    identifier: '1234'
-});
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-//get asset info
-const assetInfo = await node.callAPI('assets/getSoloAssetInfo', {
-    assetName: 'license',
-    identifier: '1234'
-});</code></pre><p>Here is an another example script showing how to create stream using  an offline account:</p>
-<pre class="prettyprint source lang-js"><code>const Wallet = require('ethereumjs-wallet');
+    <tbody>
+    
 
-const wallet = Wallet.generate();
-const privateKey = wallet.getPrivateKey().toString('hex');
-const address = '0x' + wallet.getAddress().toString('hex');
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
 
-await node.callAPI(
-    'streams/create',
-    {
-        streamName: 'renew',
-        fromAccount: address
-    },
-    {
-        privateKey
-    }
-);</code></pre><h2>Docs</h2><p>Documentation of Dynamo's REST APIs and their usage is available at <a href="https://node.api.blockcluster.io">https://node.api.blockcluster.io</a></p>
-<h2>Contributors</h2><table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Website</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>BlockCluster</strong></td>
-<td><a href="https://www.blockcluster.io">https://www.blockcluster.io</a></td>
-</tr>
-<tr>
-<td><strong>Jibin Mathews</strong></td>
-<td><a href="https://www.jibinmathews.in">https://www.jibinmathews.in</a></td>
-</tr>
-<tr>
-<td><strong>Narayan Prusty</strong></td>
-<td><a href="https://www.github.com/narayanprusty">https://www.github.com/narayanprusty</a></td>
-</tr>
-<tr>
-<td><strong>Saikat Chakrabortty</strong></td>
-<td><a href="https://www.github.com/saikatharryc">https://www.github.com/saikatharryc</a></td>
-</tr>
-</tbody>
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Options</p></td>
+        </tr>
+
+    
+    </tbody>
 </table>
-<h2>License</h2><p><a href="LICENSE">MIT</a> © <a href="https://www.blockcluster.io">BlockCluster</a></p>
-<p>## </p></article>
-    </section>
 
 
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>apiKey</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>API Key for authentication</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>domain</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Domain where the platform is hosted</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="hyperion_index.js.html">hyperion/index.js</a>, <a href="hyperion_index.js.html#line16">line 16</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 

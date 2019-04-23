@@ -23,7 +23,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Hyperion.html">Hyperion</a><ul class='methods'><li data-type='method'><a href="Hyperion.html#deleteFile">deleteFile</a></li><li data-type='method'><a href="Hyperion.html#getFile">getFile</a></li><li data-type='method'><a href="Hyperion.html#uploadFile">uploadFile</a></li></ul></li><li><a href="Paymeter.html">Paymeter</a><ul class='methods'><li data-type='method'><a href="Paymeter.html#createWallet">createWallet</a></li><li data-type='method'><a href="Paymeter.html#getDeposits">getDeposits</a></li><li data-type='method'><a href="Paymeter.html#getWallets">getWallets</a></li><li data-type='method'><a href="Paymeter.html#getWithdrawals">getWithdrawals</a></li><li data-type='method'><a href="Paymeter.html#refreshBalance">refreshBalance</a></li><li data-type='method'><a href="Paymeter.html#send">send</a></li></ul></li><li><a href="Platform.html">Platform</a><ul class='methods'><li data-type='method'><a href="Platform.html#acceptInvite">acceptInvite</a></li><li data-type='method'><a href="Platform.html#createNetwork">createNetwork</a></li><li data-type='method'><a href="Platform.html#deleteNetwork">deleteNetwork</a></li><li data-type='method'><a href="Platform.html#fetchLocations">fetchLocations</a></li><li data-type='method'><a href="Platform.html#fetchNetworkTypes">fetchNetworkTypes</a></li><li data-type='method'><a href="Platform.html#inviteViaEmail">inviteViaEmail</a></li><li data-type='method'><a href="Platform.html#joinNetwork">joinNetwork</a></li></ul></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Hyperion.html">Hyperion</a><ul class='methods'><li data-type='method'><a href="Hyperion.html#deleteFile">deleteFile</a></li><li data-type='method'><a href="Hyperion.html#getFile">getFile</a></li><li data-type='method'><a href="Hyperion.html#uploadFile">uploadFile</a></li></ul></li><li><a href="Hyperion.Hyperion.html">Hyperion</a></li><li><a href="Paymeter.html">Paymeter</a><ul class='methods'><li data-type='method'><a href="Paymeter.html#createWallet">createWallet</a></li><li data-type='method'><a href="Paymeter.html#getDeposits">getDeposits</a></li><li data-type='method'><a href="Paymeter.html#getWallets">getWallets</a></li><li data-type='method'><a href="Paymeter.html#getWithdrawals">getWithdrawals</a></li><li data-type='method'><a href="Paymeter.html#refreshBalance">refreshBalance</a></li><li data-type='method'><a href="Paymeter.html#send">send</a></li></ul></li><li><a href="Paymeter.Paymeter.html">Paymeter</a></li><li><a href="Platform.html">Platform</a><ul class='methods'><li data-type='method'><a href="Platform.html#acceptInvite">acceptInvite</a></li><li data-type='method'><a href="Platform.html#acceptPrivatehiveChannelInvite">acceptPrivatehiveChannelInvite</a></li><li data-type='method'><a href="Platform.html#createNetwork">createNetwork</a></li><li data-type='method'><a href="Platform.html#createPrivatehiveNetwork">createPrivatehiveNetwork</a></li><li data-type='method'><a href="Platform.html#deleteNetwork">deleteNetwork</a></li><li data-type='method'><a href="Platform.html#deletePrivatehiveNetwork">deletePrivatehiveNetwork</a></li><li data-type='method'><a href="Platform.html#fetchLocations">fetchLocations</a></li><li data-type='method'><a href="Platform.html#fetchNetworkTypes">fetchNetworkTypes</a></li><li data-type='method'><a href="Platform.html#getPrivatehiveNode">getPrivatehiveNode</a></li><li data-type='method'><a href="Platform.html#inviteUserToChannel">inviteUserToChannel</a></li><li data-type='method'><a href="Platform.html#inviteViaEmail">inviteViaEmail</a></li><li data-type='method'><a href="Platform.html#joinNetwork">joinNetwork</a></li><li data-type='method'><a href="Platform.html#listPrivatehiveChannelInvites">listPrivatehiveChannelInvites</a></li><li data-type='method'><a href="Platform.html#listPrivatehiveNetworks">listPrivatehiveNetworks</a></li></ul></li><li><a href="Platform.Platform.html">Platform</a></li><li><a href="PrivatehiveNode.html">PrivatehiveNode</a><ul class='methods'><li data-type='method'><a href="PrivatehiveNode.html#addChaincode">addChaincode</a></li><li data-type='method'><a href="PrivatehiveNode.html#createChannel">createChannel</a></li><li data-type='method'><a href="PrivatehiveNode.html#fetchChaincodes">fetchChaincodes</a></li><li data-type='method'><a href="PrivatehiveNode.html#fetchChannels">fetchChannels</a></li><li data-type='method'><a href="PrivatehiveNode.html#installChaincode">installChaincode</a></li><li data-type='method'><a href="PrivatehiveNode.html#instantiateChaincode">instantiateChaincode</a></li><li data-type='method'><a href="PrivatehiveNode.html#setOrderer">setOrderer</a></li></ul></li></ul>
 </nav>
 
 <div id="main">
@@ -39,15 +39,23 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>const helpers = require('../../helpers');
+const PrivatehiveNode = require('../privatehive');
 
 /**
  * Handles all functions related to the blockcluster platform operation
  * @class Platform
  */
 class Platform {
-  constructor({ apiKey }) {
+  /**
+   * Creates an instance of Platform.
+   * @param  {object} options Options
+   * @property {string} apiKey API Key for authentication
+   * @property {string} [domain] Domain where the platform is hosted
+   * @memberof Platform
+   */
+  constructor({ apiKey, domain }) {
     this.apiKey = apiKey;
-
+    this.domain = domain || helpers.getHost();
     if (!this.apiKey) {
       throw new Error('API Key required while initializing Platform module');
     }
@@ -55,14 +63,15 @@ class Platform {
 
   /**
    * Fetches all the applicable network types. You need to pass the network type id in any create or invite request
+   * @param {dynamo|privatehive} [service] Service for which the configurations are to be fetched
    * @return {Promise&lt;array>} List of network types
    * @memberof Platform
    */
-  async fetchNetworkTypes() {
-    const path = '/api/platform/networks/types';
+  async fetchNetworkTypes(service = 'dynamo') {
+    const path = `/api/platform/network-types?service=${service}`;
 
     try {
-      const networks = await helpers.sendPlatformRequest({ path, method: 'GET', apiKey: this.apiKey });
+      const networks = await helpers.sendPlatformRequest({ domain: this.domain, path, method: 'GET', apiKey: this.apiKey });
       return networks;
     } catch (err) {
       return Promise.reject(err);
@@ -71,14 +80,15 @@ class Platform {
 
   /**
    * Fetches all the applicable locations. You need to pass the location code in any create or invite request
+   * @param {dynamo|privatehive} [service] Service for which the locations are to be fetched
    * @return {Promise&lt;array>} List of locations
    * @memberof Platform
    */
-  async fetchLocations() {
-    const path = '/api/platform/networks/locations';
+  async fetchLocations(service = 'dynamo') {
+    const path = `/api/platform/locations?service=${service}`;
 
     try {
-      const locations = await helpers.sendPlatformRequest({ path, method: 'GET', apiKey: this.apiKey });
+      const locations = await helpers.sendPlatformRequest({ domain: this.domain, path, method: 'GET', apiKey: this.apiKey });
       return locations;
     } catch (err) {
       return Promise.reject(err);
@@ -102,7 +112,7 @@ class Platform {
       locationCode,
     };
     try {
-      const res = await helpers.sendPlatformRequest({ path, method: 'POST', body, apiKey: this.apiKey });
+      const res = await helpers.sendPlatformRequest({ domain: this.domain, path, method: 'POST', body, apiKey: this.apiKey });
       if (res &amp;&amp; res.data) {
         return res.data;
       }
@@ -123,7 +133,7 @@ class Platform {
     const path = `/api/platform/networks/${networkId}`;
 
     try {
-      const res = await helpers.sendPlatformRequest({ path, method: 'DELETE', apiKey: this.apiKey });
+      const res = await helpers.sendPlatformRequest({ domain: this.domain, path, method: 'DELETE', apiKey: this.apiKey });
       return res;
     } catch (err) {
       return Promise.reject(err);
@@ -190,7 +200,7 @@ class Platform {
     });
 
     try {
-      const res = await helpers.sendPlatformRequest({ path, method: 'POST', body, apiKey: this.apiKey });
+      const res = await helpers.sendPlatformRequest({ domain: this.domain, path, method: 'POST', body, apiKey: this.apiKey });
       return res;
     } catch (err) {
       return Promise.reject(err);
@@ -229,7 +239,7 @@ class Platform {
     };
 
     try {
-      const res = await helpers.sendPlatformRequest({ path, method: 'POST', body, apiKey: this.apiKey });
+      const res = await helpers.sendPlatformRequest({ domain: this.domain, path, method: 'POST', body, apiKey: this.apiKey });
       return res.inviteId;
     } catch (err) {
       return Promise.reject(err);
@@ -255,11 +265,222 @@ class Platform {
     };
 
     try {
-      const res = await helpers.sendPlatformRequest({ path, method: 'POST', body, apiKey: this.apiKey });
+      const res = await helpers.sendPlatformRequest({ domain: this.domain, path, method: 'POST', body, apiKey: this.apiKey });
       return res.data.instanceId;
     } catch (err) {
       return Promise.reject(err);
     }
+  }
+
+  /**
+   * Creates a privatehive node
+   * @param  {object} options Options
+   * @property {string} [options.peerId] Peer Id to which the orderer joins. Required only incase of orderer type
+   * @property {string} options.locationCode Location code where the network should be deployed
+   * @property {peer|orderer} options.type Type of network. Either peer or orderer
+   * @property {string} [options.voucherCode] Voucher code to be applied
+   * @property {string} options.name Name of the network. Required
+   * @property {string} options.orgName Organization to which the node belongs to
+   * @property {solo|kafka} [options.ordererType] Type of orderer to be created. Solo or Kafka. Required only if type is orderer
+   * @property {stirng} options.networkConfigId ID of network configuration
+   * @property {number} [options.diskSpace] Disk space required for this node. Applicable only if network configuration has isDiskChangeable = true
+   * @return {string} Instance ID of the created network
+   * @memberof Platform
+   */
+  async createPrivatehiveNetwork({ peerId, locationCode, type, voucherCode, name, orgName, ordererType, networkConfigId, diskSpace }) {
+    if (type === 'orderer' &amp;&amp; !peerId) {
+      return Promise.reject(new Error('PeerID is required to create orderer'));
+    }
+
+    if (!name) {
+      return Promise.reject(new Error('Name is required'));
+    }
+
+    if (!orgName) {
+      return Promise.reject(new Error('Organization Name is required'));
+    }
+
+    if (type === 'orderer' &amp;&amp; !ordererType) {
+      console.warn('OrdererType not specified. Defaulting to solo');
+      ordererType = 'solo';
+    }
+
+    if (!networkConfigId) {
+      return Promise.reject(new Error('Network configuration id is required'));
+    }
+
+    if (!locationCode) {
+      return Promise.reject(new Error('Location code is required'));
+    }
+
+    const body = {
+      locationCode,
+      name,
+      orgName,
+      networkConfigId,
+      diskSpace,
+      voucherCode,
+      type,
+    };
+
+    if (type === 'orderer') {
+      body.ordererType = ordererType;
+      body.peerId = peerId;
+    }
+
+    const path = '/api/platform/privatehive';
+
+    try {
+      const res = await helpers.sendPlatformRequest({ domain: this.domain, path, method: 'POST', body, apiKey: this.apiKey });
+      return res.data.instanceId;
+    } catch (err) {
+      return Promise.reject(err);
+    }
+  }
+
+  /**
+   * Lists details of privatehive networks
+   * @param  {string} [instanceId] If provided then fetches details of only this instance
+   * @param  {object} options Additional filters
+   * @property {bool} [options.showDeleted] If true then shows all the deleted networks as well
+   * @property {peer|orderer} [options.nodeType] Queries only a particular type of node
+   * @property {string} [options.locationCode] Queries networks only in this location
+   * @property {date} [options.createdAfter] Queries networks created after this date
+   * @property {date} [options.createdBefore] Queries networks created before this date
+   * @return {Array&lt;Node>} Array of networks matching the filters
+   * @memberof Platform
+   */
+  async listPrivatehiveNetworks(instanceId, options = {}) {
+    let path = '/api/platform/privatehive';
+    if (instanceId &amp;&amp; typeof instanceId === 'string') {
+      path = `${path}/${instanceId}`;
+    } else {
+      options = instanceId;
+    }
+
+    const { nodeType, locationCode, createdAfter, createdBefore } = options;
+    let { showDeleted } = options;
+
+    showDeleted = Boolean(showDeleted);
+    path = `${path}?showDeleted=${showDeleted}`;
+    if (nodeType) {
+      path = `${path}&amp;nodeType=${nodeType}`;
+    }
+
+    if (locationCode) {
+      path = `${path}&amp;locationCode=${locationCode}`;
+    }
+
+    if (createdAfter) {
+      path = `${path}&amp;createdAfter=${createdAfter}`;
+    }
+
+    if (createdBefore) {
+      path = `${path}&amp;createdBefore=${createdBefore}`;
+    }
+
+    try {
+      const res = await helpers.sendPlatformRequest({ domain: this.domain, path, method: 'GET', apiKey: this.apiKey });
+      return res.data;
+    } catch (err) {
+      return Promise.reject(err);
+    }
+  }
+
+  /**
+   * Delets a privatehive node
+   * @param  {string} networkId Instance ID of the network to be deleted
+   * @return {string} InstanceID of deleted network
+   * @memberof Platform
+   */
+  async deletePrivatehiveNetwork(networkId) {
+    const path = `/api/platform/privatehive/${networkId}`;
+
+    try {
+      const res = await helpers.sendPlatformRequest({ domain: this.domain, path, method: 'DELETE', apiKey: this.apiKey });
+      return res.data.instanceId;
+    } catch (err) {
+      return Promise.reject(err);
+    }
+  }
+
+  /**
+   * Invites a user to a HLF channel. The invited user can select the peer which will join the channel
+   * @param  {object} params Options
+   * @property {string} params.email Email of the user to be invited
+   * @property {string} params.peerId Instance ID of the peer to be invited
+   * @property {string} params.channelName Channel to which the user should be invited to
+   * @property {string} params.ordererDomain Domain of the orderer
+   * @property {string} params.ordererConnectionDetails Connection details of the orderer like "grpc://1.2.3.4:1234"
+   * @return {string} Invite ID
+   * @memberof Platform
+   */
+  async inviteUserToChannel({ email, peerId, channelName, ordererDomain, ordererConnectionDetails }) {
+    const path = '/api/platform/privatehive/invite';
+    const body = {
+      email,
+      networkId: peerId,
+      channelName,
+      ordererDomain,
+      ordererConnectionDetails,
+    };
+
+    try {
+      const res = await helpers.sendPlatformRequest({ domain: this.domain, path, method: 'POST', body, apiKey: this.apiKey });
+      return res.data.inviteId;
+    } catch (err) {
+      return Promise.reject(err);
+    }
+  }
+
+  /**
+   * Accepts an invite to join a channel
+   * @param  {string} inviteId InviteID to be accepted
+   * @param  {string} peerId InstanceID of the peer to join the channel
+   * @return {string} InstanceID of the joined peer
+   * @memberof Platform
+   */
+  async acceptPrivatehiveChannelInvite(inviteId, peerId) {
+    const path = `/api/platform/privatehive/invite/accept/${inviteId}`;
+    const body = {
+      peerId,
+    };
+    try {
+      const res = await helpers.sendPlatformRequest({ domain: this.domain, path, method: 'POST', body, apiKey: this.apiKey });
+      return res.data.instanceId;
+    } catch (err) {
+      return Promise.reject(err);
+    }
+  }
+
+  /**
+   * Lists all pending privatehive channel invites
+   * @return {Array&lt;Invite>} List of invites
+   * @memberof Platform
+   */
+  async listPrivatehiveChannelInvites() {
+    const path = '/api/platform/privatehive/invite';
+    try {
+      const res = await helpers.sendPlatformRequest({ domain: this.domain, path, method: 'GET', apiKey: this.apiKey });
+      return res.data;
+    } catch (err) {
+      return Promise.reject(err);
+    }
+  }
+
+  /**
+   *  Returns privatehive node object to operate on it
+   * @param  {object} nodeInfo Node information details. Can be fetched from listPrivatehiveNetworks(instanceId)
+   * @return {PrivatehiveNode} Privatehive node instance
+   * @memberof Platform
+   */
+  getPrivatehiveNode(nodeInfo) {
+    const node = { ...nodeInfo };
+    if (nodeInfo.ordererType) {
+      nodeInfo.type = 'orderer';
+    }
+
+    return new PrivatehiveNode(node);
   }
 }
 
@@ -276,7 +497,7 @@ module.exports = Platform;
 <br class="clear">
 
 <footer>
-    Documentation generated at Wed Mar 27 2019 08:22:55 GMT+0000 (Coordinated Universal Time)
+    Documentation generated at Tue Apr 23 2019 16:21:49 GMT+0530 (IST)
 </footer>
 
 <script>prettyPrint();</script>

@@ -97,11 +97,12 @@ Documentation of Dynamo's REST APIs and their usage is available at <https://nod
 
 ## Contributors
 
-| Name               | Website                                |
-| ------------------ | -------------------------------------- |
-| **BlockCluster**   | <https://www.blockcluster.io>          |
-| **Jibin Mathews**  | <https://www.jibinmathews.in>          |
-| **Narayan Prusty** | <https://www.github.com/narayanprusty> |
+| Name                    | Website                                |
+| ----------------------- | -------------------------------------- |
+| **BlockCluster**        | <https://www.blockcluster.io>          |
+| **Jibin Mathews**       | <https://www.jibinmathews.in>          |
+| **Narayan Prusty**      | <https://www.github.com/narayanprusty> |
+| **Saikat Chakrabortty** | <https://www.github.com/saikatharryc>  |
 
 
 ## License

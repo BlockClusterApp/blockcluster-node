@@ -2,7 +2,7 @@ module.exports = {
   extends: 'airbnb-base',
   rules: {
     'no-param-reassign': 0,
-    'max-len': 0,
+    'max-len': 1,
     'comma-dangle': 1,
     'arrow-parens': 0,
     'implicit-arrow-linebreak': 0,
@@ -11,5 +11,7 @@ module.exports = {
     'lines-between-class-members': 0,
     'eslint-comments/no-unused-disable': 0,
     'global-require': 0,
+    'no-underscore-dangle': 1,
+    'class-methods-use-this': 1,
   },
 };
