@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>PrivatehiveNode - Postman Documentation</title>
+    <title>Notification - Postman Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -28,7 +28,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">PrivatehiveNode</h1>
+    <h1 class="page-title">Notification</h1>
     
 
     
@@ -41,9 +41,7 @@
 <header>
     
         <h2>
-            <span class="ancestors"><a href="PrivatehiveNode.html">PrivatehiveNode</a>.</span>
-        
-        PrivatehiveNode
+        Notification
         </h2>
         
     
@@ -54,16 +52,82 @@
     
         
 
+        
+
+
+<dl class="details">
+
     
 
-    <h4 class="name" id="PrivatehiveNode"><span class="type-signature"></span>new PrivatehiveNode<span class="signature">(options)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="privatehive_modules_notifications.js.html">privatehive/modules/notifications.js</a>, <a href="privatehive_modules_notifications.js.html#line11">line 11</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id=".add"><span class="type-signature">(static) </span>add<span class="signature">(options)</span><span class="type-signature"> &rarr; {string}</span></h4>
 
     
 
 
 
 <div class="description">
-    <p>Creates an instance of PrivatehiveNode.</p>
+    <p>Adds a notfication URL to a chaincode event on a particular channel</p>
 </div>
 
 
@@ -115,7 +179,7 @@
 
             
 
-            <td class="description last"><p>Params</p></td>
+            <td class="description last"><p>Parameters</p></td>
         </tr>
 
     
@@ -141,8 +205,6 @@
         <th>Type</th>
 
         
-        <th>Attributes</th>
-        
 
         
 
@@ -155,7 +217,7 @@
 
         <tr>
             
-                <td class="name"><code>options.name</code></td>
+                <td class="name"><code>options.chaincodeName</code></td>
             
 
             <td class="type">
@@ -168,23 +230,17 @@
             </td>
 
             
-                <td class="attributes">
-                
-
-                
-                </td>
-            
 
             
 
-            <td class="description last"><p>Name of the node</p></td>
+            <td class="description last"><p>Name of the chaincode where notification is to be added</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>options.instanceId</code></td>
+                <td class="name"><code>options.channelName</code></td>
             
 
             <td class="type">
@@ -197,23 +253,17 @@
             </td>
 
             
-                <td class="attributes">
-                
-
-                
-                </td>
-            
 
             
 
-            <td class="description last"><p>Instance ID of the node</p></td>
+            <td class="description last"><p>Name of the channel where chaincode is instantiated</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>options.orgName</code></td>
+                <td class="name"><code>options.chaincodeEventName</code></td>
             
 
             <td class="type">
@@ -226,23 +276,17 @@
             </td>
 
             
-                <td class="attributes">
-                
-
-                
-                </td>
-            
 
             
 
-            <td class="description last"><p>Organization of the node</p></td>
+            <td class="description last"><p>Name of the chaincode event on which notification is to be triggered</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>options.locationCode</code></td>
+                <td class="name"><code>options.notificationURL</code></td>
             
 
             <td class="type">
@@ -255,166 +299,10 @@
             </td>
 
             
-                <td class="attributes">
-                
-
-                
-                </td>
-            
 
             
 
-            <td class="description last"><p>Location code of the cluster the node is deployed at</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>options.domain</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>Node API host, got from Node -&gt; Security</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>options.type</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">peer</span>
-|
-
-<span class="param-type">orderer</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>Type of node</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>options.workerNodeIP</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">IP</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>IP Address of the worker node</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>options.ordererNodePort</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">int</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>Port number at which the orderer is accesible</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>options.details</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>More options</p></td>
+            <td class="description last"><p>URL where the notification is to be sent</p></td>
         </tr>
 
     
@@ -453,7 +341,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="privatehive_index.js.html">privatehive/index.js</a>, <a href="privatehive_index.js.html#line35">line 35</a>
+        <a href="privatehive_modules_notifications.js.html">privatehive/modules/notifications.js</a>, <a href="privatehive_modules_notifications.js.html#line16">line 16</a>
     </li></ul></dd>
     
 
@@ -476,11 +364,59 @@
 
 
 
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Response from server</p>
+</div>
 
 
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
 
     
-    </div>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".list"><span class="type-signature">(static) </span>list<span class="signature">()</span><span class="type-signature"> &rarr; {Array.&lt;<a href="global.html#NotificationEvent">NotificationEvent</a>>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Lists all notification events and URLs</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
 
     
 
@@ -488,12 +424,601 @@
 
     
 
-     
+    
+
+    
 
     
 
     
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="privatehive_modules_notifications.js.html">privatehive/modules/notifications.js</a>, <a href="privatehive_modules_notifications.js.html#line139">line 139</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>List of notifications</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;<a href="global.html#NotificationEvent">NotificationEvent</a>></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".update"><span class="type-signature">(static) </span>update<span class="signature">(options)</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Updates a notfication URL of an existing chaincode event</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Parameters</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options.chaincodeName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Name of the chaincode where notification is to be added</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options.channelName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Name of the channel where chaincode is instantiated</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options.chaincodeEventName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Name of the chaincode event on which notification is to be triggered</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options.notificationURL</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>URL where the notification is to be sent</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="privatehive_modules_notifications.js.html">privatehive/modules/notifications.js</a>, <a href="privatehive_modules_notifications.js.html#line59">line 59</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Response from server</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".update"><span class="type-signature">(static) </span>update<span class="signature">(options)</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Removes a notification URL for a chaincode event</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Parameters</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options.chaincodeName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Name of the chaincode where notification is to be added</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options.channelName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Name of the channel where chaincode is instantiated</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options.chaincodeEventName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Name of the chaincode event on which notification is to be triggered</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="privatehive_modules_notifications.js.html">privatehive/modules/notifications.js</a>, <a href="privatehive_modules_notifications.js.html#line102">line 102</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Response from server</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
     
 
     

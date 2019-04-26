@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Platform - Postman Documentation</title>
+    <title>Global - Postman Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -28,7 +28,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Platform</h1>
+    <h1 class="page-title">Global</h1>
     
 
     
@@ -41,9 +41,7 @@
 <header>
     
         <h2>
-            <span class="ancestors"><a href="Platform.html">Platform</a>.</span>
         
-        Platform
         </h2>
         
     
@@ -54,73 +52,131 @@
     
         
 
-    
-
-    <h4 class="name" id="Platform"><span class="type-signature"></span>new Platform<span class="signature">(options)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Creates an instance of Platform.</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
         
 
-        <th>Type</th>
 
-        
+<dl class="details">
 
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
     
 
-        <tr>
-            
-                <td class="name"><code>options</code></td>
-            
+    
 
-            <td class="type">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Type Definitions</h3>
+
+        
+                
+<h4 class="name" id="Block">Block</h4>
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="privatehive_modules_explore.js.html">privatehive/modules/explore.js</a>, <a href="privatehive_modules_explore.js.html#line3">line 3</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
             
                 
-<span class="param-type">object</span>
+<h4 class="name" id="ChaincodeType">ChaincodeType</h4>
 
 
-            
-            </td>
 
-            
 
-            
-
-            <td class="description last"><p>Options</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -141,8 +197,6 @@
         <th>Type</th>
 
         
-        <th>Attributes</th>
-        
 
         
 
@@ -155,7 +209,7 @@
 
         <tr>
             
-                <td class="name"><code>apiKey</code></td>
+                <td class="name"><code>version</code></td>
             
 
             <td class="type">
@@ -168,23 +222,17 @@
             </td>
 
             
-                <td class="attributes">
-                
-
-                
-                </td>
-            
 
             
 
-            <td class="description last"><p>API Key for authentication</p></td>
+            <td class="description last"><p>Chaincode version</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>domain</code></td>
+                <td class="name"><code>name</code></td>
             
 
             <td class="type">
@@ -197,18 +245,33 @@
             </td>
 
             
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
 
+            
+
+            <td class="description last"><p>Name of the chaincode</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>language</code></td>
+            
+
+            <td class="type">
+            
                 
-                </td>
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
             
 
             
 
-            <td class="description last"><p>Domain where the platform is hosted</p></td>
+            <td class="description last"><p>Language in which the chaincode is written</p></td>
         </tr>
 
     
@@ -247,7 +310,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="platform_index.js.html">platform/index.js</a>, <a href="platform_index.js.html#line16">line 16</a>
+        <a href="privatehive_modules_chaincodes.js.html">privatehive/modules/chaincodes.js</a>, <a href="privatehive_modules_chaincodes.js.html#line5">line 5</a>
     </li></ul></dd>
     
 
@@ -263,6 +326,9 @@
 
 
 
+            
+                
+<h4 class="name" id="ChannelType">ChannelType</h4>
 
 
 
@@ -273,16 +339,105 @@
 
 
 
-    
-    </div>
-
-    
-
-    
+    <h5 class="subsection-title">Properties:</h5>
 
     
 
-     
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Name of the channel</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ordererDomain</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Domain of the orderer</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>connectionDetails</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Orderer connection details</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
 
     
 
@@ -290,6 +445,281 @@
 
     
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="privatehive_modules_channel.js.html">privatehive/modules/channel.js</a>, <a href="privatehive_modules_channel.js.html#line3">line 3</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+            
+                
+<h4 class="name" id="NotificationEvent">NotificationEvent</h4>
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>channelName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Name of the channel</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>chaincodeName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Name of the chaincode</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>chaincodeEventName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Event name on which the notification is triggered</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>notificationURL</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>URL at which the webhook is sent</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="privatehive_modules_notifications.js.html">privatehive/modules/notifications.js</a>, <a href="privatehive_modules_notifications.js.html#line3">line 3</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+            
+                
+<h4 class="name" id="Transaction">Transaction</h4>
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="privatehive_modules_explore.js.html">privatehive/modules/explore.js</a>, <a href="privatehive_modules_explore.js.html#line7">line 7</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+            
     
 
     

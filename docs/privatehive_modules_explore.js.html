@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>hyperion/index.js - Postman Documentation</title>
+    <title>privatehive/modules/explore.js - Postman Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -28,7 +28,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">hyperion/index.js</h1>
+    <h1 class="page-title">privatehive/modules/explore.js</h1>
     
 
     
@@ -38,139 +38,160 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const request = require('request');
-const helpers = require('../../helpers');
+            <pre class="prettyprint source linenums"><code>const { RequestTypes } = require('../../../helpers/requests');
 
 /**
- * Handles all the functions related to hyperion
- * @class Hyperion
+ * @typedef Block
  */
-class Hyperion {
+
+/**
+ * @typedef Transaction
+ */
+
+/**
+ *
+ * @namespace Explore
+ */
+module.exports = node => ({
   /**
-   * Creates an instance of Platform.
-   * @param  {object} options Options
-   * @property {string} apiKey API Key for authentication
-   * @property {string} [domain] Domain where the platform is hosted
-   * @memberof Hyperion
+   * Fetches the latest block
+   * @function
+   * @name latestBlock
+   * @param  {string} channelName Name of the channel whose latest block is to be fetched.
+   * @return {Block} Response from server
+   * @memberof Explore
+   * @method
+   * @instance
    */
-  constructor({ apiKey, domain }) {
-    this.apiKey = apiKey;
-    this.domain = domain || helpers.getHost();
-  }
-
-  /**
-   * Uploads a file to hyperion service
-   * @param  {object} options File options
-   * @param {readStream} options.fileStream A read stream to the file which is to be uploaded
-   * @param {string} options.locationCode Location code of the hyperion node where the file is to be uploaded
-   * @example &lt;caption>Uploads a file to hyperion&lt;/caption>
-   * const fileReadStream = fs.createReadStream('file_to_read.txt');
-   * const fileHash = await hyperion.uploadFile({fileStream: fileReadStream, locationCode: 'us-west-2'});
-   * console.log(fileHash);
-   * // Prints the hash of the file in the hyperion cloud
-   * @return {Promise&lt;string>} Hash of the uploaded file
-   * @memberof Hyperion
-   */
-  uploadFile({ fileStream, locationCode }) {
-    const path = '/api/hyperion/upload';
-
-    const requestOptions = {
-      url: `${this.domain}${path}`,
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${this.apiKey}`,
-        'Content-Type': 'multipart/form-data',
-      },
-      formData: {
-        location: locationCode,
-        file: {
-          value: fileStream,
-          options: {
-            filename: `file-${new Date().getTime()}-a`,
-            contentType: null,
-          },
-        },
-      },
-    };
-
-    return new Promise((resolve, reject) => {
-      // fileStream.pipe(
-      request(requestOptions, (err, response, body) => {
-        if (err) {
-          return reject(err);
-        }
-
-        const res = JSON.parse(body);
-        if (res.error) {
-          return reject(res.error);
-        }
-
-        return resolve(res.message);
-      });
-      // );
-    });
-  }
-
-  /**
-   * Downloads a file from hyperion using the hash
-   * @param  {object} options File options
-   * @param {string} options.locationCode Location code of the hyperion node where the file was uploaded
-   * @param {string} options.fileHash Hash of the file to download
-   * @param {writeStream} options.writeStream A writestream to which the downloaded file will be written
-   * @example &lt;caption>Downloads a file from hyperion service&lt;/caption>
-   * const writeStream = fs.createWriteStream('download-path.txt');
-   * const res = await hyperion.getFile({locationCode: 'us-west-2', fileHash: 'ajshdvi23y4ioiertuykesd', writeStream });
-   * @return {Promise&lt;any>} Error or response status code
-   * @memberof Hyperion
-   */
-  getFile({ locationCode, fileHash, writeStream }) {
-    return new Promise((resolve, reject) => {
-      const path = `/api/hyperion/download?location=${locationCode}&amp;hash=${fileHash}`;
-
-      if (!writeStream) {
-        return reject(new Error('Write stream should be defined'));
-      }
-
-      const requestOptions = {
-        method: 'GET',
-        url: `${this.domain}${path}`,
-        headers: {
-          Authorization: `Bearer ${this.apiKey}`,
-        },
-      };
-
-      request(requestOptions)
-        .on('error', err => reject(err))
-        .on('response', response => resolve(response.statusCode))
-        .pipe(writeStream);
-
-      return true;
-    });
-  }
-
-  /**
-   * Deletes a file from hyperion node
-   * @param  {object} options File options
-   * @param  {string} locationCode Location code of the node where the file was uploaded
-   * @param {string} fileHash Hash of the file to delete
-   * @example &lt;caption>Deletes a file from hyperion service&lt;/caption>
-   * const res = await hyperion.deleteFile({locationCode: 'us-west-2', fileHash: 'wefjhggbhoirekuyghiqwlyug'})
-   * @return {Promise&lt;any>} Response of delete operation or error
-   * @memberof Hyperion
-   */
-  async deleteFile({ locationCode, fileHash }) {
-    const path = `/api/hyperion/delete?location=${locationCode}&amp;hash=${fileHash}`;
-
-    try {
-      const deleteResponse = await helpers.sendPlatformRequest({ domain: this.domain, path, method: 'DELETE', apiKey: this.apiKey });
-      return deleteResponse;
-    } catch (err) {
-      return Promise.reject(err);
+  async latestBlock(channelName) {
+    if (!channelName) {
+      throw new Error('Explore latestBlock error : channelName is required');
     }
-  }
-}
 
-module.exports = Hyperion;
+    const res = await node.__constructNodeRequest(`/explore/getLatestBlock?channelName=${channelName}`, RequestTypes.GET);
+    if (res.error) {
+      throw new Error(res.message);
+    }
+
+    return res.message;
+  },
+  /**
+   * Fetches transaction details by transaction id
+   * @function
+   * @name transaction
+   * @param  {string} channelName Name of the channel whose latest block is to be fetched.
+   * @param {string} txnId Transaction ID
+   * @return {Transaction} Response from server
+   * @memberof Explore
+   * @method
+   * @instance
+   */
+  async transaction(channelName, txnId) {
+    if (!channelName) {
+      throw new Error('Explore transaction error : channelName is required');
+    }
+
+    if (!txnId) {
+      throw new Error('Explore transaction error : TxnId is required');
+    }
+
+    const res = await node.__constructNodeRequest(`/explore/getTransaction?channelName=${channelName}&amp;txnId=${txnId}`, RequestTypes.GET);
+    if (res.error) {
+      throw new Error(res.message);
+    }
+
+    return res.message;
+  },
+  /**
+   * Fetches the latest list of blocks
+   * @function
+   * @name blocks
+   * @param  {string} channelName Name of the channel whose latest block is to be fetched.
+   * @return {Array&lt;Block>} Response from server
+   * @memberof Explore
+   * @method
+   * @instance
+   */
+  async blocks(channelName) {
+    if (!channelName) {
+      throw new Error('Explore blocks error : channelName is required');
+    }
+
+    const res = await node.__constructNodeRequest(`/explore/getBlocks?channelName=${channelName}`, RequestTypes.GET);
+    if (res.error) {
+      throw new Error(res.message);
+    }
+
+    return res.message;
+  },
+  /**
+   * Fetches the list of organizations who joined the channel
+   * @function
+   * @name listOrgs
+   * @param  {string} channelName Name of the channel whose latest block is to be fetched.
+   * @return {Array&lt;string>} Response from server
+   * @memberof Explore
+   * @method
+   * @instance
+   */
+  async listOrgs(channelName) {
+    if (!channelName) {
+      throw new Error('Explore listOrgs error : channelName is required');
+    }
+
+    const res = await node.__constructNodeRequest(`/explore/organisations?channelName=${channelName}`, RequestTypes.GET);
+    if (res.error) {
+      throw new Error(res.message);
+    }
+
+    return res.message;
+  },
+  /**
+   * Fetches the details of the block number provided
+   * @function
+   * @name block
+   * @param  {string} channelName Name of the channel whose latest block is to be fetched.
+   * @param {int} blockNumber Block number of the block whose details is to be fetched
+   * @return {Block} Response from server
+   * @memberof Explore
+   * @method
+   * @instance
+   */
+  async block(channelName, blockNumber) {
+    if (!channelName) {
+      throw new Error('Explore block error : channelName is required');
+    }
+
+    const res = await node.__constructNodeRequest(`/explore/getLatestBlock?channelName=${channelName}&amp;blockNumber=${blockNumber}`, RequestTypes.GET);
+    if (res.error) {
+      throw new Error(res.message);
+    }
+
+    return res.message;
+  },
+  /**
+   * Fetches the list of chaincodes instantiated on the channel
+   * @function
+   * @name chaincodesInstantiated
+   * @param  {string} channelName Name of the channel whose latest block is to be fetched.
+   * @return {Array&lt;ChaincodeType>} Response from server
+   * @memberof Explore
+   * @method
+   * @instance
+   */
+  async chaincodesInstantiated(channelName) {
+    if (!channelName) {
+      throw new Error('Explore chaincodesInstantiated error : channelName is required');
+    }
+
+    const res = await node.__constructNodeRequest(`/explore/chaincodesInstantiated?channelName=${channelName}`, RequestTypes.GET);
+    if (res.error) {
+      throw new Error(res.message);
+    }
+
+    return res.message;
+  },
+});
 </code></pre>
         </article>
     </section>
