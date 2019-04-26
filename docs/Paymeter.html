@@ -1,17 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <meta charset="utf-8">
-    <title>Paymeter - Postman Documentation</title>
-
+    <title>Paymeter - Blockcluster NodeJS SDK</title>
+    
+    
+    
+    
+    
+    <meta property="og:title" content=""/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content=""/>
+    
+    <meta property="og:url" content=""/>
+    
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <link type="text/css" rel="stylesheet" href="styles/ionicons.min.css">
-    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
@@ -22,8 +33,11 @@
 
 <label for="nav-trigger" class="overlay"></label>
 
-<nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Hyperion.html">Hyperion</a><ul class='methods'><li data-type='method'><a href="Hyperion.html#deleteFile">deleteFile</a></li><li data-type='method'><a href="Hyperion.html#getFile">getFile</a></li><li data-type='method'><a href="Hyperion.html#uploadFile">uploadFile</a></li></ul></li><li><a href="Hyperion.Hyperion.html">Hyperion</a></li><li><a href="Paymeter.html">Paymeter</a><ul class='methods'><li data-type='method'><a href="Paymeter.html#createWallet">createWallet</a></li><li data-type='method'><a href="Paymeter.html#getDeposits">getDeposits</a></li><li data-type='method'><a href="Paymeter.html#getWallets">getWallets</a></li><li data-type='method'><a href="Paymeter.html#getWithdrawals">getWithdrawals</a></li><li data-type='method'><a href="Paymeter.html#refreshBalance">refreshBalance</a></li><li data-type='method'><a href="Paymeter.html#send">send</a></li></ul></li><li><a href="Paymeter.Paymeter.html">Paymeter</a></li><li><a href="Platform.html">Platform</a><ul class='methods'><li data-type='method'><a href="Platform.html#acceptInvite">acceptInvite</a></li><li data-type='method'><a href="Platform.html#acceptPrivatehiveChannelInvite">acceptPrivatehiveChannelInvite</a></li><li data-type='method'><a href="Platform.html#createNetwork">createNetwork</a></li><li data-type='method'><a href="Platform.html#createPrivatehiveNetwork">createPrivatehiveNetwork</a></li><li data-type='method'><a href="Platform.html#deleteNetwork">deleteNetwork</a></li><li data-type='method'><a href="Platform.html#deletePrivatehiveNetwork">deletePrivatehiveNetwork</a></li><li data-type='method'><a href="Platform.html#fetchLocations">fetchLocations</a></li><li data-type='method'><a href="Platform.html#fetchNetworkTypes">fetchNetworkTypes</a></li><li data-type='method'><a href="Platform.html#getPrivatehiveNode">getPrivatehiveNode</a></li><li data-type='method'><a href="Platform.html#inviteUserToChannel">inviteUserToChannel</a></li><li data-type='method'><a href="Platform.html#inviteViaEmail">inviteViaEmail</a></li><li data-type='method'><a href="Platform.html#joinNetwork">joinNetwork</a></li><li data-type='method'><a href="Platform.html#listPrivatehiveChannelInvites">listPrivatehiveChannelInvites</a></li><li data-type='method'><a href="Platform.html#listPrivatehiveNetworks">listPrivatehiveNetworks</a></li></ul></li><li><a href="Platform.Platform.html">Platform</a></li><li><a href="PrivatehiveNode.html">PrivatehiveNode</a><ul class='methods'><li data-type='method'><a href="PrivatehiveNode.html#addChaincode">addChaincode</a></li><li data-type='method'><a href="PrivatehiveNode.html#createChannel">createChannel</a></li><li data-type='method'><a href="PrivatehiveNode.html#fetchChaincodes">fetchChaincodes</a></li><li data-type='method'><a href="PrivatehiveNode.html#fetchChannels">fetchChannels</a></li><li data-type='method'><a href="PrivatehiveNode.html#installChaincode">installChaincode</a></li><li data-type='method'><a href="PrivatehiveNode.html#instantiateChaincode">instantiateChaincode</a></li><li data-type='method'><a href="PrivatehiveNode.html#setAuth">setAuth</a></li><li data-type='method'><a href="PrivatehiveNode.html#setDomain">setDomain</a></li><li data-type='method'><a href="PrivatehiveNode.html#setOrderer">setOrderer</a></li></ul></li><li><a href="PrivatehiveNode.PrivatehiveNode.html">PrivatehiveNode</a></li></ul><h3>Namespaces</h3><ul><li><a href="Chaincode.html">Chaincode</a><ul class='methods'><li data-type='method'><a href="Chaincode.html#add">add</a></li><li data-type='method'><a href="Chaincode.html#install">install</a></li><li data-type='method'><a href="Chaincode.html#instantiate">instantiate</a></li><li data-type='method'><a href="Chaincode.html#invoke">invoke</a></li><li data-type='method'><a href="Chaincode.html#list">list</a></li><li data-type='method'><a href="Chaincode.html#query">query</a></li><li data-type='method'><a href="Chaincode.html#upgrade">upgrade</a></li></ul></li><li><a href="Channel.html">Channel</a><ul class='methods'><li data-type='method'><a href="Channel.html#create">create</a></li><li data-type='method'><a href="Channel.html#list">list</a></li></ul></li><li><a href="Config.html">Config</a><ul class='methods'><li data-type='method'><a href="Config.html#cryptoConfig">cryptoConfig</a></li><li data-type='method'><a href="Config.html#ordererCerts">ordererCerts</a></li><li data-type='method'><a href="Config.html#ordererCerts">ordererCerts</a></li><li data-type='method'><a href="Config.html#orgDetails">orgDetails</a></li></ul></li><li><a href="Explore.html">Explore</a><ul class='methods'><li data-type='method'><a href="Explore.html#block">block</a></li><li data-type='method'><a href="Explore.html#blocks">blocks</a></li><li data-type='method'><a href="Explore.html#chaincodesInstantiated">chaincodesInstantiated</a></li><li data-type='method'><a href="Explore.html#latestBlock">latestBlock</a></li><li data-type='method'><a href="Explore.html#listOrgs">listOrgs</a></li><li data-type='method'><a href="Explore.html#transaction">transaction</a></li></ul></li><li><a href="Notification.html">Notification</a><ul class='methods'><li data-type='method'><a href="Notification.html#.add">add</a></li><li data-type='method'><a href="Notification.html#.list">list</a></li><li data-type='method'><a href="Notification.html#.update">update</a></li><li data-type='method'><a href="Notification.html#.update">update</a></li></ul></li></ul><h3><a href="global.html">Global</a></h3>
+<nav class="wrap">
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="https://www.blockcluster.io/" target="_blank" class="menu-item" id="website_link" >Project Website</a></h2><h2><a href="https://forum.blockcluster.io/" target="_blank" class="menu-item" id="forum_link" >Forum</a></h2><h3>Classes</h3><ul><li><a href="Hyperion.html">Hyperion</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Hyperion.html#deleteFile">deleteFile</a></li><li data-type='method' style='display: none;'><a href="Hyperion.html#getFile">getFile</a></li><li data-type='method' style='display: none;'><a href="Hyperion.html#uploadFile">uploadFile</a></li></ul></li><li><a href="Hyperion_Hyperion.html">Hyperion</a></li><li><a href="Paymeter.html">Paymeter</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Paymeter.html#createWallet">createWallet</a></li><li data-type='method' style='display: none;'><a href="Paymeter.html#getDeposits">getDeposits</a></li><li data-type='method' style='display: none;'><a href="Paymeter.html#getWallets">getWallets</a></li><li data-type='method' style='display: none;'><a href="Paymeter.html#getWithdrawals">getWithdrawals</a></li><li data-type='method' style='display: none;'><a href="Paymeter.html#refreshBalance">refreshBalance</a></li><li data-type='method' style='display: none;'><a href="Paymeter.html#send">send</a></li></ul></li><li><a href="Paymeter_Paymeter.html">Paymeter</a></li><li><a href="Platform.html">Platform</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Platform.html#acceptInvite">acceptInvite</a></li><li data-type='method' style='display: none;'><a href="Platform.html#acceptPrivatehiveChannelInvite">acceptPrivatehiveChannelInvite</a></li><li data-type='method' style='display: none;'><a href="Platform.html#createNetwork">createNetwork</a></li><li data-type='method' style='display: none;'><a href="Platform.html#createPrivatehiveNetwork">createPrivatehiveNetwork</a></li><li data-type='method' style='display: none;'><a href="Platform.html#deleteNetwork">deleteNetwork</a></li><li data-type='method' style='display: none;'><a href="Platform.html#deletePrivatehiveNetwork">deletePrivatehiveNetwork</a></li><li data-type='method' style='display: none;'><a href="Platform.html#fetchLocations">fetchLocations</a></li><li data-type='method' style='display: none;'><a href="Platform.html#fetchNetworkTypes">fetchNetworkTypes</a></li><li data-type='method' style='display: none;'><a href="Platform.html#getPrivatehiveNode">getPrivatehiveNode</a></li><li data-type='method' style='display: none;'><a href="Platform.html#inviteUserToChannel">inviteUserToChannel</a></li><li data-type='method' style='display: none;'><a href="Platform.html#inviteViaEmail">inviteViaEmail</a></li><li data-type='method' style='display: none;'><a href="Platform.html#joinNetwork">joinNetwork</a></li><li data-type='method' style='display: none;'><a href="Platform.html#listPrivatehiveChannelInvites">listPrivatehiveChannelInvites</a></li><li data-type='method' style='display: none;'><a href="Platform.html#listPrivatehiveNetworks">listPrivatehiveNetworks</a></li></ul></li><li><a href="Platform_Platform.html">Platform</a></li><li><a href="PrivatehiveNode.html">PrivatehiveNode</a><ul class='methods'><li data-type='method' style='display: none;'><a href="PrivatehiveNode.html#addChaincode">addChaincode</a></li><li data-type='method' style='display: none;'><a href="PrivatehiveNode.html#createChannel">createChannel</a></li><li data-type='method' style='display: none;'><a href="PrivatehiveNode.html#fetchChaincodes">fetchChaincodes</a></li><li data-type='method' style='display: none;'><a href="PrivatehiveNode.html#fetchChannels">fetchChannels</a></li><li data-type='method' style='display: none;'><a href="PrivatehiveNode.html#installChaincode">installChaincode</a></li><li data-type='method' style='display: none;'><a href="PrivatehiveNode.html#instantiateChaincode">instantiateChaincode</a></li><li data-type='method' style='display: none;'><a href="PrivatehiveNode.html#setAuth">setAuth</a></li><li data-type='method' style='display: none;'><a href="PrivatehiveNode.html#setDomain">setDomain</a></li><li data-type='method' style='display: none;'><a href="PrivatehiveNode.html#setOrderer">setOrderer</a></li></ul></li><li><a href="PrivatehiveNode.PrivatehiveNode.html">PrivatehiveNode</a></li></ul><h3>Namespaces</h3><ul><li><a href="Chaincode.html">Chaincode</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Chaincode.html#add">add</a></li><li data-type='method' style='display: none;'><a href="Chaincode.html#install">install</a></li><li data-type='method' style='display: none;'><a href="Chaincode.html#instantiate">instantiate</a></li><li data-type='method' style='display: none;'><a href="Chaincode.html#invoke">invoke</a></li><li data-type='method' style='display: none;'><a href="Chaincode.html#list">list</a></li><li data-type='method' style='display: none;'><a href="Chaincode.html#query">query</a></li><li data-type='method' style='display: none;'><a href="Chaincode.html#upgrade">upgrade</a></li></ul></li><li><a href="Channel.html">Channel</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Channel.html#create">create</a></li><li data-type='method' style='display: none;'><a href="Channel.html#list">list</a></li></ul></li><li><a href="Config.html">Config</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Config.html#cryptoConfig">cryptoConfig</a></li><li data-type='method' style='display: none;'><a href="Config.html#ordererCerts">ordererCerts</a></li><li data-type='method' style='display: none;'><a href="Config.html#ordererCerts">ordererCerts</a></li><li data-type='method' style='display: none;'><a href="Config.html#orgDetails">orgDetails</a></li></ul></li><li><a href="Explore.html">Explore</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Explore.html#block">block</a></li><li data-type='method' style='display: none;'><a href="Explore.html#blocks">blocks</a></li><li data-type='method' style='display: none;'><a href="Explore.html#chaincodesInstantiated">chaincodesInstantiated</a></li><li data-type='method' style='display: none;'><a href="Explore.html#latestBlock">latestBlock</a></li><li data-type='method' style='display: none;'><a href="Explore.html#listOrgs">listOrgs</a></li><li data-type='method' style='display: none;'><a href="Explore.html#transaction">transaction</a></li></ul></li><li><a href="Notification.html">Notification</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Notification.html#add">add</a></li><li data-type='method' style='display: none;'><a href="Notification.html#list">list</a></li><li data-type='method' style='display: none;'><a href="Notification.html#update">update</a></li><li data-type='method' style='display: none;'><a href="Notification.html#update">update</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#Block">Block</a></li><li><a href="global.html#ChaincodeType">ChaincodeType</a></li><li><a href="global.html#ChannelType">ChannelType</a></li><li><a href="global.html#NotificationEvent">NotificationEvent</a></li><li><a href="global.html#Transaction">Transaction</a></li></ul>
 </nav>
 
 <div id="main">
@@ -44,14 +58,19 @@
         Paymeter
         </h2>
         
+            <div class="class-description"><p>Handles all function related to paymeter</p></div>
+        
     
 </header>
 
 <article>
-    <div class="container-overview">
     
+        <div class="container-overview">
         
+            
 
+    
+    <h2>Constructor</h2>
     
 
     <h4 class="name" id="Paymeter"><span class="type-signature"></span>new Paymeter<span class="signature">()</span><span class="type-signature"></span></h4>
@@ -60,53 +79,38 @@
 
 
 
-<div class="description">
-    <p>Handles all function related to paymeter</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
 
 <dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
         <a href="paymeter_index.js.html">paymeter/index.js</a>, <a href="paymeter_index.js.html#line3">line 3</a>
     </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
     
 
     
@@ -131,8 +135,25 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        </div>
     
-    </div>
 
     
 
@@ -142,9 +163,11 @@
         <h3 class="subsection-title">Classes</h3>
 
         <dl>
-            <dt><a href="Paymeter.Paymeter.html">Paymeter</a></dt>
+            <dt><a href="Paymeter_Paymeter.html">Paymeter</a></dt>
             <dd></dd>
         </dl>
+    
+    
     
 
      
@@ -167,6 +190,51 @@
 
 
 
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="paymeter_index.js.html">paymeter/index.js</a>, <a href="paymeter_index.js.html#line38">line 38</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
 <div class="description">
     <p>Creates a new wallet in the blockcluster account</p>
 </div>
@@ -175,6 +243,17 @@
 
 
 
+
+
+
+
+    <h5>Example</h5>
+    
+        <p class="code-caption">Creates a wallet</p>
+    
+    <pre class="prettyprint"><code>const walletId = await paymeter.createWallet({coinType: 'ETH', walletName: 'My ETH Wallet', network: 'mainnet', password: '1234567890' });
+console.log(walletId);
+// Prints the walletId &lt;random string></code></pre>
 
 
 
@@ -450,48 +529,6 @@
 
 
 
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="paymeter_index.js.html">paymeter/index.js</a>, <a href="paymeter_index.js.html#line36">line 36</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
 
 
 
@@ -526,15 +563,6 @@
     
 
 
-    <h5>Example</h5>
-    
-        <p class="code-caption">Creates a wallet</p>
-    
-    <pre class="prettyprint"><code>const walletId = await paymeter.createWallet({coinType: 'ETH', walletName: 'My ETH Wallet', network: 'mainnet', password: '1234567890' });
-console.log(walletId);
-// Prints the walletId &lt;random string></code></pre>
-
-
 
         
             
@@ -547,6 +575,51 @@ console.log(walletId);
 
 
 
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="paymeter_index.js.html">paymeter/index.js</a>, <a href="paymeter_index.js.html#line155">line 155</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
 <div class="description">
     <p>Fetches all the deposits happend for a wallet</p>
 </div>
@@ -555,6 +628,17 @@ console.log(walletId);
 
 
 
+
+
+
+
+    <h5>Example</h5>
+    
+        <p class="code-caption">Fetches all deposits for a wallet</p>
+    
+    <pre class="prettyprint"><code>const deposits = await paymeter.getDeposits('abcdefghi');
+console.log(deposits);
+// Prints [{...deposit1}, {...}, ...]</code></pre>
 
 
 
@@ -612,48 +696,6 @@ console.log(walletId);
 
 
 
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="paymeter_index.js.html">paymeter/index.js</a>, <a href="paymeter_index.js.html#line150">line 150</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
 
 
 
@@ -688,15 +730,6 @@ console.log(walletId);
     
 
 
-    <h5>Example</h5>
-    
-        <p class="code-caption">Fetches all deposits for a wallet</p>
-    
-    <pre class="prettyprint"><code>const deposits = await paymeter.getDeposits('abcdefghi');
-console.log(deposits);
-// Prints [{...deposit1}, {...}, ...]</code></pre>
-
-
 
         
             
@@ -709,6 +742,51 @@ console.log(deposits);
 
 
 
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="paymeter_index.js.html">paymeter/index.js</a>, <a href="paymeter_index.js.html#line88">line 88</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
 <div class="description">
     <p>Fetches all the wallets or a single wallet details</p>
 </div>
@@ -717,6 +795,23 @@ console.log(deposits);
 
 
 
+
+
+
+
+    <h5>Examples</h5>
+    
+        <p class="code-caption">Fetches all wallets</p>
+    
+    <pre class="prettyprint"><code>const wallets = await paymeter.getWallets();
+console.log(wallets);
+// Prints [{_id: '...', ...}, ...]</code></pre>
+
+        <p class="code-caption">Fetches details of single wallet</p>
+    
+    <pre class="prettyprint"><code>const wallet = await paymeter.getWallets('abcdefghi');
+console.log(wallet);
+// Prints {_id: 'abcdefghi', ...}</code></pre>
 
 
 
@@ -786,48 +881,6 @@ console.log(deposits);
 
 
 
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="paymeter_index.js.html">paymeter/index.js</a>, <a href="paymeter_index.js.html#line85">line 85</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
 
 
 
@@ -862,21 +915,6 @@ console.log(deposits);
     
 
 
-    <h5>Examples</h5>
-    
-        <p class="code-caption">Fetches all wallets</p>
-    
-    <pre class="prettyprint"><code>const wallets = await paymeter.getWallets();
-console.log(wallets);
-// Prints [{_id: '...', ...}, ...]</code></pre>
-
-        <p class="code-caption">Fetches details of single wallet</p>
-    
-    <pre class="prettyprint"><code>const wallet = await paymeter.getWallets('abcdefghi');
-console.log(wallet);
-// Prints {_id: 'abcdefghi', ...}</code></pre>
-
-
 
         
             
@@ -889,6 +927,51 @@ console.log(wallet);
 
 
 
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="paymeter_index.js.html">paymeter/index.js</a>, <a href="paymeter_index.js.html#line124">line 124</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
 <div class="description">
     <p>Fetches all the withdrawals happend for a wallet</p>
 </div>
@@ -897,6 +980,17 @@ console.log(wallet);
 
 
 
+
+
+
+
+    <h5>Example</h5>
+    
+        <p class="code-caption">Fetches all withdrawals for a wallet</p>
+    
+    <pre class="prettyprint"><code>const withdrawals = await paymeter.getWithdrawals('abcdefghi');
+console.log(withdrawals);
+// Prints [{...withdrawal1}, {...}, ...]</code></pre>
 
 
 
@@ -954,48 +1048,6 @@ console.log(wallet);
 
 
 
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="paymeter_index.js.html">paymeter/index.js</a>, <a href="paymeter_index.js.html#line120">line 120</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
 
 
 
@@ -1030,15 +1082,6 @@ console.log(wallet);
     
 
 
-    <h5>Example</h5>
-    
-        <p class="code-caption">Fetches all withdrawals for a wallet</p>
-    
-    <pre class="prettyprint"><code>const withdrawals = await paymeter.getWithdrawals('abcdefghi');
-console.log(withdrawals);
-// Prints [{...withdrawal1}, {...}, ...]</code></pre>
-
-
 
         
             
@@ -1051,9 +1094,56 @@ console.log(withdrawals);
 
 
 
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="paymeter_index.js.html">paymeter/index.js</a>, <a href="paymeter_index.js.html#line302">line 302</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
 <div class="description">
     <p>Force refreshes balance in a wallet. This can be used in case deposits are coming from a smart contract</p>
 </div>
+
+
 
 
 
@@ -1116,48 +1206,6 @@ console.log(withdrawals);
 
 
 
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="paymeter_index.js.html">paymeter/index.js</a>, <a href="paymeter_index.js.html#line295">line 295</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
 
 
 
@@ -1204,6 +1252,51 @@ console.log(withdrawals);
 
 
 
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="paymeter_index.js.html">paymeter/index.js</a>, <a href="paymeter_index.js.html#line244">line 244</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
 <div class="description">
     <p>Transfers token from a wallet to specified address</p>
 </div>
@@ -1212,6 +1305,73 @@ console.log(withdrawals);
 
 
 
+
+
+
+
+    <h5>Examples</h5>
+    
+        <p class="code-caption">Transfers tokens (Fees debited from the amount specified)</p>
+    
+    <pre class="prettyprint"><code>const txnId = await paymeter.send({
+  fromWalletId: 'wallet1ID',
+  toAddress: '0x1234567890abcdef',
+  amount: 1,
+  password: 'wallet1Password'
+});
+console.log(txnId);
+// Prints 0x...</code></pre>
+
+        <p class="code-caption">Transfers tokens (Fees debited above the specifed amount)</p>
+    
+    <pre class="prettyprint"><code>const txnId = await paymeter.send({
+  fromWalletId: 'wallet1ID',
+  toAddress: '0x1234567890abcdef',
+  amount: 1,
+  password: 'wallet1Password'
+  sendExactAmount: true
+});
+console.log(txnId);
+// Prints 0x...</code></pre>
+
+        <p class="code-caption">Transfers token from but fees deducted from another wallet</p>
+    
+    <pre class="prettyprint"><code>const txnId = await paymeter.send({
+  fromWalletId: 'wallet1ID',
+  toAddress: '0x1234567890abcdef',
+  amount: 1,
+  password: 'wallet1Password'
+  feeWalletId: 'wallet2ID',
+  feeWalletPassword: 'wallet2Password'
+});
+console.log(txnId);
+// Prints 0x...</code></pre>
+
+        <p class="code-caption">Transfers token from with fees credits to separate wallet</p>
+    
+    <pre class="prettyprint"><code>const txnId = await paymeter.send({
+  fromWalletId: 'wallet1ID',
+  toAddress: '0x1234567890abcdef',
+  amount: 1,
+  password: 'wallet1Password'
+  feeCollectWalletId: 'wallet3ID',
+});
+console.log(txnId);
+// Prints 0x...</code></pre>
+
+        <p class="code-caption">Transfers token using raw transactions</p>
+    
+    <pre class="prettyprint"><code>const contractAddress = '0x12341234567890abcd';
+const contract = new web3.eth.Contract(abi, contractAddress);
+const data = await contract.methods.sign().encodeABI();
+const txnId = await paymeter.send({
+  fromWalletId: 'wallet4ID',
+  password: 'wallet4Password',
+  toAddress: contractAddress,
+  data: data,
+});
+console.log(txnId);
+// Prints 0x...</code></pre>
 
 
 
@@ -1619,48 +1779,6 @@ console.log(withdrawals);
 
 
 
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="paymeter_index.js.html">paymeter/index.js</a>, <a href="paymeter_index.js.html#line238">line 238</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
 
 
 
@@ -1695,71 +1813,6 @@ console.log(withdrawals);
     
 
 
-    <h5>Examples</h5>
-    
-        <p class="code-caption">Transfers tokens (Fees debited from the amount specified)</p>
-    
-    <pre class="prettyprint"><code>const txnId = await paymeter.send({
-  fromWalletId: 'wallet1ID',
-  toAddress: '0x1234567890abcdef',
-  amount: 1,
-  password: 'wallet1Password'
-});
-console.log(txnId);
-// Prints 0x...</code></pre>
-
-        <p class="code-caption">Transfers tokens (Fees debited above the specifed amount)</p>
-    
-    <pre class="prettyprint"><code>const txnId = await paymeter.send({
-  fromWalletId: 'wallet1ID',
-  toAddress: '0x1234567890abcdef',
-  amount: 1,
-  password: 'wallet1Password'
-  sendExactAmount: true
-});
-console.log(txnId);
-// Prints 0x...</code></pre>
-
-        <p class="code-caption">Transfers token from but fees deducted from another wallet</p>
-    
-    <pre class="prettyprint"><code>const txnId = await paymeter.send({
-  fromWalletId: 'wallet1ID',
-  toAddress: '0x1234567890abcdef',
-  amount: 1,
-  password: 'wallet1Password'
-  feeWalletId: 'wallet2ID',
-  feeWalletPassword: 'wallet2Password'
-});
-console.log(txnId);
-// Prints 0x...</code></pre>
-
-        <p class="code-caption">Transfers token from with fees credits to separate wallet</p>
-    
-    <pre class="prettyprint"><code>const txnId = await paymeter.send({
-  fromWalletId: 'wallet1ID',
-  toAddress: '0x1234567890abcdef',
-  amount: 1,
-  password: 'wallet1Password'
-  feeCollectWalletId: 'wallet3ID',
-});
-console.log(txnId);
-// Prints 0x...</code></pre>
-
-        <p class="code-caption">Transfers token using raw transactions</p>
-    
-    <pre class="prettyprint"><code>const contractAddress = '0x12341234567890abcd';
-const contract = new web3.eth.Contract(abi, contractAddress);
-const data = await contract.methods.sign().encodeABI();
-const txnId = await paymeter.send({
-  fromWalletId: 'wallet4ID',
-  password: 'wallet4Password',
-  toAddress: contractAddress,
-  data: data,
-});
-console.log(txnId);
-// Prints 0x...</code></pre>
-
-
 
         
     
@@ -1774,15 +1827,36 @@ console.log(txnId);
 
 
 
+    
+    
+    <div id="disqus_thread"></div>
+    <script>
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = '//https://forum.blockcluster.io/.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
 </div>
 
 <br class="clear">
 
 <footer>
-    Documentation generated at Fri Apr 26 2019 20:12:32 GMT+0530 (IST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Apr 26 2019 20:29:46 GMT+0530 (IST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
 <script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+<script src="scripts/collapse.js" defer></script>
+
+
 </body>
 </html>

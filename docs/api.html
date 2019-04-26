@@ -1,0 +1,8004 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="icon" href="images/favicon.ico" />
+    <link rel="canonical" href="http://bookshelfjs.org" />
+    <title> | API Reference</title>
+    <!--
+    ._.                                                      ._.
+    | |    ______             _        _          _  __      | |
+    | |    | ___ \           | |      | |        | |/ _|     | |
+    | |    | |_/ / ___   ___ | | _____| |__   ___| | |_      | |
+    | |    | ___ \/ _ \ / _ \| |/ / __| '_ \ / _ \ |  _|     | |
+    | |    | |_/ / (_) | (_) |   <\__ \ | | |  __/ | |       | |
+    | |____\____/_\___/_\___/|_|\_\___/_|_|_|\___|_|_|_______| |
+    |                                                          |
+    \________\  /__________________________________\  /________/
+              \/                                    \/
+    -->
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Import fonts from Open Font Library -->
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/carlito" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/average-mono" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+    <link type="text/css" rel="stylesheet" href="styles/main.css">
+  </head>
+  <body class="minami">
+    <nav class="main-navbar">
+      <a href="index.html"><img class="nav-logo" src="images/bookshelf-icon-inverted.svg" />
+</a>
+      <label for="show-menu" class="show-menu">
+        <i class="fa fa-bars fa-lg" aria-hidden="true"></i>
+      </label>
+      <input type="checkbox" id="show-menu" role="button" checked>
+      <ul id="menu">
+        
+        
+          <li>
+            <a href="api.html" class="active"><i class="fa fa-book" aria-hidden="true"></i>API Reference
+</a>
+          </li>
+        
+        <li>
+          <a href="https://github.com/bookshelf/bookshelf"><span class="fa fa-github"></span></a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="page-content">
+      
+        <nav class="sidebar">
+          
+            <ul><li><h3><a href="api.html#section-Hyperion">Hyperion</a></h3><h4><a href="api.html#Hyperion-subsection-construction">Construction</a></h4><ul class="construction"><li><a href="api.html#Hyperion">Hyperion</a></li></ul><h4><a href="api.html#Hyperion-subsection-methods">Methods</a></h4><ul class="methods"><li><a href="api.html#Hyperion-instance-deleteFile">deleteFile</a></li><li><a href="api.html#Hyperion-instance-getFile">getFile</a></li><li><a href="api.html#Hyperion-instance-uploadFile">uploadFile</a></li></ul></li><li><h3><a href="api.html#section-Hyperion-static-Hyperion">Hyperion</a></h3><h4><a href="api.html#Hyperion-static-Hyperion-subsection-construction">Construction</a></h4><ul class="construction"><li><a href="api.html#Hyperion-static-Hyperion">Hyperion</a></li></ul></li><li><h3><a href="api.html#section-Paymeter">Paymeter</a></h3><h4><a href="api.html#Paymeter-subsection-construction">Construction</a></h4><ul class="construction"><li><a href="api.html#Paymeter">Paymeter</a></li></ul><h4><a href="api.html#Paymeter-subsection-methods">Methods</a></h4><ul class="methods"><li><a href="api.html#Paymeter-instance-createWallet">createWallet</a></li><li><a href="api.html#Paymeter-instance-getDeposits">getDeposits</a></li><li><a href="api.html#Paymeter-instance-getWallets">getWallets</a></li><li><a href="api.html#Paymeter-instance-getWithdrawals">getWithdrawals</a></li><li><a href="api.html#Paymeter-instance-refreshBalance">refreshBalance</a></li><li><a href="api.html#Paymeter-instance-send">send</a></li></ul></li><li><h3><a href="api.html#section-Paymeter-static-Paymeter">Paymeter</a></h3><h4><a href="api.html#Paymeter-static-Paymeter-subsection-construction">Construction</a></h4><ul class="construction"><li><a href="api.html#Paymeter-static-Paymeter">Paymeter</a></li></ul></li><li><h3><a href="api.html#section-Platform">Platform</a></h3><h4><a href="api.html#Platform-subsection-construction">Construction</a></h4><ul class="construction"><li><a href="api.html#Platform">Platform</a></li></ul><h4><a href="api.html#Platform-subsection-methods">Methods</a></h4><ul class="methods"><li><a href="api.html#Platform-instance-acceptInvite">acceptInvite</a></li><li><a href="api.html#Platform-instance-acceptPrivatehiveChannelInvite">acceptPrivatehiveChannelInvite</a></li><li><a href="api.html#Platform-instance-createNetwork">createNetwork</a></li><li><a href="api.html#Platform-instance-createPrivatehiveNetwork">createPrivatehiveNetwork</a></li><li><a href="api.html#Platform-instance-deleteNetwork">deleteNetwork</a></li><li><a href="api.html#Platform-instance-deletePrivatehiveNetwork">deletePrivatehiveNetwork</a></li><li><a href="api.html#Platform-instance-fetchLocations">fetchLocations</a></li><li><a href="api.html#Platform-instance-fetchNetworkTypes">fetchNetworkTypes</a></li><li><a href="api.html#Platform-instance-getPrivatehiveNode">getPrivatehiveNode</a></li><li><a href="api.html#Platform-instance-inviteUserToChannel">inviteUserToChannel</a></li><li><a href="api.html#Platform-instance-inviteViaEmail">inviteViaEmail</a></li><li><a href="api.html#Platform-instance-joinNetwork">joinNetwork</a></li><li><a href="api.html#Platform-instance-listPrivatehiveChannelInvites">listPrivatehiveChannelInvites</a></li><li><a href="api.html#Platform-instance-listPrivatehiveNetworks">listPrivatehiveNetworks</a></li></ul></li><li><h3><a href="api.html#section-Platform-static-Platform">Platform</a></h3><h4><a href="api.html#Platform-static-Platform-subsection-construction">Construction</a></h4><ul class="construction"><li><a href="api.html#Platform-static-Platform">Platform</a></li></ul></li><li><h3><a href="api.html#section-PrivatehiveNode">PrivatehiveNode</a></h3><h4><a href="api.html#PrivatehiveNode-subsection-construction">Construction</a></h4><ul class="construction"><li><a href="api.html#PrivatehiveNode">PrivatehiveNode</a></li></ul><h4><a href="api.html#PrivatehiveNode-subsection-methods">Methods</a></h4><ul class="methods"><li><a href="api.html#PrivatehiveNode-instance-addChaincode">addChaincode</a></li><li><a href="api.html#PrivatehiveNode-instance-createChannel">createChannel</a></li><li><a href="api.html#PrivatehiveNode-instance-fetchChaincodes">fetchChaincodes</a></li><li><a href="api.html#PrivatehiveNode-instance-fetchChannels">fetchChannels</a></li><li><a href="api.html#PrivatehiveNode-instance-installChaincode">installChaincode</a></li><li><a href="api.html#PrivatehiveNode-instance-instantiateChaincode">instantiateChaincode</a></li><li><a href="api.html#PrivatehiveNode-instance-setAuth">setAuth</a></li><li><a href="api.html#PrivatehiveNode-instance-setDomain">setDomain</a></li><li><a href="api.html#PrivatehiveNode-instance-setOrderer">setOrderer</a></li></ul></li><li><h3><a href="api.html#section-PrivatehiveNode-static-PrivatehiveNode">PrivatehiveNode</a></h3><h4><a href="api.html#PrivatehiveNode-static-PrivatehiveNode-subsection-construction">Construction</a></h4><ul class="construction"><li><a href="api.html#PrivatehiveNode-static-PrivatehiveNode">PrivatehiveNode</a></li></ul></li></ul>
+          
+        </nav>
+      
+
+      <div class="main-container api">
+        <div class="main-column">
+          
+
+          
+
+
+
+
+<header>
+    <h1>API Reference</h1>
+</header>
+
+
+<article>
+    
+        <h2 id="section-Hyperion">Hyperion</h2>
+        
+    
+
+    <div class="container-overview">
+    
+        <h3
+          id="Hyperion-subsection-construction"
+          class="subsection-title"
+        >Construction</h3>
+        
+<div class="method has-description">
+    
+
+        <h4 id="Hyperion" class="item-header">
+          <span class="type-signature"></span>
+          
+            <span class="new">new</span>
+          
+          <span class="parameters"><span class="name"><a href="api.html#Hyperion">Hyperion</a></span><span class="parenthesis">(</span><span class="parenthesis">)</span></span><span class="type-signature"></span>
+          <a href="hyperion_index.js.html#line4" class="source-link">source</a>
+        </h4>
+
+        
+    
+
+  <div class="attributes">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+    <div class="item-description">
+        <p>Handles all the functions related to hyperion</p>
+    </div>
+  
+</div>
+
+        
+
+    
+    </div>
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+        <h3
+          id="Hyperion-subsection-methods"
+          class="subsection-title"
+        >Methods</h3>
+        <div class="methods">
+          
+              
+<div class="method has-description">
+    
+
+        <h4 id="Hyperion-instance-deleteFile" class="item-header">
+          <span class="type-signature">(async) </span>
+          
+          <span class="member-of"
+                ><span class="class-name"
+                  >hyperion</span
+                >.</span><span class="parameters"><span class="name"><a href="api.html#Hyperion-instance-deleteFile">deleteFile</a></span><span class="parenthesis">(</span><span class="item-name">options</span><span class="comma">, </span><span class="item-name">locationCode</span><span class="comma">, </span><span class="item-name">fileHash</span><span class="parenthesis">)</span></span><span class="type-signature"> &rarr;  Promise<any></span>
+          <a href="hyperion_index.js.html#line121" class="source-link">source</a>
+        </h4>
+
+        
+    
+
+  <div class="attributes">
+
+    
+      <div class="example">
+        <h5>Example</h5>
+        
+        <p class="code-caption">Deletes a file from hyperion service</p>
+    
+    <pre class="prettyprint"><code>const res = await hyperion.deleteFile({locationCode: 'us-west-2', fileHash: 'wefjhggbhoirekuyghiqwlyug'})</code></pre>
+
+      </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters</h5>
+        
+
+<ul class="params">
+  
+    <li>
+      <code class="param"><span class="item-name">options</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >object</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>File options</p>
+        
+      </div>
+
+    </li>
+  
+    <li>
+      <code class="param"><span class="item-name">locationCode</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Location code of the node where the file was uploaded</p>
+        
+      </div>
+
+    </li>
+  
+    <li>
+      <code class="param"><span class="item-name">fileHash</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Hash of the file to delete</p>
+        
+      </div>
+
+    </li>
+  
+</ul>
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns</h5>
+    
+            
+
+
+<code class="param-type"
+  >Promise<any></code
+>
+
+
+
+
+<span class="param-desc">
+  <p>Response of delete operation or error</p>
+</span>
+
+
+        
+  </div>
+
+  
+    <div class="item-description">
+        <p>Deletes a file from hyperion node</p>
+    </div>
+  
+</div>
+
+          
+              
+<div class="method has-description">
+    
+
+        <h4 id="Hyperion-instance-getFile" class="item-header">
+          <span class="type-signature"></span>
+          
+          <span class="member-of"
+                ><span class="class-name"
+                  >hyperion</span
+                >.</span><span class="parameters"><span class="name"><a href="api.html#Hyperion-instance-getFile">getFile</a></span><span class="parenthesis">(</span><span class="item-name">options</span><span class="parenthesis">)</span></span><span class="type-signature"> &rarr;  Promise<any></span>
+          <a href="hyperion_index.js.html#line86" class="source-link">source</a>
+        </h4>
+
+        
+    
+
+  <div class="attributes">
+
+    
+      <div class="example">
+        <h5>Example</h5>
+        
+        <p class="code-caption">Downloads a file from hyperion service</p>
+    
+    <pre class="prettyprint"><code>const writeStream = fs.createWriteStream('download-path.txt');
+const res = await hyperion.getFile({locationCode: 'us-west-2', fileHash: 'ajshdvi23y4ioiertuykesd', writeStream });</code></pre>
+
+      </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters</h5>
+        
+
+<ul class="params">
+  
+    <li>
+      <code class="param"><span class="item-name">options</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >object</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>File options</p>
+        
+          
+
+<ul class="params">
+  
+    <li>
+      <code class="param"><span class="item-name">locationCode</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Location code of the hyperion node where the file was uploaded</p>
+        
+      </div>
+
+    </li>
+  
+    <li>
+      <code class="param"><span class="item-name">fileHash</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Hash of the file to download</p>
+        
+      </div>
+
+    </li>
+  
+    <li>
+      <code class="param"><span class="item-name">writeStream</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >writeStream</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>A writestream to which the downloaded file will be written</p>
+        
+      </div>
+
+    </li>
+  
+</ul>
+
+        
+      </div>
+
+    </li>
+  
+</ul>
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns</h5>
+    
+            
+
+
+<code class="param-type"
+  >Promise<any></code
+>
+
+
+
+
+<span class="param-desc">
+  <p>Error or response status code</p>
+</span>
+
+
+        
+  </div>
+
+  
+    <div class="item-description">
+        <p>Downloads a file from hyperion using the hash</p>
+    </div>
+  
+</div>
+
+          
+              
+<div class="method has-description">
+    
+
+        <h4 id="Hyperion-instance-uploadFile" class="item-header">
+          <span class="type-signature"></span>
+          
+          <span class="member-of"
+                ><span class="class-name"
+                  >hyperion</span
+                >.</span><span class="parameters"><span class="name"><a href="api.html#Hyperion-instance-uploadFile">uploadFile</a></span><span class="parenthesis">(</span><span class="item-name">options</span><span class="parenthesis">)</span></span><span class="type-signature"> &rarr;  Promise<string></span>
+          <a href="hyperion_index.js.html#line34" class="source-link">source</a>
+        </h4>
+
+        
+    
+
+  <div class="attributes">
+
+    
+      <div class="example">
+        <h5>Example</h5>
+        
+        <p class="code-caption">Uploads a file to hyperion</p>
+    
+    <pre class="prettyprint"><code>const fileReadStream = fs.createReadStream('file_to_read.txt');
+const fileHash = await hyperion.uploadFile({fileStream: fileReadStream, locationCode: 'us-west-2'});
+console.log(fileHash);
+// Prints the hash of the file in the hyperion cloud</code></pre>
+
+      </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters</h5>
+        
+
+<ul class="params">
+  
+    <li>
+      <code class="param"><span class="item-name">options</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >object</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>File options</p>
+        
+          
+
+<ul class="params">
+  
+    <li>
+      <code class="param"><span class="item-name">fileStream</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >readStream</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>A read stream to the file which is to be uploaded</p>
+        
+      </div>
+
+    </li>
+  
+    <li>
+      <code class="param"><span class="item-name">locationCode</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Location code of the hyperion node where the file is to be uploaded</p>
+        
+      </div>
+
+    </li>
+  
+</ul>
+
+        
+      </div>
+
+    </li>
+  
+</ul>
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns</h5>
+    
+            
+
+
+<code class="param-type"
+  >Promise<string></code
+>
+
+
+
+
+<span class="param-desc">
+  <p>Hash of the uploaded file</p>
+</span>
+
+
+        
+  </div>
+
+  
+    <div class="item-description">
+        <p>Uploads a file to hyperion service</p>
+    </div>
+  
+</div>
+
+          
+        </div>
+    
+
+    
+
+    
+
+    
+</article>
+
+
+    
+
+
+
+
+
+<article>
+    
+        <h2 id="section-Hyperion-static-Hyperion">
+            <span class="ancestors"><a href="api.html#Hyperion">Hyperion</a>.</span
+        >Hyperion</h2>
+        
+    
+
+    <div class="container-overview">
+    
+        <h3
+          id="Hyperion-static-Hyperion-subsection-construction"
+          class="subsection-title"
+        >Construction</h3>
+        
+<div class="method has-description">
+    
+
+        <h4 id="Hyperion-static-Hyperion" class="item-header">
+          <span class="type-signature"></span>
+          
+            <span class="new">new</span>
+          
+          <span class="member-of"
+                ><span class="class-name"
+                  >Hyperion</span
+                >.</span><span class="parameters"><span class="name"><a href="api.html#Hyperion-static-Hyperion">Hyperion</a></span><span class="parenthesis">(</span><span class="item-name">options</span><span class="parenthesis">)</span></span><span class="type-signature"></span>
+          <a href="hyperion_index.js.html#line16" class="source-link">source</a>
+        </h4>
+
+        
+    
+
+  <div class="attributes">
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters</h5>
+        
+
+<ul class="params">
+  
+    <li>
+      <code class="param"><span class="item-name">options</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >object</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Options</p>
+        
+      </div>
+
+    </li>
+  
+</ul>
+
+    
+
+    
+
+
+    <h5 class="subsection-title">Properties</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>apiKey</code></td>
+            
+
+            <td class="type">
+            
+                <code class="param-type"
+  >string</code
+>
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>API Key for authentication</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>domain</code></td>
+            
+
+            <td class="type">
+            
+                <code class="param-type"
+  >string</code
+>
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Domain where the platform is hosted</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+    <div class="item-description">
+        <p>Creates an instance of Platform.</p>
+    </div>
+  
+</div>
+
+        
+
+    
+    </div>
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<article>
+    
+        <h2 id="section-Paymeter">Paymeter</h2>
+        
+    
+
+    <div class="container-overview">
+    
+        <h3
+          id="Paymeter-subsection-construction"
+          class="subsection-title"
+        >Construction</h3>
+        
+<div class="method has-description">
+    
+
+        <h4 id="Paymeter" class="item-header">
+          <span class="type-signature"></span>
+          
+            <span class="new">new</span>
+          
+          <span class="parameters"><span class="name"><a href="api.html#Paymeter">Paymeter</a></span><span class="parenthesis">(</span><span class="parenthesis">)</span></span><span class="type-signature"></span>
+          <a href="paymeter_index.js.html#line3" class="source-link">source</a>
+        </h4>
+
+        
+    
+
+  <div class="attributes">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+    <div class="item-description">
+        <p>Handles all function related to paymeter</p>
+    </div>
+  
+</div>
+
+        
+
+    
+    </div>
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+        <h3
+          id="Paymeter-subsection-methods"
+          class="subsection-title"
+        >Methods</h3>
+        <div class="methods">
+          
+              
+<div class="method has-description">
+    
+
+        <h4 id="Paymeter-instance-createWallet" class="item-header">
+          <span class="type-signature">(async) </span>
+          
+          <span class="member-of"
+                ><span class="class-name"
+                  >paymeter</span
+                >.</span><span class="parameters"><span class="name"><a href="api.html#Paymeter-instance-createWallet">createWallet</a></span><span class="parenthesis">(</span><span class="item-name">options</span><span class="parenthesis">)</span></span><span class="type-signature"> &rarr;  Promise<string></span>
+          <a href="paymeter_index.js.html#line36" class="source-link">source</a>
+        </h4>
+
+        
+    
+
+  <div class="attributes">
+
+    
+      <div class="example">
+        <h5>Example</h5>
+        
+        <p class="code-caption">Creates a wallet</p>
+    
+    <pre class="prettyprint"><code>const walletId = await paymeter.createWallet({coinType: 'ETH', walletName: 'My ETH Wallet', network: 'mainnet', password: '1234567890' });
+console.log(walletId);
+// Prints the walletId &lt;random string></code></pre>
+
+      </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters</h5>
+        
+
+<ul class="params">
+  
+    <li>
+      <code class="param"><span class="item-name">options</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >object</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Wallet configuration</p>
+        
+          
+
+<ul class="params">
+  
+    <li>
+      <code class="param"><span class="item-name">coinType</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Coin type Eg: ETH, ERC20 etc</p>
+        
+      </div>
+
+    </li>
+  
+    <li>
+      <code class="param"><span class="item-name">walletName</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Name of the wallet</p>
+        
+      </div>
+
+    </li>
+  
+    <li>
+      <code class="param"><span class="item-name">network</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Network on which the wallet will function Eg: testnet or mainnet</p>
+        
+      </div>
+
+    </li>
+  
+    <li>
+      <code class="param"><span class="item-name">password</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Password for the wallet</p>
+        
+      </div>
+
+    </li>
+  
+    <li>
+      <code class="param"><span class="optional-bracket">[</span><span class="item-name">contractAddress</span><span class="optional-bracket">]</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Contract address for ERC20 type token</p>
+        
+      </div>
+
+    </li>
+  
+    <li>
+      <code class="param"><span class="optional-bracket">[</span><span class="item-name">tokenSymbol</span><span class="optional-bracket">]</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Symbol for ERC20 token</p>
+        
+      </div>
+
+    </li>
+  
+</ul>
+
+        
+      </div>
+
+    </li>
+  
+</ul>
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns</h5>
+    
+            
+
+
+<code class="param-type"
+  >Promise<string></code
+>
+
+
+
+
+<span class="param-desc">
+  <p>Wallet id</p>
+</span>
+
+
+        
+  </div>
+
+  
+    <div class="item-description">
+        <p>Creates a new wallet in the blockcluster account</p>
+    </div>
+  
+</div>
+
+          
+              
+<div class="method has-description">
+    
+
+        <h4 id="Paymeter-instance-getDeposits" class="item-header">
+          <span class="type-signature">(async) </span>
+          
+          <span class="member-of"
+                ><span class="class-name"
+                  >paymeter</span
+                >.</span><span class="parameters"><span class="name"><a href="api.html#Paymeter-instance-getDeposits">getDeposits</a></span><span class="parenthesis">(</span><span class="item-name">walletId</span><span class="parenthesis">)</span></span><span class="type-signature"> &rarr;  Promise<array></span>
+          <a href="paymeter_index.js.html#line150" class="source-link">source</a>
+        </h4>
+
+        
+    
+
+  <div class="attributes">
+
+    
+      <div class="example">
+        <h5>Example</h5>
+        
+        <p class="code-caption">Fetches all deposits for a wallet</p>
+    
+    <pre class="prettyprint"><code>const deposits = await paymeter.getDeposits('abcdefghi');
+console.log(deposits);
+// Prints [{...deposit1}, {...}, ...]</code></pre>
+
+      </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters</h5>
+        
+
+<ul class="params">
+  
+    <li>
+      <code class="param"><span class="item-name">walletId</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Id of the wallet for which the transactions need to be fetched</p>
+        
+      </div>
+
+    </li>
+  
+</ul>
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns</h5>
+    
+            
+
+
+<code class="param-type"
+  >Promise<array></code
+>
+
+
+
+
+<span class="param-desc">
+  <p>Array of deposits</p>
+</span>
+
+
+        
+  </div>
+
+  
+    <div class="item-description">
+        <p>Fetches all the deposits happend for a wallet</p>
+    </div>
+  
+</div>
+
+          
+              
+<div class="method has-description">
+    
+
+        <h4 id="Paymeter-instance-getWallets" class="item-header">
+          <span class="type-signature">(async) </span>
+          
+          <span class="member-of"
+                ><span class="class-name"
+                  >paymeter</span
+                >.</span><span class="parameters"><span class="name"><a href="api.html#Paymeter-instance-getWallets">getWallets</a></span><span class="parenthesis">(</span><span class="optional-bracket">[</span><span class="item-name">walletId</span><span class="optional-bracket">]</span><span class="parenthesis">)</span></span><span class="type-signature"> &rarr;  Promise<array|object></span>
+          <a href="paymeter_index.js.html#line85" class="source-link">source</a>
+        </h4>
+
+        
+    
+
+  <div class="attributes">
+
+    
+      <div class="example">
+        <h5>Examples</h5>
+        
+        <p class="code-caption">Fetches all wallets</p>
+    
+    <pre class="prettyprint"><code>const wallets = await paymeter.getWallets();
+console.log(wallets);
+// Prints [{_id: '...', ...}, ...]</code></pre>
+
+        <p class="code-caption">Fetches details of single wallet</p>
+    
+    <pre class="prettyprint"><code>const wallet = await paymeter.getWallets('abcdefghi');
+console.log(wallet);
+// Prints {_id: 'abcdefghi', ...}</code></pre>
+
+      </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters</h5>
+        
+
+<ul class="params">
+  
+    <li>
+      <code class="param"><span class="optional-bracket">[</span><span class="item-name">walletId</span><span class="optional-bracket">]</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Id of the wallet for the details needs to be fetched. If undefined then fetches all wallets</p>
+        
+      </div>
+
+    </li>
+  
+</ul>
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns</h5>
+    
+            
+
+
+<code class="param-type"
+  >Promise<array|object></code
+>
+
+
+
+
+<span class="param-desc">
+  <p>An array of wallets or single wallet description</p>
+</span>
+
+
+        
+  </div>
+
+  
+    <div class="item-description">
+        <p>Fetches all the wallets or a single wallet details</p>
+    </div>
+  
+</div>
+
+          
+              
+<div class="method has-description">
+    
+
+        <h4 id="Paymeter-instance-getWithdrawals" class="item-header">
+          <span class="type-signature">(async) </span>
+          
+          <span class="member-of"
+                ><span class="class-name"
+                  >paymeter</span
+                >.</span><span class="parameters"><span class="name"><a href="api.html#Paymeter-instance-getWithdrawals">getWithdrawals</a></span><span class="parenthesis">(</span><span class="item-name">walletId</span><span class="parenthesis">)</span></span><span class="type-signature"> &rarr;  Promise<array></span>
+          <a href="paymeter_index.js.html#line120" class="source-link">source</a>
+        </h4>
+
+        
+    
+
+  <div class="attributes">
+
+    
+      <div class="example">
+        <h5>Example</h5>
+        
+        <p class="code-caption">Fetches all withdrawals for a wallet</p>
+    
+    <pre class="prettyprint"><code>const withdrawals = await paymeter.getWithdrawals('abcdefghi');
+console.log(withdrawals);
+// Prints [{...withdrawal1}, {...}, ...]</code></pre>
+
+      </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters</h5>
+        
+
+<ul class="params">
+  
+    <li>
+      <code class="param"><span class="item-name">walletId</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Id of the wallet for which the transactions need to be fetched</p>
+        
+      </div>
+
+    </li>
+  
+</ul>
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns</h5>
+    
+            
+
+
+<code class="param-type"
+  >Promise<array></code
+>
+
+
+
+
+<span class="param-desc">
+  <p>Array of withdrawals</p>
+</span>
+
+
+        
+  </div>
+
+  
+    <div class="item-description">
+        <p>Fetches all the withdrawals happend for a wallet</p>
+    </div>
+  
+</div>
+
+          
+              
+<div class="method has-description">
+    
+
+        <h4 id="Paymeter-instance-refreshBalance" class="item-header">
+          <span class="type-signature">(async) </span>
+          
+          <span class="member-of"
+                ><span class="class-name"
+                  >paymeter</span
+                >.</span><span class="parameters"><span class="name"><a href="api.html#Paymeter-instance-refreshBalance">refreshBalance</a></span><span class="parenthesis">(</span><span class="item-name">walletId</span><span class="parenthesis">)</span></span><span class="type-signature"> &rarr;  Promise<boolean></span>
+          <a href="paymeter_index.js.html#line295" class="source-link">source</a>
+        </h4>
+
+        
+    
+
+  <div class="attributes">
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters</h5>
+        
+
+<ul class="params">
+  
+    <li>
+      <code class="param"><span class="item-name">walletId</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>ID of the wallet to refresh balance of</p>
+        
+      </div>
+
+    </li>
+  
+</ul>
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns</h5>
+    
+            
+
+
+<code class="param-type"
+  >Promise<boolean></code
+>
+
+
+
+
+<span class="param-desc">
+  <p>True if call succeeded</p>
+</span>
+
+
+        
+  </div>
+
+  
+    <div class="item-description">
+        <p>Force refreshes balance in a wallet. This can be used in case deposits are coming from a smart contract</p>
+    </div>
+  
+</div>
+
+          
+              
+<div class="method has-description">
+    
+
+        <h4 id="Paymeter-instance-send" class="item-header">
+          <span class="type-signature">(async) </span>
+          
+          <span class="member-of"
+                ><span class="class-name"
+                  >paymeter</span
+                >.</span><span class="parameters"><span class="name"><a href="api.html#Paymeter-instance-send">send</a></span><span class="parenthesis">(</span><span class="item-name">options</span><span class="parenthesis">)</span></span><span class="type-signature"> &rarr;  Promise<string></span>
+          <a href="paymeter_index.js.html#line238" class="source-link">source</a>
+        </h4>
+
+        
+    
+
+  <div class="attributes">
+
+    
+      <div class="example">
+        <h5>Examples</h5>
+        
+        <p class="code-caption">Transfers tokens (Fees debited from the amount specified)</p>
+    
+    <pre class="prettyprint"><code>const txnId = await paymeter.send({
+  fromWalletId: 'wallet1ID',
+  toAddress: '0x1234567890abcdef',
+  amount: 1,
+  password: 'wallet1Password'
+});
+console.log(txnId);
+// Prints 0x...</code></pre>
+
+        <p class="code-caption">Transfers tokens (Fees debited above the specifed amount)</p>
+    
+    <pre class="prettyprint"><code>const txnId = await paymeter.send({
+  fromWalletId: 'wallet1ID',
+  toAddress: '0x1234567890abcdef',
+  amount: 1,
+  password: 'wallet1Password'
+  sendExactAmount: true
+});
+console.log(txnId);
+// Prints 0x...</code></pre>
+
+        <p class="code-caption">Transfers token from but fees deducted from another wallet</p>
+    
+    <pre class="prettyprint"><code>const txnId = await paymeter.send({
+  fromWalletId: 'wallet1ID',
+  toAddress: '0x1234567890abcdef',
+  amount: 1,
+  password: 'wallet1Password'
+  feeWalletId: 'wallet2ID',
+  feeWalletPassword: 'wallet2Password'
+});
+console.log(txnId);
+// Prints 0x...</code></pre>
+
+        <p class="code-caption">Transfers token from with fees credits to separate wallet</p>
+    
+    <pre class="prettyprint"><code>const txnId = await paymeter.send({
+  fromWalletId: 'wallet1ID',
+  toAddress: '0x1234567890abcdef',
+  amount: 1,
+  password: 'wallet1Password'
+  feeCollectWalletId: 'wallet3ID',
+});
+console.log(txnId);
+// Prints 0x...</code></pre>
+
+        <p class="code-caption">Transfers token using raw transactions</p>
+    
+    <pre class="prettyprint"><code>const contractAddress = '0x12341234567890abcd';
+const contract = new web3.eth.Contract(abi, contractAddress);
+const data = await contract.methods.sign().encodeABI();
+const txnId = await paymeter.send({
+  fromWalletId: 'wallet4ID',
+  password: 'wallet4Password',
+  toAddress: contractAddress,
+  data: data,
+});
+console.log(txnId);
+// Prints 0x...</code></pre>
+
+      </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters</h5>
+        
+
+<ul class="params">
+  
+    <li>
+      <code class="param"><span class="item-name">options</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >object</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Wallet configuration</p>
+        
+          
+
+<ul class="params">
+  
+    <li>
+      <code class="param"><span class="item-name">fromWalletId</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Id of the wallet from which to transfer tokens</p>
+        
+      </div>
+
+    </li>
+  
+    <li>
+      <code class="param"><span class="item-name">toAddress</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Address to which tokens are to be transferred</p>
+        
+      </div>
+
+    </li>
+  
+    <li>
+      <code class="param"><span class="item-name">amount</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Amount of tokens to be transferred. Maximum of 5 decimal places</p>
+        
+      </div>
+
+    </li>
+  
+    <li>
+      <code class="param"><span class="item-name">password</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Password for the wallet from which tokens are to be transferred</p>
+        
+      </div>
+
+    </li>
+  
+    <li>
+      <code class="param"><span class="optional-bracket">[</span><span class="item-name">feeWalletId</span><span class="optional-bracket">]</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Only for ERC20 tokens, wallet Id from where the transaction fee is to be deducted</p>
+        
+      </div>
+
+    </li>
+  
+    <li>
+      <code class="param"><span class="optional-bracket">[</span><span class="item-name">feeWalletPassword</span><span class="optional-bracket">]</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Only for ERC20 tokens, password for the feeWallet specified <i>(<b>Required</b> if feeWalletId is specified)</i></p>
+        
+      </div>
+
+    </li>
+  
+    <li>
+      <code class="param"><span class="optional-bracket">[</span><span class="item-name">feeCollectWalletId</span><span class="optional-bracket">]</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Wallet ID to which the gas fees is to be collected</p>
+        
+      </div>
+
+    </li>
+  
+    <li>
+      <code class="param"><span class="optional-bracket">[</span><span class="item-name">tokenValueInEth</span><span class="optional-bracket">]</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Value of ERC20 token in ETH i.e., 1 ERC20 Token = ? ETH <i>(<b>Required</b> if feeCollectWalletId is specified)</i></p>
+        
+      </div>
+
+    </li>
+  
+    <li>
+      <code class="param"><span class="optional-bracket">[</span><span class="item-name">sendExactAmount</span><span class="optional-bracket">]</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >boolean</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>If true, then sends exact amount to the receiver. Total amount debited will be the specified amount + network charges. If false, network charges will be debited from the specified amount</p>
+        
+      </div>
+
+    </li>
+  
+    <li>
+      <code class="param"><span class="optional-bracket">[</span><span class="item-name">data</span><span class="optional-bracket">]</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string(hex)</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Raw transaction data to call functions of smart contract. Only applicable for ETH wallets</p>
+        
+      </div>
+
+    </li>
+  
+</ul>
+
+        
+      </div>
+
+    </li>
+  
+</ul>
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns</h5>
+    
+            
+
+
+<code class="param-type"
+  >Promise<string></code
+>
+
+
+
+
+<span class="param-desc">
+  <p>Transaction id</p>
+</span>
+
+
+        
+  </div>
+
+  
+    <div class="item-description">
+        <p>Transfers token from a wallet to specified address</p>
+    </div>
+  
+</div>
+
+          
+        </div>
+    
+
+    
+
+    
+
+    
+</article>
+
+
+    
+
+
+
+
+
+<article>
+    
+        <h2 id="section-Paymeter-static-Paymeter">
+            <span class="ancestors"><a href="api.html#Paymeter">Paymeter</a>.</span
+        >Paymeter</h2>
+        
+    
+
+    <div class="container-overview">
+    
+        <h3
+          id="Paymeter-static-Paymeter-subsection-construction"
+          class="subsection-title"
+        >Construction</h3>
+        
+<div class="method has-description">
+    
+
+        <h4 id="Paymeter-static-Paymeter" class="item-header">
+          <span class="type-signature"></span>
+          
+            <span class="new">new</span>
+          
+          <span class="member-of"
+                ><span class="class-name"
+                  >Paymeter</span
+                >.</span><span class="parameters"><span class="name"><a href="api.html#Paymeter-static-Paymeter">Paymeter</a></span><span class="parenthesis">(</span><span class="item-name">options</span><span class="parenthesis">)</span></span><span class="type-signature"></span>
+          <a href="paymeter_index.js.html#line15" class="source-link">source</a>
+        </h4>
+
+        
+    
+
+  <div class="attributes">
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters</h5>
+        
+
+<ul class="params">
+  
+    <li>
+      <code class="param"><span class="item-name">options</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >object</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Options</p>
+        
+      </div>
+
+    </li>
+  
+</ul>
+
+    
+
+    
+
+
+    <h5 class="subsection-title">Properties</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>apiKey</code></td>
+            
+
+            <td class="type">
+            
+                <code class="param-type"
+  >string</code
+>
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>API Key for authentication</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>domain</code></td>
+            
+
+            <td class="type">
+            
+                <code class="param-type"
+  >string</code
+>
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Domain where the platform is hosted</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+    <div class="item-description">
+        <p>Creates an instance of Platform.</p>
+    </div>
+  
+</div>
+
+        
+
+    
+    </div>
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<article>
+    
+        <h2 id="section-Platform">Platform</h2>
+        
+    
+
+    <div class="container-overview">
+    
+        <h3
+          id="Platform-subsection-construction"
+          class="subsection-title"
+        >Construction</h3>
+        
+<div class="method has-description">
+    
+
+        <h4 id="Platform" class="item-header">
+          <span class="type-signature"></span>
+          
+            <span class="new">new</span>
+          
+          <span class="parameters"><span class="name"><a href="api.html#Platform">Platform</a></span><span class="parenthesis">(</span><span class="parenthesis">)</span></span><span class="type-signature"></span>
+          <a href="platform_index.js.html#line4" class="source-link">source</a>
+        </h4>
+
+        
+    
+
+  <div class="attributes">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+    <div class="item-description">
+        <p>Handles all functions related to the blockcluster platform operation</p>
+    </div>
+  
+</div>
+
+        
+
+    
+    </div>
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+        <h3
+          id="Platform-subsection-methods"
+          class="subsection-title"
+        >Methods</h3>
+        <div class="methods">
+          
+              
+<div class="method has-description">
+    
+
+        <h4 id="Platform-instance-acceptInvite" class="item-header">
+          <span class="type-signature">(async) </span>
+          
+          <span class="member-of"
+                ><span class="class-name"
+                  >platform</span
+                >.</span><span class="parameters"><span class="name"><a href="api.html#Platform-instance-acceptInvite">acceptInvite</a></span><span class="parenthesis">(</span><span class="item-name">options</span><span class="parenthesis">)</span></span><span class="type-signature"> &rarr;  Promise<any></span>
+          <a href="platform_index.js.html#line218" class="source-link">source</a>
+        </h4>
+
+        
+    
+
+  <div class="attributes">
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters</h5>
+        
+
+<ul class="params">
+  
+    <li>
+      <code class="param"><span class="item-name">options</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >object</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Invite options</p>
+        
+          
+
+<ul class="params">
+  
+    <li>
+      <code class="param"><span class="item-name">inviteId</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Id of the invite to accept</p>
+        
+      </div>
+
+    </li>
+  
+    <li>
+      <code class="param"><span class="item-name">locationCode</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Location code from the list of available location from <code>fetchLocations()</code> function</p>
+        
+      </div>
+
+    </li>
+  
+    <li>
+      <code class="param"><span class="item-name">networkConfigId</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Id of the network type from the <code>fetchNetworkType()</code> function</p>
+        
+      </div>
+
+    </li>
+  
+</ul>
+
+        
+      </div>
+
+    </li>
+  
+</ul>
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns</h5>
+    
+            
+
+
+<code class="param-type"
+  >Promise<any></code
+>
+
+
+
+
+<span class="param-desc">
+  <p>Instance id or error</p>
+</span>
+
+
+        
+  </div>
+
+  
+    <div class="item-description">
+        <p>Accepts an invite sent using the <code>inviteViaEmail()</code> function</p>
+    </div>
+  
+</div>
+
+          
+              
+<div class="method has-description">
+    
+
+        <h4 id="Platform-instance-acceptPrivatehiveChannelInvite" class="item-header">
+          <span class="type-signature">(async) </span>
+          
+          <span class="member-of"
+                ><span class="class-name"
+                  >platform</span
+                >.</span><span class="parameters"><span class="name"><a href="api.html#Platform-instance-acceptPrivatehiveChannelInvite">acceptPrivatehiveChannelInvite</a></span><span class="parenthesis">(</span><span class="item-name">inviteId</span><span class="comma">, </span><span class="item-name">peerId</span><span class="parenthesis">)</span></span><span class="type-signature"> &rarr;  string</span>
+          <a href="platform_index.js.html#line403" class="source-link">source</a>
+        </h4>
+
+        
+    
+
+  <div class="attributes">
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters</h5>
+        
+
+<ul class="params">
+  
+    <li>
+      <code class="param"><span class="item-name">inviteId</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>InviteID to be accepted</p>
+        
+      </div>
+
+    </li>
+  
+    <li>
+      <code class="param"><span class="item-name">peerId</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>InstanceID of the peer to join the channel</p>
+        
+      </div>
+
+    </li>
+  
+</ul>
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns</h5>
+    
+            
+
+
+<code class="param-type"
+  >string</code
+>
+
+
+
+
+<span class="param-desc">
+  <p>InstanceID of the joined peer</p>
+</span>
+
+
+        
+  </div>
+
+  
+    <div class="item-description">
+        <p>Accepts an invite to join a channel</p>
+    </div>
+  
+</div>
+
+          
+              
+<div class="method has-description">
+    
+
+        <h4 id="Platform-instance-createNetwork" class="item-header">
+          <span class="type-signature">(async) </span>
+          
+          <span class="member-of"
+                ><span class="class-name"
+                  >platform</span
+                >.</span><span class="parameters"><span class="name"><a href="api.html#Platform-instance-createNetwork">createNetwork</a></span><span class="parenthesis">(</span><span class="item-name">options</span><span class="parenthesis">)</span></span><span class="type-signature"> &rarr;  Promise<string|err></span>
+          <a href="platform_index.js.html#line67" class="source-link">source</a>
+        </h4>
+
+        
+    
+
+  <div class="attributes">
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters</h5>
+        
+
+<ul class="params">
+  
+    <li>
+      <code class="param"><span class="item-name">options</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >object</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Network options</p>
+        
+          
+
+<ul class="params">
+  
+    <li>
+      <code class="param"><span class="item-name">networkName</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Name of the network to be created</p>
+        
+      </div>
+
+    </li>
+  
+    <li>
+      <code class="param"><span class="item-name">networkConfigId</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Id of the network type from the <code>fetchNetworkType()</code> function</p>
+        
+      </div>
+
+    </li>
+  
+    <li>
+      <code class="param"><span class="item-name">locationCode</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Location code from the list of available location from <code>fetchLocations()</code> function</p>
+        
+      </div>
+
+    </li>
+  
+</ul>
+
+        
+      </div>
+
+    </li>
+  
+</ul>
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns</h5>
+    
+            
+
+
+<code class="param-type"
+  >Promise<string|err></code
+>
+
+
+
+
+<span class="param-desc">
+  <p>Id of the network which was created</p>
+</span>
+
+
+        
+  </div>
+
+  
+    <div class="item-description">
+        <p>Creates a blockcluster node</p>
+    </div>
+  
+</div>
+
+          
+              
+<div class="method has-description">
+    
+
+        <h4 id="Platform-instance-createPrivatehiveNetwork" class="item-header">
+          <span class="type-signature">(async) </span>
+          
+          <span class="member-of"
+                ><span class="class-name"
+                  >platform</span
+                >.</span><span class="parameters"><span class="name"><a href="api.html#Platform-instance-createPrivatehiveNetwork">createPrivatehiveNetwork</a></span><span class="parenthesis">(</span><span class="item-name">options</span><span class="parenthesis">)</span></span><span class="type-signature"> &rarr;  string</span>
+          <a href="platform_index.js.html#line250" class="source-link">source</a>
+        </h4>
+
+        
+    
+
+  <div class="attributes">
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters</h5>
+        
+
+<ul class="params">
+  
+    <li>
+      <code class="param"><span class="item-name">options</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >object</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Options</p>
+        
+      </div>
+
+    </li>
+  
+</ul>
+
+    
+
+    
+
+
+    <h5 class="subsection-title">Properties</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options.peerId</code></td>
+            
+
+            <td class="type">
+            
+                <code class="param-type"
+  >string</code
+>
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Peer Id to which the orderer joins. Required only incase of orderer type</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options.locationCode</code></td>
+            
+
+            <td class="type">
+            
+                <code class="param-type"
+  >string</code
+>
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Location code where the network should be deployed</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options.type</code></td>
+            
+
+            <td class="type">
+            
+                <code class="param-type"
+  >peer</code
+><code class="type-or">|</code><code class="param-type"
+  >orderer</code
+>
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Type of network. Either peer or orderer</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options.voucherCode</code></td>
+            
+
+            <td class="type">
+            
+                <code class="param-type"
+  >string</code
+>
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Voucher code to be applied</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options.name</code></td>
+            
+
+            <td class="type">
+            
+                <code class="param-type"
+  >string</code
+>
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Name of the network. Required</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options.orgName</code></td>
+            
+
+            <td class="type">
+            
+                <code class="param-type"
+  >string</code
+>
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Organization to which the node belongs to</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options.ordererType</code></td>
+            
+
+            <td class="type">
+            
+                <code class="param-type"
+  >solo</code
+><code class="type-or">|</code><code class="param-type"
+  >kafka</code
+>
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Type of orderer to be created. Solo or Kafka. Required only if type is orderer</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options.networkConfigId</code></td>
+            
+
+            <td class="type">
+            
+                <code class="param-type"
+  >stirng</code
+>
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>ID of network configuration</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options.diskSpace</code></td>
+            
+
+            <td class="type">
+            
+                <code class="param-type"
+  >number</code
+>
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Disk space required for this node. Applicable only if network configuration has isDiskChangeable = true</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns</h5>
+    
+            
+
+
+<code class="param-type"
+  >string</code
+>
+
+
+
+
+<span class="param-desc">
+  <p>Instance ID of the created network</p>
+</span>
+
+
+        
+  </div>
+
+  
+    <div class="item-description">
+        <p>Creates a privatehive node</p>
+    </div>
+  
+</div>
+
+          
+              
+<div class="method has-description">
+    
+
+        <h4 id="Platform-instance-deleteNetwork" class="item-header">
+          <span class="type-signature">(async) </span>
+          
+          <span class="member-of"
+                ><span class="class-name"
+                  >platform</span
+                >.</span><span class="parameters"><span class="name"><a href="api.html#Platform-instance-deleteNetwork">deleteNetwork</a></span><span class="parenthesis">(</span><span class="item-name">networkId</span><span class="parenthesis">)</span></span><span class="type-signature"> &rarr;  Promise<any></span>
+          <a href="platform_index.js.html#line92" class="source-link">source</a>
+        </h4>
+
+        
+    
+
+  <div class="attributes">
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters</h5>
+        
+
+<ul class="params">
+  
+    <li>
+      <code class="param"><span class="item-name">networkId</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Id of the network to be deleted</p>
+        
+      </div>
+
+    </li>
+  
+</ul>
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns</h5>
+    
+            
+
+
+<code class="param-type"
+  >Promise<any></code
+>
+
+
+
+
+<span class="param-desc">
+  <p>Response of the delete operation</p>
+</span>
+
+
+        
+  </div>
+
+  
+    <div class="item-description">
+        <p>Deletes a network from the blockcluster platform</p>
+    </div>
+  
+</div>
+
+          
+              
+<div class="method has-description">
+    
+
+        <h4 id="Platform-instance-deletePrivatehiveNetwork" class="item-header">
+          <span class="type-signature">(async) </span>
+          
+          <span class="member-of"
+                ><span class="class-name"
+                  >platform</span
+                >.</span><span class="parameters"><span class="name"><a href="api.html#Platform-instance-deletePrivatehiveNetwork">deletePrivatehiveNetwork</a></span><span class="parenthesis">(</span><span class="item-name">networkId</span><span class="parenthesis">)</span></span><span class="type-signature"> &rarr;  string</span>
+          <a href="platform_index.js.html#line356" class="source-link">source</a>
+        </h4>
+
+        
+    
+
+  <div class="attributes">
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters</h5>
+        
+
+<ul class="params">
+  
+    <li>
+      <code class="param"><span class="item-name">networkId</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Instance ID of the network to be deleted</p>
+        
+      </div>
+
+    </li>
+  
+</ul>
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns</h5>
+    
+            
+
+
+<code class="param-type"
+  >string</code
+>
+
+
+
+
+<span class="param-desc">
+  <p>InstanceID of deleted network</p>
+</span>
+
+
+        
+  </div>
+
+  
+    <div class="item-description">
+        <p>Delets a privatehive node</p>
+    </div>
+  
+</div>
+
+          
+              
+<div class="method has-description">
+    
+
+        <h4 id="Platform-instance-fetchLocations" class="item-header">
+          <span class="type-signature">(async) </span>
+          
+          <span class="member-of"
+                ><span class="class-name"
+                  >platform</span
+                >.</span><span class="parameters"><span class="name"><a href="api.html#Platform-instance-fetchLocations">fetchLocations</a></span><span class="parenthesis">(</span><span class="optional-bracket">[</span><span class="item-name">service</span><span class="optional-bracket">]</span><span class="parenthesis">)</span></span><span class="type-signature"> &rarr;  Promise<array></span>
+          <a href="platform_index.js.html#line47" class="source-link">source</a>
+        </h4>
+
+        
+    
+
+  <div class="attributes">
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters</h5>
+        
+
+<ul class="params">
+  
+    <li>
+      <code class="param"><span class="optional-bracket">[</span><span class="item-name">service</span><span class="default-value"><span class="default-equals">=</span><span class="default-value">dynamo</span></span><span class="optional-bracket">]</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >dynamo</code
+><code class="type-or">|</code><code class="param-type"
+  >privatehive</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Service for which the locations are to be fetched</p>
+        
+      </div>
+
+    </li>
+  
+</ul>
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns</h5>
+    
+            
+
+
+<code class="param-type"
+  >Promise<array></code
+>
+
+
+
+
+<span class="param-desc">
+  <p>List of locations</p>
+</span>
+
+
+        
+  </div>
+
+  
+    <div class="item-description">
+        <p>Fetches all the applicable locations. You need to pass the location code in any create or invite request</p>
+    </div>
+  
+</div>
+
+          
+              
+<div class="method has-description">
+    
+
+        <h4 id="Platform-instance-fetchNetworkTypes" class="item-header">
+          <span class="type-signature">(async) </span>
+          
+          <span class="member-of"
+                ><span class="class-name"
+                  >platform</span
+                >.</span><span class="parameters"><span class="name"><a href="api.html#Platform-instance-fetchNetworkTypes">fetchNetworkTypes</a></span><span class="parenthesis">(</span><span class="optional-bracket">[</span><span class="item-name">service</span><span class="optional-bracket">]</span><span class="parenthesis">)</span></span><span class="type-signature"> &rarr;  Promise<array></span>
+          <a href="platform_index.js.html#line30" class="source-link">source</a>
+        </h4>
+
+        
+    
+
+  <div class="attributes">
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters</h5>
+        
+
+<ul class="params">
+  
+    <li>
+      <code class="param"><span class="optional-bracket">[</span><span class="item-name">service</span><span class="default-value"><span class="default-equals">=</span><span class="default-value">dynamo</span></span><span class="optional-bracket">]</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >dynamo</code
+><code class="type-or">|</code><code class="param-type"
+  >privatehive</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Service for which the configurations are to be fetched</p>
+        
+      </div>
+
+    </li>
+  
+</ul>
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns</h5>
+    
+            
+
+
+<code class="param-type"
+  >Promise<array></code
+>
+
+
+
+
+<span class="param-desc">
+  <p>List of network types</p>
+</span>
+
+
+        
+  </div>
+
+  
+    <div class="item-description">
+        <p>Fetches all the applicable network types. You need to pass the network type id in any create or invite request</p>
+    </div>
+  
+</div>
+
+          
+              
+<div class="method has-description">
+    
+
+        <h4 id="Platform-instance-getPrivatehiveNode" class="item-header">
+          <span class="type-signature"></span>
+          
+          <span class="member-of"
+                ><span class="class-name"
+                  >platform</span
+                >.</span><span class="parameters"><span class="name"><a href="api.html#Platform-instance-getPrivatehiveNode">getPrivatehiveNode</a></span><span class="parenthesis">(</span><span class="item-name">nodeInfo</span><span class="parenthesis">)</span></span><span class="type-signature"> &rarr;  <a href="api.html#PrivatehiveNode">PrivatehiveNode</a></span>
+          <a href="platform_index.js.html#line437" class="source-link">source</a>
+        </h4>
+
+        
+    
+
+  <div class="attributes">
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters</h5>
+        
+
+<ul class="params">
+  
+    <li>
+      <code class="param"><span class="item-name">nodeInfo</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >object</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Node information details. Can be fetched from listPrivatehiveNetworks(instanceId)</p>
+        
+      </div>
+
+    </li>
+  
+</ul>
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns</h5>
+    
+            
+
+
+<code class="param-type"
+  ><a href="api.html#PrivatehiveNode">PrivatehiveNode</a></code
+>
+
+
+
+
+<span class="param-desc">
+  <p>Privatehive node instance</p>
+</span>
+
+
+        
+  </div>
+
+  
+    <div class="item-description">
+        <p>Returns privatehive node object to operate on it</p>
+    </div>
+  
+</div>
+
+          
+              
+<div class="method has-description">
+    
+
+        <h4 id="Platform-instance-inviteUserToChannel" class="item-header">
+          <span class="type-signature">(async) </span>
+          
+          <span class="member-of"
+                ><span class="class-name"
+                  >platform</span
+                >.</span><span class="parameters"><span class="name"><a href="api.html#Platform-instance-inviteUserToChannel">inviteUserToChannel</a></span><span class="parenthesis">(</span><span class="item-name">params</span><span class="parenthesis">)</span></span><span class="type-signature"> &rarr;  string</span>
+          <a href="platform_index.js.html#line378" class="source-link">source</a>
+        </h4>
+
+        
+    
+
+  <div class="attributes">
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters</h5>
+        
+
+<ul class="params">
+  
+    <li>
+      <code class="param"><span class="item-name">params</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >object</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Options</p>
+        
+      </div>
+
+    </li>
+  
+</ul>
+
+    
+
+    
+
+
+    <h5 class="subsection-title">Properties</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>params.email</code></td>
+            
+
+            <td class="type">
+            
+                <code class="param-type"
+  >string</code
+>
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Email of the user to be invited</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>params.peerId</code></td>
+            
+
+            <td class="type">
+            
+                <code class="param-type"
+  >string</code
+>
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Instance ID of the peer to be invited</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>params.channelName</code></td>
+            
+
+            <td class="type">
+            
+                <code class="param-type"
+  >string</code
+>
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Channel to which the user should be invited to</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>params.ordererDomain</code></td>
+            
+
+            <td class="type">
+            
+                <code class="param-type"
+  >string</code
+>
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Domain of the orderer</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>params.ordererConnectionDetails</code></td>
+            
+
+            <td class="type">
+            
+                <code class="param-type"
+  >string</code
+>
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Connection details of the orderer like &quot;grpc://1.2.3.4:1234&quot;</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns</h5>
+    
+            
+
+
+<code class="param-type"
+  >string</code
+>
+
+
+
+
+<span class="param-desc">
+  <p>Invite ID</p>
+</span>
+
+
+        
+  </div>
+
+  
+    <div class="item-description">
+        <p>Invites a user to a HLF channel. The invited user can select the peer which will join the channel</p>
+    </div>
+  
+</div>
+
+          
+              
+<div class="method has-description">
+    
+
+        <h4 id="Platform-instance-inviteViaEmail" class="item-header">
+          <span class="type-signature">(async) </span>
+          
+          <span class="member-of"
+                ><span class="class-name"
+                  >platform</span
+                >.</span><span class="parameters"><span class="name"><a href="api.html#Platform-instance-inviteViaEmail">inviteViaEmail</a></span><span class="parenthesis">(</span><span class="item-name">options</span><span class="parenthesis">)</span></span><span class="type-signature"> &rarr;  Promise<string></span>
+          <a href="platform_index.js.html#line180" class="source-link">source</a>
+        </h4>
+
+        
+    
+
+  <div class="attributes">
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters</h5>
+        
+
+<ul class="params">
+  
+    <li>
+      <code class="param"><span class="item-name">options</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >object</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Invite options</p>
+        
+          
+
+<ul class="params">
+  
+    <li>
+      <code class="param"><span class="item-name">inviteToEmail</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Email id of the user to be invited. The email id should be a user of blockcluster to be able to join the network.
+If the user is not on the blockcluster platform then an account in pending state will be created with this email id</p>
+        
+      </div>
+
+    </li>
+  
+    <li>
+      <code class="param"><span class="item-name">networkId</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Id of the network to which the new node should join</p>
+        
+      </div>
+
+    </li>
+  
+    <li>
+      <code class="param"><span class="item-name">networkType</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string<peer|authority></code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Type of network the new network will be</p>
+        
+      </div>
+
+    </li>
+  
+</ul>
+
+        
+      </div>
+
+    </li>
+  
+</ul>
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns</h5>
+    
+            
+
+
+<code class="param-type"
+  >Promise<string></code
+>
+
+
+
+
+<span class="param-desc">
+  <p>Invite id of the invite. Use this invite id to accept</p>
+</span>
+
+
+        
+  </div>
+
+  
+    <div class="item-description">
+        <p>Invites another use to join a node on the blockcluster platform</p>
+    </div>
+  
+</div>
+
+          
+              
+<div class="method has-description">
+    
+
+        <h4 id="Platform-instance-joinNetwork" class="item-header">
+          <span class="type-signature">(async) </span>
+          
+          <span class="member-of"
+                ><span class="class-name"
+                  >platform</span
+                >.</span><span class="parameters"><span class="name"><a href="api.html#Platform-instance-joinNetwork">joinNetwork</a></span><span class="parenthesis">(</span><span class="item-name">options</span><span class="parenthesis">)</span></span><span class="type-signature"> &rarr;  Promise<any></span>
+          <a href="platform_index.js.html#line120" class="source-link">source</a>
+        </h4>
+
+        
+    
+
+  <div class="attributes">
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters</h5>
+        
+
+<ul class="params">
+  
+    <li>
+      <code class="param"><span class="item-name">options</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >object</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Network options</p>
+        
+          
+
+<ul class="params">
+  
+    <li>
+      <code class="param"><span class="item-name">networkName</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Name of the network to be created</p>
+        
+      </div>
+
+    </li>
+  
+    <li>
+      <code class="param"><span class="item-name">nodeType</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string<authority|peer></code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Type of network</p>
+        
+      </div>
+
+    </li>
+  
+    <li>
+      <code class="param"><span class="item-name">genesisFileContent</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Content of genesis block</p>
+        
+      </div>
+
+    </li>
+  
+    <li>
+      <code class="param"><span class="item-name">totalENodes</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string[]</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>List of enode urls to be joined</p>
+        
+      </div>
+
+    </li>
+  
+    <li>
+      <code class="param"><span class="item-name">impulseURL</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>URL of impulse</p>
+        
+      </div>
+
+    </li>
+  
+    <li>
+      <code class="param"><span class="item-name">assetsContractAddress</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Asset smart contract address</p>
+        
+      </div>
+
+    </li>
+  
+    <li>
+      <code class="param"><span class="item-name">atomicSwapContractAddress</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Atomic Swap smart contract address</p>
+        
+      </div>
+
+    </li>
+  
+    <li>
+      <code class="param"><span class="item-name">streamsContractAddress</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Steams smart contract address</p>
+        
+      </div>
+
+    </li>
+  
+    <li>
+      <code class="param"><span class="item-name">impulseContractAddress</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Impulse smart contract address</p>
+        
+      </div>
+
+    </li>
+  
+    <li>
+      <code class="param"><span class="item-name">locationCode</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Location code from the list of available location from <code>fetchLocations()</code> function</p>
+        
+      </div>
+
+    </li>
+  
+    <li>
+      <code class="param"><span class="item-name">networkConfigId</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Id of the network type from the <code>fetchNetworkType()</code> function</p>
+        
+      </div>
+
+    </li>
+  
+</ul>
+
+        
+      </div>
+
+    </li>
+  
+</ul>
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns</h5>
+    
+            
+
+
+<code class="param-type"
+  >Promise<any></code
+>
+
+
+
+
+<span class="param-desc">
+  <p>Instance id or error message</p>
+</span>
+
+
+        
+  </div>
+
+  
+    <div class="item-description">
+        <p>Creates a network which will be joined to an existing network having all the details</p>
+    </div>
+  
+</div>
+
+          
+              
+<div class="method has-description">
+    
+
+        <h4 id="Platform-instance-listPrivatehiveChannelInvites" class="item-header">
+          <span class="type-signature">(async) </span>
+          
+          <span class="member-of"
+                ><span class="class-name"
+                  >platform</span
+                >.</span><span class="parameters"><span class="name"><a href="api.html#Platform-instance-listPrivatehiveChannelInvites">listPrivatehiveChannelInvites</a></span><span class="parenthesis">(</span><span class="parenthesis">)</span></span><span class="type-signature"> &rarr;  Invite[]</span>
+          <a href="platform_index.js.html#line421" class="source-link">source</a>
+        </h4>
+
+        
+    
+
+  <div class="attributes">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns</h5>
+    
+            
+
+
+<code class="param-type"
+  >Invite[]</code
+>
+
+
+
+
+<span class="param-desc">
+  <p>List of invites</p>
+</span>
+
+
+        
+  </div>
+
+  
+    <div class="item-description">
+        <p>Lists all pending privatehive channel invites</p>
+    </div>
+  
+</div>
+
+          
+              
+<div class="method has-description">
+    
+
+        <h4 id="Platform-instance-listPrivatehiveNetworks" class="item-header">
+          <span class="type-signature">(async) </span>
+          
+          <span class="member-of"
+                ><span class="class-name"
+                  >platform</span
+                >.</span><span class="parameters"><span class="name"><a href="api.html#Platform-instance-listPrivatehiveNetworks">listPrivatehiveNetworks</a></span><span class="parenthesis">(</span><span class="optional-bracket">[</span><span class="item-name">instanceId</span><span class="optional-bracket">]</span><span class="comma">, </span><span class="item-name">options</span><span class="parenthesis">)</span></span><span class="type-signature"> &rarr;  Node[]</span>
+          <a href="platform_index.js.html#line313" class="source-link">source</a>
+        </h4>
+
+        
+    
+
+  <div class="attributes">
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters</h5>
+        
+
+<ul class="params">
+  
+    <li>
+      <code class="param"><span class="optional-bracket">[</span><span class="item-name">instanceId</span><span class="optional-bracket">]</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>If provided then fetches details of only this instance</p>
+        
+      </div>
+
+    </li>
+  
+    <li>
+      <code class="param"><span class="item-name">options</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >object</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Additional filters</p>
+        
+      </div>
+
+    </li>
+  
+</ul>
+
+    
+
+    
+
+
+    <h5 class="subsection-title">Properties</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options.showDeleted</code></td>
+            
+
+            <td class="type">
+            
+                <code class="param-type"
+  >bool</code
+>
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>If true then shows all the deleted networks as well</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options.nodeType</code></td>
+            
+
+            <td class="type">
+            
+                <code class="param-type"
+  >peer</code
+><code class="type-or">|</code><code class="param-type"
+  >orderer</code
+>
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Queries only a particular type of node</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options.locationCode</code></td>
+            
+
+            <td class="type">
+            
+                <code class="param-type"
+  >string</code
+>
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Queries networks only in this location</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options.createdAfter</code></td>
+            
+
+            <td class="type">
+            
+                <code class="param-type"
+  >date</code
+>
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Queries networks created after this date</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options.createdBefore</code></td>
+            
+
+            <td class="type">
+            
+                <code class="param-type"
+  >date</code
+>
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Queries networks created before this date</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns</h5>
+    
+            
+
+
+<code class="param-type"
+  >Node[]</code
+>
+
+
+
+
+<span class="param-desc">
+  <p>Array of networks matching the filters</p>
+</span>
+
+
+        
+  </div>
+
+  
+    <div class="item-description">
+        <p>Lists details of privatehive networks</p>
+    </div>
+  
+</div>
+
+          
+        </div>
+    
+
+    
+
+    
+
+    
+</article>
+
+
+    
+
+
+
+
+
+<article>
+    
+        <h2 id="section-Platform-static-Platform">
+            <span class="ancestors"><a href="api.html#Platform">Platform</a>.</span
+        >Platform</h2>
+        
+    
+
+    <div class="container-overview">
+    
+        <h3
+          id="Platform-static-Platform-subsection-construction"
+          class="subsection-title"
+        >Construction</h3>
+        
+<div class="method has-description">
+    
+
+        <h4 id="Platform-static-Platform" class="item-header">
+          <span class="type-signature"></span>
+          
+            <span class="new">new</span>
+          
+          <span class="member-of"
+                ><span class="class-name"
+                  >Platform</span
+                >.</span><span class="parameters"><span class="name"><a href="api.html#Platform-static-Platform">Platform</a></span><span class="parenthesis">(</span><span class="item-name">options</span><span class="parenthesis">)</span></span><span class="type-signature"></span>
+          <a href="platform_index.js.html#line16" class="source-link">source</a>
+        </h4>
+
+        
+    
+
+  <div class="attributes">
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters</h5>
+        
+
+<ul class="params">
+  
+    <li>
+      <code class="param"><span class="item-name">options</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >object</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Options</p>
+        
+      </div>
+
+    </li>
+  
+</ul>
+
+    
+
+    
+
+
+    <h5 class="subsection-title">Properties</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>apiKey</code></td>
+            
+
+            <td class="type">
+            
+                <code class="param-type"
+  >string</code
+>
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>API Key for authentication</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>domain</code></td>
+            
+
+            <td class="type">
+            
+                <code class="param-type"
+  >string</code
+>
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Domain where the platform is hosted</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+    <div class="item-description">
+        <p>Creates an instance of Platform.</p>
+    </div>
+  
+</div>
+
+        
+
+    
+    </div>
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<article>
+    
+        <h2 id="section-PrivatehiveNode">PrivatehiveNode</h2>
+        
+    
+
+    <div class="container-overview">
+    
+        <h3
+          id="PrivatehiveNode-subsection-construction"
+          class="subsection-title"
+        >Construction</h3>
+        
+<div class="method has-description">
+    
+
+        <h4 id="PrivatehiveNode" class="item-header">
+          <span class="type-signature"></span>
+          
+            <span class="new">new</span>
+          
+          <span class="parameters"><span class="name"><a href="api.html#PrivatehiveNode">PrivatehiveNode</a></span><span class="parenthesis">(</span><span class="parenthesis">)</span></span><span class="type-signature"></span>
+          <a href="privatehive_index.js.html#line11" class="source-link">source</a>
+        </h4>
+
+        
+    
+
+  <div class="attributes">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+    <h5 class="subsection-title">Properties</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>channels</code></td>
+            
+
+            <td class="type">
+            
+                <code class="param-type"
+  ><a href="api.html#Channel">Channel</a></code
+>
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Channel related functions</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>chaincodes</code></td>
+            
+
+            <td class="type">
+            
+                <code class="param-type"
+  ><a href="api.html#Chaincode">Chaincode</a></code
+>
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Chaincode related functions</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>notifications</code></td>
+            
+
+            <td class="type">
+            
+                <code class="param-type"
+  ><a href="api.html#Notification">Notification</a></code
+>
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Notification related functions</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>explore</code></td>
+            
+
+            <td class="type">
+            
+                <code class="param-type"
+  ><a href="api.html#Explore">Explore</a></code
+>
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Explorer related functions</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>configs</code></td>
+            
+
+            <td class="type">
+            
+                <code class="param-type"
+  ><a href="api.html#Config">Config</a></code
+>
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Download configs</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since</dt>
+    <dd class="tag-since"><ul class="dummy"><li>3.0.1</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+    <div class="item-description">
+        <p>Handles all functions related to the privatehive node</p>
+    </div>
+  
+</div>
+
+        
+
+    
+    </div>
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+        <h3
+          id="PrivatehiveNode-subsection-methods"
+          class="subsection-title"
+        >Methods</h3>
+        <div class="methods">
+          
+              
+<div class="method has-description">
+    
+
+        <h4 id="PrivatehiveNode-instance-addChaincode" class="item-header">
+          <span class="type-signature">(async) </span>
+          
+          <span class="member-of"
+                ><span class="class-name"
+                  >privatehiveNode</span
+                >.</span><span class="parameters"><span class="name"><a href="api.html#PrivatehiveNode-instance-addChaincode">addChaincode</a></span><span class="parenthesis">(</span><span class="item-name">filePath</span><span class="comma">, </span><span class="item-name">name</span><span class="comma">, </span><span class="item-name">type</span><span class="parenthesis">)</span></span><span class="type-signature"> &rarr;  Promise<string></span>
+          <a href="privatehive_index.js.html#line202" class="source-link">source</a>
+        </h4>
+
+        
+    
+
+  <div class="attributes">
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters</h5>
+        
+
+<ul class="params">
+  
+    <li>
+      <code class="param"><span class="item-name">filePath</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Path of the zip file where the chaincode is residing</p>
+        
+      </div>
+
+    </li>
+  
+    <li>
+      <code class="param"><span class="item-name">name</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Name of chaincode</p>
+        
+      </div>
+
+    </li>
+  
+    <li>
+      <code class="param"><span class="item-name">type</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >golang</code
+><code class="type-or">|</code><code class="param-type"
+  >node</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Type of chaincode</p>
+        
+      </div>
+
+    </li>
+  
+</ul>
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <dt class="important tag-deprecated">Deprecated</dt><dd><ul class="dummy"><li>Since v2.1.1. Use PrivatehiveNode.chaincodes.add</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns</h5>
+    
+            
+
+
+<code class="param-type"
+  >Promise<string></code
+>
+
+
+
+
+<span class="param-desc">
+  <p>Response from node</p>
+</span>
+
+
+        
+  </div>
+
+  
+    <div class="item-description">
+        <p>Adds a chaincode to the peer. This does not install or instantiate the chaincode but only uploads them.</p>
+    </div>
+  
+</div>
+
+          
+              
+<div class="method has-description">
+    
+
+        <h4 id="PrivatehiveNode-instance-createChannel" class="item-header">
+          <span class="type-signature">(async) </span>
+          
+          <span class="member-of"
+                ><span class="class-name"
+                  >privatehiveNode</span
+                >.</span><span class="parameters"><span class="name"><a href="api.html#PrivatehiveNode-instance-createChannel">createChannel</a></span><span class="parenthesis">(</span><span class="item-name">name</span><span class="comma">, </span><span class="optional-bracket">[</span><span class="item-name">ordererURL</span><span class="optional-bracket">]</span><span class="comma">, </span><span class="optional-bracket">[</span><span class="item-name">ordererDomain</span><span class="optional-bracket">]</span><span class="parenthesis">)</span></span><span class="type-signature"> &rarr;  Promise<string></span>
+          <a href="privatehive_index.js.html#line149" class="source-link">source</a>
+        </h4>
+
+        
+    
+
+  <div class="attributes">
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters</h5>
+        
+
+<ul class="params">
+  
+    <li>
+      <code class="param"><span class="item-name">name</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Name of the channel to be created</p>
+        
+      </div>
+
+    </li>
+  
+    <li>
+      <code class="param"><span class="optional-bracket">[</span><span class="item-name">ordererURL</span><span class="optional-bracket">]</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>GRPC url (without the protocol) of the orderer</p>
+        
+      </div>
+
+    </li>
+  
+    <li>
+      <code class="param"><span class="optional-bracket">[</span><span class="item-name">ordererDomain</span><span class="optional-bracket">]</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Orderer's organization domain</p>
+        
+      </div>
+
+    </li>
+  
+</ul>
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <dt class="important tag-deprecated">Deprecated</dt><dd><ul class="dummy"><li>Since v2.1.1. Use PrivatehiveNode.channels.create</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns</h5>
+    
+            
+
+
+<code class="param-type"
+  >Promise<string></code
+>
+
+
+
+
+<span class="param-desc">
+  <p>Response from the node</p>
+</span>
+
+
+        
+  </div>
+
+  
+    <div class="item-description">
+        <p>Creates a channel in the privatehive node</p>
+    </div>
+  
+</div>
+
+          
+              
+<div class="method has-description">
+    
+
+        <h4 id="PrivatehiveNode-instance-fetchChaincodes" class="item-header">
+          <span class="type-signature">(async) </span>
+          
+          <span class="member-of"
+                ><span class="class-name"
+                  >privatehiveNode</span
+                >.</span><span class="parameters"><span class="name"><a href="api.html#PrivatehiveNode-instance-fetchChaincodes">fetchChaincodes</a></span><span class="parenthesis">(</span><span class="parenthesis">)</span></span><span class="type-signature"> &rarr;  Promise<string[]></span>
+          <a href="privatehive_index.js.html#line305" class="source-link">source</a>
+        </h4>
+
+        
+    
+
+  <div class="attributes">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <dt class="important tag-deprecated">Deprecated</dt><dd><ul class="dummy"><li>Since v2.1.1. Use PrivatehiveNode.chaincodes.list</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns</h5>
+    
+            
+
+
+<code class="param-type"
+  >Promise<string[]></code
+>
+
+
+
+
+<span class="param-desc">
+  <p>List of chaincodes</p>
+</span>
+
+
+        
+  </div>
+
+  
+    <div class="item-description">
+        <p>Returns list of all the chaincodes</p>
+    </div>
+  
+</div>
+
+          
+              
+<div class="method has-description">
+    
+
+        <h4 id="PrivatehiveNode-instance-fetchChannels" class="item-header">
+          <span class="type-signature">(async) </span>
+          
+          <span class="member-of"
+                ><span class="class-name"
+                  >privatehiveNode</span
+                >.</span><span class="parameters"><span class="name"><a href="api.html#PrivatehiveNode-instance-fetchChannels">fetchChannels</a></span><span class="parenthesis">(</span><span class="parenthesis">)</span></span><span class="type-signature"> &rarr;  Promise<string[]></span>
+          <a href="privatehive_index.js.html#line183" class="source-link">source</a>
+        </h4>
+
+        
+    
+
+  <div class="attributes">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <dt class="important tag-deprecated">Deprecated</dt><dd><ul class="dummy"><li>Since v2.1.1. Use PrivatehiveNode.channels.list</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns</h5>
+    
+            
+
+
+<code class="param-type"
+  >Promise<string[]></code
+>
+
+
+
+
+<span class="param-desc">
+  <p>List of channels</p>
+</span>
+
+
+        
+  </div>
+
+  
+    <div class="item-description">
+        <p>Returns list of all the channels</p>
+    </div>
+  
+</div>
+
+          
+              
+<div class="method has-description">
+    
+
+        <h4 id="PrivatehiveNode-instance-installChaincode" class="item-header">
+          <span class="type-signature">(async) </span>
+          
+          <span class="member-of"
+                ><span class="class-name"
+                  >privatehiveNode</span
+                >.</span><span class="parameters"><span class="name"><a href="api.html#PrivatehiveNode-instance-installChaincode">installChaincode</a></span><span class="parenthesis">(</span><span class="item-name">name</span><span class="parenthesis">)</span></span><span class="type-signature"> &rarr;  Promise<string></span>
+          <a href="privatehive_index.js.html#line239" class="source-link">source</a>
+        </h4>
+
+        
+    
+
+  <div class="attributes">
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters</h5>
+        
+
+<ul class="params">
+  
+    <li>
+      <code class="param"><span class="item-name">name</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Name of the chaincode</p>
+        
+      </div>
+
+    </li>
+  
+</ul>
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <dt class="important tag-deprecated">Deprecated</dt><dd><ul class="dummy"><li>Since v2.1.1. Use PrivatehiveNode.chaincodes.install</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns</h5>
+    
+            
+
+
+<code class="param-type"
+  >Promise<string></code
+>
+
+
+
+
+<span class="param-desc">
+  <p>Response from the node</p>
+</span>
+
+
+        
+  </div>
+
+  
+    <div class="item-description">
+        <p>Installs an already added chaincode to the peer</p>
+    </div>
+  
+</div>
+
+          
+              
+<div class="method has-description">
+    
+
+        <h4 id="PrivatehiveNode-instance-instantiateChaincode" class="item-header">
+          <span class="type-signature">(async) </span>
+          
+          <span class="member-of"
+                ><span class="class-name"
+                  >privatehiveNode</span
+                >.</span><span class="parameters"><span class="name"><a href="api.html#PrivatehiveNode-instance-instantiateChaincode">instantiateChaincode</a></span><span class="parenthesis">(</span><span class="item-name">params</span><span class="parenthesis">)</span></span><span class="type-signature"> &rarr;  Promise<string></span>
+          <a href="privatehive_index.js.html#line270" class="source-link">source</a>
+        </h4>
+
+        
+    
+
+  <div class="attributes">
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters</h5>
+        
+
+<ul class="params">
+  
+    <li>
+      <code class="param"><span class="item-name">params</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >object</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Options</p>
+        
+      </div>
+
+    </li>
+  
+</ul>
+
+    
+
+    
+
+
+    <h5 class="subsection-title">Properties</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>params.name</code></td>
+            
+
+            <td class="type">
+            
+                <code class="param-type"
+  >string</code
+>
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Name of the chaincode to instantiate</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>params.channelName</code></td>
+            
+
+            <td class="type">
+            
+                <code class="param-type"
+  >string</code
+>
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Channel on which the code is to be instantiated</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>params.functionName</code></td>
+            
+
+            <td class="type">
+            
+                <code class="param-type"
+  >string</code
+>
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Name of function to be called for instantiation. Default is init</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>params.args</code></td>
+            
+
+            <td class="type">
+            
+                <code class="param-type"
+  >string[]</code
+>
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Arguments to the instantiating function . Default is []</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>params.endorsementPolicy</code></td>
+            
+
+            <td class="type">
+            
+                <code class="param-type"
+  >object</code
+>
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Endoresement policy for this chaincode. By default any of the org should sign</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <dt class="important tag-deprecated">Deprecated</dt><dd><ul class="dummy"><li>Since v2.1.1. Use PrivatehiveNode.chaincodes.instantiate</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns</h5>
+    
+            
+
+
+<code class="param-type"
+  >Promise<string></code
+>
+
+
+
+
+<span class="param-desc">
+  <p>Response from the node</p>
+</span>
+
+
+        
+  </div>
+
+  
+    <div class="item-description">
+        <p>Instantiates an installed chaincode to a channel and on this peer</p>
+    </div>
+  
+</div>
+
+          
+              
+<div class="method has-description">
+    
+
+        <h4 id="PrivatehiveNode-instance-setAuth" class="item-header">
+          <span class="type-signature"></span>
+          
+          <span class="member-of"
+                ><span class="class-name"
+                  >privatehiveNode</span
+                >.</span><span class="parameters"><span class="name"><a href="api.html#PrivatehiveNode-instance-setAuth">setAuth</a></span><span class="parenthesis">(</span><span class="item-name">username</span><span class="comma">, </span><span class="item-name">password</span><span class="parenthesis">)</span></span><span class="type-signature"> &rarr;  void</span>
+          <a href="privatehive_index.js.html#line99" class="source-link">source</a>
+        </h4>
+
+        
+    
+
+  <div class="attributes">
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters</h5>
+        
+
+<ul class="params">
+  
+    <li>
+      <code class="param"><span class="item-name">username</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Basic Auth username</p>
+        
+      </div>
+
+    </li>
+  
+    <li>
+      <code class="param"><span class="item-name">password</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Basic Auth password</p>
+        
+      </div>
+
+    </li>
+  
+</ul>
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns</h5>
+    
+            
+
+
+<code class="param-type"
+  >void</code
+>
+
+
+
+
+
+        
+  </div>
+
+  
+    <div class="item-description">
+        <p>Sets the basic authentication for the node. If not enabled from the dashboard then not required. It won't be set by default when fetching node information</p>
+    </div>
+  
+</div>
+
+          
+              
+<div class="method has-description">
+    
+
+        <h4 id="PrivatehiveNode-instance-setDomain" class="item-header">
+          <span class="type-signature"></span>
+          
+          <span class="member-of"
+                ><span class="class-name"
+                  >privatehiveNode</span
+                >.</span><span class="parameters"><span class="name"><a href="api.html#PrivatehiveNode-instance-setDomain">setDomain</a></span><span class="parenthesis">(</span><span class="item-name">domain</span><span class="parenthesis">)</span></span><span class="type-signature"> &rarr;  void</span>
+          <a href="privatehive_index.js.html#line110" class="source-link">source</a>
+        </h4>
+
+        
+    
+
+  <div class="attributes">
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters</h5>
+        
+
+<ul class="params">
+  
+    <li>
+      <code class="param"><span class="item-name">domain</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >string</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Host name as got from Node -&gt; Security</p>
+        
+      </div>
+
+    </li>
+  
+</ul>
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns</h5>
+    
+            
+
+
+<code class="param-type"
+  >void</code
+>
+
+
+
+
+
+        
+  </div>
+
+  
+    <div class="item-description">
+        <p>Sets the domain where the node is accessible</p>
+    </div>
+  
+</div>
+
+          
+              
+<div class="method has-description">
+    
+
+        <h4 id="PrivatehiveNode-instance-setOrderer" class="item-header">
+          <span class="type-signature"></span>
+          
+          <span class="member-of"
+                ><span class="class-name"
+                  >privatehiveNode</span
+                >.</span><span class="parameters"><span class="name"><a href="api.html#PrivatehiveNode-instance-setOrderer">setOrderer</a></span><span class="parenthesis">(</span><span class="item-name">orderer</span><span class="parenthesis">)</span></span><span class="type-signature"> &rarr;  void</span>
+          <a href="privatehive_index.js.html#line120" class="source-link">source</a>
+        </h4>
+
+        
+    
+
+  <div class="attributes">
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters</h5>
+        
+
+<ul class="params">
+  
+    <li>
+      <code class="param"><span class="item-name">orderer</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  ><a href="api.html#PrivatehiveNode">PrivatehiveNode</a></code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Orderer node</p>
+        
+      </div>
+
+    </li>
+  
+</ul>
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns</h5>
+    
+            
+
+
+<code class="param-type"
+  >void</code
+>
+
+
+
+
+
+        
+  </div>
+
+  
+    <div class="item-description">
+        <p>Sets orderer for this peer</p>
+    </div>
+  
+</div>
+
+          
+        </div>
+    
+
+    
+
+    
+
+    
+</article>
+
+
+    
+
+
+
+
+
+<article>
+    
+        <h2 id="section-PrivatehiveNode-static-PrivatehiveNode">
+            <span class="ancestors"><a href="api.html#PrivatehiveNode">PrivatehiveNode</a>.</span
+        >PrivatehiveNode</h2>
+        
+    
+
+    <div class="container-overview">
+    
+        <h3
+          id="PrivatehiveNode-static-PrivatehiveNode-subsection-construction"
+          class="subsection-title"
+        >Construction</h3>
+        
+<div class="method has-description">
+    
+
+        <h4 id="PrivatehiveNode-static-PrivatehiveNode" class="item-header">
+          <span class="type-signature"></span>
+          
+            <span class="new">new</span>
+          
+          <span class="member-of"
+                ><span class="class-name"
+                  >PrivatehiveNode</span
+                >.</span><span class="parameters"><span class="name"><a href="api.html#PrivatehiveNode-static-PrivatehiveNode">PrivatehiveNode</a></span><span class="parenthesis">(</span><span class="item-name">options</span><span class="parenthesis">)</span></span><span class="type-signature"></span>
+          <a href="privatehive_index.js.html#line36" class="source-link">source</a>
+        </h4>
+
+        
+    
+
+  <div class="attributes">
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters</h5>
+        
+
+<ul class="params">
+  
+    <li>
+      <code class="param"><span class="item-name">options</span></code>
+
+      
+          <code class="param-type"><span class="param-type"
+            ><code class="param-type"
+  >object</code
+>
+</span></code>
+      
+
+      <div class="description">
+        <p>Params</p>
+        
+      </div>
+
+    </li>
+  
+</ul>
+
+    
+
+    
+
+
+    <h5 class="subsection-title">Properties</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options.name</code></td>
+            
+
+            <td class="type">
+            
+                <code class="param-type"
+  >string</code
+>
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Name of the node</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options.instanceId</code></td>
+            
+
+            <td class="type">
+            
+                <code class="param-type"
+  >string</code
+>
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Instance ID of the node</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options.orgName</code></td>
+            
+
+            <td class="type">
+            
+                <code class="param-type"
+  >string</code
+>
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Organization of the node</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options.locationCode</code></td>
+            
+
+            <td class="type">
+            
+                <code class="param-type"
+  >string</code
+>
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Location code of the cluster the node is deployed at</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options.domain</code></td>
+            
+
+            <td class="type">
+            
+                <code class="param-type"
+  >string</code
+>
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Node API host, got from Node -&gt; Security</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options.type</code></td>
+            
+
+            <td class="type">
+            
+                <code class="param-type"
+  >peer</code
+><code class="type-or">|</code><code class="param-type"
+  >orderer</code
+>
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Type of node</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options.workerNodeIP</code></td>
+            
+
+            <td class="type">
+            
+                <code class="param-type"
+  >IP</code
+>
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>IP Address of the worker node</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options.ordererNodePort</code></td>
+            
+
+            <td class="type">
+            
+                <code class="param-type"
+  >int</code
+>
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Port number at which the orderer is accesible</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options.details</code></td>
+            
+
+            <td class="type">
+            
+                <code class="param-type"
+  >object</code
+>
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>More options</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+    <div class="item-description">
+        <p>Creates an instance of PrivatehiveNode.</p>
+    </div>
+  
+</div>
+
+        
+
+    
+    </div>
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div>
+        Documentation generated by
+        <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
+        
+          on
+          April 26, 2019
+        
+      </div>
+    </footer>
+
+    <script>prettyPrint();</script>
+    <script src="scripts/linenumber.js"></script>
+    <script src="scripts/main.js"></script>
+  </body>
+</html>
