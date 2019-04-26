@@ -28,8 +28,8 @@ test('Create & Fetch channel', async t => {
   try {
     const { fabric } = t.context;
     const channelName = `test-channel-${new Date().getTime()}`;
-    await fabric.createChannel(channelName);
-    const channels = await fabric.fetchChannels();
+    await fabric.channels.create(channelName);
+    const channels = await fabric.channels.list();
     if (!Array.isArray(channels)) {
       return t.fail('Channel list is not an array');
     }
@@ -54,9 +54,9 @@ test('Add & Fetch chaincode', async t => {
   try {
     const { fabric } = t.context;
 
-    await fabric.addChaincode(chaincodeNewFile, chaincodeName, 'golang');
+    await fabric.chaincodes.add(chaincodeNewFile, chaincodeName, 'golang');
 
-    const chaincodes = await fabric.fetchChaincodes();
+    const chaincodes = await fabric.chaincodes.list();
 
     if (!chaincodes.map(c => c.name).includes(chaincodeName)) {
       return t.fail('Chaincode not in list');

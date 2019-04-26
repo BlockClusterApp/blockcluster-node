@@ -4,7 +4,14 @@ module.exports = {
   plugins: ['plugins/markdown'],
   recurseDepth: 10,
   source: {
-    include: ['lib/clients/paymeter/index.js', 'lib/clients/hyperion/index.js', 'lib/clients/platform/index.js', 'lib/clients/privatehive/index.js'],
+    include: [
+      'lib/clients/paymeter/index.js',
+      'lib/clients/hyperion/index.js',
+      'lib/clients/platform/index.js',
+      'lib/clients/privatehive/index.js',
+      'lib/clients/privatehive/modules/',
+    ],
+    includePattern: '.+\\.js?$',
   },
   sourceType: 'module',
   tags: {

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Hyperion - Postman Documentation</title>
+    <title>privatehive/modules/channel.js - Postman Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -28,274 +28,62 @@
 
 <div id="main">
     
-    <h1 class="page-title">Hyperion</h1>
+    <h1 class="page-title">privatehive/modules/channel.js</h1>
     
 
     
 
 
 
-
-<section>
-
-<header>
     
-        <h2>
-            <span class="ancestors"><a href="Hyperion.html">Hyperion</a>.</span>
-        
-        Hyperion
-        </h2>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-
-    
-
-    <h4 class="name" id="Hyperion"><span class="type-signature"></span>new Hyperion<span class="signature">(options)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Creates an instance of Platform.</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>options</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Options</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    
-
-<table class="props">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>apiKey</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>API Key for authentication</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>domain</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>Domain where the platform is hosted</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="hyperion_index.js.html">hyperion/index.js</a>, <a href="hyperion_index.js.html#line16">line 16</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const { RequestTypes } = require('../../../helpers/requests');
+
+module.exports = node => ({
+  async create(name, ordererURL = '', ordererDomain = '') {
+    if (!name) {
+      throw new Error('Channel create error : name is required');
+    }
+
+    if (!ordererURL &amp;&amp; !(node.orderer &amp;&amp; node.orderer.ordererURL)) {
+      throw new Error('Channel create error : Orderer URL is missing. Specifiy orderer url or set orderer to this node');
+    }
+
+    if (!ordererDomain &amp;&amp; !(node.orderer &amp;&amp; node.orderer.organization)) {
+      throw new Error('Channel create error : Orderer organization name is missing. Specifiy orderer url or set orderer to this node');
+    }
+
+    const channelReq = node.__constructNodeRequest('/channel/create', RequestTypes.POST, {
+      name,
+      ordererDomain: ordererDomain || `orderer.${node.orderer.organization.toLowerCase()}.com`,
+      ordererURL: ordererURL || node.orderer.ordererURL,
+    });
+
+    const res = await channelReq;
+    if (res.error) {
+      throw new Error(res.message);
+    }
+
+    return res.message;
+  },
+  /**
+   * Returns list of all the channels
+   * @return {Promise&lt;Array&lt;string>>} List of channels
+   * @memberof PrivatehiveNode.channel
+   */
+  async list() {
+    const res = await node.__constructNodeRequest('/channels/list', RequestTypes.GET);
+    if (res.error) {
+      throw new Error(res.message);
+    }
+
+    return res.message;
+  },
+});
+</code></pre>
+        </article>
+    </section>
 
 
 
