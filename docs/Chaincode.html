@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>Paymeter - Blockcluster NodeJS SDK</title>
+    <title>Chaincode - Blockcluster NodeJS SDK</title>
     
     
     
@@ -42,7 +42,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Paymeter</h1>
+    <h1 class="page-title">Chaincode</h1>
     
 
     
@@ -55,10 +55,8 @@
 <header>
     
         <h2>
-        Paymeter
+        Chaincode
         </h2>
-        
-            <div class="class-description"><p>Handles all function related to paymeter</p></div>
         
     
 </header>
@@ -69,11 +67,82 @@
         
             
 
+<dl class="details">
+
     
-    <h2>Constructor</h2>
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="privatehive_modules_chaincodes.js.html">privatehive/modules/chaincodes.js</a>, <a href="privatehive_modules_chaincodes.js.html#line12">line 12</a>
+    </li></ul></dd>
     
 
-    <h4 class="name" id="Paymeter"><span class="type-signature"></span>new Paymeter<span class="signature">(options)</span><span class="type-signature"></span></h4>
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>3.0.1</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+            
+
+            
+        
+        </div>
+    
+
+    
+
+    
+
+    
+    
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="add"><span class="type-signature"></span>add<span class="signature">(filePath, name, type)</span><span class="type-signature"> &rarr; {Promise.&lt;string>}</span></h4>
 
     
 
@@ -85,7 +154,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="paymeter_index.js.html">paymeter/index.js</a>, <a href="paymeter_index.js.html#line3">line 3</a>
+        <a href="privatehive_modules_chaincodes.js.html">privatehive/modules/chaincodes.js</a>, <a href="privatehive_modules_chaincodes.js.html#line18">line 18</a>
     </li></ul></dd>
     
 
@@ -124,6 +193,10 @@
 
 
 
+<div class="description">
+    <p>Adds a chaincode to the peer. This does not install or instantiate the chaincode but only uploads them.</p>
+</div>
+
 
 
 
@@ -159,7 +232,372 @@
 
         <tr>
             
-                <td class="name"><code>options</code></td>
+                <td class="name"><code>filePath</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Path of the zip file where the chaincode is residing</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Name of chaincode</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>type</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">golang</span>
+|
+
+<span class="param-type">node</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Type of chaincode</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Response from node</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;string></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="install"><span class="type-signature"></span>install<span class="signature">(name)</span><span class="type-signature"> &rarr; {Promise.&lt;string>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="privatehive_modules_chaincodes.js.html">privatehive/modules/chaincodes.js</a>, <a href="privatehive_modules_chaincodes.js.html#line58">line 58</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Installs an already added chaincode to the peer</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Name of the chaincode</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Response from the node</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;string></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="instantiate"><span class="type-signature"></span>instantiate<span class="signature">(params)</span><span class="type-signature"> &rarr; {Promise.&lt;string>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="privatehive_modules_chaincodes.js.html">privatehive/modules/chaincodes.js</a>, <a href="privatehive_modules_chaincodes.js.html#line99">line 99</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Instantiates an installed chaincode to a channel and on this peer</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>params</code></td>
             
 
             <td class="type">
@@ -189,244 +627,6 @@
         <th>Type</th>
 
         
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>apiKey</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>API Key for authentication</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>[domain</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Domain where the platform is hosted</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-        </div>
-    
-
-    
-
-    
-
-    
-    
-    
-
-     
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    <h4 class="name" id="createWallet"><span class="type-signature">(async) </span>createWallet<span class="signature">(options)</span><span class="type-signature"> &rarr; {Promise.&lt;string>}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="paymeter_index.js.html">paymeter/index.js</a>, <a href="paymeter_index.js.html#line33">line 33</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Creates a new wallet in the blockcluster account</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Example</h5>
-    
-        <p class="code-caption">Creates a wallet</p>
-    
-    <pre class="prettyprint"><code>const walletId = await paymeter.createWallet({coinType: 'ETH', walletName: 'My ETH Wallet', network: 'mainnet', password: '1234567890' });
-console.log(walletId);
-// Prints the walletId &lt;random string></code></pre>
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>options</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Wallet configuration</p>
-                <h6>Properties</h6>
-                
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
         <th>Attributes</th>
         
 
@@ -441,7 +641,7 @@ console.log(walletId);
 
         <tr>
             
-                <td class="name"><code>coinType</code></td>
+                <td class="name"><code>name</code></td>
             
 
             <td class="type">
@@ -465,14 +665,14 @@ console.log(walletId);
 
             
 
-            <td class="description last"><p>Coin type Eg: ETH, ERC20 etc</p></td>
+            <td class="description last"><p>Name of the chaincode to instantiate</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>walletName</code></td>
+                <td class="name"><code>channelName</code></td>
             
 
             <td class="type">
@@ -496,76 +696,14 @@ console.log(walletId);
 
             
 
-            <td class="description last"><p>Name of the wallet</p></td>
+            <td class="description last"><p>Channel on which the code is to be instantiated</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>network</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>Network on which the wallet will function Eg: testnet or mainnet</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>password</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>Password for the wallet</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>contractAddress</code></td>
+                <td class="name"><code>functionName</code></td>
             
 
             <td class="type">
@@ -591,20 +729,20 @@ console.log(walletId);
 
             
 
-            <td class="description last"><p>Contract address for ERC20 type token</p></td>
+            <td class="description last"><p>Name of function to be called for instantiation. Default is init</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>tokenSymbol</code></td>
+                <td class="name"><code>args</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">Array.&lt;string></span>
 
 
             
@@ -624,7 +762,40 @@ console.log(walletId);
 
             
 
-            <td class="description last"><p>Symbol for ERC20 token</p></td>
+            <td class="description last"><p>Arguments to the instantiating function . Default is []</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>endorsementPolicy</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Endoresement policy for this chaincode. By default any of the org should sign</p></td>
         </tr>
 
     
@@ -657,7 +828,7 @@ console.log(walletId);
 
         
 <div class="param-desc">
-    <p>Wallet id</p>
+    <p>Response from the node</p>
 </div>
 
 
@@ -683,7 +854,7 @@ console.log(walletId);
 
     
 
-    <h4 class="name" id="getDeposits"><span class="type-signature">(async) </span>getDeposits<span class="signature">(walletId)</span><span class="type-signature"> &rarr; {Promise.&lt;array>}</span></h4>
+    <h4 class="name" id="invoke"><span class="type-signature"></span>invoke<span class="signature">(options)</span><span class="type-signature"> &rarr; {Promise.&lt;string>}</span></h4>
 
     
 
@@ -695,7 +866,7 @@ console.log(walletId);
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="paymeter_index.js.html">paymeter/index.js</a>, <a href="paymeter_index.js.html#line150">line 150</a>
+        <a href="privatehive_modules_chaincodes.js.html">privatehive/modules/chaincodes.js</a>, <a href="privatehive_modules_chaincodes.js.html#line155">line 155</a>
     </li></ul></dd>
     
 
@@ -735,7 +906,7 @@ console.log(walletId);
 
 
 <div class="description">
-    <p>Fetches all the deposits happend for a wallet</p>
+    <p>Invokes a function on a chaincode</p>
 </div>
 
 
@@ -744,748 +915,6 @@ console.log(walletId);
 
 
 
-
-
-    <h5>Example</h5>
-    
-        <p class="code-caption">Fetches all deposits for a wallet</p>
-    
-    <pre class="prettyprint"><code>const deposits = await paymeter.getDeposits('abcdefghi');
-console.log(deposits);
-// Prints [{...deposit1}, {...}, ...]</code></pre>
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>walletId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Id of the wallet for which the transactions need to be fetched</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>Array of deposits</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise.&lt;array></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getWallets"><span class="type-signature">(async) </span>getWallets<span class="signature">(walletId<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;(array|object)>}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="paymeter_index.js.html">paymeter/index.js</a>, <a href="paymeter_index.js.html#line83">line 83</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Fetches all the wallets or a single wallet details</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Examples</h5>
-    
-        <p class="code-caption">Fetches all wallets</p>
-    
-    <pre class="prettyprint"><code>const wallets = await paymeter.getWallets();
-console.log(wallets);
-// Prints [{_id: '...', ...}, ...]</code></pre>
-
-        <p class="code-caption">Fetches details of single wallet</p>
-    
-    <pre class="prettyprint"><code>const wallet = await paymeter.getWallets('abcdefghi');
-console.log(wallet);
-// Prints {_id: 'abcdefghi', ...}</code></pre>
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>walletId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>Id of the wallet for the details needs to be fetched. If undefined then fetches all wallets</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>An array of wallets or single wallet description</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise.&lt;(array|object)></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getWithdrawals"><span class="type-signature">(async) </span>getWithdrawals<span class="signature">(walletId)</span><span class="type-signature"> &rarr; {Promise.&lt;array>}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="paymeter_index.js.html">paymeter/index.js</a>, <a href="paymeter_index.js.html#line119">line 119</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Fetches all the withdrawals happend for a wallet</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Example</h5>
-    
-        <p class="code-caption">Fetches all withdrawals for a wallet</p>
-    
-    <pre class="prettyprint"><code>const withdrawals = await paymeter.getWithdrawals('abcdefghi');
-console.log(withdrawals);
-// Prints [{...withdrawal1}, {...}, ...]</code></pre>
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>walletId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Id of the wallet for which the transactions need to be fetched</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>Array of withdrawals</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise.&lt;array></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="refreshBalance"><span class="type-signature">(async) </span>refreshBalance<span class="signature">(walletId)</span><span class="type-signature"> &rarr; {Promise.&lt;boolean>}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="paymeter_index.js.html">paymeter/index.js</a>, <a href="paymeter_index.js.html#line297">line 297</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Force refreshes balance in a wallet. This can be used in case deposits are coming from a smart contract</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>walletId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>ID of the wallet to refresh balance of</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>True if call succeeded</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise.&lt;boolean></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="send"><span class="type-signature">(async) </span>send<span class="signature">(options)</span><span class="type-signature"> &rarr; {Promise.&lt;string>}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="paymeter_index.js.html">paymeter/index.js</a>, <a href="paymeter_index.js.html#line239">line 239</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Transfers token from a wallet to specified address</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Examples</h5>
-    
-        <p class="code-caption">Transfers tokens (Fees debited from the amount specified)</p>
-    
-    <pre class="prettyprint"><code>const txnId = await paymeter.send({
-  fromWalletId: 'wallet1ID',
-  toAddress: '0x1234567890abcdef',
-  amount: 1,
-  password: 'wallet1Password'
-});
-console.log(txnId);
-// Prints 0x...</code></pre>
-
-        <p class="code-caption">Transfers tokens (Fees debited above the specifed amount)</p>
-    
-    <pre class="prettyprint"><code>const txnId = await paymeter.send({
-  fromWalletId: 'wallet1ID',
-  toAddress: '0x1234567890abcdef',
-  amount: 1,
-  password: 'wallet1Password'
-  sendExactAmount: true
-});
-console.log(txnId);
-// Prints 0x...</code></pre>
-
-        <p class="code-caption">Transfers token from but fees deducted from another wallet</p>
-    
-    <pre class="prettyprint"><code>const txnId = await paymeter.send({
-  fromWalletId: 'wallet1ID',
-  toAddress: '0x1234567890abcdef',
-  amount: 1,
-  password: 'wallet1Password'
-  feeWalletId: 'wallet2ID',
-  feeWalletPassword: 'wallet2Password'
-});
-console.log(txnId);
-// Prints 0x...</code></pre>
-
-        <p class="code-caption">Transfers token from with fees credits to separate wallet</p>
-    
-    <pre class="prettyprint"><code>const txnId = await paymeter.send({
-  fromWalletId: 'wallet1ID',
-  toAddress: '0x1234567890abcdef',
-  amount: 1,
-  password: 'wallet1Password'
-  feeCollectWalletId: 'wallet3ID',
-});
-console.log(txnId);
-// Prints 0x...</code></pre>
-
-        <p class="code-caption">Transfers token using raw transactions</p>
-    
-    <pre class="prettyprint"><code>const contractAddress = '0x12341234567890abcd';
-const contract = new web3.eth.Contract(abi, contractAddress);
-const data = await contract.methods.sign().encodeABI();
-const txnId = await paymeter.send({
-  fromWalletId: 'wallet4ID',
-  password: 'wallet4Password',
-  toAddress: contractAddress,
-  data: data,
-});
-console.log(txnId);
-// Prints 0x...</code></pre>
 
 
 
@@ -1531,7 +960,7 @@ console.log(txnId);
 
             
 
-            <td class="description last"><p>Wallet configuration</p>
+            <td class="description last"><p>Params</p>
                 <h6>Properties</h6>
                 
 
@@ -1545,8 +974,6 @@ console.log(txnId);
         <th>Type</th>
 
         
-        <th>Attributes</th>
-        
 
         
 
@@ -1559,7 +986,7 @@ console.log(txnId);
 
         <tr>
             
-                <td class="name"><code>fromWalletId</code></td>
+                <td class="name"><code>chaincodeName</code></td>
             
 
             <td class="type">
@@ -1572,25 +999,40 @@ console.log(txnId);
             </td>
 
             
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
 
             
 
-            <td class="description last"><p>Id of the wallet from which to transfer tokens</p></td>
+            <td class="description last"><p>Name of the chaincode to invoke</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>toAddress</code></td>
+                <td class="name"><code>channelName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">stirng</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Channel on which the chaincode is instantiated</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>fcn</code></td>
             
 
             <td class="type">
@@ -1603,278 +1045,33 @@ console.log(txnId);
             </td>
 
             
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
 
             
 
-            <td class="description last"><p>Address to which tokens are to be transferred</p></td>
+            <td class="description last"><p>Function name to invoke</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>amount</code></td>
+                <td class="name"><code>args</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">Array.&lt;string></span>
 
 
             
             </td>
 
             
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
 
             
 
-            <td class="description last"><p>Amount of tokens to be transferred. Maximum of 5 decimal places</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>password</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>Password for the wallet from which tokens are to be transferred</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>feeWalletId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>Only for ERC20 tokens, wallet Id from where the transaction fee is to be deducted</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>feeWalletPassword</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>Only for ERC20 tokens, password for the feeWallet specified <i>(<b>Required</b> if feeWalletId is specified)</i></p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>feeCollectWalletId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>Wallet ID to which the gas fees is to be collected</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>tokenValueInEth</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>Value of ERC20 token in ETH i.e., 1 ERC20 Token = ? ETH <i>(<b>Required</b> if feeCollectWalletId is specified)</i></p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>sendExactAmount</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>If true, then sends exact amount to the receiver. Total amount debited will be the specified amount + network charges. If false, network charges will be debited from the specified amount</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>data</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string(hex)</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>Raw transaction data to call functions of smart contract. Only applicable for ETH wallets</p></td>
+            <td class="description last"><p>Array of string to be passed as argument to the invoke function</p></td>
         </tr>
 
     
@@ -1907,7 +1104,691 @@ console.log(txnId);
 
         
 <div class="param-desc">
-    <p>Transaction id</p>
+    <p>Invoke result</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;string></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="list"><span class="type-signature"></span>list<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;Array.&lt;<a href="global.html#ChaincodeType">ChaincodeType</a>>>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="privatehive_modules_chaincodes.js.html">privatehive/modules/chaincodes.js</a>, <a href="privatehive_modules_chaincodes.js.html#line134">line 134</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Returns list of all the chaincodes</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>List of chaincodes</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;Array.&lt;<a href="global.html#ChaincodeType">ChaincodeType</a>>></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="query"><span class="type-signature"></span>query<span class="signature">(options)</span><span class="type-signature"> &rarr; {Promise.&lt;string>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="privatehive_modules_chaincodes.js.html">privatehive/modules/chaincodes.js</a>, <a href="privatehive_modules_chaincodes.js.html#line190">line 190</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Queries a chaincode using a function</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Params</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>chaincodeName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Name of the chaincode to query</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>channelName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">stirng</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Channel on which the chaincode is instantiated</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>fcn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function name to use for querying</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;string></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Array of string to be passed as argument to the query function</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Query response</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;string></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="upgrade"><span class="type-signature"></span>upgrade<span class="signature">(options)</span><span class="type-signature"> &rarr; {Promise.&lt;string>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="privatehive_modules_chaincodes.js.html">privatehive/modules/chaincodes.js</a>, <a href="privatehive_modules_chaincodes.js.html#line229">line 229</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Upgrades an existing chaincode</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Params</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>filePath</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Absolute file path where the chaincode .zip file is stored</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">stirng</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Name of chaincode to upgrade</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>chaincodeVersion</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>New chaincode version</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>channelName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">stirng</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Channel on which the chaincode is instantiated</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;string></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Array of string to be passed as argument to the invoke function</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Upgrade result</p>
 </div>
 
 

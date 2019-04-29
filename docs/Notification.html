@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>Hyperion - Blockcluster NodeJS SDK</title>
+    <title>Notification - Blockcluster NodeJS SDK</title>
     
     
     
@@ -42,7 +42,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Hyperion</h1>
+    <h1 class="page-title">Notification</h1>
     
 
     
@@ -55,10 +55,8 @@
 <header>
     
         <h2>
-        Hyperion
+        Notification
         </h2>
-        
-            <div class="class-description"><p>Handles all the functions related to hyperion</p></div>
         
     
 </header>
@@ -69,28 +67,20 @@
         
             
 
-    
-    <h2>Constructor</h2>
-    
-
-    <h4 class="name" id="Hyperion"><span class="type-signature"></span>new Hyperion<span class="signature">(options)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
 <dl class="details">
 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="hyperion_index.js.html">hyperion/index.js</a>, <a href="hyperion_index.js.html#line4">line 4</a>
+        <a href="privatehive_modules_notifications.js.html">privatehive/modules/notifications.js</a>, <a href="privatehive_modules_notifications.js.html#line11">line 11</a>
     </li></ul></dd>
     
 
     
 
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>3.0.1</li></ul></dd>
     
 
     
@@ -123,155 +113,9 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>options</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
             
 
             
-
-            <td class="description last"><p>Options</p>
-                <h6>Properties</h6>
-                
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>apiKey</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>API Key for authentication</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>[domain</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Domain where the platform is hosted</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         
         </div>
     
@@ -298,7 +142,7 @@
 
     
 
-    <h4 class="name" id="deleteFile"><span class="type-signature">(async) </span>deleteFile<span class="signature">(options, locationCode, fileHash)</span><span class="type-signature"> &rarr; {Promise.&lt;any>}</span></h4>
+    <h4 class="name" id="add"><span class="type-signature"></span>add<span class="signature">(options)</span><span class="type-signature"> &rarr; {string}</span></h4>
 
     
 
@@ -310,7 +154,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="hyperion_index.js.html">hyperion/index.js</a>, <a href="hyperion_index.js.html#line120">line 120</a>
+        <a href="privatehive_modules_notifications.js.html">privatehive/modules/notifications.js</a>, <a href="privatehive_modules_notifications.js.html#line17">line 17</a>
     </li></ul></dd>
     
 
@@ -350,7 +194,7 @@
 
 
 <div class="description">
-    <p>Deletes a file from hyperion node</p>
+    <p>Adds a notfication URL to a chaincode event on a particular channel</p>
 </div>
 
 
@@ -359,13 +203,6 @@
 
 
 
-
-
-    <h5>Example</h5>
-    
-        <p class="code-caption">Deletes a file from hyperion service</p>
-    
-    <pre class="prettyprint"><code>const res = await hyperion.deleteFile({locationCode: 'us-west-2', fileHash: 'wefjhggbhoirekuyghiqwlyug'})</code></pre>
 
 
 
@@ -411,219 +248,7 @@
 
             
 
-            <td class="description last"><p>File options</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>locationCode</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Location code of the node where the file was uploaded</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>fileHash</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Hash of the file to delete</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>Response of delete operation or error</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise.&lt;any></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getFile"><span class="type-signature"></span>getFile<span class="signature">(options)</span><span class="type-signature"> &rarr; {Promise.&lt;any>}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="hyperion_index.js.html">hyperion/index.js</a>, <a href="hyperion_index.js.html#line84">line 84</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Downloads a file from hyperion using the hash</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Example</h5>
-    
-        <p class="code-caption">Downloads a file from hyperion service</p>
-    
-    <pre class="prettyprint"><code>const writeStream = fs.createWriteStream('download-path.txt');
-const res = await hyperion.getFile({locationCode: 'us-west-2', fileHash: 'ajshdvi23y4ioiertuykesd', writeStream });</code></pre>
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>options</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>File options</p>
+            <td class="description last"><p>Parameters</p>
                 <h6>Properties</h6>
                 
 
@@ -649,7 +274,7 @@ const res = await hyperion.getFile({locationCode: 'us-west-2', fileHash: 'ajshdv
 
         <tr>
             
-                <td class="name"><code>locationCode</code></td>
+                <td class="name"><code>chaincodeName</code></td>
             
 
             <td class="type">
@@ -665,14 +290,14 @@ const res = await hyperion.getFile({locationCode: 'us-west-2', fileHash: 'ajshdv
 
             
 
-            <td class="description last"><p>Location code of the hyperion node where the file was uploaded</p></td>
+            <td class="description last"><p>Name of the chaincode where notification is to be added</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>fileHash</code></td>
+                <td class="name"><code>channelName</code></td>
             
 
             <td class="type">
@@ -688,20 +313,20 @@ const res = await hyperion.getFile({locationCode: 'us-west-2', fileHash: 'ajshdv
 
             
 
-            <td class="description last"><p>Hash of the file to download</p></td>
+            <td class="description last"><p>Name of the channel where chaincode is instantiated</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>writeStream</code></td>
+                <td class="name"><code>chaincodeEventName</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">writeStream</span>
+<span class="param-type">string</span>
 
 
             
@@ -711,7 +336,30 @@ const res = await hyperion.getFile({locationCode: 'us-west-2', fileHash: 'ajshdv
 
             
 
-            <td class="description last"><p>A writestream to which the downloaded file will be written</p></td>
+            <td class="description last"><p>Name of the chaincode event on which notification is to be triggered</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>notificationURL</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>URL where the notification is to be sent</p></td>
         </tr>
 
     
@@ -744,7 +392,7 @@ const res = await hyperion.getFile({locationCode: 'us-west-2', fileHash: 'ajshdv
 
         
 <div class="param-desc">
-    <p>Error or response status code</p>
+    <p>Response from server</p>
 </div>
 
 
@@ -755,7 +403,7 @@ const res = await hyperion.getFile({locationCode: 'us-west-2', fileHash: 'ajshdv
     </dt>
     <dd>
         
-<span class="param-type">Promise.&lt;any></span>
+<span class="param-type">string</span>
 
 
     </dd>
@@ -770,7 +418,7 @@ const res = await hyperion.getFile({locationCode: 'us-west-2', fileHash: 'ajshdv
 
     
 
-    <h4 class="name" id="uploadFile"><span class="type-signature"></span>uploadFile<span class="signature">(options)</span><span class="type-signature"> &rarr; {Promise.&lt;string>}</span></h4>
+    <h4 class="name" id="list"><span class="type-signature"></span>list<span class="signature">()</span><span class="type-signature"> &rarr; {Array.&lt;<a href="global.html#NotificationEvent">NotificationEvent</a>>}</span></h4>
 
     
 
@@ -782,7 +430,7 @@ const res = await hyperion.getFile({locationCode: 'us-west-2', fileHash: 'ajshdv
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="hyperion_index.js.html">hyperion/index.js</a>, <a href="hyperion_index.js.html#line31">line 31</a>
+        <a href="privatehive_modules_notifications.js.html">privatehive/modules/notifications.js</a>, <a href="privatehive_modules_notifications.js.html#line143">line 143</a>
     </li></ul></dd>
     
 
@@ -822,7 +470,7 @@ const res = await hyperion.getFile({locationCode: 'us-west-2', fileHash: 'ajshdv
 
 
 <div class="description">
-    <p>Uploads a file to hyperion service</p>
+    <p>Lists all notification events and URLs</p>
 </div>
 
 
@@ -833,14 +481,113 @@ const res = await hyperion.getFile({locationCode: 'us-west-2', fileHash: 'ajshdv
 
 
 
-    <h5>Example</h5>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>List of notifications</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;<a href="global.html#NotificationEvent">NotificationEvent</a>></span>
+
+
+    </dd>
+</dl>
+
     
-        <p class="code-caption">Uploads a file to hyperion</p>
+
+
+
+        
+            
+
     
-    <pre class="prettyprint"><code>const fileReadStream = fs.createReadStream('file_to_read.txt');
-const fileHash = await hyperion.uploadFile({fileStream: fileReadStream, locationCode: 'us-west-2'});
-console.log(fileHash);
-// Prints the hash of the file in the hyperion cloud</code></pre>
+
+    <h4 class="name" id="update"><span class="type-signature"></span>update<span class="signature">(options)</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="privatehive_modules_notifications.js.html">privatehive/modules/notifications.js</a>, <a href="privatehive_modules_notifications.js.html#line61">line 61</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Updates a notfication URL of an existing chaincode event</p>
+</div>
+
+
+
+
+
+
+
 
 
 
@@ -886,7 +633,7 @@ console.log(fileHash);
 
             
 
-            <td class="description last"><p>File options</p>
+            <td class="description last"><p>Parameters</p>
                 <h6>Properties</h6>
                 
 
@@ -912,30 +659,7 @@ console.log(fileHash);
 
         <tr>
             
-                <td class="name"><code>fileStream</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">readStream</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>A read stream to the file which is to be uploaded</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>locationCode</code></td>
+                <td class="name"><code>chaincodeName</code></td>
             
 
             <td class="type">
@@ -951,7 +675,76 @@ console.log(fileHash);
 
             
 
-            <td class="description last"><p>Location code of the hyperion node where the file is to be uploaded</p></td>
+            <td class="description last"><p>Name of the chaincode where notification is to be added</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>channelName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Name of the channel where chaincode is instantiated</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>chaincodeEventName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Name of the chaincode event on which notification is to be triggered</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>notificationURL</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>URL where the notification is to be sent</p></td>
         </tr>
 
     
@@ -984,7 +777,7 @@ console.log(fileHash);
 
         
 <div class="param-desc">
-    <p>Hash of the uploaded file</p>
+    <p>Response from server</p>
 </div>
 
 
@@ -995,7 +788,260 @@ console.log(fileHash);
     </dt>
     <dd>
         
-<span class="param-type">Promise.&lt;string></span>
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="update"><span class="type-signature"></span>update<span class="signature">(options)</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="privatehive_modules_notifications.js.html">privatehive/modules/notifications.js</a>, <a href="privatehive_modules_notifications.js.html#line105">line 105</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Removes a notification URL for a chaincode event</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Parameters</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>chaincodeName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Name of the chaincode where notification is to be added</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>channelName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Name of the channel where chaincode is instantiated</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>chaincodeEventName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Name of the chaincode event on which notification is to be triggered</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Response from server</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
 
 
     </dd>

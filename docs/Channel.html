@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>hyperion/index.js - Blockcluster NodeJS SDK</title>
+    <title>Channel - Blockcluster NodeJS SDK</title>
     
     
     
@@ -42,151 +42,453 @@
 
 <div id="main">
     
-    <h1 class="page-title">hyperion/index.js</h1>
+    <h1 class="page-title">Channel</h1>
     
 
     
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>const request = require('request');
-const helpers = require('../../helpers');
+        <h2>
+        Channel
+        </h2>
+        
+    
+</header>
 
-/**
- * @classdesc Handles all the functions related to hyperion
- * @param  {object} options Options
- * @param {string} options.apiKey API Key for authentication
- * @param {string} options.[domain] Domain where the platform is hosted
- * @class Hyperion
- */
-class Hyperion {
-  constructor({ apiKey, domain }) {
-    this.apiKey = apiKey;
-    this.domain = domain || helpers.getHost();
-  }
+<article>
+    
+        <div class="container-overview">
+        
+            
 
-  /**
-   * Uploads a file to hyperion service
-   * @param  {object} options File options
-   * @param {readStream} options.fileStream A read stream to the file which is to be uploaded
-   * @param {string} options.locationCode Location code of the hyperion node where the file is to be uploaded
-   * @example &lt;caption>Uploads a file to hyperion&lt;/caption>
-   * const fileReadStream = fs.createReadStream('file_to_read.txt');
-   * const fileHash = await hyperion.uploadFile({fileStream: fileReadStream, locationCode: 'us-west-2'});
-   * console.log(fileHash);
-   * // Prints the hash of the file in the hyperion cloud
-   * @returns {Promise&lt;string>} Hash of the uploaded file
-   * @memberof Hyperion
-   * @instance
-   */
-  uploadFile({ fileStream, locationCode }) {
-    const path = '/api/hyperion/upload';
+<dl class="details">
 
-    const requestOptions = {
-      url: `${this.domain}${path}`,
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${this.apiKey}`,
-        'Content-Type': 'multipart/form-data',
-      },
-      formData: {
-        location: locationCode,
-        file: {
-          value: fileStream,
-          options: {
-            filename: `file-${new Date().getTime()}-a`,
-            contentType: null,
-          },
-        },
-      },
-    };
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="privatehive_modules_channel.js.html">privatehive/modules/channel.js</a>, <a href="privatehive_modules_channel.js.html#line10">line 10</a>
+    </li></ul></dd>
+    
 
-    return new Promise((resolve, reject) => {
-      // fileStream.pipe(
-      request(requestOptions, (err, response, body) => {
-        if (err) {
-          return reject(err);
-        }
+    
 
-        const res = JSON.parse(body);
-        if (res.error) {
-          return reject(res.error);
-        }
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>3.0.1</li></ul></dd>
+    
 
-        return resolve(res.message);
-      });
-      // );
-    });
-  }
+    
 
-  /**
-   * Downloads a file from hyperion using the hash
-   * @param  {object} options File options
-   * @param {string} options.locationCode Location code of the hyperion node where the file was uploaded
-   * @param {string} options.fileHash Hash of the file to download
-   * @param {writeStream} options.writeStream A writestream to which the downloaded file will be written
-   * @example &lt;caption>Downloads a file from hyperion service&lt;/caption>
-   * const writeStream = fs.createWriteStream('download-path.txt');
-   * const res = await hyperion.getFile({locationCode: 'us-west-2', fileHash: 'ajshdvi23y4ioiertuykesd', writeStream });
-   * @returns {Promise&lt;any>} Error or response status code
-   * @memberof Hyperion
-   * @instance
-   */
-  getFile({ locationCode, fileHash, writeStream }) {
-    return new Promise((resolve, reject) => {
-      const path = `/api/hyperion/download?location=${locationCode}&amp;hash=${fileHash}`;
+    
 
-      if (!writeStream) {
-        return reject(new Error('Write stream should be defined'));
-      }
+    
 
-      const requestOptions = {
-        method: 'GET',
-        url: `${this.domain}${path}`,
-        headers: {
-          Authorization: `Bearer ${this.apiKey}`,
-        },
-      };
+    
 
-      request(requestOptions)
-        .on('error', err => reject(err))
-        .on('response', response => resolve(response.statusCode))
-        .pipe(writeStream);
+    
 
-      return true;
-    });
-  }
+    
 
-  /**
-   * Deletes a file from hyperion node
-   * @param  {object} options File options
-   * @param  {string} locationCode Location code of the node where the file was uploaded
-   * @param {string} fileHash Hash of the file to delete
-   * @example &lt;caption>Deletes a file from hyperion service&lt;/caption>
-   * const res = await hyperion.deleteFile({locationCode: 'us-west-2', fileHash: 'wefjhggbhoirekuyghiqwlyug'})
-   * @returns {Promise&lt;any>} Response of delete operation or error
-   * @memberof Hyperion
-   * @instance
-   */
-  async deleteFile({ locationCode, fileHash }) {
-    const path = `/api/hyperion/delete?location=${locationCode}&amp;hash=${fileHash}`;
+    
 
-    try {
-      const deleteResponse = await helpers.sendPlatformRequest({ domain: this.domain, path, method: 'DELETE', apiKey: this.apiKey });
-      return deleteResponse;
-    } catch (err) {
-      return Promise.reject(err);
-    }
-  }
-}
+    
 
-module.exports = Hyperion;
-</code></pre>
-        </article>
-    </section>
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+            
+
+            
+        
+        </div>
+    
+
+    
+
+    
+
+    
+    
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="create"><span class="type-signature"></span>create<span class="signature">(name, ordererURL<span class="signature-attributes">opt</span>, ordererDomain<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;string>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="privatehive_modules_channel.js.html">privatehive/modules/channel.js</a>, <a href="privatehive_modules_channel.js.html#line16">line 16</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Creates a channel in the privatehive node</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Name of the channel to be created</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ordererURL</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>GRPC url (without the protocol) of the orderer</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ordererDomain</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Orderer's organization domain</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Response from the node</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;string></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="list"><span class="type-signature"></span>list<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;Array.&lt;<a href="global.html#ChannelType">ChannelType</a>>>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="privatehive_modules_channel.js.html">privatehive/modules/channel.js</a>, <a href="privatehive_modules_channel.js.html#line54">line 54</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Returns list of all the channels</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>List of channels</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;Array.&lt;<a href="global.html#ChannelType">ChannelType</a>>></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 
@@ -209,7 +511,7 @@ module.exports = Hyperion;
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Apr 29 2019 12:32:41 GMT+0530 (IST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Apr 29 2019 12:32:42 GMT+0530 (IST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>

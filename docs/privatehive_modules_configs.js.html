@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>hyperion/index.js - Blockcluster NodeJS SDK</title>
+    <title>privatehive/modules/configs.js - Blockcluster NodeJS SDK</title>
     
     
     
@@ -42,7 +42,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">hyperion/index.js</h1>
+    <h1 class="page-title">privatehive/modules/configs.js</h1>
     
 
     
@@ -52,138 +52,99 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const request = require('request');
-const helpers = require('../../helpers');
+            <pre class="prettyprint source linenums"><code>const { RequestTypes } = require('../../../helpers/requests');
 
 /**
- * @classdesc Handles all the functions related to hyperion
- * @param  {object} options Options
- * @param {string} options.apiKey API Key for authentication
- * @param {string} options.[domain] Domain where the platform is hosted
- * @class Hyperion
+ * @typedef OrgDetails
+ * @property {object} group
+ * @property {string} mod_policy
+ * @property {object} policies
+ * @property {object} values
+ * @property {string} version
  */
-class Hyperion {
-  constructor({ apiKey, domain }) {
-    this.apiKey = apiKey;
-    this.domain = domain || helpers.getHost();
-  }
 
+/**
+ * @namespace Config
+ * @since 3.0.1
+ */
+
+module.exports = node => ({
   /**
-   * Uploads a file to hyperion service
-   * @param  {object} options File options
-   * @param {readStream} options.fileStream A read stream to the file which is to be uploaded
-   * @param {string} options.locationCode Location code of the hyperion node where the file is to be uploaded
-   * @example &lt;caption>Uploads a file to hyperion&lt;/caption>
-   * const fileReadStream = fs.createReadStream('file_to_read.txt');
-   * const fileHash = await hyperion.uploadFile({fileStream: fileReadStream, locationCode: 'us-west-2'});
-   * console.log(fileHash);
-   * // Prints the hash of the file in the hyperion cloud
-   * @returns {Promise&lt;string>} Hash of the uploaded file
-   * @memberof Hyperion
+   * Fetches the orderer certs for the node
+   * @function
+   * @name ordererCerts
+   * @returns {OrdererCerts} Orderer Certs
+   * @memberof Config
+   * @method
    * @instance
    */
-  uploadFile({ fileStream, locationCode }) {
-    const path = '/api/hyperion/upload';
-
-    const requestOptions = {
-      url: `${this.domain}${path}`,
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${this.apiKey}`,
-        'Content-Type': 'multipart/form-data',
-      },
-      formData: {
-        location: locationCode,
-        file: {
-          value: fileStream,
-          options: {
-            filename: `file-${new Date().getTime()}-a`,
-            contentType: null,
-          },
-        },
-      },
-    };
-
-    return new Promise((resolve, reject) => {
-      // fileStream.pipe(
-      request(requestOptions, (err, response, body) => {
-        if (err) {
-          return reject(err);
-        }
-
-        const res = JSON.parse(body);
-        if (res.error) {
-          return reject(res.error);
-        }
-
-        return resolve(res.message);
-      });
-      // );
-    });
-  }
-
-  /**
-   * Downloads a file from hyperion using the hash
-   * @param  {object} options File options
-   * @param {string} options.locationCode Location code of the hyperion node where the file was uploaded
-   * @param {string} options.fileHash Hash of the file to download
-   * @param {writeStream} options.writeStream A writestream to which the downloaded file will be written
-   * @example &lt;caption>Downloads a file from hyperion service&lt;/caption>
-   * const writeStream = fs.createWriteStream('download-path.txt');
-   * const res = await hyperion.getFile({locationCode: 'us-west-2', fileHash: 'ajshdvi23y4ioiertuykesd', writeStream });
-   * @returns {Promise&lt;any>} Error or response status code
-   * @memberof Hyperion
-   * @instance
-   */
-  getFile({ locationCode, fileHash, writeStream }) {
-    return new Promise((resolve, reject) => {
-      const path = `/api/hyperion/download?location=${locationCode}&amp;hash=${fileHash}`;
-
-      if (!writeStream) {
-        return reject(new Error('Write stream should be defined'));
-      }
-
-      const requestOptions = {
-        method: 'GET',
-        url: `${this.domain}${path}`,
-        headers: {
-          Authorization: `Bearer ${this.apiKey}`,
-        },
-      };
-
-      request(requestOptions)
-        .on('error', err => reject(err))
-        .on('response', response => resolve(response.statusCode))
-        .pipe(writeStream);
-
-      return true;
-    });
-  }
-
-  /**
-   * Deletes a file from hyperion node
-   * @param  {object} options File options
-   * @param  {string} locationCode Location code of the node where the file was uploaded
-   * @param {string} fileHash Hash of the file to delete
-   * @example &lt;caption>Deletes a file from hyperion service&lt;/caption>
-   * const res = await hyperion.deleteFile({locationCode: 'us-west-2', fileHash: 'wefjhggbhoirekuyghiqwlyug'})
-   * @returns {Promise&lt;any>} Response of delete operation or error
-   * @memberof Hyperion
-   * @instance
-   */
-  async deleteFile({ locationCode, fileHash }) {
-    const path = `/api/hyperion/delete?location=${locationCode}&amp;hash=${fileHash}`;
-
-    try {
-      const deleteResponse = await helpers.sendPlatformRequest({ domain: this.domain, path, method: 'DELETE', apiKey: this.apiKey });
-      return deleteResponse;
-    } catch (err) {
-      return Promise.reject(err);
+  async ordererCerts() {
+    const res = await node.__constructNodeRequest('/config/ordererCerts', RequestTypes.GET);
+    if (res.error) {
+      throw new Error(res.message);
     }
-  }
-}
 
-module.exports = Hyperion;
+    return res.message;
+  },
+  /**
+   * Fetches the organization details
+   * @function
+   * @name orgDetails
+   * @returns {OrgDetails} Organization Details
+   * @memberof Config
+   * @method
+   * @instance
+   */
+  async orgDetails() {
+    const res = await node.__constructNodeRequest('/config/orgDetails', RequestTypes.GET);
+    if (res.error) {
+      throw new Error(res.message);
+    }
+
+    return JSON.parse(res.message);
+  },
+  /**
+   * Fetches the connection profile for the node
+   * @function
+   * @name ordererCerts
+   * @returns {ConnectionProfile} Connection profile of the node
+   * @memberof Config
+   * @method
+   * @instance
+   */
+  async connectionProfile() {
+    const res = await node.__constructNodeRequest('/config/connectionProfile', RequestTypes.GET);
+    if (res.error) {
+      throw new Error(res.message);
+    }
+
+    return res.message;
+  },
+  /**
+   * Fetches the crypto config for the node
+   * @function
+   * @name cryptoConfig
+   * @param {WriteStream} writeStream Write stream to which the contents will be written
+   * @returns {Boolean} True is successfully downloaded
+   * @memberof Config
+   * @method
+   * @instance
+   */
+  async cryptoConfig(writeStream) {
+    if (!writeStream) {
+      throw new Error('CryptoConfig download error : writeStream is required to write the file');
+    }
+
+    const req = node.__constructNodeRequest('/config/cryptoConfig', RequestTypes.GET);
+    req.pipe(writeStream);
+    const res = await req;
+    if (res.error) {
+      throw new Error(res.message);
+    }
+
+    return true;
+  },
+});
 </code></pre>
         </article>
     </section>

@@ -1,7 +1,7 @@
 {
   "name": "blockcluster",
   "description": "Official BlockCluster Node.js SDK for Blockcluster platform and Services",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "author": "BlockCluster <info@blockcluster.io> (https://www.blockcluster.io)",
   "bugs": {
     "url": "https://github.com/BlockClusterApp/blockcluster-node/issues",
@@ -14,6 +14,7 @@
     "Saikat Chakrabortty<saikatchakrabortty2@gmail.com> (https://www.github.com/saikatharryc)"
   ],
   "dependencies": {
+    "debug": "^4.1.1",
     "ethereumjs-tx": "^1.3.7",
     "ethereumjs-wallet": "^0.6.2",
     "request": "latest",
@@ -28,8 +29,10 @@
   },
   "devDependencies": {
     "ava": "1.0.0-beta.8",
+    "bookshelf-jsdoc-theme": "^1.0.0",
     "codecov": "3.1.0",
     "cross-env": "5.0.5",
+    "docdash": "^1.1.0",
     "eslint": "^5.9.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "latest",
@@ -114,7 +117,7 @@
   "scripts": {
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "lint": "xo --fix && remark . -qfo",
-    "precommit": "rm -rf tmp/*.* && lint-staged && npm test && npm run jsdoc && git add ",
+    "precommit": "rm -rf tmp/*.* && lint-staged && npm test && npm run jsdoc && git add .",
     "test": "rm -rf tmp/tmp-1.md && npm run lint && npm run test-coverage",
     "test-coverage": "cross-env NODE_ENV=test nyc ava",
     "jsdoc": "jsdoc -c ./.jsdoc.conf.js -d docs"

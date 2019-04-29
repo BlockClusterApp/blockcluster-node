@@ -29,10 +29,11 @@ module.exports = {
     privatehiveLocationCode: 'us-west-2',
   },
   Privatehive: {
-    peerInstanceId: 'eeggkvtixi',
-    ordererInstanceId: 'tigicqiadl',
+    peerInstanceId: 'xvtmnjqgbf',
+    ordererInstanceId: 'zxrygeihqx',
     channelName: 'mychannel',
     domain: 'https://dev.blockcluster.io',
     platformDomain: 'http://localhost:3000',
+    chaincodeName: 'example_cc',
   },
 };

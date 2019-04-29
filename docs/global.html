@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>Hyperion - Blockcluster NodeJS SDK</title>
+    <title>Global - Blockcluster NodeJS SDK</title>
     
     
     
@@ -42,7 +42,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Hyperion</h1>
+    <h1 class="page-title">Global</h1>
     
 
     
@@ -55,10 +55,8 @@
 <header>
     
         <h2>
-        Hyperion
-        </h2>
         
-            <div class="class-description"><p>Handles all the functions related to hyperion</p></div>
+        </h2>
         
     
 </header>
@@ -69,24 +67,8 @@
         
             
 
-    
-    <h2>Constructor</h2>
-    
-
-    <h4 class="name" id="Hyperion"><span class="type-signature"></span>new Hyperion<span class="signature">(options)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
 <dl class="details">
 
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="hyperion_index.js.html">hyperion/index.js</a>, <a href="hyperion_index.js.html#line4">line 4</a>
-    </li></ul></dd>
     
 
     
@@ -123,155 +105,9 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>options</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
             
 
             
-
-            <td class="description last"><p>Options</p>
-                <h6>Properties</h6>
-                
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>apiKey</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>API Key for authentication</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>[domain</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Domain where the platform is hosted</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         
         </div>
     
@@ -291,16 +127,14 @@
     
 
     
-        <h3 class="subsection-title">Methods</h3>
+
+    
+        <h3 class="subsection-title">Type Definitions</h3>
 
         
-            
+                
+<h4 class="name" id="Block">Block</h4>
 
-    
-
-    <h4 class="name" id="deleteFile"><span class="type-signature">(async) </span>deleteFile<span class="signature">(options, locationCode, fileHash)</span><span class="type-signature"> &rarr; {Promise.&lt;any>}</span></h4>
-
-    
 
 
 
@@ -310,7 +144,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="hyperion_index.js.html">hyperion/index.js</a>, <a href="hyperion_index.js.html#line120">line 120</a>
+        <a href="privatehive_modules_explore.js.html">privatehive/modules/explore.js</a>, <a href="privatehive_modules_explore.js.html#line3">line 3</a>
     </li></ul></dd>
     
 
@@ -349,9 +183,6 @@
 
 
 
-<div class="description">
-    <p>Deletes a file from hyperion node</p>
-</div>
 
 
 
@@ -359,21 +190,61 @@
 
 
 
+            
+                
+<h4 class="name" id="ChaincodeType">ChaincodeType</h4>
 
 
-    <h5>Example</h5>
+
+
+
+<dl class="details">
+
     
-        <p class="code-caption">Deletes a file from hyperion service</p>
-    
-    <pre class="prettyprint"><code>const res = await hyperion.deleteFile({locationCode: 'us-west-2', fileHash: 'wefjhggbhoirekuyghiqwlyug'})</code></pre>
-
-
-
-
-    <h5>Parameters:</h5>
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="privatehive_modules_chaincodes.js.html">privatehive/modules/chaincodes.js</a>, <a href="privatehive_modules_chaincodes.js.html#line5">line 5</a>
+    </li></ul></dd>
     
 
-<table class="params">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
     <thead>
     <tr>
         
@@ -395,30 +266,7 @@
 
         <tr>
             
-                <td class="name"><code>options</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>File options</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>locationCode</code></td>
+                <td class="name"><code>version</code></td>
             
 
             <td class="type">
@@ -434,14 +282,14 @@
 
             
 
-            <td class="description last"><p>Location code of the node where the file was uploaded</p></td>
+            <td class="description last"><p>Chaincode version</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>fileHash</code></td>
+                <td class="name"><code>name</code></td>
             
 
             <td class="type">
@@ -457,7 +305,30 @@
 
             
 
-            <td class="description last"><p>Hash of the file to delete</p></td>
+            <td class="description last"><p>Name of the chaincode</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>language</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Language in which the chaincode is written</p></td>
         </tr>
 
     
@@ -476,42 +347,10 @@
 
 
 
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>Response of delete operation or error</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise.&lt;any></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
             
+                
+<h4 class="name" id="ChannelType">ChannelType</h4>
 
-    
-
-    <h4 class="name" id="getFile"><span class="type-signature"></span>getFile<span class="signature">(options)</span><span class="type-signature"> &rarr; {Promise.&lt;any>}</span></h4>
-
-    
 
 
 
@@ -521,7 +360,547 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="hyperion_index.js.html">hyperion/index.js</a>, <a href="hyperion_index.js.html#line84">line 84</a>
+        <a href="privatehive_modules_channel.js.html">privatehive/modules/channel.js</a>, <a href="privatehive_modules_channel.js.html#line3">line 3</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Name of the channel</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ordererDomain</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Domain of the orderer</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>connectionDetails</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Orderer connection details</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+                
+<h4 class="name" id="NotificationEvent">NotificationEvent</h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="privatehive_modules_notifications.js.html">privatehive/modules/notifications.js</a>, <a href="privatehive_modules_notifications.js.html#line3">line 3</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>channelName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Name of the channel</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>chaincodeName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Name of the chaincode</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>chaincodeEventName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Event name on which the notification is triggered</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>notificationURL</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>URL at which the webhook is sent</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+                
+<h4 class="name" id="OrgDetails">OrgDetails</h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="privatehive_modules_configs.js.html">privatehive/modules/configs.js</a>, <a href="privatehive_modules_configs.js.html#line3">line 3</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>group</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>mod_policy</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>policies</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>values</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>version</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+                
+<h4 class="name" id="Transaction">Transaction</h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="privatehive_modules_explore.js.html">privatehive/modules/explore.js</a>, <a href="privatehive_modules_explore.js.html#line7">line 7</a>
     </li></ul></dd>
     
 
@@ -560,454 +939,14 @@
 
 
 
-<div class="description">
-    <p>Downloads a file from hyperion using the hash</p>
-</div>
 
 
 
 
 
-
-
-
-
-    <h5>Example</h5>
-    
-        <p class="code-caption">Downloads a file from hyperion service</p>
-    
-    <pre class="prettyprint"><code>const writeStream = fs.createWriteStream('download-path.txt');
-const res = await hyperion.getFile({locationCode: 'us-west-2', fileHash: 'ajshdvi23y4ioiertuykesd', writeStream });</code></pre>
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>options</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
 
 
             
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>File options</p>
-                <h6>Properties</h6>
-                
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>locationCode</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Location code of the hyperion node where the file was uploaded</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>fileHash</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Hash of the file to download</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>writeStream</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">writeStream</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>A writestream to which the downloaded file will be written</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>Error or response status code</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise.&lt;any></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="uploadFile"><span class="type-signature"></span>uploadFile<span class="signature">(options)</span><span class="type-signature"> &rarr; {Promise.&lt;string>}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="hyperion_index.js.html">hyperion/index.js</a>, <a href="hyperion_index.js.html#line31">line 31</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Uploads a file to hyperion service</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Example</h5>
-    
-        <p class="code-caption">Uploads a file to hyperion</p>
-    
-    <pre class="prettyprint"><code>const fileReadStream = fs.createReadStream('file_to_read.txt');
-const fileHash = await hyperion.uploadFile({fileStream: fileReadStream, locationCode: 'us-west-2'});
-console.log(fileHash);
-// Prints the hash of the file in the hyperion cloud</code></pre>
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>options</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>File options</p>
-                <h6>Properties</h6>
-                
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>fileStream</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">readStream</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>A read stream to the file which is to be uploaded</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>locationCode</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Location code of the hyperion node where the file is to be uploaded</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>Hash of the uploaded file</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise.&lt;string></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-    
-
     
 
     
@@ -1036,7 +975,7 @@ console.log(fileHash);
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Apr 29 2019 12:32:42 GMT+0530 (IST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Apr 29 2019 12:32:41 GMT+0530 (IST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>

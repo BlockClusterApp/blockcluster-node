@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>hyperion/index.js - Blockcluster NodeJS SDK</title>
+    <title>platform/modules/privatehive.js - Blockcluster NodeJS SDK</title>
     
     
     
@@ -42,7 +42,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">hyperion/index.js</h1>
+    <h1 class="page-title">platform/modules/privatehive.js</h1>
     
 
     
@@ -52,138 +52,283 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const request = require('request');
-const helpers = require('../../helpers');
-
+            <pre class="prettyprint source linenums"><code>const helpers = require('../../../helpers');
+const PrivatehiveNode = require('../../privatehive');
 /**
- * @classdesc Handles all the functions related to hyperion
- * @param  {object} options Options
- * @param {string} options.apiKey API Key for authentication
- * @param {string} options.[domain] Domain where the platform is hosted
- * @class Hyperion
+ * @namespace Privatehive
+ * @since 3.0.1
  */
-class Hyperion {
-  constructor({ apiKey, domain }) {
-    this.apiKey = apiKey;
-    this.domain = domain || helpers.getHost();
-  }
-
+module.exports = node => ({
   /**
-   * Uploads a file to hyperion service
-   * @param  {object} options File options
-   * @param {readStream} options.fileStream A read stream to the file which is to be uploaded
-   * @param {string} options.locationCode Location code of the hyperion node where the file is to be uploaded
-   * @example &lt;caption>Uploads a file to hyperion&lt;/caption>
-   * const fileReadStream = fs.createReadStream('file_to_read.txt');
-   * const fileHash = await hyperion.uploadFile({fileStream: fileReadStream, locationCode: 'us-west-2'});
-   * console.log(fileHash);
-   * // Prints the hash of the file in the hyperion cloud
-   * @returns {Promise&lt;string>} Hash of the uploaded file
-   * @memberof Hyperion
+   * Creates a privatehive node
+   * @function
+   * @name create
+   * @param  {object} options Options
+   * @param {string} [options.peerId] Peer Id to which the orderer joins. Required only incase of orderer type
+   * @param {string} options.locationCode Location code where the network should be deployed
+   * @param {peer|orderer} options.type Type of network. Either peer or orderer
+   * @param {string} [options.voucherCode] Voucher code to be applied
+   * @param {string} options.name Name of the network. Required
+   * @param {string} options.orgName Organization to which the node belongs to
+   * @param {solo|kafka} [options.ordererType] Type of orderer to be created. Solo or Kafka. Required only if type is orderer
+   * @param {stirng} options.networkConfigId ID of network configuration
+   * @param {number} [options.diskSpace] Disk space required for this node. Applicable only if network configuration has isDiskChangeable = true
+   * @returns {string} Instance ID of the created network
+   * @example &lt;caption>Create a privatehive network of type peer&lt;/caption>
+   *   const peerId = await platform.privatehive.create({
+   *   locationCode: 'us-west-2',
+   *   type: 'peer',
+   *   orgName: 'blockcluster',
+   *   name: `Peer 1`,
+   *   networkConfigId: 'abcgdghfjgmgh',
+   * });
+   * console.log(peerId);
+   * // Prints the instance id of the created node
+   * @memberof Privatehive
    * @instance
    */
-  uploadFile({ fileStream, locationCode }) {
-    const path = '/api/hyperion/upload';
+  create: async ({ peerId, locationCode, type, voucherCode, name, orgName, ordererType, networkConfigId, diskSpace }) => {
+    if (type === 'orderer' &amp;&amp; !peerId) {
+      return Promise.reject(new Error('PeerID is required to create orderer'));
+    }
 
-    const requestOptions = {
-      url: `${this.domain}${path}`,
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${this.apiKey}`,
-        'Content-Type': 'multipart/form-data',
-      },
-      formData: {
-        location: locationCode,
-        file: {
-          value: fileStream,
-          options: {
-            filename: `file-${new Date().getTime()}-a`,
-            contentType: null,
-          },
-        },
-      },
+    if (!name) {
+      return Promise.reject(new Error('Name is required'));
+    }
+
+    if (!orgName) {
+      return Promise.reject(new Error('Organization Name is required'));
+    }
+
+    if (type === 'orderer' &amp;&amp; !ordererType) {
+      console.warn('OrdererType not specified. Defaulting to solo');
+      ordererType = 'solo';
+    }
+
+    if (!networkConfigId) {
+      return Promise.reject(new Error('Network configuration id is required'));
+    }
+
+    if (!locationCode) {
+      return Promise.reject(new Error('Location code is required'));
+    }
+
+    const body = {
+      locationCode,
+      name,
+      orgName,
+      networkConfigId,
+      diskSpace,
+      voucherCode,
+      type,
     };
 
-    return new Promise((resolve, reject) => {
-      // fileStream.pipe(
-      request(requestOptions, (err, response, body) => {
-        if (err) {
-          return reject(err);
-        }
+    if (type === 'orderer') {
+      body.ordererType = ordererType;
+      body.peerId = peerId;
+    }
 
-        const res = JSON.parse(body);
-        if (res.error) {
-          return reject(res.error);
-        }
-
-        return resolve(res.message);
-      });
-      // );
-    });
-  }
-
-  /**
-   * Downloads a file from hyperion using the hash
-   * @param  {object} options File options
-   * @param {string} options.locationCode Location code of the hyperion node where the file was uploaded
-   * @param {string} options.fileHash Hash of the file to download
-   * @param {writeStream} options.writeStream A writestream to which the downloaded file will be written
-   * @example &lt;caption>Downloads a file from hyperion service&lt;/caption>
-   * const writeStream = fs.createWriteStream('download-path.txt');
-   * const res = await hyperion.getFile({locationCode: 'us-west-2', fileHash: 'ajshdvi23y4ioiertuykesd', writeStream });
-   * @returns {Promise&lt;any>} Error or response status code
-   * @memberof Hyperion
-   * @instance
-   */
-  getFile({ locationCode, fileHash, writeStream }) {
-    return new Promise((resolve, reject) => {
-      const path = `/api/hyperion/download?location=${locationCode}&amp;hash=${fileHash}`;
-
-      if (!writeStream) {
-        return reject(new Error('Write stream should be defined'));
-      }
-
-      const requestOptions = {
-        method: 'GET',
-        url: `${this.domain}${path}`,
-        headers: {
-          Authorization: `Bearer ${this.apiKey}`,
-        },
-      };
-
-      request(requestOptions)
-        .on('error', err => reject(err))
-        .on('response', response => resolve(response.statusCode))
-        .pipe(writeStream);
-
-      return true;
-    });
-  }
-
-  /**
-   * Deletes a file from hyperion node
-   * @param  {object} options File options
-   * @param  {string} locationCode Location code of the node where the file was uploaded
-   * @param {string} fileHash Hash of the file to delete
-   * @example &lt;caption>Deletes a file from hyperion service&lt;/caption>
-   * const res = await hyperion.deleteFile({locationCode: 'us-west-2', fileHash: 'wefjhggbhoirekuyghiqwlyug'})
-   * @returns {Promise&lt;any>} Response of delete operation or error
-   * @memberof Hyperion
-   * @instance
-   */
-  async deleteFile({ locationCode, fileHash }) {
-    const path = `/api/hyperion/delete?location=${locationCode}&amp;hash=${fileHash}`;
+    const path = '/api/platform/privatehive';
 
     try {
-      const deleteResponse = await helpers.sendPlatformRequest({ domain: this.domain, path, method: 'DELETE', apiKey: this.apiKey });
-      return deleteResponse;
+      const res = await helpers.sendPlatformRequest({ domain: node.domain, path, method: 'POST', body, apiKey: node.apiKey });
+      return res.data.instanceId;
     } catch (err) {
       return Promise.reject(err);
     }
-  }
-}
+  },
 
-module.exports = Hyperion;
+  /**
+   * Lists details of privatehive networks
+   * @function
+   * @name list
+   * @param  {string} [instanceId] If provided then fetches details of only this instance
+   * @param  {object} options Additional filters
+   * @param {bool} [options.showDeleted] If true then shows all the deleted networks as well
+   * @param {peer|orderer} [options.nodeType] Queries only a particular type of node
+   * @param {string} [options.locationCode] Queries networks only in this location
+   * @param {date} [options.createdAfter] Queries networks created after this date
+   * @param {date} [options.createdBefore] Queries networks created before this date
+   * @returns {Array&lt;Node>} Array of networks matching the filters
+   * @example &lt;caption>Lists all the active privatehive networks&lt;/caption>
+   * const networks = await platform.privatehive.list({ showDeleted: false });
+   * console.log(networks);
+   * // Prints List of networks
+   * @example &lt;caption>List details of single network&lt;/caption>
+   * const networks = await platform.privatehive.list('instanceId1123);
+   * console.log(networks);
+   * // Prints List containing one network of the given instanceId
+   * @memberof Privatehive
+   * @instance
+   */
+  list: async (instanceId, options = {}) => {
+    let path = '/api/platform/privatehive';
+    if (instanceId &amp;&amp; typeof instanceId === 'string') {
+      path = `${path}/${instanceId}`;
+    } else {
+      options = instanceId;
+    }
+
+    const { nodeType, locationCode, createdAfter, createdBefore } = options;
+    let { showDeleted } = options;
+
+    showDeleted = Boolean(showDeleted);
+    path = `${path}?showDeleted=${showDeleted}`;
+    if (nodeType) {
+      path = `${path}&amp;nodeType=${nodeType}`;
+    }
+
+    if (locationCode) {
+      path = `${path}&amp;locationCode=${locationCode}`;
+    }
+
+    if (createdAfter) {
+      path = `${path}&amp;createdAfter=${createdAfter}`;
+    }
+
+    if (createdBefore) {
+      path = `${path}&amp;createdBefore=${createdBefore}`;
+    }
+
+    try {
+      const res = await helpers.sendPlatformRequest({ domain: node.domain, path, method: 'GET', apiKey: node.apiKey });
+      return res.data;
+    } catch (err) {
+      return Promise.reject(err);
+    }
+  },
+
+  /**
+   * Delets a privatehive node
+   * @function
+   * @name delete
+   * @param  {string} networkId Instance ID of the network to be deleted
+   * @returns {string} InstanceID of deleted network
+   * @example &lt;caption>Deletes a privatehive node&lt;/caption>
+   * const instanceID = await platform.privatehive.delete('instanceId1234');
+   * console.log(instanceID);
+   * // Prints the instanceid of deleted network
+   * @memberof Privatehive
+   * @instance
+   */
+  delete: async networkId => {
+    const path = `/api/platform/privatehive/${networkId}`;
+
+    try {
+      const res = await helpers.sendPlatformRequest({ domain: node.domain, path, method: 'DELETE', apiKey: node.apiKey });
+      return res.data.instanceId;
+    } catch (err) {
+      return Promise.reject(err);
+    }
+  },
+  /**
+   * Invites a user to a HLF channel. The invited user can select the peer which will join the channel
+   * @function
+   * @name inviteUserToChannel
+   * @param  {object} params Options
+   * @param {string} params.email Email of the user to be invited
+   * @param {string} params.peerId Instance ID of the peer to be invited
+   * @param {string} params.channelName Channel to which the user should be invited to
+   * @param {string} params.ordererDomain Domain of the orderer
+   * @param {string} params.ordererConnectionDetails Connection details of the orderer like "grpc://1.2.3.4:1234"
+   * @returns {string} Invite ID
+   * @example &lt;caption>Invites a user to a channel&lt;/caption>
+   * const inviteID = await platform.privatehive.inviteUserToChannel({
+   *    email: 'jibin.mathews@blockcluster.io',
+   *    peerId: 'inviteInstancePeerID',
+   *    channelName: 'mychannel',
+   *    ordererDomain: `orderer.${orderer.organization.toLowerCase()}.com`,
+   *    ordererConnectionDetails: `grpc://${orderer.ordererURL}`,
+   * });
+   * console.log(inviteID);
+   * // Prints the inviteID for others to accept
+   * @memberof Privatehive
+   * @instance
+   */
+  inviteUserToChannel: async ({ email, peerId, channelName, ordererDomain, ordererConnectionDetails }) => {
+    const path = '/api/platform/privatehive/invite';
+    const body = {
+      email,
+      networkId: peerId,
+      channelName,
+      ordererDomain,
+      ordererConnectionDetails,
+    };
+
+    try {
+      const res = await helpers.sendPlatformRequest({ domain: node.domain, path, method: 'POST', body, apiKey: node.apiKey });
+      return res.data.inviteId;
+    } catch (err) {
+      return Promise.reject(err);
+    }
+  },
+
+  /**
+   * Accepts an invite to join a channel
+   * @function
+   * @name acceptChannelInvitation
+   * @param  {string} inviteId InviteID to be accepted
+   * @param  {string} peerId InstanceID of the peer to join the channel
+   * @returns {string} InstanceID of the joined peer
+   * @example &lt;caption>Accepts a channel invitation&lt;/caption>
+   * const instanceID = await platform.privatehive.acceptChannelInvitation('inviteid123', 'peerid123');
+   * console.log(instanceID);
+   * // Prints the instanceID of the joined peer
+   * @memberof Privatehive
+   * @instance
+   */
+  acceptChannelInvitation: async (inviteId, peerId) => {
+    const path = `/api/platform/privatehive/invite/accept/${inviteId}`;
+    const body = {
+      peerId,
+    };
+    try {
+      const res = await helpers.sendPlatformRequest({ domain: node.domain, path, method: 'POST', body, apiKey: node.apiKey });
+      return res.data.instanceId;
+    } catch (err) {
+      return Promise.reject(err);
+    }
+  },
+  /**
+   * Lists all pending privatehive channel invites
+   * @function
+   * @name listChannelInvites
+   * @returns {Array&lt;Invite>} List of invites
+   * @example &lt;caption>Lists all the pending channel invitation&lt;/caption>
+   * const invites = await platform.privatehive.listChannelInvites();
+   * console.log(invites);
+   * // Prints the pending invitations
+   * @memberof Privatehive
+   * @instance
+   */
+  listChannelInvites: async () => {
+    const path = '/api/platform/privatehive/invite';
+    try {
+      const res = await helpers.sendPlatformRequest({ domain: node.domain, path, method: 'GET', apiKey: node.apiKey });
+      return res.data;
+    } catch (err) {
+      return Promise.reject(err);
+    }
+  },
+
+  /**
+   * Returns privatehive node object to operate on it
+   * @function
+   * @name getNode
+   * @param  {object} nodeInfo Node information details. Can be fetched from listPrivatehiveNetworks(instanceId)
+   * @returns {PrivatehiveNode} Privatehive node instance
+   * @memberof Privatehive
+   * @instance
+   */
+  getNode: async nodeInfo => {
+    const _node = { ...nodeInfo };
+    if (nodeInfo.ordererType) {
+      nodeInfo.type = 'orderer';
+    }
+
+    return new PrivatehiveNode(_node);
+  },
+});
 </code></pre>
         </article>
     </section>
