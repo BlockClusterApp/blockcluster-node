@@ -34,5 +34,6 @@ module.exports = {
     channelName: 'mychannel',
     domain: 'https://dev.blockcluster.io',
     platformDomain: 'http://localhost:3000',
+    chaincodeName: 'example_cc',
   },
 };
