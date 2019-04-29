@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>PrivatehiveNode - Blockcluster NodeJS SDK</title>
+    <title>Privatehive - Blockcluster NodeJS SDK</title>
     
     
     
@@ -42,7 +42,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">PrivatehiveNode</h1>
+    <h1 class="page-title">Privatehive</h1>
     
 
     
@@ -55,10 +55,8 @@
 <header>
     
         <h2>
-        PrivatehiveNode
+        Privatehive
         </h2>
-        
-            <div class="class-description"><p>Handles all functions related to the privatehive node</p></div>
         
     
 </header>
@@ -69,23 +67,12 @@
         
             
 
-    
-    <h2>Constructor</h2>
-    
-
-    <h4 class="name" id="PrivatehiveNode"><span class="type-signature"></span>new PrivatehiveNode<span class="signature">(options)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
 <dl class="details">
 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="privatehive_index.js.html">privatehive/index.js</a>, <a href="privatehive_index.js.html#line11">line 11</a>
+        <a href="platform_modules_privatehive.js.html">platform/modules/privatehive.js</a>, <a href="platform_modules_privatehive.js.html#line3">line 3</a>
     </li></ul></dd>
     
 
@@ -125,11 +112,114 @@
 
 
 
-    <h5 class="subsection-title">Properties:</h5>
+
+            
+
+            
+        
+        </div>
+    
 
     
 
-<table class="props">
+    
+
+    
+    
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="acceptChannelInvitation"><span class="type-signature"></span>acceptChannelInvitation<span class="signature">(inviteId, peerId)</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="platform_modules_privatehive.js.html">platform/modules/privatehive.js</a>, <a href="platform_modules_privatehive.js.html#line212">line 212</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Accepts an invite to join a channel</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+        <p class="code-caption">Accepts a channel invitation</p>
+    
+    <pre class="prettyprint"><code>const instanceID = await platform.privatehive.acceptChannelInvitation('inviteid123', 'peerid123');
+console.log(instanceID);
+// Prints the instanceID of the joined peer</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
     <thead>
     <tr>
         
@@ -151,13 +241,13 @@
 
         <tr>
             
-                <td class="name"><code>channels</code></td>
+                <td class="name"><code>inviteId</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="Channel.html">Channel</a></span>
+<span class="param-type">string</span>
 
 
             
@@ -167,20 +257,20 @@
 
             
 
-            <td class="description last"><p>Channel related functions</p></td>
+            <td class="description last"><p>InviteID to be accepted</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>chaincodes</code></td>
+                <td class="name"><code>peerId</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="Chaincode.html">Chaincode</a></span>
+<span class="param-type">string</span>
 
 
             
@@ -190,76 +280,7 @@
 
             
 
-            <td class="description last"><p>Chaincode related functions</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>notifications</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="Notification.html">Notification</a></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Notification related functions</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>explore</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="Explore.html">Explore</a></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Explorer related functions</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>configs</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="Config.html">Config</a></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Download configs</p></td>
+            <td class="description last"><p>InstanceID of the peer to join the channel</p></td>
         </tr>
 
     
@@ -277,6 +298,116 @@
 
 
 
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>InstanceID of the joined peer</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="create"><span class="type-signature"></span>create<span class="signature">(options)</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="platform_modules_privatehive.js.html">platform/modules/privatehive.js</a>, <a href="platform_modules_privatehive.js.html#line8">line 8</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Creates a privatehive node</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+        <p class="code-caption">Create a privatehive network of type peer</p>
+    
+    <pre class="prettyprint"><code>  const peerId = await platform.privatehive.create({
+  locationCode: 'us-west-2',
+  type: 'peer',
+  orgName: 'blockcluster',
+  name: `Peer 1`,
+  networkConfigId: 'abcgdghfjgmgh',
+});
+console.log(peerId);
+// Prints the instance id of the created node</code></pre>
 
 
 
@@ -322,7 +453,7 @@
 
             
 
-            <td class="description last"><p>Params</p>
+            <td class="description last"><p>Options</p>
                 <h6>Properties</h6>
                 
 
@@ -350,7 +481,7 @@
 
         <tr>
             
-                <td class="name"><code>name</code></td>
+                <td class="name"><code>peerId</code></td>
             
 
             <td class="type">
@@ -365,36 +496,7 @@
             
                 <td class="attributes">
                 
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>Name of the node</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>instanceId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
+                    &lt;optional><br>
                 
 
                 
@@ -405,38 +507,7 @@
 
             
 
-            <td class="description last"><p>Instance ID of the node</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>orgName</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>Organization of the node</p></td>
+            <td class="description last"><p>Peer Id to which the orderer joins. Required only incase of orderer type</p></td>
         </tr>
 
     
@@ -467,38 +538,7 @@
 
             
 
-            <td class="description last"><p>Location code of the cluster the node is deployed at</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>domain</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>Node API host, got from Node -&gt; Security</p></td>
+            <td class="description last"><p>Location code where the network should be deployed</p></td>
         </tr>
 
     
@@ -532,20 +572,53 @@
 
             
 
-            <td class="description last"><p>Type of node</p></td>
+            <td class="description last"><p>Type of network. Either peer or orderer</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>workerNodeIP</code></td>
+                <td class="name"><code>voucherCode</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">IP</span>
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Voucher code to be applied</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
 
 
             
@@ -563,20 +636,20 @@
 
             
 
-            <td class="description last"><p>IP Address of the worker node</p></td>
+            <td class="description last"><p>Name of the network. Required</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>ordererNodePort</code></td>
+                <td class="name"><code>orgName</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">int</span>
+<span class="param-type">string</span>
 
 
             
@@ -594,14 +667,423 @@
 
             
 
-            <td class="description last"><p>Port number at which the orderer is accesible</p></td>
+            <td class="description last"><p>Organization to which the node belongs to</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>details</code></td>
+                <td class="name"><code>ordererType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">solo</span>
+|
+
+<span class="param-type">kafka</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Type of orderer to be created. Solo or Kafka. Required only if type is orderer</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>networkConfigId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">stirng</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>ID of network configuration</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>diskSpace</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Disk space required for this node. Applicable only if network configuration has isDiskChangeable = true</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Instance ID of the created network</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="delete"><span class="type-signature"></span>delete<span class="signature">(networkId)</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="platform_modules_privatehive.js.html">platform/modules/privatehive.js</a>, <a href="platform_modules_privatehive.js.html#line147">line 147</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Delets a privatehive node</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+        <p class="code-caption">Deletes a privatehive node</p>
+    
+    <pre class="prettyprint"><code>const instanceID = await platform.privatehive.delete('instanceId1234');
+console.log(instanceID);
+// Prints the instanceid of deleted network</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>networkId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Instance ID of the network to be deleted</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>InstanceID of deleted network</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getNode"><span class="type-signature"></span>getNode<span class="signature">(nodeInfo)</span><span class="type-signature"> &rarr; {<a href="PrivatehiveNode.html">PrivatehiveNode</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="platform_modules_privatehive.js.html">platform/modules/privatehive.js</a>, <a href="platform_modules_privatehive.js.html#line260">line 260</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Returns privatehive node object to operate on it</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>nodeInfo</code></td>
             
 
             <td class="type">
@@ -614,235 +1096,10 @@
             </td>
 
             
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
 
             
 
-            <td class="description last"><p>More options</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-        </div>
-    
-
-    
-
-    
-
-    
-    
-    
-
-     
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    <h4 class="name" id="addChaincode"><span class="type-signature">(async) </span>addChaincode<span class="signature">(filePath, name, type)</span><span class="type-signature"> &rarr; {Promise.&lt;string>}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="privatehive_index.js.html">privatehive/index.js</a>, <a href="privatehive_index.js.html#line205">line 205</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Since v2.1.1. Use PrivatehiveNode.chaincodes.add</li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Adds a chaincode to the peer. This does not install or instantiate the chaincode but only uploads them.</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>filePath</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Path of the zip file where the chaincode is residing</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>name</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Name of chaincode</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>type</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">golang</span>
-|
-
-<span class="param-type">node</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Type of chaincode</p></td>
+            <td class="description last"><p>Node information details. Can be fetched from listPrivatehiveNetworks(instanceId)</p></td>
         </tr>
 
     
@@ -868,7 +1125,7 @@
 
         
 <div class="param-desc">
-    <p>Response from node</p>
+    <p>Privatehive node instance</p>
 </div>
 
 
@@ -879,7 +1136,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Promise.&lt;string></span>
+<span class="param-type"><a href="PrivatehiveNode.html">PrivatehiveNode</a></span>
 
 
     </dd>
@@ -894,7 +1151,7 @@
 
     
 
-    <h4 class="name" id="createChannel"><span class="type-signature">(async) </span>createChannel<span class="signature">(name, ordererURL<span class="signature-attributes">opt</span>, ordererDomain<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;string>}</span></h4>
+    <h4 class="name" id="inviteUserToChannel"><span class="type-signature"></span>inviteUserToChannel<span class="signature">(params)</span><span class="type-signature"> &rarr; {string}</span></h4>
 
     
 
@@ -906,7 +1163,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="privatehive_index.js.html">privatehive/index.js</a>, <a href="privatehive_index.js.html#line150">line 150</a>
+        <a href="platform_modules_privatehive.js.html">platform/modules/privatehive.js</a>, <a href="platform_modules_privatehive.js.html#line170">line 170</a>
     </li></ul></dd>
     
 
@@ -924,8 +1181,6 @@
 
     
 
-    
-        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Since v2.1.1. Use PrivatehiveNode.channels.create</li></ul></dd>
     
 
     
@@ -948,7 +1203,7 @@
 
 
 <div class="description">
-    <p>Creates a channel in the privatehive node</p>
+    <p>Invites a user to a HLF channel. The invited user can select the peer which will join the channel</p>
 </div>
 
 
@@ -959,622 +1214,19 @@
 
 
 
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>name</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>Name of the channel to be created</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>ordererURL</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>GRPC url (without the protocol) of the orderer</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>ordererDomain</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>Orderer's organization domain</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>Response from the node</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise.&lt;string></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="fetchChaincodes"><span class="type-signature">(async) </span>fetchChaincodes<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;Array.&lt;string>>}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="privatehive_index.js.html">privatehive/index.js</a>, <a href="privatehive_index.js.html#line311">line 311</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Since v2.1.1. Use PrivatehiveNode.chaincodes.list</li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Returns list of all the chaincodes</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>List of chaincodes</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise.&lt;Array.&lt;string>></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="fetchChannels"><span class="type-signature">(async) </span>fetchChannels<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;Array.&lt;string>>}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="privatehive_index.js.html">privatehive/index.js</a>, <a href="privatehive_index.js.html#line185">line 185</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Since v2.1.1. Use PrivatehiveNode.channels.list</li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Returns list of all the channels</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>List of channels</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise.&lt;Array.&lt;string>></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="installChaincode"><span class="type-signature">(async) </span>installChaincode<span class="signature">(name)</span><span class="type-signature"> &rarr; {Promise.&lt;string>}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="privatehive_index.js.html">privatehive/index.js</a>, <a href="privatehive_index.js.html#line243">line 243</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Since v2.1.1. Use PrivatehiveNode.chaincodes.install</li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Installs an already added chaincode to the peer</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>name</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Name of the chaincode</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>Response from the node</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise.&lt;string></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="instantiateChaincode"><span class="type-signature">(async) </span>instantiateChaincode<span class="signature">(params)</span><span class="type-signature"> &rarr; {Promise.&lt;string>}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="privatehive_index.js.html">privatehive/index.js</a>, <a href="privatehive_index.js.html#line275">line 275</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Since v2.1.1. Use PrivatehiveNode.chaincodes.instantiate</li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Instantiates an installed chaincode to a channel and on this peer</p>
-</div>
-
-
-
-
-
-
-
+    <h5>Example</h5>
+    
+        <p class="code-caption">Invites a user to a channel</p>
+    
+    <pre class="prettyprint"><code>const inviteID = await platform.privatehive.inviteUserToChannel({
+   email: 'jibin.mathews@blockcluster.io',
+   peerId: 'inviteInstancePeerID',
+   channelName: 'mychannel',
+   ordererDomain: `orderer.${orderer.organization.toLowerCase()}.com`,
+   ordererConnectionDetails: `grpc://${orderer.ordererURL}`,
+});
+console.log(inviteID);
+// Prints the inviteID for others to accept</code></pre>
 
 
 
@@ -1634,8 +1286,6 @@
         <th>Type</th>
 
         
-        <th>Attributes</th>
-        
 
         
 
@@ -1648,7 +1298,7 @@
 
         <tr>
             
-                <td class="name"><code>name</code></td>
+                <td class="name"><code>email</code></td>
             
 
             <td class="type">
@@ -1661,18 +1311,33 @@
             </td>
 
             
-                <td class="attributes">
-                
 
-                
+            
 
+            <td class="description last"><p>Email of the user to be invited</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>peerId</code></td>
+            
+
+            <td class="type">
+            
                 
-                </td>
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
             
 
             
 
-            <td class="description last"><p>Name of the chaincode to instantiate</p></td>
+            <td class="description last"><p>Instance ID of the peer to be invited</p></td>
         </tr>
 
     
@@ -1692,25 +1357,17 @@
             </td>
 
             
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
 
             
 
-            <td class="description last"><p>Channel on which the code is to be instantiated</p></td>
+            <td class="description last"><p>Channel to which the user should be invited to</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>functionName</code></td>
+                <td class="name"><code>ordererDomain</code></td>
             
 
             <td class="type">
@@ -1723,86 +1380,33 @@
             </td>
 
             
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
 
             
 
-            <td class="description last"><p>Name of function to be called for instantiation. Default is init</p></td>
+            <td class="description last"><p>Domain of the orderer</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>args</code></td>
+                <td class="name"><code>ordererConnectionDetails</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Array.&lt;string></span>
+<span class="param-type">string</span>
 
 
             
             </td>
 
             
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
 
             
 
-            <td class="description last"><p>Arguments to the instantiating function . Default is []</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>endorsementPolicy</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>Endoresement policy for this chaincode. By default any of the org should sign</p></td>
+            <td class="description last"><p>Connection details of the orderer like &quot;grpc://1.2.3.4:1234&quot;</p></td>
         </tr>
 
     
@@ -1835,7 +1439,7 @@
 
         
 <div class="param-desc">
-    <p>Response from the node</p>
+    <p>Invite ID</p>
 </div>
 
 
@@ -1846,7 +1450,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Promise.&lt;string></span>
+<span class="param-type">string</span>
 
 
     </dd>
@@ -1861,7 +1465,7 @@
 
     
 
-    <h4 class="name" id="setAuth"><span class="type-signature"></span>setAuth<span class="signature">(username, password)</span><span class="type-signature"> &rarr; {void}</span></h4>
+    <h4 class="name" id="list"><span class="type-signature"></span>list<span class="signature">(instanceId<span class="signature-attributes">opt</span>, options)</span><span class="type-signature"> &rarr; {Array.&lt;Node>}</span></h4>
 
     
 
@@ -1873,7 +1477,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="privatehive_index.js.html">privatehive/index.js</a>, <a href="privatehive_index.js.html#line97">line 97</a>
+        <a href="platform_modules_privatehive.js.html">platform/modules/privatehive.js</a>, <a href="platform_modules_privatehive.js.html#line87">line 87</a>
     </li></ul></dd>
     
 
@@ -1913,7 +1517,7 @@
 
 
 <div class="description">
-    <p>Sets the basic authentication for the node. If not enabled from the dashboard then not required. It won't be set by default when fetching node information</p>
+    <p>Lists details of privatehive networks</p>
 </div>
 
 
@@ -1922,6 +1526,21 @@
 
 
 
+
+
+    <h5>Examples</h5>
+    
+        <p class="code-caption">Lists all the active privatehive networks</p>
+    
+    <pre class="prettyprint"><code>const networks = await platform.privatehive.list({ showDeleted: false });
+console.log(networks);
+// Prints List of networks</code></pre>
+
+        <p class="code-caption">List details of single network</p>
+    
+    <pre class="prettyprint"><code>const networks = await platform.privatehive.list('instanceId1123);
+console.log(networks);
+// Prints List containing one network of the given instanceId</code></pre>
 
 
 
@@ -1939,6 +1558,8 @@
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
         
 
@@ -1951,7 +1572,7 @@
 
         <tr>
             
-                <td class="name"><code>username</code></td>
+                <td class="name"><code>instanceId</code></td>
             
 
             <td class="type">
@@ -1964,17 +1585,148 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p>Basic Auth username</p></td>
+            <td class="description last"><p>If provided then fetches details of only this instance</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>password</code></td>
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Additional filters</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>showDeleted</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">bool</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>If true then shows all the deleted networks as well</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>nodeType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">peer</span>
+|
+
+<span class="param-type">orderer</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Queries only a particular type of node</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>locationCode</code></td>
             
 
             <td class="type">
@@ -1987,10 +1739,93 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p>Basic Auth password</p></td>
+            <td class="description last"><p>Queries networks only in this location</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>createdAfter</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">date</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Queries networks created after this date</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>createdBefore</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">date</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Queries networks created before this date</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
         </tr>
 
     
@@ -2015,6 +1850,10 @@
 <h5>Returns:</h5>
 
         
+<div class="param-desc">
+    <p>Array of networks matching the filters</p>
+</div>
+
 
 
 <dl class="param-type">
@@ -2023,7 +1862,7 @@
     </dt>
     <dd>
         
-<span class="param-type">void</span>
+<span class="param-type">Array.&lt;Node></span>
 
 
     </dd>
@@ -2038,7 +1877,7 @@
 
     
 
-    <h4 class="name" id="setDomain"><span class="type-signature"></span>setDomain<span class="signature">(domain)</span><span class="type-signature"> &rarr; {void}</span></h4>
+    <h4 class="name" id="listChannelInvites"><span class="type-signature"></span>listChannelInvites<span class="signature">()</span><span class="type-signature"> &rarr; {Array.&lt;Invite>}</span></h4>
 
     
 
@@ -2050,7 +1889,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="privatehive_index.js.html">privatehive/index.js</a>, <a href="privatehive_index.js.html#line109">line 109</a>
+        <a href="platform_modules_privatehive.js.html">platform/modules/privatehive.js</a>, <a href="platform_modules_privatehive.js.html#line238">line 238</a>
     </li></ul></dd>
     
 
@@ -2090,7 +1929,7 @@
 
 
 <div class="description">
-    <p>Sets the domain where the node is accessible</p>
+    <p>Lists all pending privatehive channel invites</p>
 </div>
 
 
@@ -2101,55 +1940,15 @@
 
 
 
-
-
-    <h5>Parameters:</h5>
+    <h5>Example</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
+        <p class="code-caption">Lists all the pending channel invitation</p>
     
-
-        <tr>
-            
-                <td class="name"><code>domain</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
+    <pre class="prettyprint"><code>const invites = await platform.privatehive.listChannelInvites();
+console.log(invites);
+// Prints the pending invitations</code></pre>
 
 
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Host name as got from Node -&gt; Security</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -2169,169 +1968,19 @@
 <h5>Returns:</h5>
 
         
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">void</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="setOrderer"><span class="type-signature"></span>setOrderer<span class="signature">(orderer)</span><span class="type-signature"> &rarr; {void}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="privatehive_index.js.html">privatehive/index.js</a>, <a href="privatehive_index.js.html#line120">line 120</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Sets orderer for this peer</p>
+<div class="param-desc">
+    <p>List of invites</p>
 </div>
 
 
 
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>orderer</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="PrivatehiveNode.html">PrivatehiveNode</a></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Orderer node</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
 <dl class="param-type">
     <dt>
         Type
     </dt>
     <dd>
         
-<span class="param-type">void</span>
+<span class="param-type">Array.&lt;Invite></span>
 
 
     </dd>

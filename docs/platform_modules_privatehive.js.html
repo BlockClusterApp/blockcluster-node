@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>privatehive/modules/chaincodes.js - Blockcluster NodeJS SDK</title>
+    <title>platform/modules/privatehive.js - Blockcluster NodeJS SDK</title>
     
     
     
@@ -42,7 +42,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">privatehive/modules/chaincodes.js</h1>
+    <h1 class="page-title">platform/modules/privatehive.js</h1>
     
 
     
@@ -52,267 +52,281 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const fs = require('fs');
-
-const { RequestTypes } = require('../../../helpers/requests');
-
+            <pre class="prettyprint source linenums"><code>const helpers = require('../../../helpers');
+const PrivatehiveNode = require('../../privatehive');
 /**
- * @typedef ChaincodeType
- * @property {string} version Chaincode version
- * @property {string} name Name of the chaincode
- * @property {string} language Language in which the chaincode is written
- */
-
-/**
- *
- * @namespace Chaincode
+ * @namespace Privatehive
  * @since 3.0.1
  */
 module.exports = node => ({
   /**
-   * Adds a chaincode to the peer. This does not install or instantiate the chaincode but only uploads them.
+   * Creates a privatehive node
    * @function
-   * @name add
-   * @param  {string} filePath Path of the zip file where the chaincode is residing
-   * @param  {string} name Name of chaincode
-   * @param  {golang|node} type Type of chaincode
-   * @returns {Promise&lt;string>} Response from node
-   * @memberof Chaincode
-   * @method
+   * @name create
+   * @param  {object} options Options
+   * @param {string} [options.peerId] Peer Id to which the orderer joins. Required only incase of orderer type
+   * @param {string} options.locationCode Location code where the network should be deployed
+   * @param {peer|orderer} options.type Type of network. Either peer or orderer
+   * @param {string} [options.voucherCode] Voucher code to be applied
+   * @param {string} options.name Name of the network. Required
+   * @param {string} options.orgName Organization to which the node belongs to
+   * @param {solo|kafka} [options.ordererType] Type of orderer to be created. Solo or Kafka. Required only if type is orderer
+   * @param {stirng} options.networkConfigId ID of network configuration
+   * @param {number} [options.diskSpace] Disk space required for this node. Applicable only if network configuration has isDiskChangeable = true
+   * @returns {string} Instance ID of the created network
+   * @example &lt;caption>Create a privatehive network of type peer&lt;/caption>
+   *   const peerId = await platform.privatehive.create({
+   *   locationCode: 'us-west-2',
+   *   type: 'peer',
+   *   orgName: 'blockcluster',
+   *   name: `Peer 1`,
+   *   networkConfigId: 'abcgdghfjgmgh',
+   * });
+   * console.log(peerId);
+   * // Prints the instance id of the created node
+   * @memberof Privatehive
    * @instance
    */
-  async add(filePath, name, type) {
+  create: async ({ peerId, locationCode, type, voucherCode, name, orgName, ordererType, networkConfigId, diskSpace }) => {
+    if (type === 'orderer' &amp;&amp; !peerId) {
+      return Promise.reject(new Error('PeerID is required to create orderer'));
+    }
+
     if (!name) {
-      throw new Error('Chaincode add error : name is required');
+      return Promise.reject(new Error('Name is required'));
     }
 
-    if (!filePath) {
-      throw new Error('Chaincode add error : filePath is required');
+    if (!orgName) {
+      return Promise.reject(new Error('Organization Name is required'));
     }
 
-    if (!['golang', 'node'].includes(type)) {
-      throw new Error('Chaincode add error : type should be golang or node');
+    if (type === 'orderer' &amp;&amp; !ordererType) {
+      console.warn('OrdererType not specified. Defaulting to solo');
+      ordererType = 'solo';
     }
 
-    const addReq = node.__constructNodeRequest('/chaincodes/add', RequestTypes.POST, {}, {}, true);
-    const form = addReq.form();
-
-    form.append('chaincode_zip', fs.createReadStream(filePath));
-    form.append('chaincodeName', name);
-    form.append('chaincodeLanguage', type);
-
-    const res = await addReq;
-
-    if (res.error) {
-      throw new Error(res.message);
+    if (!networkConfigId) {
+      return Promise.reject(new Error('Network configuration id is required'));
     }
 
-    return res;
+    if (!locationCode) {
+      return Promise.reject(new Error('Location code is required'));
+    }
+
+    const body = {
+      locationCode,
+      name,
+      orgName,
+      networkConfigId,
+      diskSpace,
+      voucherCode,
+      type,
+    };
+
+    if (type === 'orderer') {
+      body.ordererType = ordererType;
+      body.peerId = peerId;
+    }
+
+    const path = '/api/platform/privatehive';
+
+    try {
+      const res = await helpers.sendPlatformRequest({ domain: node.domain, path, method: 'POST', body, apiKey: node.apiKey });
+      return res.data.instanceId;
+    } catch (err) {
+      return Promise.reject(err);
+    }
   },
+
   /**
-   * Installs an already added chaincode to the peer
+   * Lists details of privatehive networks
    * @function
-   * @name install
-   * @param  {string} name Name of the chaincode
-   * @returns {Promise&lt;string>} Response from the node
-   * @memberof Chaincode
-   * @method
+   * @name list
+   * @param  {string} [instanceId] If provided then fetches details of only this instance
+   * @param  {object} options Additional filters
+   * @param {bool} [options.showDeleted] If true then shows all the deleted networks as well
+   * @param {peer|orderer} [options.nodeType] Queries only a particular type of node
+   * @param {string} [options.locationCode] Queries networks only in this location
+   * @param {date} [options.createdAfter] Queries networks created after this date
+   * @param {date} [options.createdBefore] Queries networks created before this date
+   * @returns {Array&lt;Node>} Array of networks matching the filters
+   * @example &lt;caption>Lists all the active privatehive networks&lt;/caption>
+   * const networks = await platform.privatehive.list({ showDeleted: false });
+   * console.log(networks);
+   * // Prints List of networks
+   * @example &lt;caption>List details of single network&lt;/caption>
+   * const networks = await platform.privatehive.list('instanceId1123);
+   * console.log(networks);
+   * // Prints List containing one network of the given instanceId
+   * @memberof Privatehive
    * @instance
    */
-  async install(name) {
-    if (!name) {
-      throw new Error('Chaincode instantiate error : name is required');
+  list: async (instanceId, options = {}) => {
+    let path = '/api/platform/privatehive';
+    if (instanceId &amp;&amp; typeof instanceId === 'string') {
+      path = `${path}/${instanceId}`;
+    } else {
+      options = instanceId;
     }
 
-    const installReq = node.__constructNodeRequest('/chaincodes/install', RequestTypes.POST, {
-      chaincodeName: name,
-    });
+    const { nodeType, locationCode, createdAfter, createdBefore } = options;
+    let { showDeleted } = options;
 
-    const res = await installReq;
-
-    if (res.error) {
-      throw new Error(res.message);
+    showDeleted = Boolean(showDeleted);
+    path = `${path}?showDeleted=${showDeleted}`;
+    if (nodeType) {
+      path = `${path}&amp;nodeType=${nodeType}`;
     }
 
-    return res.message;
+    if (locationCode) {
+      path = `${path}&amp;locationCode=${locationCode}`;
+    }
+
+    if (createdAfter) {
+      path = `${path}&amp;createdAfter=${createdAfter}`;
+    }
+
+    if (createdBefore) {
+      path = `${path}&amp;createdBefore=${createdBefore}`;
+    }
+
+    try {
+      const res = await helpers.sendPlatformRequest({ domain: node.domain, path, method: 'GET', apiKey: node.apiKey });
+      return res.data;
+    } catch (err) {
+      return Promise.reject(err);
+    }
+  },
+
+  /**
+   * Delets a privatehive node
+   * @function
+   * @name delete
+   * @param  {string} networkId Instance ID of the network to be deleted
+   * @returns {string} InstanceID of deleted network
+   * @example &lt;caption>Deletes a privatehive node&lt;/caption>
+   * const instanceID = await platform.privatehive.delete('instanceId1234');
+   * console.log(instanceID);
+   * // Prints the instanceid of deleted network
+   * @memberof Privatehive
+   * @instance
+   */
+  delete: async networkId => {
+    const path = `/api/platform/privatehive/${networkId}`;
+
+    try {
+      const res = await helpers.sendPlatformRequest({ domain: node.domain, path, method: 'DELETE', apiKey: node.apiKey });
+      return res.data.instanceId;
+    } catch (err) {
+      return Promise.reject(err);
+    }
   },
   /**
-   * Instantiates an installed chaincode to a channel and on this peer
+   * Invites a user to a HLF channel. The invited user can select the peer which will join the channel
    * @function
+   * @name inviteUserToChannel
    * @param  {object} params Options
-   * @param {string} params.name Name of the chaincode to instantiate
-   * @param {string} params.channelName Channel on which the code is to be instantiated
-   * @param {string} [params.functionName] Name of function to be called for instantiation. Default is init
-   * @param {Array&lt;string>} [params.args] Arguments to the instantiating function . Default is []
-   * @param {object} [params.endorsementPolicy] Endoresement policy for this chaincode. By default any of the org should sign
-   * @returns {Promise&lt;string>} Response from the node
-   * @memberof Chaincode
-   * @method
+   * @param {string} params.email Email of the user to be invited
+   * @param {string} params.peerId Instance ID of the peer to be invited
+   * @param {string} params.channelName Channel to which the user should be invited to
+   * @param {string} params.ordererDomain Domain of the orderer
+   * @param {string} params.ordererConnectionDetails Connection details of the orderer like "grpc://1.2.3.4:1234"
+   * @returns {string} Invite ID
+   * @example &lt;caption>Invites a user to a channel&lt;/caption>
+   * const inviteID = await platform.privatehive.inviteUserToChannel({
+   *    email: 'jibin.mathews@blockcluster.io',
+   *    peerId: 'inviteInstancePeerID',
+   *    channelName: 'mychannel',
+   *    ordererDomain: `orderer.${orderer.organization.toLowerCase()}.com`,
+   *    ordererConnectionDetails: `grpc://${orderer.ordererURL}`,
+   * });
+   * console.log(inviteID);
+   * // Prints the inviteID for others to accept
+   * @memberof Privatehive
    * @instance
    */
-  async instantiate({ name, channelName, functionName, args, endorsementPolicy }) {
-    if (!Array.isArray(args)) {
-      throw new TypeError('Chaincode instantiate error : args should be a json array');
-    }
-
-    if (!channelName) {
-      throw new Error('Chaincode instantiate error : channelName is required');
-    }
-
-    if (!name) {
-      throw new Error('Chaincode instantiate error : name is required');
-    }
-
-    const instantiateReq = node.__constructNodeRequest('/chaincodes/instantiate', RequestTypes.POST, {
-      chaincodeName: name,
+  inviteUserToChannel: async ({ email, peerId, channelName, ordererDomain, ordererConnectionDetails }) => {
+    const path = '/api/platform/privatehive/invite';
+    const body = {
+      email,
+      networkId: peerId,
       channelName,
-      functionName,
-      args,
-      endorsmentPolicy: endorsementPolicy,
-    });
-    const res = await instantiateReq;
-    if (res.error) {
-      throw new Error(res.message);
-    }
+      ordererDomain,
+      ordererConnectionDetails,
+    };
 
-    return res.message;
-  },
-  /**
-   *  Returns list of all the chaincodes
-   * @function
-   * @returns {Promise&lt;Array&lt;ChaincodeType>>} List of chaincodes
-   * @memberof Chaincode
-   * @method
-   * @instance
-   */
-  async list() {
-    const res = await node.__constructNodeRequest('/chaincodes/list', RequestTypes.GET);
-    if (res.error) {
-      throw new Error(res.message);
+    try {
+      const res = await helpers.sendPlatformRequest({ domain: node.domain, path, method: 'POST', body, apiKey: node.apiKey });
+      return res.data.inviteId;
+    } catch (err) {
+      return Promise.reject(err);
     }
-
-    return res.message;
-  },
-  /**
-   *  Invokes a function on a chaincode
-   * @function
-   * @param {object} options Params
-   * @param {string} options.chaincodeName Name of the chaincode to invoke
-   * @param {stirng} options.channelName Channel on which the chaincode is instantiated
-   * @param {string} options.fcn Function name to invoke
-   * @param {Array&lt;string>} options.args Array of string to be passed as argument to the invoke function
-   * @returns {Promise&lt;string>} Invoke result
-   * @memberof Chaincode
-   * @method
-   * @instance
-   */
-  async invoke({ chaincodeName, channelName, fcn = 'init', args = [] }) {
-    if (!chaincodeName) {
-      throw new Error('Chaincode invoke error : chaincodeName is required');
-    }
-
-    if (!channelName) {
-      throw new Error('Chaincode invoke error: channelName is required');
-    }
-
-    const res = await node.__constructNodeRequest('/chaincodes/invoke', RequestTypes.POST, {
-      chaincodeName,
-      channelName,
-      args,
-      fcn,
-    });
-    if (res.error) {
-      throw new Error(res.message);
-    }
-
-    return res.message;
   },
 
   /**
-   *  Queries a chaincode using a function
+   * Accepts an invite to join a channel
    * @function
-   * @param {object} options Params
-   * @param {string} options.chaincodeName Name of the chaincode to query
-   * @param {stirng} options.channelName Channel on which the chaincode is instantiated
-   * @param {string} options.fcn Function name to use for querying
-   * @param {Array&lt;string>} options.args Array of string to be passed as argument to the query function
-   * @returns {Promise&lt;string>} Query response
-   * @memberof Chaincode
-   * @method
+   * @name acceptChannelInvitation
+   * @param  {string} inviteId InviteID to be accepted
+   * @param  {string} peerId InstanceID of the peer to join the channel
+   * @returns {string} InstanceID of the joined peer
+   * @example &lt;caption>Accepts a channel invitation&lt;/caption>
+   * const instanceID = await platform.privatehive.acceptChannelInvitation('inviteid123', 'peerid123');
+   * console.log(instanceID);
+   * // Prints the instanceID of the joined peer
+   * @memberof Privatehive
    * @instance
    */
-  async query({ chaincodeName, channelName, fcn, args = [] }) {
-    if (!chaincodeName) {
-      throw new Error('Chaincode query error : chaincodeName is required');
+  acceptChannelInvitation: async (inviteId, peerId) => {
+    const path = `/api/platform/privatehive/invite/accept/${inviteId}`;
+    const body = {
+      peerId,
+    };
+    try {
+      const res = await helpers.sendPlatformRequest({ domain: node.domain, path, method: 'POST', body, apiKey: node.apiKey });
+      return res.data.instanceId;
+    } catch (err) {
+      return Promise.reject(err);
     }
-
-    if (!channelName) {
-      throw new Error('Chaincode query error: channelName is required');
-    }
-
-    if (!fcn) {
-      throw new Error('Chaincode query error: fcn is required');
-    }
-
-    const res = await node.__constructNodeRequest('/chaincodes/query', RequestTypes.POST, {
-      chaincodeName,
-      channelName,
-      args,
-      fcn,
-    });
-    if (res.error) {
-      throw new Error(res.message);
-    }
-
-    return res.message;
   },
   /**
-   *  Upgrades an existing chaincode
+   * Lists all pending privatehive channel invites
    * @function
-   * @param {object} options Params
-   * @param {string} options.filePath Absolute file path where the chaincode .zip file is stored
-   * @param {stirng} options.name Name of chaincode to upgrade
-   * @param {string} options.chaincodeVersion New chaincode version
-   * @param {stirng} options.channelName Channel on which the chaincode is instantiated
-   * @param {Array&lt;string>} options.args Array of string to be passed as argument to the invoke function
-   * @returns {Promise&lt;string>} Upgrade result
-   * @memberof Chaincode
-   * @method
+   * @name listChannelInvites
+   * @returns {Array&lt;Invite>} List of invites
+   * @example &lt;caption>Lists all the pending channel invitation&lt;/caption>
+   * const invites = await platform.privatehive.listChannelInvites();
+   * console.log(invites);
+   * // Prints the pending invitations
+   * @memberof Privatehive
    * @instance
    */
-  async upgrade({ filePath, name, chaincodeVersion, args = [], channelName }) {
-    if (!name) {
-      throw new Error('Chaincode upgrade error : name is required');
+  listChannelInvites: async () => {
+    const path = '/api/platform/privatehive/invite';
+    try {
+      const res = await helpers.sendPlatformRequest({ domain: node.domain, path, method: 'GET', apiKey: node.apiKey });
+      return res.data;
+    } catch (err) {
+      return Promise.reject(err);
+    }
+  },
+
+  /**
+   * Returns privatehive node object to operate on it
+   * @function
+   * @name getNode
+   * @param  {object} nodeInfo Node information details. Can be fetched from listPrivatehiveNetworks(instanceId)
+   * @returns {PrivatehiveNode} Privatehive node instance
+   * @memberof Privatehive
+   * @instance
+   */
+  getNode: async nodeInfo => {
+    const _node = { ...nodeInfo };
+    if (nodeInfo.ordererType) {
+      nodeInfo.type = 'orderer';
     }
 
-    if (!filePath) {
-      throw new Error('Chaincode upgrade error : filePath is required');
-    }
-
-    if (!chaincodeVersion) {
-      throw new Error('Chaincode upgrade error : chaincodeVersion is required');
-    }
-
-    if (!channelName) {
-      throw new Error('Chaincode upgrade error : channelName is required');
-    }
-
-    const upgradeReq = node.__constructNodeRequest('/chaincodes/upgrade', RequestTypes.POST, {}, {}, true);
-    const form = upgradeReq.form();
-
-    form.append('chaincode_zip', fs.createReadStream(filePath));
-    form.append('chaincodeName', name);
-    form.append('chaincodeVersion', chaincodeVersion);
-    form.append('args', args);
-    form.append('channelName', channelName);
-
-    const res = await upgradeReq;
-
-    if (res.error) {
-      throw new Error(res.message);
-    }
-
-    return res;
+    return new PrivatehiveNode(_node);
   },
 });
 </code></pre>

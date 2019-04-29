@@ -58,7 +58,7 @@ class Paymeter {
    * @param {string} options.password Password for the wallet
    * @param {string} [options.contractAddress] Contract address for ERC20 type token
    * @param {string} [options.tokenSymbol] Symbol for ERC20 token
-   * @return {Promise&lt;string>} Wallet id
+   * @returns {Promise&lt;string>} Wallet id
    * @memberof Paymeter
    */
   async createWallet({ coinType, walletName, network, password, contractAddress, tokenSymbol }) {
@@ -98,7 +98,7 @@ class Paymeter {
   /**
    * Fetches all the wallets or a single wallet details
    * @param  {string} [walletId] Id of the wallet for the details needs to be fetched. If undefined then fetches all wallets
-   * @return {Promise&lt;array|object>}
+   * @returns {Promise&lt;array|object>}
    * @memberof Paymeter
    */
   async getWallets(walletId) {
@@ -123,7 +123,7 @@ class Paymeter {
   /**
    * Fetches all the withdrawals happend for a wallet
    * @param  {string} walletId Id of the wallet for which the transactions need to be fetched
-   * @return {Promise&lt;array>}
+   * @returns {Promise&lt;array>}
    * @memberof Paymeter
    */
   async getWithdrawals(walletId) {
@@ -154,7 +154,7 @@ class Paymeter {
    * @param {string} options.password Password for the wallet from which tokens are to be transferred
    * @param {string} [options.feeWallet] Only for ERC20 tokens, wallet Id from where the transaction fee is to be deducted
    * @param {string} [options.feeWalletPassword] Only for ERC20 tokens, password for the feeWallet specified
-   * @return {string} Transaction hash
+   * @returns {string} Transaction hash
    * @memberof Paymeter
    */
   async sendTokens({ fromWalletId, toAddress, amount, password, feeWallet, feeWalletPassword }) {

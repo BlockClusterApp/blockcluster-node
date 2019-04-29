@@ -125,7 +125,7 @@ test('Privatehive: Create, Lists and Delete network', async t => {
   try {
     const { platform } = t.context;
 
-    const peerId = await platform.createPrivatehiveNetwork({
+    const peerId = await platform.privatehive.create({
       locationCode: Config.Platform.privatehiveLocationCode,
       type: 'peer',
       orgName: 'blockcluster',
@@ -133,13 +133,13 @@ test('Privatehive: Create, Lists and Delete network', async t => {
       networkConfigId: Config.Platform.privatehiveNetworkConfigId,
     });
 
-    const networks = await platform.listPrivatehiveNetworks({ showDeleted: false });
+    const networks = await platform.privatehive.list({ showDeleted: false });
     const doesExists = networks.find(n => n.instanceId === peerId);
     if (!doesExists) {
       t.fail('Privatehive Network creation failed');
     }
 
-    await platform.deletePrivatehiveNetwork(peerId);
+    await platform.privatehive.delete(peerId);
     t.pass();
   } catch (err) {
     t.fail(err);
@@ -152,15 +152,15 @@ test('Privatehive: Invite & Accept channel join request', async t => {
   try {
     const { platformUser } = t.context;
 
-    const nodeList = await platformUser.listPrivatehiveNetworks(Config.Privatehive.peerInstanceId);
-    const ordererList = await platformUser.listPrivatehiveNetworks(Config.Privatehive.ordererInstanceId);
+    const nodeList = await platformUser.privatehive.list(Config.Privatehive.peerInstanceId);
+    const ordererList = await platformUser.privatehive.list(Config.Privatehive.ordererInstanceId);
 
     const node = platformUser.getPrivatehiveNode(nodeList[0]);
     const orderer = platformUser.getPrivatehiveNode(ordererList[0]);
 
     node.setOrderer(orderer);
 
-    const inviteId = await platformUser.inviteUserToChannel({
+    const inviteId = await platformUser.privatehive.inviteUserToChannel({
       email: Config.Platform.inviteEmail,
       peerId: Config.Privatehive.peerInstanceId,
       channelName: Config.Privatehive.channelName,
@@ -168,7 +168,7 @@ test('Privatehive: Invite & Accept channel join request', async t => {
       ordererConnectionDetails: `grpc://${orderer.ordererURL}`,
     });
 
-    const invites = await platformUser.listPrivatehiveChannelInvites();
+    const invites = await platformUser.privatehive.listChannelInvites();
 
     if (!invites.map(c => c._id).includes(inviteId)) {
       return t.fail('Invite not in list');

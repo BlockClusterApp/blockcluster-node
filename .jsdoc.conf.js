@@ -8,6 +8,7 @@ module.exports = {
       'lib/clients/paymeter/index.js',
       'lib/clients/hyperion/index.js',
       'lib/clients/platform/index.js',
+      'lib/clients/platform/modules/',
       'lib/clients/privatehive/index.js',
       'lib/clients/privatehive/modules/',
     ],

@@ -11,8 +11,8 @@ test.before(async t => {
     domain: Config.Privatehive.platformDomain,
   });
 
-  const nodeList = await platform.listPrivatehiveNetworks(Config.Privatehive.peerInstanceId);
-  const ordererList = await platform.listPrivatehiveNetworks(Config.Privatehive.ordererInstanceId);
+  const nodeList = await platform.privatehive.list(Config.Privatehive.peerInstanceId);
+  const ordererList = await platform.privatehive.list(Config.Privatehive.ordererInstanceId);
 
   const node = platform.getPrivatehiveNode(nodeList[0]);
   const orderer = platform.getPrivatehiveNode(ordererList[0]);
