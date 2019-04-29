@@ -34,7 +34,7 @@ module.exports = {
     sectionOrder: ['Classes', 'Modules', 'Externals', 'Events', 'Namespaces', 'Mixins', 'Tutorials', 'Interfaces'],
     disqus: 'https://forum.blockcluster.io/',
     openGraph: {
-      title: '',
+      title: 'Blockcluster',
       type: 'website',
       image: '',
       site_name: '',
